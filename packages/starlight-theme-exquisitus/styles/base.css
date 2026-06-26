@@ -18,7 +18,16 @@
 	   readers, and the shadow alone signposts the header floating over content. */
 	header.header {
 		background-color: var(--sl-color-bg);
+		/* Explicitly clear Starlight's default .header hairline (it lives in
+		   `starlight.core` on the same element); the shadow replaces it. */
+		border-bottom: 0;
 		box-shadow: var(--sl-exquisitus-header-shadow);
+	}
+
+	/* Starlight divides the page-title panel from the body with a top hairline;
+	   drop it — the heading hierarchy already separates them. */
+	.content-panel + .content-panel {
+		border-top: 0;
 	}
 
 	.site-title {
@@ -37,6 +46,8 @@
 	   from the reading column (hierarchy first, lines last). */
 	.sidebar-pane {
 		background-color: var(--sl-color-bg);
+		/* Clear Starlight's default sidebar divider (starlight.core). */
+		border-inline-end: 0;
 	}
 
 	.sidebar-content {
@@ -75,6 +86,11 @@
 	/* No structural divider. The active item carries a short accent tick — a
 	   real "you are here" reading cue, which is the only job the old full-height
 	   line was doing. */
+	.right-sidebar {
+		/* Clear Starlight's default TOC divider (starlight.core). */
+		border-inline-start: 0;
+	}
+
 	starlight-toc a {
 		border-radius: 0.375rem;
 		transition: color 0.15s var(--sl-exquisitus-ease),
