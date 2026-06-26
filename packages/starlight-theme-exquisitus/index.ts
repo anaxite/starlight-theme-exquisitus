@@ -40,22 +40,14 @@ export default function starlightThemeExquisitus(): StarlightPlugin {
 									themes: ['vitesse-dark', 'vitesse-light'],
 									...userExpressiveCodeConfig,
 									styleOverrides: {
-										borderColor: 'var(--sl-color-gray-5)',
-										borderRadius: '0.7rem',
+										// Code-area colours + mono font only; frame/title-bar chrome
+										// stays at Expressive Code's defaults.
 										codeBackground: 'var(--sl-exquisitus-code-bg)',
 										codeFontFamily: 'var(--sl-font-mono)',
 										...userExpressiveCodeConfig.styleOverrides,
 										frames: {
 											editorBackground: 'var(--sl-exquisitus-code-bg)',
 											terminalBackground: 'var(--sl-exquisitus-code-bg)',
-											editorTabBarBackground: 'var(--sl-exquisitus-code-header-bg)',
-											editorActiveTabBackground: 'var(--sl-exquisitus-code-header-bg)',
-											editorActiveTabIndicatorTopColor: 'unset',
-											editorActiveTabIndicatorBottomColor: 'var(--sl-color-accent)',
-											editorTabBarBorderBottomColor: 'var(--sl-color-hairline)',
-											terminalTitlebarBackground: 'var(--sl-exquisitus-code-header-bg)',
-											terminalTitlebarBorderBottomColor: 'var(--sl-color-hairline)',
-											frameBoxShadowCssValue: 'unset',
 											...userExpressiveCodeConfig.styleOverrides?.frames,
 										},
 									},

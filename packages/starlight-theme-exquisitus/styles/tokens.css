@@ -64,7 +64,6 @@
 
 		/* Code surfaces — cool-tinted, distinct from the page (dark mode). */
 		--sl-exquisitus-code-bg: oklch(0.205 0.012 245);
-		--sl-exquisitus-code-header-bg: oklch(0.235 0.014 245);
 
 		/* Sticky-header lift. Dark surfaces can't take a cast shadow, so depth
 		   comes from light: a lit lower lip plus a soft upward bloom. */
@@ -112,7 +111,6 @@
 
 		/* Code surfaces — a soft cool panel, clearly not the white page (light mode). */
 		--sl-exquisitus-code-bg: oklch(0.965 0.008 235);
-		--sl-exquisitus-code-header-bg: oklch(0.925 0.012 235);
 
 		/* On white, a conventional soft drop shadow carries the header lift. */
 		--sl-exquisitus-header-shadow: 0 8px 22px -11px rgba(20, 16, 8, 0.34);
