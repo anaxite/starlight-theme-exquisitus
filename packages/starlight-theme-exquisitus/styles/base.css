@@ -351,6 +351,29 @@
 		display: none;
 	}
 
+	/* EC positions .copy via --button-spacing, which is calculated for its own
+	   header sizes. Anchor it to inset-block-start: 0 and span our header height
+	   so the button always centres inside the bar, on every frame type. */
+	.expressive-code .frame .copy {
+		inset-block-start: 0;
+		block-size: 2.5rem;
+		align-items: center;
+		padding-block: 0;
+	}
+
+	/* EC's terminal .header carries its own full border (top/left/right, no bottom)
+	   plus a ::after that draws the bottom line. Both conflict with our outer .frame
+	   border and our .header border-bottom, producing a doubled-line effect.
+	   Clear EC's inner border; keep only our single hairline separator. */
+	.expressive-code .frame.is-terminal .header {
+		border: 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+
+	.expressive-code .frame.is-terminal .header::after {
+		display: none;
+	}
+
 	/* ──────────────────────────── Page title ────────────────────────── */
 	/* The document <h1> (id="_top") lives outside `.sl-markdown-content`; give it
 	   the same serif treatment as the headings it sits above. */
