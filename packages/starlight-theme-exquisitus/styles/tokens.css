@@ -25,6 +25,10 @@
 		--sl-exquisitus-font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
 
 		/* ── Reading rhythm ─────────────────────────────────────────── */
+		/* Nudge the global type scale up ~1px (16 → 17 at the default base).
+		   A percentage, not a px value, so it still scales from the reader's own
+		   base size. rem-based layout scales with it, so the ~70ch measure holds. */
+		font-size: 106.25%;
 		--sl-line-height: 1.75;
 		--sl-line-height-headings: 1.18;
 		/* ~70ch at the content type size; fine-tuned against real Atkinson metrics. */

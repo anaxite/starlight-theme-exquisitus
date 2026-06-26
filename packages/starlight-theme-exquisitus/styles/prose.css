@@ -12,7 +12,7 @@
  */
 @layer exquisitus {
 	.sl-markdown-content {
-		font-size: 1.0625rem; /* 17px — editorial body without disturbing the UI */
+		font-size: 1.0625rem; /* ≈18px after the root bump — editorial body size */
 		text-wrap: pretty;
 	}
 
