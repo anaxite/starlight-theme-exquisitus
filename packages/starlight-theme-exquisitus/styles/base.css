@@ -44,8 +44,9 @@
 	/* Touch devices: the compact header icon controls (mobile menu toggle,
 	   search trigger) are ~34px by default — under the 44px tap target. Give
 	   them a full 44px hit area on coarse pointers; mouse users keep the
-	   compact resting size. The icon stays centred via flex. */
-	@media (pointer: coarse) {
+	   compact resting size. `any-pointer: coarse` catches touch-laptops that
+	   report `pointer: fine` (trackpad) but still have a touchscreen. */
+	@media (any-pointer: coarse) {
 		starlight-menu-button button,
 		site-search button[data-open-modal] {
 			display: inline-flex;
@@ -120,11 +121,12 @@
 		border-radius: 0 0.375rem 0.375rem 0;
 	}
 
+	/* Opaque, not translucent — mirrors the header's no-blur principle (a
+	   scrim reads poorly for low-vision readers). A near-solid fill over the
+	   page surface gives a clean edge as content scrolls under it. */
 	mobile-starlight-toc nav {
 		border-top: 1px solid var(--sl-color-hairline);
-		background-color: color-mix(in oklab, var(--sl-color-bg) 88%, transparent);
-		-webkit-backdrop-filter: blur(8px);
-		backdrop-filter: blur(8px);
+		background-color: color-mix(in oklab, var(--sl-color-bg) 96%, transparent);
 	}
 
 	/* ───────────────────────────── Search ───────────────────────────── */
@@ -367,6 +369,17 @@
 		color: var(--sl-color-white);
 	}
 
+	/* A deliberate, on-brand keyboard-focus ring. Starlight's 1px accent outline
+	   is functional but reads thin against the near-black dark surface; 2px plus
+	   a 2px offset separates cleanly from the element edge and matches the
+	   confident register. Only applies to keyboard navigation (pointer users see
+	   no ring), so it never clutters the resting interface. */
+	:focus-visible {
+		outline: 2px solid var(--sl-color-accent);
+		outline-offset: 2px;
+		border-radius: 0.25rem;
+	}
+
 	/* ──────────────────────────── Page title ────────────────────────── */
 	/* The document <h1> (id="_top") lives outside `.sl-markdown-content`; give it
 	   the same serif treatment as the headings it sits above. */
@@ -490,6 +503,27 @@
 		from {
 			opacity: 0;
 			transform: translateY(0.75rem);
+		}
+	}
+
+	/* ──────────────────────── Reduced motion ─────────────────────────── */
+	/* The hero and search-dialog animations are gated by `no-preference`
+	   above, so they already fall back to instant-on. This block covers the
+	   transitions on chrome that runs regardless — sidebar links, cards,
+	   tabs, TOC, pagination, link buttons — so a reader who requests reduced
+	   motion gets the same instant-on behaviour everywhere. Colour and
+	   visibility are unaffected; only the interpolation is removed.
+	   The `!important` is the one sanctioned exception to this theme's no-
+	   `!important` rule: a universal selector has zero specificity and cannot
+	   otherwise override per-property transitions set by element selectors. */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
 		}
 	}
 }
