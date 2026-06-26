@@ -23,8 +23,15 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource/spectral": "^5.2.8"
   },
+  "files": [
+    "index.ts",
+    "libs/",
+    "overrides/",
+    "styles/"
+  ],
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.34.0"
+    "@astrojs/starlight": ">=0.34.0",
+    "astro": ">=5.0.0"
   },
   "engines": {
     "node": ">=22.12.0"

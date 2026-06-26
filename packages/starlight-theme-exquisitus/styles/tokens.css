@@ -130,8 +130,9 @@
 		--sl-exquisitus-cta: oklch(0.78 0.14 80);
 		--sl-exquisitus-cta-ink: oklch(0.22 0.015 80);
 
-		/* Petrol-teal counter-hue. */
-		--sl-exquisitus-cool: oklch(0.5 0.085 205);
+		/* Petrol-teal counter-hue. Deepened from 0.5 so inline code
+		   clears WCAG AA body-text contrast (≥4.5:1) with comfortable headroom. */
+		--sl-exquisitus-cool: oklch(0.44 0.09 205);
 
 		/* Code surfaces — a soft cool panel, clearly not the white page (light mode). */
 		--sl-exquisitus-code-bg: oklch(0.965 0.008 235);

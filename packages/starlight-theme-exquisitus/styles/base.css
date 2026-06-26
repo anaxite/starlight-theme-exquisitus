@@ -41,6 +41,21 @@
 		opacity: 1;
 	}
 
+	/* Touch devices: the compact header icon controls (mobile menu toggle,
+	   search trigger) are ~34px by default — under the 44px tap target. Give
+	   them a full 44px hit area on coarse pointers; mouse users keep the
+	   compact resting size. The icon stays centred via flex. */
+	@media (pointer: coarse) {
+		starlight-menu-button button,
+		site-search button[data-open-modal] {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-inline-size: 44px;
+			min-block-size: 44px;
+		}
+	}
+
 	/* ──────────────────────────── Sidebar ───────────────────────────── */
 	/* No dividing line: the de-emphasised nav type plus a gutter separate it
 	   from the reading column (hierarchy first, lines last). */

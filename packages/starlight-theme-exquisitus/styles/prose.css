@@ -91,8 +91,18 @@
 	}
 
 	/* ──────────────────────────── Tables ────────────────────────────── */
+	/* `display: block` turns the table into its own horizontal-scroll container,
+	   so a table wider than the reading column scrolls instead of clipping a
+	   column off-screen on narrow viewports (no wrapper element, so Starlight's
+	   markup is untouched). `width: 100%` still makes tables that fit fill the
+	   column; a thin, themed scrollbar is the affordance when they don't. */
 	.sl-markdown-content table:not(:where(.not-content *)) {
+		display: block;
 		width: 100%;
+		max-width: 100%;
+		overflow-x: auto;
+		scrollbar-width: thin;
+		scrollbar-color: var(--sl-color-gray-5) transparent;
 	}
 
 	.sl-markdown-content th:not(:where(.not-content *)) {
