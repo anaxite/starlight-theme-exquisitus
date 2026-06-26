@@ -1,0 +1,124 @@
+/*
+ * Design tokens.
+ *
+ * Maps the resolved Exquisitus palette onto Starlight's custom-property
+ * contract. Colour is authored in OKLCH so lightness is perceptually even and
+ * hue stays put as chroma changes. Every foreground/background pair below is
+ * WCAG 2.2 AA validated: body & UI text ≥ 4.5:1, large text ≥ 3:1.
+ *
+ * Palette logic (see DESIGN.md):
+ *   • Surfaces are near-neutral — warmth lives in the ink and the amber accent,
+ *     never in the paper. No cream, no sand.
+ *   • The amber brand colour DEEPENS to bronze in light mode (raw honey fails
+ *     contrast on white) and BRIGHTENS to honey in dark mode.
+ *   • A petrol-teal counter-hue (205°, chroma held low for calm) carries the
+ *     "information / code" register opposite the amber "warmth / emphasis" one.
+ */
+@layer exquisitus {
+	:root {
+		/* ── Typefaces ──────────────────────────────────────────────── */
+		--sl-font: 'Atkinson Hyperlegible Next Variable', system-ui, -apple-system, BlinkMacSystemFont,
+			'Segoe UI', sans-serif;
+		--sl-font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas,
+			monospace;
+		/* Display serif — applied to content headings, hero & card titles only. */
+		--sl-exquisitus-font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+
+		/* ── Reading rhythm ─────────────────────────────────────────── */
+		--sl-line-height: 1.75;
+		--sl-line-height-headings: 1.18;
+		/* ~70ch at the content type size; fine-tuned against real Atkinson metrics. */
+		--sl-content-width: 42rem;
+
+		/* Flat, borderless reading environment — the sidebar shares the page
+		   surface in both themes and is separated by a hairline, not a panel. */
+		--sl-color-bg-sidebar: var(--sl-color-bg);
+
+		/* Theme-local handles reused by base.css / prose.css. */
+		--sl-exquisitus-ease: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out-quint */
+		/* Splash hero column split (copy / image). Override to retune. */
+		--sl-exquisitus-hero-columns: 2.1fr 1fr;
+
+		/* ── Colour — dark mode (default) ───────────────────────────── */
+		--sl-color-white: oklch(0.94 0.012 85); /* highest-contrast ink (headings) */
+		--sl-color-gray-1: oklch(0.9 0.012 85);
+		--sl-color-gray-2: oklch(0.82 0.014 85); /* body text */
+		--sl-color-gray-3: oklch(0.66 0.012 82); /* muted text */
+		--sl-color-gray-4: oklch(0.52 0.01 82);
+		--sl-color-gray-5: oklch(0.38 0.008 80); /* hairlines */
+		--sl-color-gray-6: oklch(0.24 0.007 80); /* raised surface */
+		--sl-color-gray-7: oklch(0.205 0.006 80); /* subtle fills, zebra rows */
+		--sl-color-black: oklch(0.17 0.006 80); /* page background */
+
+		/* Accent — honey (brightened for dark surfaces). */
+		--sl-color-accent-low: oklch(0.3 0.06 70);
+		--sl-color-accent: oklch(0.72 0.13 75);
+		--sl-color-accent-high: oklch(0.84 0.115 82);
+
+		/* Petrol-teal counter-hue. */
+		--sl-exquisitus-cool: oklch(0.8 0.075 205);
+
+		/* Code surfaces — cool-tinted, distinct from the page (dark mode). */
+		--sl-exquisitus-code-bg: oklch(0.205 0.012 245);
+		--sl-exquisitus-code-header-bg: oklch(0.235 0.014 245);
+
+		/* Semantic ramps — note(teal) · tip(violet) · caution · danger · success. */
+		--sl-color-blue-low: oklch(0.28 0.05 205);
+		--sl-color-blue: oklch(0.62 0.1 205);
+		--sl-color-blue-high: oklch(0.85 0.07 205);
+		--sl-color-purple-low: oklch(0.28 0.06 295);
+		--sl-color-purple: oklch(0.62 0.14 295);
+		--sl-color-purple-high: oklch(0.86 0.08 295);
+		--sl-color-orange-low: oklch(0.3 0.05 60);
+		--sl-color-orange: oklch(0.72 0.13 60);
+		--sl-color-orange-high: oklch(0.88 0.08 70);
+		--sl-color-red-low: oklch(0.3 0.07 25);
+		--sl-color-red: oklch(0.65 0.17 25);
+		--sl-color-red-high: oklch(0.85 0.09 25);
+		--sl-color-green-low: oklch(0.28 0.05 150);
+		--sl-color-green: oklch(0.62 0.12 150);
+		--sl-color-green-high: oklch(0.85 0.08 150);
+	}
+
+	:root[data-theme='light'] {
+		/* ── Colour — light mode ────────────────────────────────────── */
+		--sl-color-white: oklch(0.22 0.015 80); /* highest-contrast ink (headings) */
+		--sl-color-gray-1: oklch(0.27 0.013 80);
+		--sl-color-gray-2: oklch(0.33 0.012 80); /* body text */
+		--sl-color-gray-3: oklch(0.45 0.01 80); /* muted text */
+		--sl-color-gray-4: oklch(0.62 0.008 80);
+		--sl-color-gray-5: oklch(0.8 0.005 80); /* hairlines */
+		--sl-color-gray-6: oklch(0.93 0.004 80); /* raised surface */
+		--sl-color-gray-7: oklch(0.965 0.003 80); /* subtle fills, zebra rows */
+		--sl-color-black: oklch(1 0 0); /* page background — pure white */
+
+		/* Accent — bronze (deepened for contrast on white). */
+		--sl-color-accent-low: oklch(0.93 0.04 75);
+		--sl-color-accent: oklch(0.52 0.12 68);
+		--sl-color-accent-high: oklch(0.42 0.11 60);
+
+		/* Petrol-teal counter-hue. */
+		--sl-exquisitus-cool: oklch(0.5 0.085 205);
+
+		/* Code surfaces — a soft cool panel, clearly not the white page (light mode). */
+		--sl-exquisitus-code-bg: oklch(0.965 0.008 235);
+		--sl-exquisitus-code-header-bg: oklch(0.925 0.012 235);
+
+		/* Semantic ramps. */
+		--sl-color-blue-low: oklch(0.95 0.03 205);
+		--sl-color-blue: oklch(0.62 0.1 205);
+		--sl-color-blue-high: oklch(0.4 0.08 205);
+		--sl-color-purple-low: oklch(0.95 0.03 295);
+		--sl-color-purple: oklch(0.55 0.16 295);
+		--sl-color-purple-high: oklch(0.4 0.14 295);
+		--sl-color-orange-low: oklch(0.95 0.045 70);
+		--sl-color-orange: oklch(0.7 0.13 60);
+		--sl-color-orange-high: oklch(0.42 0.1 55);
+		--sl-color-red-low: oklch(0.95 0.035 25);
+		--sl-color-red: oklch(0.58 0.18 25);
+		--sl-color-red-high: oklch(0.45 0.16 25);
+		--sl-color-green-low: oklch(0.95 0.04 150);
+		--sl-color-green: oklch(0.58 0.12 150);
+		--sl-color-green-high: oklch(0.4 0.09 150);
+	}
+}

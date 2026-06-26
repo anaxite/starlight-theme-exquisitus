@@ -1,0 +1,10 @@
+/*
+ * Cascade layer order.
+ *
+ * Declaring `starlight` before `exquisitus` guarantees every rule the theme
+ * ships wins over Starlight's defaults regardless of selector specificity or
+ * source order — without a single `!important`. Starlight authors its own
+ * styles in sub-layers of `starlight` (`starlight.base`, `starlight.components`,
+ * `starlight.content`), all of which sit beneath `exquisitus` here.
+ */
+@layer starlight, exquisitus;

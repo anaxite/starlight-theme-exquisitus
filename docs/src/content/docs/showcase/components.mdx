@@ -1,0 +1,80 @@
+---
+title: Components
+description: Asides, tabs, steps, cards, code blocks, and badges as restyled by Exquisitus.
+sidebar:
+  order: 2
+---
+
+import { Aside, Tabs, TabItem, Card, CardGrid, LinkCard, Steps, Badge } from '@astrojs/starlight/components';
+
+Starlight ships a generous set of documentation components. Exquisitus restyles each one to match the reading column — same hairlines, same palette, same restraint.
+
+## Asides
+
+Each callout takes its hue from the semantic ramp and wears a soft full border instead of a side stripe. The icon and the serif title carry the meaning.
+
+<Aside type="note">A note shares the calm petrol-teal of inline code — it is information, set apart.</Aside>
+
+<Aside type="tip" title="A considered tip">Tips lean violet, distinct from both the warm accent and the cool note.</Aside>
+
+<Aside type="caution">Caution is amber-orange, deliberately separated from the brand's link colour so the two never blur.</Aside>
+
+<Aside type="danger">Danger is unmistakable without being lurid — a measured red that still passes contrast on its own tint.</Aside>
+
+## Tabs
+
+<Tabs>
+	<TabItem label="Light">The active tab is marked by the accent underline. Light mode keeps a pure-white page; warmth lives in the ink and the bronze accent.</TabItem>
+	<TabItem label="Dark">In dark mode the same accent brightens to honey, and the petrol-teal lifts so both stay legible on near-black.</TabItem>
+</Tabs>
+
+## Steps
+
+<Steps>
+
+1. Numbers are set in JetBrains Mono with tabular figures, so multi-digit sequences stay aligned.
+2. The connecting guide fades into the page rather than ending in a hard stop.
+3. Each step is free to hold prose, code, or another component.
+
+</Steps>
+
+## Cards
+
+<CardGrid>
+	<Card title="Hairline, not box" icon="approve-check">
+		Cards are defined by a single hairline and a generous radius. On hover they lift a
+		couple of pixels and warm their border — a small, earned reward.
+	</Card>
+	<Card title="Serif titles" icon="pencil">
+		Card titles borrow the Spectral serif, tying them to the document's headings rather
+		than the interface chrome.
+	</Card>
+</CardGrid>
+
+<LinkCard
+	title="Read the typography page"
+	description="See how prose, quotes, and tables behave in the reading column."
+	href="/showcase/typography/"
+/>
+
+## Code blocks
+
+Code frames share the reading column's hairlines and radius, with the active terminal tab marked by the accent.
+
+```ts title="theme.config.ts" {4-6}
+import starlightThemeExquisitus from 'starlight-theme-exquisitus';
+
+export const plugins = [
+	starlightThemeExquisitus({
+		// The theme reads your Expressive Code config and extends it.
+	}),
+];
+```
+
+```sh title="Terminal"
+pnpm add starlight-theme-exquisitus
+```
+
+## Badges
+
+Badges round out the set: <Badge text="New" variant="success" />, <Badge text="Beta" variant="caution" />, <Badge text="Note" variant="note" />, and <Badge text="Deprecated" variant="danger" />.

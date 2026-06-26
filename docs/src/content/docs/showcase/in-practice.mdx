@@ -1,0 +1,158 @@
+---
+title: Where AI fits in your workflow
+description: A real long-form guide that exercises every themed component — prose, callouts, code, tabs, steps, and tables — the way a reader actually meets them.
+sidebar:
+  order: 3
+---
+
+import { Aside, Tabs, TabItem, Card, CardGrid, Steps, LinkButton, Badge } from '@astrojs/starlight/components';
+
+Most coverage of AI for documentation argues about whether the tools are
+exciting. That is the wrong question for someone who writes for a living. The
+useful question is narrower and more practical: **where does a language model
+genuinely reduce the work of producing accurate documentation, and where does it
+quietly add risk you will pay for later?**
+
+This page is a real guide, not a swatch sheet. It collects the load-bearing
+components a documentation site actually uses, so the reading experience can be
+judged the way a reader will meet it — at length, with code, with asides, and
+with the occasional table.
+
+## The honest version of the pitch
+
+A model is a fast, confident, and occasionally wrong writing assistant. It is
+excellent at the mechanical transformations that eat a technical writer's day:
+reshaping release notes into a changelog, drafting a first pass of reference
+copy from a function signature, or flagging the three sentences in a procedure
+that assume knowledge the reader does not have. It is least trustworthy exactly
+where documentation matters most — claims of fact, version-specific behaviour,
+and anything a reader will copy and run without checking.
+
+> The model does not know what is true. It knows what is likely. For a reference
+> manual, those are not the same thing, and the gap is your job.
+
+The practical consequence is a division of labour. Let the model handle
+transformation and let it propose structure; keep the verification, the
+judgement, and the final voice for yourself.
+
+### A note on terms
+
+A few words get used loosely in AI coverage. This guide uses them precisely:
+*hallucination* means a confident false statement, not a stylistic lapse;
+*grounding* means tying a generation to a specific source document; and a
+*prompt* is an input you should version-control like any other source.
+
+## When to reach for it, and when not to
+
+<Tabs>
+	<TabItem label="Good fit">
+		- Rewriting a rough draft to a consistent house style
+		- Generating first-pass docstrings from typed signatures
+		- Summarising a long changelog into release highlights
+		- Producing alt-text candidates for review
+		- Catching undefined jargon and undocumented assumptions
+	</TabItem>
+	<TabItem label="Poor fit">
+		- Writing API reference no human will verify
+		- Inventing version numbers, flags, or default values
+		- Producing security or compliance guidance unreviewed
+		- Anything where a confident wrong answer is worse than no answer
+	</TabItem>
+</Tabs>
+
+<Aside type="note">
+	Treat generated reference copy as a draft from a fast junior writer who has
+	never run the code. Useful, frequently right, and never shipped unread.
+</Aside>
+
+<Aside type="tip" title="A prompt is a source file">
+	Keep prompts in the repository next to the docs they generate. Version them,
+	review changes in pull requests, and you get reproducibility for free — the
+	same discipline you already apply to everything else you publish.
+</Aside>
+
+<Aside type="caution">
+	Models drift. A prompt that produced accurate output last quarter can produce
+	subtly wrong output after a model update. Re-verify generated reference copy
+	on a schedule, not once.
+</Aside>
+
+<Aside type="danger">
+	Never let a model author security instructions, legal language, or destructive
+	commands that ship without a human sign-off. A plausible-sounding `rm -rf` is
+	still an `rm -rf`.
+</Aside>
+
+## Working it into docs-as-code
+
+Here is a grounding step you can drop into a docs pipeline. It pins the model to
+your own source so it paraphrases rather than invents:
+
+```python title="grounding.py" {6-12}
+from pathlib import Path
+
+def build_prompt(source: Path, instruction: str) -> str:
+    """Ground the model in a single source file before asking for prose."""
+    context = source.read_text(encoding="utf-8")
+    return (
+        "Rewrite the following reference material for clarity. "
+        "Do not introduce facts that are not present in the source.\n\n"
+        f"--- SOURCE ({source.name}) ---\n{context}\n\n"
+        f"--- INSTRUCTION ---\n{instruction}"
+    )
+```
+
+Wire it into your build the same way you would any other generated artefact.
+Note the use of `--check` so CI fails loudly when generated docs fall out of
+sync with their sources:
+
+```bash title="Terminal"
+# Regenerate, then verify nothing drifted in review
+docs-gen build --grounded
+docs-gen verify --check && echo "docs in sync"
+```
+
+A rough sequence for adopting any of this without disrupting a working pipeline:
+
+<Steps>
+
+1. Pick one low-risk, high-volume task — changelog summaries are a good first
+   candidate.
+
+2. Write the prompt as a file, commit it, and generate into a draft branch.
+
+3. Review the output as prose, not as model output. If you would not sign your
+   name to it, it does not ship.
+
+4. Measure the time saved against the time spent verifying. Keep only what nets
+   out positive.
+
+</Steps>
+
+## A quick reference
+
+| Task                     | Model leverage | Verification cost | Verdict        |
+| ------------------------ | -------------- | ----------------- | -------------- |
+| Style and tone passes    | High           | Low               | Use freely     |
+| Docstrings from types    | High           | Medium            | Use, review    |
+| Changelog summaries      | High           | Low               | Use freely     |
+| API reference of record  | Medium         | High              | Use cautiously |
+| Security / legal copy    | Low            | Very high         | Avoid          |
+
+## Next steps
+
+<CardGrid>
+	<Card title="Set up grounding" icon="seti:python">
+		Start with the `build_prompt` pattern above and point it at one real source
+		file in your repository.
+	</Card>
+	<Card title="Version your prompts" icon="seti:git">
+		Move prompts into the repo and review them like code. See
+		[getting started](/getting-started/) for the project layout.
+	</Card>
+</CardGrid>
+
+<LinkButton href="/getting-started/">Read the getting-started guide</LinkButton>
+<LinkButton href="https://diataxis.fr/" variant="minimal" icon="external">
+	Diátaxis
+</LinkButton>

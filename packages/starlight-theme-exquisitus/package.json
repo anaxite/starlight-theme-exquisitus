@@ -1,0 +1,48 @@
+{
+  "name": "starlight-theme-exquisitus",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "A Starlight documentation theme at the pinnacle of readability and beauty — generous editorial typography, a disciplined honey-amber palette, and accessibility by conviction.",
+  "author": "Anaxite",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./overrides/Hero.astro": "./overrides/Hero.astro",
+    "./styles/fonts": "./styles/fonts.css",
+    "./styles/layers": "./styles/layers.css",
+    "./styles/tokens": "./styles/tokens.css",
+    "./styles/base": "./styles/base.css",
+    "./styles/prose": "./styles/prose.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "echo \"(no package-level lint configured)\""
+  },
+  "dependencies": {
+    "@fontsource-variable/atkinson-hyperlegible-next": "^5.2.6",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource/spectral": "^5.2.8"
+  },
+  "peerDependencies": {
+    "@astrojs/starlight": ">=0.34.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "keywords": [
+    "starlight",
+    "starlight-theme",
+    "theme",
+    "plugin",
+    "astro",
+    "documentation",
+    "accessibility",
+    "typography"
+  ]
+}

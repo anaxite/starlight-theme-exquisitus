@@ -1,0 +1,27 @@
+/*
+ * Self-hosted typefaces. All three are OFL/SIL licensed and bundled via
+ * @fontsource, so a site using this theme ships its own fonts — no Google
+ * Fonts request, no third-party origin, no layout-shift on first paint.
+ *
+ * These @import specifiers resolve against THIS package's node_modules (where
+ * the @fontsource deps are declared), which is what makes them work under
+ * pnpm's isolated store when the theme is consumed from another package.
+ *
+ * Each @fontsource stylesheet declares per-subset @font-face rules gated by
+ * `unicode-range`, so the browser only downloads the subsets a page actually
+ * renders. Importing extra weights is therefore cheap.
+ */
+
+/* Body & UI — Atkinson Hyperlegible Next (variable, wght 200–800). */
+@import '@fontsource-variable/atkinson-hyperlegible-next/index.css';
+
+/* Code — JetBrains Mono (variable, wght). */
+@import '@fontsource-variable/jetbrains-mono/index.css';
+
+/* Display serif — Spectral. Static cuts; used on headings, hero & card titles. */
+@import '@fontsource/spectral/400.css';
+@import '@fontsource/spectral/500.css';
+@import '@fontsource/spectral/600.css';
+@import '@fontsource/spectral/700.css';
+@import '@fontsource/spectral/400-italic.css';
+@import '@fontsource/spectral/600-italic.css';

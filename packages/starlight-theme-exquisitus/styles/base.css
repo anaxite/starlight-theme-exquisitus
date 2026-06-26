@@ -1,0 +1,479 @@
+/*
+ * Application chrome.
+ *
+ * Header, sidebars, table of contents, search, cards, asides, tabs, steps and
+ * the hero. The reading column itself lives in prose.css. Everything is in the
+ * `exquisitus` layer, so these rules win over Starlight without `!important`.
+ *
+ * Two recurring moves define the look:
+ *   • Flat, hairline-separated surfaces instead of filled panels — the page
+ *     reads as one calm sheet of paper, not a set of boxes.
+ *   • Colour is spent deliberately: bronze/honey for the active state, the
+ *     petrol-teal counter-hue for information, near-nothing elsewhere.
+ */
+@layer exquisitus {
+	/* ───────────────────────────── Header ───────────────────────────── */
+	header.header {
+		background-color: color-mix(in oklab, var(--sl-color-bg) 82%, transparent);
+		-webkit-backdrop-filter: blur(8px) saturate(1.4);
+		backdrop-filter: blur(8px) saturate(1.4);
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+
+	.site-title {
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		color: var(--sl-color-white);
+	}
+
+	header .social-icons a:hover {
+		color: var(--sl-color-text-accent);
+		opacity: 1;
+	}
+
+	@media (prefers-reduced-transparency: reduce) {
+		header.header {
+			background-color: var(--sl-color-bg);
+			-webkit-backdrop-filter: none;
+			backdrop-filter: none;
+		}
+	}
+
+	/* ──────────────────────────── Sidebar ───────────────────────────── */
+	.sidebar-pane {
+		border-inline-end: 1px solid var(--sl-color-hairline);
+		background-color: var(--sl-color-bg);
+	}
+
+	.sidebar-content a {
+		border-radius: 0.375rem;
+		transition: color 0.15s var(--sl-exquisitus-ease),
+			background-color 0.15s var(--sl-exquisitus-ease);
+	}
+
+	.sidebar-content a:hover {
+		color: var(--sl-color-white);
+		background-color: var(--sl-color-gray-7);
+	}
+
+	/* Section labels read as quiet small-caps, not loud headings. */
+	.sidebar-content .top-level > li > .large,
+	.sidebar-content summary .large {
+		font-size: var(--sl-text-xs);
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--sl-color-gray-3);
+	}
+
+	.sidebar-content a[aria-current='page'],
+	.sidebar-content a[aria-current='page']:hover {
+		color: var(--sl-color-text-accent);
+		background-color: color-mix(in oklab, var(--sl-color-accent) 12%, transparent);
+		font-weight: 600;
+	}
+
+	/* ─────────────────────── Table of contents ──────────────────────── */
+	.right-sidebar {
+		border-inline-start: 1px solid var(--sl-color-hairline);
+	}
+
+	starlight-toc a {
+		border-radius: 0.375rem;
+		transition: color 0.15s var(--sl-exquisitus-ease);
+	}
+
+	starlight-toc a[aria-current='true'],
+	starlight-toc a[aria-current='true']:hover {
+		color: var(--sl-color-text-accent);
+		font-weight: 600;
+	}
+
+	mobile-starlight-toc nav {
+		border-top: 1px solid var(--sl-color-hairline);
+		background-color: color-mix(in oklab, var(--sl-color-bg) 88%, transparent);
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+	/* ───────────────────────────── Search ───────────────────────────── */
+	site-search button[data-open-modal] {
+		border-radius: 0.5rem;
+		border-color: var(--sl-color-gray-5);
+	}
+
+	site-search button[data-open-modal]:hover {
+		border-color: var(--sl-color-accent);
+	}
+
+	site-search dialog {
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.75rem;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		site-search dialog[open] {
+			animation: exquisitus-dialog-in 0.2s var(--sl-exquisitus-ease);
+		}
+	}
+
+	@keyframes exquisitus-dialog-in {
+		from {
+			opacity: 0;
+			transform: translateY(-0.5rem) scale(0.99);
+		}
+	}
+
+	/* ───────────────────────────── Cards ────────────────────────────── */
+	.card {
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.75rem;
+		background-color: var(--sl-color-bg);
+		transition: border-color 0.2s var(--sl-exquisitus-ease),
+			box-shadow 0.2s var(--sl-exquisitus-ease), transform 0.2s var(--sl-exquisitus-ease);
+	}
+
+	.card .title {
+		font-family: var(--sl-exquisitus-font-serif);
+		font-weight: 600;
+		color: var(--sl-color-white);
+	}
+
+	.card .icon {
+		color: var(--sl-color-text-accent);
+	}
+
+	.sl-link-card {
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.75rem;
+		box-shadow: none;
+		transition: border-color 0.2s var(--sl-exquisitus-ease),
+			box-shadow 0.2s var(--sl-exquisitus-ease), transform 0.2s var(--sl-exquisitus-ease);
+	}
+
+	.sl-link-card .title {
+		font-family: var(--sl-exquisitus-font-serif);
+		font-weight: 600;
+		color: var(--sl-color-white);
+	}
+
+	@media (hover: hover) {
+		.sl-link-card:hover,
+		.card:hover {
+			border-color: color-mix(in oklab, var(--sl-color-accent) 60%, var(--sl-color-gray-5));
+			box-shadow: var(--sl-shadow-sm);
+			transform: translateY(-2px);
+		}
+	}
+
+	.sl-link-card:hover .description {
+		color: var(--sl-color-gray-2);
+	}
+
+	/* ───────────────────────────── Asides ───────────────────────────── */
+	/* Rewritten away from Starlight's 0.25rem inline-start stripe: a full,
+	   softened hairline + tinted fill + the variant icon carry the meaning. */
+	.starlight-aside {
+		border: 1px solid color-mix(in oklab, var(--sl-color-asides-border) 45%, transparent);
+		border-radius: 0.625rem;
+		padding: 1rem 1.25rem;
+	}
+
+	.starlight-aside__title {
+		font-family: var(--sl-exquisitus-font-serif);
+		letter-spacing: 0.005em;
+	}
+
+	/* ─────────────────────────────── Tabs ───────────────────────────── */
+	starlight-tabs .tablist-wrapper ul[role='tablist'] {
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+
+	starlight-tabs [role='tab'] {
+		border-bottom-width: 2px;
+		transition: color 0.15s var(--sl-exquisitus-ease),
+			border-color 0.15s var(--sl-exquisitus-ease);
+	}
+
+	starlight-tabs [role='tab'][aria-selected='true'] {
+		color: var(--sl-color-text-accent);
+		border-color: var(--sl-color-accent);
+	}
+
+	starlight-tabs [role='tab']:not([aria-selected='true']):hover {
+		color: var(--sl-color-white);
+		border-color: var(--sl-color-gray-4);
+	}
+
+	/* ─────────────────────────────── Steps ──────────────────────────── */
+	.sl-steps > li::before {
+		font-family: var(--sl-font-mono);
+		font-variant-numeric: tabular-nums;
+	}
+
+	/* ──────────────────────── Link buttons ──────────────────────────── */
+	/* Bolder label — text on the filled accent reads cleanly at a glance. */
+	.sl-link-button {
+		font-weight: 600;
+	}
+
+	.sl-link-button.primary {
+		border-radius: 0.5rem;
+		transition: transform 0.15s var(--sl-exquisitus-ease),
+			box-shadow 0.2s var(--sl-exquisitus-ease);
+	}
+
+	.sl-link-button.secondary {
+		border-radius: 0.5rem;
+		border-color: var(--sl-color-gray-4);
+	}
+
+	.sl-link-button.secondary:hover {
+		border-color: var(--sl-color-accent);
+		color: var(--sl-color-text-accent);
+	}
+
+	/* Minimal links carry the accent + an underline so they read as links,
+	   not as plain text that happens to have an icon. */
+	.sl-link-button.minimal {
+		color: var(--sl-color-text-accent);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+		text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+		transition: text-decoration-color 0.15s var(--sl-exquisitus-ease);
+	}
+
+	.sl-link-button.minimal:hover {
+		color: var(--sl-color-text-accent);
+		text-decoration-color: currentColor;
+	}
+
+	@media (hover: hover) {
+		.sl-link-button.primary:hover {
+			transform: translateY(-1px);
+			box-shadow: var(--sl-shadow-md);
+		}
+	}
+
+	/* ───────────────────────── Pagination ───────────────────────────── */
+	.pagination-links a {
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.75rem;
+		box-shadow: none;
+		transition: border-color 0.2s var(--sl-exquisitus-ease),
+			transform 0.2s var(--sl-exquisitus-ease);
+	}
+
+	.pagination-links a:hover {
+		border-color: var(--sl-color-accent);
+	}
+
+	.pagination-links a .link-title {
+		color: var(--sl-color-white);
+		font-family: var(--sl-exquisitus-font-serif);
+		font-weight: 600;
+	}
+
+	@media (hover: hover) {
+		.pagination-links a:hover {
+			transform: translateY(-2px);
+		}
+	}
+
+	/* ───────────────────────────── Footer ───────────────────────────── */
+	footer.sl-flex {
+		color: var(--sl-color-gray-3);
+	}
+
+	/* ─────────────────────── Selection & focus ──────────────────────── */
+	::selection {
+		background-color: color-mix(in oklab, var(--sl-color-accent) 28%, transparent);
+		color: var(--sl-color-white);
+	}
+
+	/* ───────────────────────── Code frames ──────────────────────────── */
+	/* Every block is a defined panel (tinted surface + border) with a header
+	   bar that signposts "code" at all times and holds the title when present.
+	   Surface/header colours come from the ExpressiveCode styleOverrides. */
+	/* EC frames its panel on the inner <pre>; move the border + radius onto the
+	   frame so the header and code read as one rounded container, then flatten
+	   the <pre> so there's no second border. */
+	.expressive-code .frame {
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.7rem;
+		overflow: hidden;
+		background: var(--sl-exquisitus-code-bg);
+	}
+
+	.expressive-code .frame pre {
+		border: 0;
+		border-radius: 0;
+	}
+
+	/* Force the header visible even on title-less blocks (EC hides it). */
+	.expressive-code .frame .header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 2.5rem;
+		padding-inline: 0.9rem;
+		background: var(--sl-exquisitus-code-header-bg);
+		border-bottom: 1px solid var(--sl-color-hairline);
+		border-radius: 0;
+		font-family: var(--sl-font-mono);
+		font-size: var(--sl-text-xs);
+		font-weight: 500;
+	}
+
+	/* Window dots as the universal "code" cue (terminals keep their own). */
+	.expressive-code .frame:not(.is-terminal) .header::before {
+		content: '';
+		flex: none;
+		inline-size: 0.62rem;
+		block-size: 0.62rem;
+		border-radius: 50%;
+		background: var(--sl-color-gray-4);
+		box-shadow: 0.95rem 0 0 var(--sl-color-gray-4), 1.9rem 0 0 var(--sl-color-gray-4);
+		margin-inline-end: 0.6rem;
+		opacity: 0.5;
+	}
+
+	/* The title is a quiet label, not a browser tab. */
+	.expressive-code .frame .header .title {
+		color: var(--sl-color-gray-2);
+		font-weight: 500;
+		inset-block-start: 0;
+		border: 0;
+	}
+
+	.expressive-code .frame .header .title::after {
+		display: none;
+	}
+
+	/* ──────────────────────────── Page title ────────────────────────── */
+	/* The document <h1> (id="_top") lives outside `.sl-markdown-content`; give it
+	   the same serif treatment as the headings it sits above. */
+	h1#_top {
+		font-family: var(--sl-exquisitus-font-serif);
+		font-weight: 600;
+		letter-spacing: -0.018em;
+		text-wrap: balance;
+	}
+
+	/* ───────────────────────────── Hero ─────────────────────────────── */
+	/* Overriding Hero.astro drops Starlight's scoped layout styles, so the
+	   structure is reproduced here (and refined) rather than inherited. */
+	.hero {
+		display: grid;
+		grid-template-columns: 100%;
+		align-items: center;
+		gap: 1rem;
+		padding-block: clamp(1rem, 4vw, 3rem) 1rem;
+	}
+
+	.hero > img,
+	.hero > .hero-html {
+		object-fit: contain;
+		width: min(70%, 20rem);
+		height: auto;
+		margin-inline: auto;
+	}
+
+	.hero .stack {
+		flex-direction: column;
+		gap: clamp(1.25rem, calc(1rem + 1vw), 1.75rem);
+		text-align: center;
+	}
+
+	.hero .copy {
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.hero .copy > * {
+		max-width: 50ch;
+	}
+
+	.hero .actions {
+		gap: 1rem 1.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.hero h1 {
+		font-family: var(--sl-exquisitus-font-serif);
+		font-weight: 600;
+		font-size: clamp(var(--sl-text-4xl), calc(1rem + 5vw), 5rem);
+		line-height: var(--sl-line-height-headings);
+		letter-spacing: -0.018em;
+		text-wrap: balance;
+		color: var(--sl-color-white);
+	}
+
+	.hero .tagline {
+		font-size: clamp(var(--sl-text-base), calc(0.5rem + 1.2vw), var(--sl-text-lg));
+		color: var(--sl-color-gray-2);
+		text-wrap: pretty;
+	}
+
+	@media (min-width: 50rem) {
+		.hero {
+			/* Adjustable: override `--sl-exquisitus-hero-columns` to retune the
+			   split between the copy and the image. */
+			grid-template-columns: var(--sl-exquisitus-hero-columns);
+			gap: 3%;
+			padding-block: clamp(2.5rem, calc(1rem + 8vmin), 8rem);
+		}
+
+		/* No image → no empty column. A single full-width editorial masthead. */
+		.hero:not(:has(> img, > .hero-html)) {
+			grid-template-columns: 100%;
+		}
+
+		.hero > img,
+		.hero > .hero-html {
+			order: 2;
+			width: min(100%, 24rem);
+		}
+
+		.hero .stack {
+			text-align: start;
+		}
+
+		.hero .copy {
+			align-items: flex-start;
+		}
+
+		.hero .actions {
+			justify-content: flex-start;
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.hero .copy > *,
+		.hero .actions {
+			animation: exquisitus-rise 0.6s var(--sl-exquisitus-ease) both;
+		}
+		.hero .copy > *:nth-child(1) {
+			animation-delay: 0.02s;
+		}
+		.hero .copy > *:nth-child(2) {
+			animation-delay: 0.09s;
+		}
+		.hero .copy > *:nth-child(3) {
+			animation-delay: 0.16s;
+		}
+		.hero .actions {
+			animation-delay: 0.23s;
+		}
+	}
+
+	@keyframes exquisitus-rise {
+		from {
+			opacity: 0;
+			transform: translateY(0.75rem);
+		}
+	}
+}
