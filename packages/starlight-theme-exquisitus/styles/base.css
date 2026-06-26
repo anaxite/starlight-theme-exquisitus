@@ -186,6 +186,30 @@
 		color: var(--sl-color-gray-2);
 	}
 
+	/* ─────────────────────── Splash feature grid ────────────────────── */
+	/* Breaks the default uniform 2×2: a wide lead card carries the thesis,
+	   three equal-height supporting cards share the row beneath it. The cards
+	   are still Starlight's, so each icon keeps its cycling tint (the Splash
+	   Tint Exception). align-items defaults to `stretch`, so the three peers
+	   level to a shared baseline rather than ending ragged. */
+	.exquisitus-feature-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	@media (min-width: 50rem) {
+		.exquisitus-feature-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		/* The lead spans the full row above its three supporting peers. */
+		.exquisitus-feature-grid > :first-child {
+			grid-column: 1 / -1;
+		}
+	}
+
 	/* ───────────────────────────── Asides ───────────────────────────── */
 	/* Rewritten away from Starlight's 0.25rem inline-start stripe: a full,
 	   softened hairline + tinted fill + the variant icon carry the meaning. */
@@ -241,6 +265,16 @@
 	/* Bolder label — text on the filled accent reads cleanly at a glance. */
 	.sl-link-button {
 		font-weight: 600;
+	}
+
+	/* Honey-amber fill with an ink label — the brand colour at full strength.
+	   In light mode this is the one place the raw honey appears (it can't carry
+	   link text on white); dark mode keeps its existing honey-over-ink. */
+	.sl-link-button.primary,
+	.sl-link-button.primary:hover {
+		background: var(--sl-exquisitus-cta);
+		border-color: var(--sl-exquisitus-cta);
+		color: var(--sl-exquisitus-cta-ink);
 	}
 
 	.sl-link-button.primary {

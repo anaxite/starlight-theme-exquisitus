@@ -31,7 +31,7 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
 
 2. **Register the plugin** in your Starlight configuration.
 
-   ```js title="astro.config.mjs" ins={2} ins={8}
+   ```js title="astro.config.mjs" ins={[2, 8]}
    import starlight from '@astrojs/starlight';
    import starlightThemeExquisitus from 'starlight-theme-exquisitus';
    import { defineConfig } from 'astro/config';
@@ -53,6 +53,16 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
    ```
 
 </Steps>
+
+<Aside type="note" title="Search runs in production builds">
+	Starlight's search is powered by [Pagefind](https://pagefind.app/), which indexes the site at
+	build time — so the search box is inert under `pnpm dev` and shows a short placeholder instead of
+	results. To try it, build and preview:
+
+	```sh
+	pnpm build && pnpm preview
+	```
+</Aside>
 
 <Aside type="tip" title="Bring your own brand">
 	Every colour is a CSS custom property. Override `--sl-color-accent` and friends in your own

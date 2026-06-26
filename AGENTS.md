@@ -57,6 +57,8 @@ These decisions were influenced by, or come from, the design system. They may be
 
 **Self-hosted fonts under pnpm.** `fonts.css` uses bare `@import` specifiers (e.g., `@import '@fontsource-variable/atkinson-hyperlegible-next/index.css'`). These resolve against the **theme package's own** `node_modules` (where the `@fontsource` deps are declared), which is what makes this work under pnpm's isolated store when consumed from another package. Do not change these to relative paths.
 
-**Amber accent deepens in light mode.** The brand honey-amber at `oklch(0.78 0.14 80)` fails contrast on white. Light-mode links use a deepened **bronze** (`oklch(0.52 0.12 68)`) instead; dark-mode links use brightened honey (`oklch(0.84 0.115 82)`). This is the single counterintuitive color move — do not "fix" it.
+**Amber accent deepens in light mode — but only as text.** The brand honey-amber at `oklch(0.78 0.14 80)` fails contrast as *text* on white (≈2:1). So light-mode accent **text** (links, active nav) uses a deepened **bronze** (`oklch(0.52 0.12 68)`); dark-mode links use brightened honey (`oklch(0.84 0.115 82)`). Do not "fix" the bronze link colour — the contrast floor forces it.
+
+The contrast limit binds text, not fills. The **primary button** therefore carries the full honey as a *background* with an **ink label** (`--sl-exquisitus-cta` / `--sl-exquisitus-cta-ink`): ink-on-honey is ≈8.5:1, so the brand colour appears at full strength in light mode exactly where links can't carry it. Keep accent text bronze and the CTA fill honey; do not collapse them back into one value.
 
 **No cream/sand body background.** The light-mode surface is pure white `oklch(1 0 0)`. The dark-mode surface is near-black `oklch(0.17 0.006 80)`. Warmth lives in the ink, the amber accent, and the typography — never in the paper. Do not tint the body background warm.

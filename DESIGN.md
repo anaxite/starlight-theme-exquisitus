@@ -43,6 +43,8 @@ A full palette of two committed brand hues — a warm honey-amber and a cool cou
 
 **The Two-Job Rule.** Amber is warmth and emphasis; the cool hue is information and code. Neither crosses into the other's job. A full palette earns its richness through discipline, not abundance.
 
+**The Splash Tint Exception.** One sanctioned place lets color appear without a semantic job: the icon chips on landing card grids may each carry a soft, low-chroma tint drawn from the wider semantic ramp (the muted ≈`L 0.95` orange / purple / green / red set, never the bright RGBY default). On a surface built from cards — a convention readers already understand — a touch of varied warmth distinguishes one card from the next where a single accent would let them blend together. It reads as a small, rare splash of color in the two-tone field: present enough to give the grid life, soft and infrequent enough never to disturb the discipline. This is a deliberate decoration on a marketing surface, not a loosening of the Two-Job Rule, which holds everywhere prose, chrome, and semantics live.
+
 ## 3. Typography
 
 **Display Font:** **Spectral** (Production Type; OFL) — a screen-first editorial serif with sturdy serifs and moderate, even contrast. Carries headings with NYT-grade authority that stays crisp at size, without the hairline fragility of the reflex display serifs (Playfair / Cormorant / Fraunces). Fallback: `Georgia, serif`.
