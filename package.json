@@ -1,9 +1,9 @@
 {
   "name": "starlight-theme-exquisitus-monorepo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Monorepo for starlight-theme-exquisitus — a Starlight theme at the pinnacle of readability and beauty.",
+  "description": "Monorepo for starlight-theme-exquisitus, a Starlight theme.",
   "scripts": {
     "dev": "pnpm --filter docs dev",
     "build": "pnpm --filter docs build",

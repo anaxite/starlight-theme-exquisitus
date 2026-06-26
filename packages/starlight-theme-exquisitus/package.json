@@ -2,7 +2,7 @@
   "name": "starlight-theme-exquisitus",
   "version": "0.1.0",
   "license": "MIT",
-  "description": "A Starlight documentation theme at the pinnacle of readability and beauty — generous editorial typography, a disciplined honey-amber palette, and accessibility by conviction.",
+  "description": "A Starlight documentation theme aiming for the pinnacle of readability and beauty.",
   "author": "Anaxite",
   "type": "module",
   "exports": {
@@ -30,8 +30,8 @@
     "styles/"
   ],
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.34.0",
-    "astro": ">=5.0.0"
+    "@astrojs/starlight": "^0.41.1",
+    "astro": "^7.0.0"
   },
   "engines": {
     "node": ">=22.12.0"
