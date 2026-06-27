@@ -1,0 +1,41 @@
+---
+/**
+ * FeatureGrid — Exquisitus's editorial splash layout for Starlight <Card>s.
+ *
+ * Wraps Starlight's own cards (so each icon keeps its cycling Splash Tint) and
+ * arranges them in a deliberately non-uniform grid — the considered alternative
+ * to the identical card grid. The first child always carries the emphasis.
+ *
+ * Layout rules live in `styles/base.css` under
+ * `.exquisitus-feature-grid[data-layout]`. They must stay there, not in a
+ * scoped <style> block here: slotted cards never receive a component scope
+ * hash, so child-targeting selectors (`> :first-child`, `> :nth-child()`) only
+ * match when they're authored globally.
+ *
+ * @example
+ *   import { Card } from '@astrojs/starlight/components';
+ *   import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
+ *
+ *   <FeatureGrid layout="lead">
+ *     <Card title="…">This card leads the row.</Card>
+ *     <Card title="…">A supporting point.</Card>
+ *     <Card title="…">Another.</Card>
+ *   </FeatureGrid>
+ */
+interface Props {
+	/**
+	 * `lead` (default): a full-width thesis card above a row of supporting
+	 * peers that auto-fit 2–4 across. `alternating`: an editorial zigzag where
+	 * the wider card flips side each row. The first child leads in both.
+	 */
+	layout?: 'lead' | 'alternating';
+	/** Extra class names merged onto the grid container. */
+	class?: string;
+}
+
+const { layout = 'lead', class: className } = Astro.props;
+---
+
+<div class:list={['exquisitus-feature-grid', className]} data-layout={layout}>
+	<slot />
+</div>

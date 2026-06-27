@@ -16,15 +16,16 @@ hero:
 ---
 
 import { Card } from '@astrojs/starlight/components';
+import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
 
 ## A theme built around the sentence
 
 Most documentation is read, not skimmed. Exquisitus is composed for the long read: a hyperlegible body face, a serif that gives headings the cadence of a printed page, and a measure held to a comfortable line length so your eyes never lose their place.
 
-{/* A wide lead card carries the thesis; three supporting cards share the row
-    beneath it — not a uniform 2×2. The cards stay Starlight's, so each icon
-    keeps its cycling tint (the Splash Tint Exception in DESIGN.md). */}
-<div class="exquisitus-feature-grid">
+{/* A wide lead card carries the thesis; three supporting cards auto-fit the
+    row beneath it — not a uniform 2×2. The cards stay Starlight's, so each
+    icon keeps its cycling tint (the Splash Tint Exception in DESIGN.md). */}
+<FeatureGrid layout="lead">
 	<Card title="Legible by design" icon="open-book">
 		Body text is set in **Atkinson Hyperlegible Next**, a typeface engineered by the
 		Braille Institute to keep letterforms distinct at every size.
@@ -41,4 +42,4 @@ Most documentation is read, not skimmed. Exquisitus is composed for the long rea
 		All three faces are OFL-licensed and self-hosted. No third-party font request, no
 		flash of unstyled text, no surprise dependency.
 	</Card>
-</div>
+</FeatureGrid>

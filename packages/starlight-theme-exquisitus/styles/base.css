@@ -204,11 +204,14 @@
 	}
 
 	/* ─────────────────────── Splash feature grid ────────────────────── */
-	/* Breaks the default uniform 2×2: a wide lead card carries the thesis,
-	   three equal-height supporting cards share the row beneath it. The cards
-	   are still Starlight's, so each icon keeps its cycling tint (the Splash
-	   Tint Exception). align-items defaults to `stretch`, so the three peers
-	   level to a shared baseline rather than ending ragged. */
+	/* The considered alternative to the identical card grid: two editorial
+	   arrangements keyed off `data-layout`, both wrapping Starlight's own
+	   cards so each icon keeps its cycling tint (the Splash Tint Exception).
+	   Emitted by the FeatureGrid component; the first child always leads.
+	   Authored globally (not scoped on the component) because slotted cards
+	   carry no scope hash, so these child selectors must reach them directly.
+	   Mobile is a single column for every layout; `align-items: stretch`
+	   (the grid default) levels peers to a shared baseline. */
 	.exquisitus-feature-grid {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -217,12 +220,37 @@
 	}
 
 	@media (min-width: 50rem) {
-		.exquisitus-feature-grid {
-			grid-template-columns: repeat(3, 1fr);
+		/* lead — a full-width thesis card over a row of supporting peers that
+		   auto-fit to the card count: 2 → halves, 3 → thirds, 4 → quarters.
+		   The author drops in however many fit; no prop, no breakpoint juggling. */
+		.exquisitus-feature-grid[data-layout='lead'] {
+			grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 		}
 
-		/* The lead spans the full row above its three supporting peers. */
-		.exquisitus-feature-grid > :first-child {
+		.exquisitus-feature-grid[data-layout='lead'] > :first-child {
+			grid-column: 1 / -1;
+		}
+
+		/* alternating — an editorial zigzag on a 5-track grid: the wider card
+		   flips side each row (3:2, then 2:3). Pairs fill a row exactly
+		   (3 + 2 = 5), so the rhythm reads like a magazine spread. */
+		.exquisitus-feature-grid[data-layout='alternating'] {
+			grid-template-columns: repeat(5, 1fr);
+		}
+
+		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 1),
+		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 4) {
+			grid-column: span 3;
+		}
+
+		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 2),
+		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 3) {
+			grid-column: span 2;
+		}
+
+		/* A lone trailing card (odd total) takes the full width rather than
+		   leaving a ragged gap beside empty tracks. */
+		.exquisitus-feature-grid[data-layout='alternating'] > :last-child:nth-child(odd) {
 			grid-column: 1 / -1;
 		}
 	}

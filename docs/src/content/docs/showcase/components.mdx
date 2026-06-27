@@ -6,6 +6,7 @@ sidebar:
 ---
 
 import { Aside, Tabs, TabItem, Card, CardGrid, LinkCard, Steps, Badge } from '@astrojs/starlight/components';
+import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
 
 Starlight ships a generous set of documentation components. Exquisitus restyles each one to match the reading column — same hairlines, same palette, same restraint.
 
@@ -56,6 +57,41 @@ Each callout takes its hue from the semantic ramp and wears a soft full border i
 	description="See how prose, quotes, and tables behave in the reading column."
 	href="/showcase/typography/"
 />
+
+## Feature grid
+
+`FeatureGrid` is the theme's own splash layout — a deliberate alternative to the uniform grid above. It wraps Starlight's cards, so each icon keeps its cycling tint, and the **first card always leads**. Two arrangements are available via `layout`.
+
+The `lead` layout sets a full-width thesis card over a row of supporting peers that auto-fit the count — two become halves, three become thirds:
+
+<FeatureGrid layout="lead">
+	<Card title="The thesis" icon="open-book">
+		The lead card spans the full width, carrying the one idea everything else supports.
+	</Card>
+	<Card title="A supporting point" icon="document">
+		Drop in two, three, or four peers — the row divides itself to fit, no breakpoint juggling.
+	</Card>
+	<Card title="Another" icon="rocket">
+		On a narrow screen the whole grid folds to a single, readable column.
+	</Card>
+</FeatureGrid>
+
+The `alternating` layout is an editorial zigzag: the wider card flips side each row, so a sequence of features reads with the rhythm of a magazine spread.
+
+<FeatureGrid layout="alternating">
+	<Card title="Lead the spread" icon="star">
+		The first card takes the wide cell on the opening row.
+	</Card>
+	<Card title="Counterpoint" icon="random">
+		Its partner takes the narrow cell beside it.
+	</Card>
+	<Card title="The flip" icon="seti:css">
+		On the next row the emphasis reverses — narrow first, then wide.
+	</Card>
+	<Card title="Wide again" icon="approve-check">
+		The pairing closes the rhythm out, even on a two-by-two.
+	</Card>
+</FeatureGrid>
 
 ## Code blocks
 

@@ -7,6 +7,7 @@
   "type": "module",
   "exports": {
     ".": "./index.ts",
+    "./components/FeatureGrid.astro": "./components/FeatureGrid.astro",
     "./overrides/Hero.astro": "./overrides/Hero.astro",
     "./styles/fonts": "./styles/fonts.css",
     "./styles/layers": "./styles/layers.css",
@@ -25,6 +26,7 @@
   },
   "files": [
     "index.ts",
+    "components/",
     "libs/",
     "overrides/",
     "styles/"
