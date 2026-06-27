@@ -1,64 +1,58 @@
 # AGENTS.md
 
-This file provides guidance to agents such as Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for agents (Claude Code and others) working in this repository. `CLAUDE.md` imports this file.
 
 ## Project
 
-**Exquisitus** is an Astro Starlight documentation theme consumed by Starlight sites as a plugin.. The goal: the pinnacle of readability and beauty. It self-hosts three OFL typefaces, replaces Starlight's palette with a WCAG-AA OKLCH system (light + dark), and refines the core chrome.
+**Exquisitus** is an Astro Starlight documentation theme, consumed by Starlight sites as a plugin. The goal: the pinnacle of readability and beauty. It self-hosts three OFL typefaces, replaces Starlight's palette with a WCAG-AA OKLCH system (light + dark), and refines the core chrome.
 
-Register: **brand** (people install it for how it looks). Brand words: confident, masterful, useful. Warmth is carried by typography and the honey-amber accent, never by a cream/sand body background.
+The register is **brand** — people install it for how it looks.
 
-## Design system
-
-This theme uses [`impeccable`](https://impeccable.style/) for design. The brand and design system are specified in `DESIGN.md` and `PRODUCT.md`. The design is a work-in-progress.
+**The brand and the design system are not described here.** Before changing anything visual — colour, type, spacing, motion, or a component's look — read [`PRODUCT.md`](PRODUCT.md) (who it's for, the design principles, the anti-references) and [`DESIGN.md`](DESIGN.md) (the normative tokens, the Named Rules, the Do's and Don'ts). `DESIGN.md` has a machine-readable token frontmatter and a sidecar at `.impeccable/design.json`; both are regenerated with `/impeccable document`, so edit the design intent there, not by hand in the sidecar. Design work in this repo uses the [`impeccable`](https://impeccable.style/) skill.
 
 ## Commands
 
 ```bash
-# Development (from repo root)
-pnpm dev          # Start docs preview site (http://localhost:4321)
-pnpm build        # Build docs site for production
-pnpm preview      # Preview the built docs site
-
-# Works in any package subdirectory too:
-pnpm --filter docs dev
+pnpm dev        # docs preview site at http://localhost:4321 (alias: pnpm --filter docs dev)
+pnpm build      # production build of the docs site
+pnpm preview    # serve the built docs site
 ```
 
-There is no test suite or linter yet. Node ≥22.12.0, pnpm ≥10 (managed via `mise.toml`).
+Any command also works from a package subdirectory. There is **no test suite or linter** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Toolchain is pinned in `mise.toml`: Node 24, pnpm 11 (the published theme package declares a Node ≥22.12.0 floor).
 
 ## Architecture
 
 ```
-starlight-theme-exquisitus/          # pnpm monorepo
-├── packages/starlight-theme-exquisitus/  # The theme package (published to npm)
-│   ├── index.ts                    # Plugin entrypoint: StarlightPlugin with config:setup hook
-│   ├── libs/starlight.ts           # overrideComponents() — merges theme component overrides
-│   ├── overrides/Hero.astro        # Drop-in Hero replacement (adds masthead rule motif)
+starlight-theme-exquisitus/                  # pnpm monorepo (packages/* + docs)
+├── packages/starlight-theme-exquisitus/     # the published theme package
+│   ├── index.ts                  # StarlightPlugin entrypoint — the config:setup hook
+│   ├── libs/starlight.ts         # overrideComponents() — merges component overrides, warns on user collisions
+│   ├── components/FeatureGrid.astro  # exported splash layout component (lead / alternating)
+│   ├── overrides/Hero.astro      # drop-in Hero replacement (serif masthead treatment)
 │   └── styles/
-│       ├── layers.css              # Cascade layer order: starlight, exquisitus
-│       ├── fonts.css               # Self-hosted @fontsource imports (OFL: Spectral, Atkinson, JetBrains)
-│       ├── tokens.css              # Full OKLCH design tokens (light + dark), mapped to --sl-* contract
-│       ├── base.css                # Application chrome: header, sidebar, TOC, search, cards, asides, tabs, etc.
-│       └── prose.css               # The reading column: headings, links, code, blockquotes, tables, etc.
-└── docs/                           # Theme showcase / dogfooding site
-    ├── astro.config.ts             # Starlight config consuming the theme via workspace:*
-    └── src/content/docs/           # Showcase pages (splash, getting-started, typography, components, in-practice)
+│       ├── layers.css            # @layer starlight, exquisitus;  — the cascade order everything relies on
+│       ├── fonts.css             # self-hosted @fontsource imports (Spectral, Atkinson, JetBrains Mono)
+│       ├── tokens.css            # OKLCH palette mapped onto Starlight's --sl-* contract (light + dark)
+│       ├── base.css              # application chrome: header, sidebar, TOC, search, cards, asides, tabs, hero, FeatureGrid layouts
+│       └── prose.css             # the reading column: headings, links, code, blockquotes, tables
+└── docs/                         # showcase / dogfooding site that consumes the theme via workspace:*
+    └── src/content/docs/         # splash + showcase pages
 ```
 
-### Key architectural decisions
+The plugin's `config:setup` hook (`index.ts`) does three things: registers component overrides via `overrideComponents()`, injects the five stylesheets **in dependency order** (`layers` must load first — it declares the cascade order), and extends the user's Expressive Code config with the theme's code-surface colours and mono font while preserving anything the user already set.
 
-These decisions were influenced by, or come from, the design system. They may be subject to change.
+## Engineering decisions an agent must respect
 
-**Cascade layers, not `!important`.** `layers.css` declares `@layer starlight, exquisitus;`. All theme CSS is authored in the `exquisitus` layer, so it wins over Starlight's defaults regardless of specificity — without a single `!important`.
+These are the non-obvious constraints. The *why* behind the visual choices lives in `DESIGN.md`'s Named Rules; the mechanics below are what break if you don't know them.
 
-**Starlight custom-property contract.** The theme doesn't invent its own token namespace for core colors. `tokens.css` maps the Exquisitus palette onto Starlight's `--sl-color-*` contract so Starlight's built-in components pick up the theme automatically. Only theme-specific tokens (the serif font stack, the cool counter-hue, the easing curve) use the `--sl-exquisitus-*` namespace.
+**Cascade layers, never `!important`.** `layers.css` declares `@layer starlight, exquisitus;`. All theme CSS is authored inside `@layer exquisitus`, so it wins over Starlight's defaults regardless of specificity — without a single `!important`. The one sanctioned exception is the universal `prefers-reduced-motion` reset in `base.css` (a zero-specificity universal selector can't otherwise override per-element transitions). Don't add others.
 
-**Component override gotcha.** Overriding a Starlight component (like `Hero.astro`) drops that component's **scoped** layout CSS. The hero grid/stack/copy structure had to be reproduced manually in `base.css`. Any new component override will need the same treatment. The `overrideComponents()` helper in `libs/starlight.ts` warns if the user already has their own override — user config always wins.
+**The Starlight custom-property contract.** The theme does not invent its own colour namespace. `tokens.css` maps the Exquisitus palette onto Starlight's `--sl-color-*` contract so Starlight's built-in components inherit the theme automatically. Only genuinely theme-specific tokens (the serif stack, the cool counter-hue, the easing curve, the CTA fill) use the `--sl-exquisitus-*` namespace.
 
-**Self-hosted fonts under pnpm.** `fonts.css` uses bare `@import` specifiers (e.g., `@import '@fontsource-variable/atkinson-hyperlegible-next/index.css'`). These resolve against the **theme package's own** `node_modules` (where the `@fontsource` deps are declared), which is what makes this work under pnpm's isolated store when consumed from another package. Do not change these to relative paths.
+**Component-override CSS gotcha.** Overriding a Starlight component (e.g. `Hero.astro`) drops that component's **scoped** layout CSS. The hero structure had to be reproduced in `base.css` (`.hero`). Any new override needs the same treatment. Relatedly, `FeatureGrid.astro` keeps its layout CSS in `base.css` rather than a scoped `<style>` block **because slotted children carry no Astro scope hash** — child-targeting selectors (`> :first-child`, `> :nth-child()`) only match when authored globally. `overrideComponents()` warns if the user already overrides the same component; user config always wins.
 
-**Amber accent deepens in light mode — but only as text.** The brand honey-amber at `oklch(0.78 0.14 80)` fails contrast as *text* on white (≈2:1). So light-mode accent **text** (links, active nav) uses a deepened **bronze** (`oklch(0.52 0.12 68)`); dark-mode links use brightened honey (`oklch(0.84 0.115 82)`). Do not "fix" the bronze link colour — the contrast floor forces it.
+**Self-hosted fonts under pnpm.** `fonts.css` uses bare `@import` specifiers (e.g. `@import '@fontsource-variable/atkinson-hyperlegible-next/index.css'`). These resolve against the **theme package's own** `node_modules`, where the `@fontsource` deps are declared — which is what makes them work under pnpm's isolated store when consumed from another package. **Do not** rewrite these as relative paths.
 
-The contrast limit binds text, not fills. The **primary button** therefore carries the full honey as a *background* with an **ink label** (`--sl-exquisitus-cta` / `--sl-exquisitus-cta-ink`): ink-on-honey is ≈8.5:1, so the brand colour appears at full strength in light mode exactly where links can't carry it. Keep accent text bronze and the CTA fill honey; do not collapse them back into one value.
+**OKLCH is the source of truth.** All colour is authored in OKLCH in `tokens.css`. The hex values in `.impeccable/design.json` are a clamped sRGB mirror for external tooling — never the canonical value. Don't "correct" a token by editing hex.
 
-**No cream/sand body background.** The light-mode surface is pure white `oklch(1 0 0)`. The dark-mode surface is near-black `oklch(0.17 0.006 80)`. Warmth lives in the ink, the amber accent, and the typography — never in the paper. Do not tint the body background warm.
+**Adding a component override or a new exported component.** Update the package `exports` map and the `files` array in `packages/starlight-theme-exquisitus/package.json`, register overrides in `index.ts`'s `overrideComponents([...])` call, and dogfood the result on a docs showcase page.

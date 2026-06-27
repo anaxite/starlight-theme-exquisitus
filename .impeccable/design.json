@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-27T00:00:00Z",
+  "title": "Design System: Exquisitus",
+  "extensions": {
+    "colorMeta": {
+      "honey": {
+        "role": "primary",
+        "displayName": "Honey-Amber",
+        "canonical": "oklch(0.72 0.13 75)",
+        "tonalRamp": [
+          "oklch(0.30 0.06 78)",
+          "oklch(0.42 0.09 77)",
+          "oklch(0.52 0.11 76)",
+          "oklch(0.62 0.125 76)",
+          "oklch(0.72 0.13 75)",
+          "oklch(0.80 0.125 78)",
+          "oklch(0.88 0.10 80)",
+          "oklch(0.95 0.05 82)"
+        ],
+        "canonicalHex": "#D49838",
+        "tonalRampHex": [
+          "#3E2903",
+          "#684500",
+          "#8D5E00",
+          "#B17A14",
+          "#D49838",
+          "#EAB358",
+          "#FAD18A",
+          "#FFECC9"
+        ]
+      },
+      "bronze": {
+        "role": "primary",
+        "displayName": "Bronze (light-mode accent text)",
+        "canonical": "oklch(0.52 0.12 68)",
+        "tonalRamp": [
+          "oklch(0.28 0.07 66)",
+          "oklch(0.36 0.09 67)",
+          "oklch(0.42 0.11 67)",
+          "oklch(0.52 0.12 68)",
+          "oklch(0.62 0.115 70)",
+          "oklch(0.72 0.10 73)",
+          "oklch(0.85 0.07 77)",
+          "oklch(0.94 0.04 80)"
+        ],
+        "canonicalHex": "#955900",
+        "tonalRampHex": [
+          "#3F2000",
+          "#5B3100",
+          "#733E00",
+          "#955900",
+          "#B2782C",
+          "#CB9B5A",
+          "#E8C89A",
+          "#FAE9CE"
+        ]
+      },
+      "cta-honey": {
+        "role": "primary",
+        "displayName": "CTA Honey (full-strength fill)",
+        "canonical": "oklch(0.78 0.14 80)",
+        "tonalRamp": [
+          "oklch(0.32 0.07 78)",
+          "oklch(0.44 0.10 79)",
+          "oklch(0.56 0.12 79)",
+          "oklch(0.67 0.13 80)",
+          "oklch(0.78 0.14 80)",
+          "oklch(0.85 0.12 82)",
+          "oklch(0.91 0.08 84)",
+          "oklch(0.96 0.04 86)"
+        ],
+        "canonicalHex": "#E6AC3D",
+        "tonalRampHex": [
+          "#462D00",
+          "#704A00",
+          "#9A6A00",
+          "#BF8B1F",
+          "#E6AC3D",
+          "#F5C66D",
+          "#FBDEA4",
+          "#FEF1D4"
+        ]
+      },
+      "petrol-teal": {
+        "role": "secondary",
+        "displayName": "Petrol-Teal (information / code)",
+        "canonical": "oklch(0.44 0.09 205)",
+        "tonalRamp": [
+          "oklch(0.24 0.05 205)",
+          "oklch(0.34 0.07 205)",
+          "oklch(0.44 0.09 205)",
+          "oklch(0.55 0.09 205)",
+          "oklch(0.66 0.085 205)",
+          "oklch(0.77 0.08 205)",
+          "oklch(0.87 0.06 205)",
+          "oklch(0.95 0.03 205)"
+        ],
+        "canonicalHex": "#00606A",
+        "tonalRampHex": [
+          "#00262A",
+          "#004249",
+          "#00606A",
+          "#13808A",
+          "#49A1AB",
+          "#73C3CC",
+          "#A6E0E7",
+          "#D8F5F8"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.22 0.015 80)",
+        "tonalRamp": [
+          "oklch(0.17 0.006 80)",
+          "oklch(0.22 0.015 80)",
+          "oklch(0.33 0.012 80)",
+          "oklch(0.45 0.010 80)",
+          "oklch(0.62 0.008 80)",
+          "oklch(0.80 0.005 80)",
+          "oklch(0.93 0.004 80)",
+          "oklch(1 0 0)"
+        ],
+        "canonicalHex": "#1E1A13",
+        "tonalRampHex": [
+          "#110F0D",
+          "#1E1A13",
+          "#39352F",
+          "#58554F",
+          "#898681",
+          "#BFBDBA",
+          "#E9E7E5",
+          "#FFFFFF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles and hero headings; Spectral serif, clamp topping at 5rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major in-document section headings (h2)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-headings, card / aside titles, table headers, summary — the serif on interface objects."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The reading column: Atkinson ~18px / 1.75, capped at ~70ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Sidebar section labels and chrome; uppercase, tracked, xs."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Inline and block code; JetBrains Mono."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-hover-sm",
+        "value": "var(--sl-shadow-sm)",
+        "purpose": "Soft lift under a card on hover only; never at rest (Flat-At-Rest Rule)."
+      },
+      {
+        "name": "button-hover-md",
+        "value": "var(--sl-shadow-md)",
+        "purpose": "Lift under the primary button on hover."
+      },
+      {
+        "name": "header-shadow-light",
+        "value": "0 8px 22px -11px rgba(20, 16, 8, 0.34)",
+        "purpose": "Sticky-header lift on the white surface."
+      },
+      {
+        "name": "header-shadow-dark",
+        "value": "0 1px 0 color-mix(in oklab, oklch(0.94 0.012 85) 13%, transparent), 0 11px 26px -11px color-mix(in oklab, oklch(0.94 0.012 85) 17%, transparent)",
+        "purpose": "Header lift on near-black, built from light (lit lip + upward bloom) since dark can't take a cast shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-quint",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The single theme easing curve for every transition and entrance."
+      },
+      {
+        "name": "rise",
+        "value": "exquisitus-rise 0.6s ease-out-quint both, staggered 0.02s/0.09s/0.16s/0.23s",
+        "purpose": "Hero copy + actions entrance; gated behind prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "dialog-in",
+        "value": "exquisitus-dialog-in 0.2s ease-out-quint",
+        "purpose": "Search dialog rise + scale-settle on open."
+      },
+      {
+        "name": "reduced-motion-reset",
+        "value": "animation/transition duration 0.01ms",
+        "purpose": "Universal instant-on fallback under prefers-reduced-motion: reduce (the one sanctioned !important)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "50rem",
+        "purpose": "Hero goes two-column; FeatureGrid layouts engage; below this everything is a single column."
+      }
+    ],
+    "hexMirror": {
+      "honey": {
+        "oklch": "oklch(0.72 0.13 75)",
+        "hex": "#D49838"
+      },
+      "honey-bright": {
+        "oklch": "oklch(0.84 0.115 82)",
+        "hex": "#F0C36F"
+      },
+      "bronze": {
+        "oklch": "oklch(0.52 0.12 68)",
+        "hex": "#955900"
+      },
+      "cta-honey": {
+        "oklch": "oklch(0.78 0.14 80)",
+        "hex": "#E6AC3D"
+      },
+      "petrol-teal-dark": {
+        "oklch": "oklch(0.8 0.075 205)",
+        "hex": "#82CCD5"
+      },
+      "petrol-teal-light": {
+        "oklch": "oklch(0.44 0.09 205)",
+        "hex": "#00606A"
+      },
+      "ink-dark": {
+        "oklch": "oklch(0.94 0.012 85)",
+        "hex": "#EFEBE2"
+      },
+      "ink-light": {
+        "oklch": "oklch(0.22 0.015 80)",
+        "hex": "#1E1A13"
+      },
+      "body-dark": {
+        "oklch": "oklch(0.82 0.014 85)",
+        "hex": "#C8C4BA"
+      },
+      "body-light": {
+        "oklch": "oklch(0.33 0.012 80)",
+        "hex": "#39352F"
+      },
+      "muted-dark": {
+        "oklch": "oklch(0.66 0.012 82)",
+        "hex": "#96928A"
+      },
+      "muted-light": {
+        "oklch": "oklch(0.45 0.01 80)",
+        "hex": "#58554F"
+      },
+      "hairline-dark": {
+        "oklch": "oklch(0.38 0.008 80)",
+        "hex": "#45423E"
+      },
+      "hairline-light": {
+        "oklch": "oklch(0.8 0.005 80)",
+        "hex": "#BFBDBA"
+      },
+      "surface-dark": {
+        "oklch": "oklch(0.17 0.006 80)",
+        "hex": "#110F0D"
+      },
+      "surface-light": {
+        "oklch": "oklch(1 0 0)",
+        "hex": "#FFFFFF"
+      },
+      "code-surface-dark": {
+        "oklch": "oklch(0.205 0.012 245)",
+        "hex": "#13181C"
+      },
+      "code-surface-light": {
+        "oklch": "oklch(0.965 0.008 235)",
+        "hex": "#EFF4F8"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The full honey-amber as a fill with an ink label — the brand colour at full strength.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Transparent with a muted border that warms to the accent on hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">View on GitHub</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: oklch(0.52 0.12 68); border: 1px solid oklch(0.62 0.008 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: border-color 0.15s cubic-bezier(0.22,1,0.36,1), color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-secondary:hover { border-color: oklch(0.52 0.12 68); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
+    },
+    {
+      "name": "Minimal Button",
+      "kind": "button",
+      "refersTo": "button-minimal",
+      "description": "No box — accent text with a thin underline that solidifies on hover, so it reads as a link.",
+      "html": "<a class=\"ds-btn-minimal\" href=\"#\">Learn more</a>",
+      "css": ".ds-btn-minimal { color: oklch(0.52 0.12 68); font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: color-mix(in oklab, currentColor 45%, transparent); transition: text-decoration-color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-minimal:hover { text-decoration-color: currentColor; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A hairline-defined card on the page surface that lifts and warms its border on hover; serif title.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Legible by design</h3><p class=\"ds-card-body\">Body text is set in Atkinson Hyperlegible Next, engineered to keep letterforms distinct at every size.</p></article>",
+      "css": ".ds-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; transition: border-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } .ds-card-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-card-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+    },
+    {
+      "name": "Aside (Note)",
+      "kind": "custom",
+      "refersTo": "aside",
+      "description": "Full softened hairline + tinted fill + icon — never a side stripe. Note variant in petrol-teal.",
+      "html": "<aside class=\"ds-aside-note\"><p class=\"ds-aside-title\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM7.25 7.25h1.5v4h-1.5v-4zM8 4.5a.9.9 0 110 1.8.9.9 0 010-1.8z\"/></svg> Note</p><p class=\"ds-aside-body\">A note shares the calm petrol-teal of inline code — it is information, set apart.</p></aside>",
+      "css": ".ds-aside-note { background: oklch(0.95 0.03 205); border: 1px solid oklch(0.62 0.10 205 / 0.45); border-radius: 0.625rem; padding: 1rem 1.25rem; } .ds-aside-title { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.25rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: 0.005em; color: oklch(0.40 0.08 205); } .ds-aside-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+    },
+    {
+      "name": "Inline Code",
+      "kind": "custom",
+      "refersTo": "code-inline",
+      "description": "Petrol-teal text on a neutral chip with a hairline border — the information register.",
+      "html": "<p class=\"ds-code-context\">Install with <code class=\"ds-code-inline\">pnpm add starlight-theme-exquisitus</code> and go.</p>",
+      "css": ".ds-code-context { font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } .ds-code-inline { background: oklch(0.93 0.004 80); border: 1px solid color-mix(in oklab, oklch(0.62 0.008 80) 22%, transparent); color: oklch(0.44 0.09 205); border-radius: 0.3125rem; padding: 0.1em 0.35em; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; }"
+    },
+    {
+      "name": "FeatureGrid (lead)",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid.",
+      "html": "<div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Colour with intent</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div>",
+      "css": ".ds-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } .ds-fg-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; } .ds-fg-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Considered Reading Room",
+    "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, colour — exists to usher the reader into the text and then disappear. Surfaces are flat and hairline-separated, never filled panels; colour is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.",
+    "keyCharacteristics": [
+      "Content is sovereign — the reading column is the design; the rest is service.",
+      "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.",
+      "A full palette held in tight discipline: honey-amber for emphasis, petrol-teal for information.",
+      "Flat, hairline-separated surfaces; depth from tonal layering, not shadow.",
+      "Accessible by conviction — WCAG 2.2 AA floor, light and dark both, every motion gated behind prefers-reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "The Sovereign Column Rule",
+        "body": "Colour never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface — full stop.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Job Rule",
+        "body": "Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Cream Rule",
+        "body": "Light surface is pure white, dark is near-black. Warmth is carried by ink, amber, and type — never by tinting the paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Deepened-Accent Rule",
+        "body": "Accent text is bronze in light mode and brightened honey in dark mode; raw honey only ever appears as a fill with an ink label.",
+        "section": "colors"
+      },
+      {
+        "name": "The Splash Tint Exception",
+        "body": "FeatureGrid icon chips on a splash page may each carry a soft low-chroma tint from the semantic ramp — a small rare splash that never loosens the Two-Job Rule elsewhere.",
+        "section": "colors"
+      },
+      {
+        "name": "The Generous Body Rule",
+        "body": "Body type is set larger and looser than convention (~18px / 1.75). When in doubt, bigger.",
+        "section": "typography"
+      },
+      {
+        "name": "The 65-75ch Rule",
+        "body": "The reading measure is capped at ~70 characters regardless of viewport. A wide screen gets wider margins, never a wider line.",
+        "section": "typography"
+      },
+      {
+        "name": "The Serif-Marks-Structure Rule",
+        "body": "Spectral marks every structural or editorial element; the sans never carries a heading, the serif never carries running body.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tonal-First Rule",
+        "body": "Reach for a tonal step before a shadow. Surfaces are distinguished by lightness, not by floating.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "No element carries a shadow at rest. A shadow is a reply to hover, focus, or scroll — never decoration.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No-Blur Rule",
+        "body": "Sticky surfaces are opaque. No backdrop-filter glass on the header, TOC, or dialogs.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the body reading column ink-on-surface, capped at ~70ch (42rem), set generously larger than the docs default (~18px / 1.75).",
+      "Do let the honey-amber accent appear rarely and meaningfully — links, active state, selection, focus. Its rarity is the point.",
+      "Do keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a fill with an ink label.",
+      "Do give petrol-teal its one job — information and code — and keep it there.",
+      "Do separate surfaces with a single hairline and tonal steps; reach for a shadow only as a response to hover, focus, or scroll.",
+      "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
+      "Do author all theme CSS in the exquisitus cascade layer and honour prefers-reduced-motion on every transition."
+    ],
+    "donts": [
+      "Don't ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.",
+      "Don't ship generic SaaS docs — the Mintlify / Docusaurus default of clean-white-plus-blue-primary with a forgettable sidebar.",
+      "Don't carry warmth in the body background — no cream / sand / parchment surface.",
+      "Don't use side-stripe accent borders (border-left / border-right > 1px) on asides, callouts, blockquotes, details, or cards.",
+      "Don't use gradient text, decorative glassmorphism, or backdrop-blur on sticky chrome.",
+      "Don't use elegant-but-illegible light-grey body copy; muted text still clears 4.5:1.",
+      "Don't let colour enter the prose reading column beyond links and inline <mark>.",
+      "Don't ship the identical card grid; use FeatureGrid's editorial layouts instead.",
+      "Don't shrink the body type to fit more on screen. The Generous Body Rule wins.",
+      "Don't reach for !important; the cascade layer order makes it unnecessary."
+    ]
+  }
+}

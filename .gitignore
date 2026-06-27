@@ -23,4 +23,7 @@ Thumbs.db
 # Agents
 .claude/
 .opencode/
-.impeccable/
+# Ignore local impeccable state (config, critiques, hook cache) but keep the
+# committed design-system sidecar, which tooling and the design docs consume.
+.impeccable/*
+!.impeccable/design.json
