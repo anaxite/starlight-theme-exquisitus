@@ -676,6 +676,58 @@
         background-color: var(--sl-color-text-accent);
     }
 
+    /* ─────────────────────────── File tree ───────────────────────────── */
+    /* Starlight's <FileTree> ships a square, neutral gray-6 panel — off the
+	   rounded scale and unrelated to code despite sharing the information
+	   register. It reads as an open hairline *figure* on the page, not a filled
+	   panel: the code block is the system's filled exception (featured content),
+	   so the tree stays unfilled (a reference diagram). The shared information
+	   register — teal structure, mono, md radius — keeps them kin without making
+	   them twins.
+
+	   The letterpress is load-bearing here: an unfilled hairline box at rest is
+	   otherwise indistinguishable from a card. So the tree is debossed (pressed
+	   into the page) where a card is flat-at-rest and lifts toward the reader on
+	   hover — same surface, opposite depth direction. */
+    starlight-file-tree {
+        background-color: var(--sl-color-bg);
+        border-color: var(--sl-color-hairline);
+        border-radius: 0.5rem;
+        box-shadow: var(--sl-exquisitus-code-edge);
+    }
+
+    /* The branching indent guides are the tree's signature — the one shape a
+	   code block never has. Tint them toward the information hue so the
+	   hierarchy reads as a navigational map rather than a block of text. */
+    starlight-file-tree ul {
+        border-inline-start-color: color-mix(
+            in oklab,
+            var(--sl-exquisitus-cool) 22%,
+            var(--sl-color-hairline)
+        );
+    }
+
+    /* Two-Job Rule on the tree: petrol-teal marks *structure* — the directory
+	   rows and their disclosure markers — while files keep neutral icons, so
+	   the teal reads unambiguously as "this is a container". Honey stays
+	   reserved for interaction (hover, below) and the highlighted file. */
+    starlight-file-tree .directory > details > summary .tree-icon {
+        color: var(--sl-exquisitus-cool);
+        fill: currentColor;
+    }
+
+    starlight-file-tree .directory > details > summary::marker,
+    starlight-file-tree .directory > details > summary::-webkit-details-marker {
+        color: var(--sl-exquisitus-cool);
+    }
+
+    /* Hover is honey's job. The teal icon rule above sits in the exquisitus
+	   layer, so it would otherwise outrank Starlight's own hover colour; restate
+	   the hover here so opening a folder still warms to the accent. */
+    starlight-file-tree .directory > details > summary:hover .tree-icon {
+        color: var(--sl-color-text-accent);
+    }
+
     /* ──────────────────────── Reduced motion ─────────────────────────── */
     /* The hero and search-dialog animations are gated by `no-preference`
 	   above, so they already fall back to instant-on. This block covers the
