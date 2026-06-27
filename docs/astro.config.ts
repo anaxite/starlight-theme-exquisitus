@@ -17,8 +17,12 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: 'Start Here', items: ['getting-started'] },
-				{ label: 'Showcase', items: [{ autogenerate: { directory: 'showcase' } }] },
+				{ label: 'Start Here', items: ['getting-started', 'customization'] },
+				{
+					label: 'Showcase',
+					items: ['showcase/typography', 'showcase/feature-grid', 'showcase/components'],
+				},
+				{ label: 'Resources', link: '/resources/' },
 			],
 			lastUpdated: true,
 			pagination: true,

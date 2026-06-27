@@ -1,40 +1,47 @@
 ---
-title: Components
-description: Asides, tabs, steps, cards, code blocks, and badges as restyled by Exquisitus.
+title: Starlight components
+description: Every Starlight built-in component as restyled by Exquisitus — a complete visual reference.
 sidebar:
-  order: 2
+  order: 3
+pagefind: false
 ---
 
-import { Aside, Tabs, TabItem, Card, CardGrid, LinkCard, Steps, Badge } from '@astrojs/starlight/components';
-import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
+import { Aside, Tabs, TabItem, Card, CardGrid, LinkCard, Steps, Badge, LinkButton, FileTree } from '@astrojs/starlight/components';
 
-Starlight ships a generous set of documentation components. Exquisitus restyles each one to match the reading column — same hairlines, same palette, same restraint.
+A complete visual reference for every Starlight built-in component, rendered in the Exquisitus style. Each component keeps its own behaviour and markup; the theme only changes how it looks.
 
 ## Asides
 
-Each callout takes its hue from the semantic ramp and wears a soft full border instead of a side stripe. The icon and the serif title carry the meaning.
+Four semantic variants, each with a distinct hue and a softened full border instead of a side stripe.
 
-<Aside type="note">A note shares the calm petrol-teal of inline code — it is information, set apart.</Aside>
+<Aside type="note">A note aside — calm petrol-teal, the information register. Set apart from prose, not competing with it.</Aside>
 
-<Aside type="tip" title="A considered tip">Tips lean violet, distinct from both the warm accent and the cool note.</Aside>
+<Aside type="tip" title="A considered tip">A tip aside — violet, distinct from both the warm accent and the cool note so neither blurs into the other.</Aside>
 
-<Aside type="caution">Caution is amber-orange, deliberately separated from the brand's link colour so the two never blur.</Aside>
+<Aside type="caution">A caution aside — amber-orange, deliberately separated from the brand's link colour so urgency and navigation never blend.</Aside>
 
-<Aside type="danger">Danger is unmistakable without being lurid — a measured red that still passes contrast on its own tint.</Aside>
+<Aside type="danger">A danger aside — measured red, unmistakable without being lurid. It passes contrast on its own tint.</Aside>
 
 ## Tabs
 
 <Tabs>
-	<TabItem label="Light">The active tab is marked by the accent underline. Light mode keeps a pure-white page; warmth lives in the ink and the bronze accent.</TabItem>
-	<TabItem label="Dark">In dark mode the same accent brightens to honey, and the petrol-teal lifts so both stay legible on near-black.</TabItem>
+	<TabItem label="Light">The active tab is marked three ways at once: accent colour, weight 600, and a 3px indicator — so selection is unambiguous without competing chrome. Light mode keeps a pure-white page.</TabItem>
+	<TabItem label="Dark">In dark mode the accent brightens from bronze to honey, and the petrol-teal lifts to match. Both modes are validated to WCAG 2.2 AA.</TabItem>
+	<TabItem label="A third tab">A resting baseline runs below the whole tab strip, so the indicator reads clearly as "selected" rather than as a random underline. Tabs are documentation-register: underline, not pill.</TabItem>
 </Tabs>
 
 ## Steps
 
 <Steps>
 
-1. Numbers are set in JetBrains Mono with tabular figures, so multi-digit sequences stay aligned.
+1. Step counters are set in JetBrains Mono with tabular figures, so multi-digit sequences stay aligned.
+
 2. The connecting guide fades into the page rather than ending in a hard stop.
+
+   ```js title="example.js"
+   const step = 2;
+   ```
+
 3. Each step is free to hold prose, code, or another component.
 
 </Steps>
@@ -43,68 +50,74 @@ Each callout takes its hue from the semantic ramp and wears a soft full border i
 
 <CardGrid>
 	<Card title="Hairline, not box" icon="approve-check">
-		Cards are defined by a single hairline and a generous radius. On hover they lift a
-		couple of pixels and warm their border — a small, earned reward.
+		Cards are defined by a single hairline and a generous radius. On hover they lift two pixels and warm their border — a small, earned reward, suppressed on touch.
 	</Card>
 	<Card title="Serif titles" icon="pencil">
-		Card titles borrow the Spectral serif, tying them to the document's headings rather
-		than the interface chrome.
+		Card titles are set in Spectral, tying them to the document headings rather than the interface chrome.
 	</Card>
 </CardGrid>
 
 <LinkCard
 	title="Read the typography page"
-	description="See how prose, quotes, and tables behave in the reading column."
+	description="See how prose, blockquotes, and tables read in the reading column."
 	href="/showcase/typography/"
 />
 
-## Feature grid
+## Link buttons
 
-`FeatureGrid` is the theme's own splash layout — a deliberate alternative to the uniform grid above. It wraps Starlight's cards, so each icon keeps its cycling tint, and the **first card always leads**. Two arrangements are available via `layout`.
+<LinkButton href="#_" icon="rocket">Primary</LinkButton>
+<LinkButton href="#_" variant="secondary" icon="external">Secondary</LinkButton>
+<LinkButton href="#_" variant="minimal" icon="external">Minimal</LinkButton>
 
-The `lead` layout sets a full-width thesis card over a row of supporting peers that auto-fit the count — two become halves, three become thirds:
+The primary button uses the full honey-amber as a fill with an ink label — the one place in light mode where the brand colour appears at full strength. It can't carry link text on white (insufficient contrast), so links deepen to bronze; the button, with its dark ink label, carries it freely.
 
-<FeatureGrid layout="lead">
-	<Card title="The thesis" icon="open-book">
-		The lead card spans the full width, carrying the one idea everything else supports.
-	</Card>
-	<Card title="A supporting point" icon="document">
-		Drop in two, three, or four peers — the row divides itself to fit, no breakpoint juggling.
-	</Card>
-	<Card title="Another" icon="rocket">
-		On a narrow screen the whole grid folds to a single, readable column.
-	</Card>
-</FeatureGrid>
+## File tree
 
-The `alternating` layout is an editorial zigzag: the wider card flips side each row, so a sequence of features reads with the rhythm of a magazine spread.
+<FileTree>
 
-<FeatureGrid layout="alternating">
-	<Card title="Lead the spread" icon="star">
-		The first card takes the wide cell on the opening row.
-	</Card>
-	<Card title="Counterpoint" icon="random">
-		Its partner takes the narrow cell beside it.
-	</Card>
-	<Card title="The flip" icon="seti:css">
-		On the next row the emphasis reverses — narrow first, then wide.
-	</Card>
-	<Card title="Wide again" icon="approve-check">
-		The pairing closes the rhythm out, even on a two-by-two.
-	</Card>
-</FeatureGrid>
+- astro.config.mjs
+- package.json
+- src
+  - content
+    - docs
+      - **getting-started.mdx**
+      - index.mdx
+  - styles
+    - custom.css
+
+</FileTree>
+
+## Details
+
+<details>
+<summary>The summary of a disclosure</summary>
+
+The content of the disclosure. It can hold any Markdown — prose, code blocks, lists. The summary is set in Spectral, tying it to the heading hierarchy.
+
+</details>
 
 ## Code blocks
 
-Code keeps Expressive Code's own frames — a titled tab for files, a traffic-light bar for terminals — set on the theme's cool-tinted code surface so blocks read in the information register, distinct from the prose around them.
-
-```ts title="theme.config.ts" {4-6}
+```ts title="astro.config.mjs" ins={[2, 8]}
+import starlight from '@astrojs/starlight';
 import starlightThemeExquisitus from 'starlight-theme-exquisitus';
+import { defineConfig } from 'astro/config';
 
-export const plugins = [
-	starlightThemeExquisitus({
-		// The theme reads your Expressive Code config and extends it.
-	}),
-];
+export default defineConfig({
+  integrations: [
+    starlight({
+      plugins: [starlightThemeExquisitus()],
+      title: 'My Docs',
+    }),
+  ],
+});
+```
+
+```diff lang="js"
+  function greet(name) {
+-   return 'Hello, ' + name;
++   return `Hello, ${name}`;
+  }
 ```
 
 ```sh title="Terminal"
@@ -113,4 +126,4 @@ pnpm add starlight-theme-exquisitus
 
 ## Badges
 
-Badges round out the set: <Badge text="New" variant="success" />, <Badge text="Beta" variant="caution" />, <Badge text="Note" variant="note" />, and <Badge text="Deprecated" variant="danger" />.
+<Badge text="New" variant="success" />, <Badge text="Beta" variant="caution" />, <Badge text="Note" variant="note" />, <Badge text="Deprecated" variant="danger" />, and <Badge text="Experimental" variant="tip" />.

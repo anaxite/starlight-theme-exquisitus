@@ -1,59 +1,71 @@
 ---
 title: Typography
-description: How prose reads in Exquisitus — headings, links, quotes, lists, and tables.
+description: The reading column in Exquisitus — type choices, spacing, headings, and why each decision was made.
 sidebar:
   order: 1
 ---
 
-This page is the theme's reading room. Everything below is plain Markdown, rendered exactly as your documentation will be. If a paragraph is comfortable to read here, it will be comfortable to read anywhere.
+This page is the reading room. Everything below is plain Markdown, rendered exactly as your documentation will be. If it is comfortable to read here, it will be comfortable to read anywhere on your site.
 
-The body is set in Atkinson Hyperlegible Next at a seventeen-pixel measure, with the line length held to roughly seventy characters. That width is not an accident: it is the range where the eye can return to the start of the next line without searching for it. Reading is a physical act, and the page should make it effortless.
+Exquisitus sets body type in Atkinson Hyperlegible Next at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters. These three numbers are not defaults — they are convictions. Seventeen pixels is the minimum the Readability Guidelines call comfortable for extended reading. Seventy characters is the width where the eye can return cleanly to the start of the next line without searching. 1.75 is the breathing room that lets ascenders and descenders live without crowding. Documentation read at length deserves the same consideration as long-form prose.
 
 ## Headings keep their place
 
-Headings are set in Spectral, a serif designed for screens. The contrast between a serif heading and a sans-serif body is doing quiet work — it tells you where you are without shouting, and it gives a long document the structure of a printed chapter.
+Headings are set in Spectral, a screen-first serif designed by Production Type. The shift between a sans-serif body and a serif heading is not decoration — it is a navigational cue. When you scan a long document, the change of register tells you instantly that a new section has begun, without the heading needing to be large or loud about it.
+
+The scale descends gradually, so a document with four heading levels never loses legibility at the deeper ones. Every heading also reserves space above itself — an anchor link never tucks the title under the sticky header.
 
 ### A third-level heading
 
-Beneath the surface, every heading reserves space above itself so that a jump to an anchor link never tucks the title under the sticky header. Small mechanical courtesies like this are the difference between a theme that looks finished and one that is.
+Third-level headings carry the same Spectral, fractionally smaller. At this scale, letter-spacing tightens slightly — the optical correction that keeps display type from feeling loose when it shrinks toward body size. The heading hierarchy is tuned to feel right at every level, not just the largest ones.
 
 #### A fourth-level heading
 
-Even four levels deep, the hierarchy stays legible because the scale is restrained. Nothing here is larger than it needs to be.
+Four levels deep, the hierarchy is still legible. A document that requires more than four levels of heading should probably be split into separate pages, but the type handles it gracefully if it doesn't.
 
-## Emphasis without colour
+## Within the column
 
-Within the reading column, colour is spent on exactly two things: **links**, which carry the warm accent, and inline `code`, which carries the cool one. Everything else earns emphasis through weight and rhythm. **Strong text** lifts toward the ink, *emphasis* leans on the serif italic, and the prose stays a single calm voice.
+Colour is spent on exactly two things in the reading column: **links**, which carry the warm bronze accent in light mode and honey in dark, and `inline code`, which carries the cool petrol-teal. Everything else earns emphasis through weight and rhythm.
 
-You can read more about the [type choices](/showcase/components/) or jump straight to the [components](/showcase/components/) that build on them.
+**Strong text** lifts toward the ink end of the neutral ramp. *Italic text* leans on Spectral's roman italic — warm, slightly condensed, unmistakable without being aggressive. The two are different enough to be useful in combination, so a function name and *its description* can share a sentence without blurring into each other.
 
-> The best typography is invisible. You notice it only by its absence — when a line is too long, a heading too loud, or a colour too eager. Exquisitus tries hard to not be noticed.
+Links are underlined by default, which is the oldest and most reliable affordance the web has for "this goes somewhere." The underline uses the accent colour at a lower opacity at rest and solidifies on hover — a quiet reward for attention that never clutters the resting page.
+
+## Quotation
+
+A pull-quote is set in Spectral italic, indented, with no side stripe. The change of typeface and the spacing carry the meaning without decoration.
+
+> The goal of typography is not to be noticed. It is to put the reader inside the argument without friction — so completely that they finish a page without once thinking about the type.
+
+Blockquotes work in the same register as the heading hierarchy: the serif marks editorial, not interface. A long quotation reads naturally here because Spectral italic is designed for extended reading, not just for headings.
 
 ## Lists hold their rhythm
 
 An ordered list, for when sequence matters:
 
-1. Install the plugin and register it.
-2. Write your content in Markdown or MDX.
-3. Read it back and trust what you see.
+1. Install the plugin and register it in your Astro configuration.
+2. Write your content in Markdown or MDX, as you normally would.
+3. Read it back, and trust that what you see is what your readers will see.
 
-And an unordered list, for when it does not:
+An unordered list, for when it does not:
 
-- Self-hosted, OFL-licensed typefaces.
-- An OKLCH palette tuned for both light and dark.
-- Accessible contrast on every text and background pair.
-- A measure capped for comfortable reading.
+- Self-hosted, OFL-licensed typefaces — no third-party request, no flash of unstyled text.
+- An OKLCH palette tuned for light and dark, both modes validated to WCAG 2.2 AA.
+- A reading measure capped at seventy characters, regardless of viewport width.
+- Accessible by conviction, not by afterthought.
 
 ## Tables stay quiet
 
-Tables earn their structure from a single header rule and gentle alternating rows — no heavy grid, no boxed cells.
+Tables earn their structure from a single header rule and gentle alternating rows — no heavy grid, no boxed cells, no colour that competes with the text.
 
-| Role        | Typeface                       | Where it appears              |
-| ----------- | ------------------------------ | ----------------------------- |
-| Body & UI   | Atkinson Hyperlegible Next     | Paragraphs, navigation, lists |
-| Headings    | Spectral                       | Titles, hero, card headings   |
-| Code        | JetBrains Mono                 | Inline code and code blocks   |
+| Role       | Typeface                    | Where it appears                          |
+| ---------- | --------------------------- | ----------------------------------------- |
+| Body & UI  | Atkinson Hyperlegible Next  | Paragraphs, navigation, sidebar, search   |
+| Headings   | Spectral                    | Titles, hero, card titles, aside headings |
+| Code       | JetBrains Mono              | Inline code, code blocks, step counters   |
+
+The header row is set in Spectral — every structural element in the page belongs to the same serif family, so a table doesn't feel like a foreign object dropped into the prose.
 
 ---
 
-Below that short rule, the page simply ends — no fanfare, just the same ink and paper it started with.
+A horizontal rule is a short centred mark — an editorial pause, not a full-width divider. The page simply continues after it with the same ink and paper it started with.
