@@ -88,6 +88,14 @@
         /* Code surfaces — cool-tinted, distinct from the page (dark mode). */
         --sl-exquisitus-code-bg: oklch(0.205 0.012 245);
 
+        /* Code-block letterpress edge — depth from light (cf. the header lift):
+		   a faint lit top lip and recessed inner shadow that press the panel into
+		   the page. The sanctioned twin of the header's depth-from-light treatment. */
+        --sl-exquisitus-code-edge:
+            inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 12%, transparent),
+            inset 0 4px 6px -4px color-mix(in oklab, var(--sl-color-black) 45%, transparent),
+            inset 0 -1px 0 color-mix(in oklab, var(--sl-color-black) 30%, transparent);
+
         /* Sticky-header lift. Dark surfaces can't take a cast shadow, so depth
 		   comes from light: a lit lower lip plus a soft upward bloom. */
         --sl-exquisitus-header-shadow:
@@ -147,8 +155,18 @@
 		   clears WCAG AA body-text contrast (≥4.5:1) with comfortable headroom. */
         --sl-exquisitus-cool: oklch(0.44 0.09 205);
 
-        /* Code surfaces — a soft cool panel, clearly not the white page (light mode). */
-        --sl-exquisitus-code-bg: oklch(0.965 0.008 235);
+        /* Code surfaces — a soft cool panel, clearly not the white page (light mode).
+		   Deepened a step (0.965 → 0.95) with a touch more petrol chroma so the
+		   block reads as a distinct surface, not a near-white wash. */
+        --sl-exquisitus-code-bg: oklch(0.95 0.012 235);
+
+        /* Code-block letterpress edge — debossed into the white page: a recessed
+		   top shadow over a 1px lit lower lip. The light-mode twin of the
+		   header's depth-from-light lift. */
+        --sl-exquisitus-code-edge:
+            inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 22%, transparent),
+            inset 0 4px 6px -4px color-mix(in oklab, var(--sl-color-white) 26%, transparent),
+            inset 0 -1px 0 color-mix(in oklab, var(--sl-color-black) 90%, transparent);
 
         /* On white, a conventional soft drop shadow carries the header lift. */
         --sl-exquisitus-header-shadow: 0 8px 22px -11px rgba(20, 16, 8, 0.34);
