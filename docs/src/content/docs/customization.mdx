@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside } from '@astrojs/starlight/components';
 
-Exquisitus is layered CSS over Starlight. Understanding the layer order means your own styles win predictably — no specificity battles required.
+Exquisitus is mainly layered CSS over Starlight. Understanding the layer order means your own styles win predictably.
 
 ## Adding custom CSS
 
@@ -35,7 +35,7 @@ Exquisitus declares two cascade layers, in order:
 @layer starlight, exquisitus;
 ```
 
-All theme styles live inside `@layer exquisitus`. If you author layered CSS of your own, declare where your layers sit relative to these to control the cascade explicitly:
+All theme styles live inside `@layer exquisitus`. If you author layered CSS of your own, declare where your layers sit relative to the others to control the cascade explicitly:
 
 ```css
 /* src/styles/custom.css */
@@ -60,7 +60,7 @@ Exquisitus maps its palette onto Starlight's `--sl-color-*` custom properties. O
 ```
 
 <Aside type="note">
-All colour in Exquisitus is authored in OKLCH. Matching the colour space keeps lightness perceptually even across hues — but hex and `hsl()` overrides work too.
+All color in Exquisitus is authored in OKLCH. Matching the color space keeps lightness perceptually even across hues, but hex and `hsl()` overrides work too.
 </Aside>
 
 Exquisitus also exposes theme-specific tokens under the `--sl-exquisitus-*` namespace:
@@ -71,16 +71,20 @@ Exquisitus also exposes theme-specific tokens under the `--sl-exquisitus-*` name
 | `--sl-exquisitus-ease` | `cubic-bezier(0.22, 1, 0.36, 1)` | Transition timing curve |
 | `--sl-exquisitus-hero-columns` | `2.1fr 1fr` | Splash hero copy-to-image column ratio |
 | `--sl-exquisitus-cta` | honey amber | Primary button fill |
-| `--sl-exquisitus-cool` | petrol-teal | Code and information accent colour |
+| `--sl-exquisitus-cool` | petrol-teal | Code and information accent color |
 
 Overrides placed in unlayered CSS apply in both modes unless you scope them to `:root[data-theme='light']` or `:root[data-theme='dark']`.
 
 ## FeatureGrid component
 
-Exquisitus exports `FeatureGrid`, the theme's own splash layout — an editorial alternative to `CardGrid`'s uniform grid. Import it in any MDX page:
+Exquisitus exports one component, a feature grid. `FeatureGrid` is the theme's own splash layout, which acts as an editorial alternative to `CardGrid`'s uniform grid. Import it in any MDX page:
 
 ```mdx
 import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
 ```
 
-It wraps Starlight's `<Card>` components and accepts a `layout` prop (`'lead'` or `'alternating'`). See the [Feature Grid](/showcase/feature-grid/) showcase for live examples and arrangement options.
+`FeatureGrid` wraps Starlight's `<Card>` components and accepts a `layout` prop (`'lead'` or `'alternating'`). See the [Feature Grid](/showcase/feature-grid/) showcase for live examples and arrangement options.
+
+## Design system
+
+This theme was developed using the [Impeccable](https://impeccable.style/) design system. You can find its files, `DESIGN.md` and `PRODUCT.md` in the repository root. Food for thought, or inspiration?

@@ -8,203 +8,221 @@
  * Two recurring moves define the look:
  *   • Flat, hairline-separated surfaces instead of filled panels — the page
  *     reads as one calm sheet of paper, not a set of boxes.
- *   • Colour is spent deliberately: bronze/honey for the active state, the
+ *   • Color is spent deliberately: bronze/honey for the active state, the
  *     petrol-teal counter-hue for information, near-nothing elsewhere.
  */
 @layer exquisitus {
-	/* ───────────────────────────── Header ───────────────────────────── */
-	/* Opaque bar lifted by a theme-aware shadow (tokens.css) instead of a
+    /* ───────────────────────────── Header ───────────────────────────── */
+    /* Opaque bar lifted by a theme-aware shadow (tokens.css) instead of a
 	   hairline. No backdrop blur: the translucency reads poorly for some
 	   readers, and the shadow alone signposts the header floating over content. */
-	header.header {
-		background-color: var(--sl-color-bg);
-		/* Explicitly clear Starlight's default .header hairline (it lives in
+    header.header {
+        background-color: var(--sl-color-bg);
+        /* Explicitly clear Starlight's default .header hairline (it lives in
 		   `starlight.core` on the same element); the shadow replaces it. */
-		border-bottom: 0;
-		box-shadow: var(--sl-exquisitus-header-shadow);
-	}
+        border-bottom: 0;
+        box-shadow: var(--sl-exquisitus-header-shadow);
+    }
 
-	/* Starlight divides the page-title panel from the body with a top hairline;
+    /* Starlight divides the page-title panel from the body with a top hairline;
 	   drop it — the heading hierarchy already separates them. */
-	.content-panel + .content-panel {
-		border-top: 0;
-	}
+    .content-panel + .content-panel {
+        border-top: 0;
+    }
 
-	.site-title {
-		font-weight: 600;
-		letter-spacing: -0.01em;
-		color: var(--sl-color-white);
-	}
+    .site-title {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--sl-color-white);
+    }
 
-	header .social-icons a:hover {
-		color: var(--sl-color-text-accent);
-		opacity: 1;
-	}
+    header .social-icons a:hover {
+        color: var(--sl-color-text-accent);
+        opacity: 1;
+    }
 
-	/* Touch devices: the compact header icon controls (mobile menu toggle,
+    /* Touch devices: the compact header icon controls (mobile menu toggle,
 	   search trigger) are ~34px by default — under the 44px tap target. Give
 	   them a full 44px hit area on coarse pointers; mouse users keep the
 	   compact resting size. `any-pointer: coarse` catches touch-laptops that
 	   report `pointer: fine` (trackpad) but still have a touchscreen. */
-	@media (any-pointer: coarse) {
-		starlight-menu-button button,
-		site-search button[data-open-modal] {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			min-inline-size: 44px;
-			min-block-size: 44px;
-		}
-	}
+    @media (any-pointer: coarse) {
+        starlight-menu-button button,
+        site-search button[data-open-modal] {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-inline-size: 44px;
+            min-block-size: 44px;
+        }
+    }
 
-	/* ──────────────────────────── Sidebar ───────────────────────────── */
-	/* No dividing line: the de-emphasised nav type plus a gutter separate it
+    /* ──────────────────────────── Sidebar ───────────────────────────── */
+    /* No dividing line: the de-emphasised nav type plus a gutter separate it
 	   from the reading column (hierarchy first, lines last). */
-	.sidebar-pane {
-		background-color: var(--sl-color-bg);
-		/* Clear Starlight's default sidebar divider (starlight.core). */
-		border-inline-end: 0;
-	}
+    .sidebar-pane {
+        background-color: var(--sl-color-bg);
+        /* Clear Starlight's default sidebar divider (starlight.core). */
+        border-inline-end: 0;
+    }
 
-	.sidebar-content {
-		padding-inline-end: 1.25rem;
-	}
+    .sidebar-content {
+        padding-inline-end: 1.25rem;
+    }
 
-	.sidebar-content a {
-		border-radius: 0.375rem;
-		transition: color 0.15s var(--sl-exquisitus-ease),
-			background-color 0.15s var(--sl-exquisitus-ease);
-	}
+    .sidebar-content a {
+        border-radius: 0.375rem;
+        transition:
+            color 0.15s var(--sl-exquisitus-ease),
+            background-color 0.15s var(--sl-exquisitus-ease);
+    }
 
-	.sidebar-content a:hover {
-		color: var(--sl-color-white);
-		background-color: var(--sl-color-gray-7);
-	}
+    .sidebar-content a:hover {
+        color: var(--sl-color-white);
+        background-color: var(--sl-color-gray-7);
+    }
 
-	/* Section labels read as quiet small-caps, not loud headings. */
-	.sidebar-content .top-level > li > .large,
-	.sidebar-content summary .large {
-		font-size: var(--sl-text-xs);
-		font-weight: 600;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--sl-color-gray-3);
-	}
+    /* Section labels read as quiet small-caps, not loud headings. */
+    .sidebar-content .top-level > li > .large,
+    .sidebar-content summary .large {
+        font-size: var(--sl-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--sl-color-gray-3);
+    }
 
-	.sidebar-content a[aria-current='page'],
-	.sidebar-content a[aria-current='page']:hover {
-		color: var(--sl-color-text-accent);
-		background-color: color-mix(in oklab, var(--sl-color-accent) 12%, transparent);
-		font-weight: 600;
-	}
+    .sidebar-content a[aria-current="page"],
+    .sidebar-content a[aria-current="page"]:hover {
+        color: var(--sl-color-text-accent);
+        background-color: color-mix(
+            in oklab,
+            var(--sl-color-accent) 12%,
+            transparent
+        );
+        font-weight: 600;
+    }
 
-	/* ─────────────────────── Table of contents ──────────────────────── */
-	/* No structural divider. The active item carries a short accent tick — a
+    /* ─────────────────────── Table of contents ──────────────────────── */
+    /* No structural divider. The active item carries a short accent tick — a
 	   real "you are here" reading cue, which is the only job the old full-height
 	   line was doing. */
-	.right-sidebar {
-		/* Clear Starlight's default TOC divider (starlight.core). */
-		border-inline-start: 0;
-	}
+    .right-sidebar {
+        /* Clear Starlight's default TOC divider (starlight.core). */
+        border-inline-start: 0;
+    }
 
-	starlight-toc a {
-		border-radius: 0.375rem;
-		transition: color 0.15s var(--sl-exquisitus-ease),
-			box-shadow 0.15s var(--sl-exquisitus-ease);
-	}
+    starlight-toc a {
+        border-radius: 0.375rem;
+        transition:
+            color 0.15s var(--sl-exquisitus-ease),
+            box-shadow 0.15s var(--sl-exquisitus-ease);
+    }
 
-	starlight-toc a[aria-current='true'],
-	starlight-toc a[aria-current='true']:hover {
-		color: var(--sl-color-text-accent);
-		font-weight: 600;
-		box-shadow: inset 2px 0 0 var(--sl-color-accent);
-		border-radius: 0 0.375rem 0.375rem 0;
-	}
+    starlight-toc a[aria-current="true"],
+    starlight-toc a[aria-current="true"]:hover {
+        color: var(--sl-color-text-accent);
+        font-weight: 600;
+        box-shadow: inset 2px 0 0 var(--sl-color-accent);
+        border-radius: 0 0.375rem 0.375rem 0;
+    }
 
-	/* Opaque, not translucent — mirrors the header's no-blur principle (a
+    /* Opaque, not translucent — mirrors the header's no-blur principle (a
 	   scrim reads poorly for low-vision readers). A near-solid fill over the
 	   page surface gives a clean edge as content scrolls under it. */
-	mobile-starlight-toc nav {
-		border-top: 1px solid var(--sl-color-hairline);
-		background-color: color-mix(in oklab, var(--sl-color-bg) 96%, transparent);
-	}
+    mobile-starlight-toc nav {
+        border-top: 1px solid var(--sl-color-hairline);
+        background-color: color-mix(
+            in oklab,
+            var(--sl-color-bg) 96%,
+            transparent
+        );
+    }
 
-	/* ───────────────────────────── Search ───────────────────────────── */
-	site-search button[data-open-modal] {
-		border-radius: 0.5rem;
-		border-color: var(--sl-color-gray-5);
-	}
+    /* ───────────────────────────── Search ───────────────────────────── */
+    site-search button[data-open-modal] {
+        border-radius: 0.5rem;
+        border-color: var(--sl-color-gray-5);
+    }
 
-	site-search button[data-open-modal]:hover {
-		border-color: var(--sl-color-accent);
-	}
+    site-search button[data-open-modal]:hover {
+        border-color: var(--sl-color-accent);
+    }
 
-	site-search dialog {
-		border: 1px solid var(--sl-color-hairline);
-		border-radius: 0.75rem;
-	}
+    site-search dialog {
+        border: 1px solid var(--sl-color-hairline);
+        border-radius: 0.75rem;
+    }
 
-	@media (prefers-reduced-motion: no-preference) {
-		site-search dialog[open] {
-			animation: exquisitus-dialog-in 0.2s var(--sl-exquisitus-ease);
-		}
-	}
+    @media (prefers-reduced-motion: no-preference) {
+        site-search dialog[open] {
+            animation: exquisitus-dialog-in 0.2s var(--sl-exquisitus-ease);
+        }
+    }
 
-	@keyframes exquisitus-dialog-in {
-		from {
-			opacity: 0;
-			transform: translateY(-0.5rem) scale(0.99);
-		}
-	}
+    @keyframes exquisitus-dialog-in {
+        from {
+            opacity: 0;
+            transform: translateY(-0.5rem) scale(0.99);
+        }
+    }
 
-	/* ───────────────────────────── Cards ────────────────────────────── */
-	.card {
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: 0.75rem;
-		background-color: var(--sl-color-bg);
-		transition: border-color 0.2s var(--sl-exquisitus-ease),
-			box-shadow 0.2s var(--sl-exquisitus-ease), transform 0.2s var(--sl-exquisitus-ease);
-	}
+    /* ───────────────────────────── Cards ────────────────────────────── */
+    .card {
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 0.75rem;
+        background-color: var(--sl-color-bg);
+        transition:
+            border-color 0.2s var(--sl-exquisitus-ease),
+            box-shadow 0.2s var(--sl-exquisitus-ease),
+            transform 0.2s var(--sl-exquisitus-ease);
+    }
 
-	.card .title {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-		color: var(--sl-color-white);
-	}
+    .card .title {
+        font-family: var(--sl-exquisitus-font-serif);
+        font-weight: 600;
+        color: var(--sl-color-white);
+    }
 
-	.card .icon {
-		color: var(--sl-color-text-accent);
-	}
+    .card .icon {
+        color: var(--sl-color-text-accent);
+    }
 
-	.sl-link-card {
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: 0.75rem;
-		box-shadow: none;
-		transition: border-color 0.2s var(--sl-exquisitus-ease),
-			box-shadow 0.2s var(--sl-exquisitus-ease), transform 0.2s var(--sl-exquisitus-ease);
-	}
+    .sl-link-card {
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 0.75rem;
+        box-shadow: none;
+        transition:
+            border-color 0.2s var(--sl-exquisitus-ease),
+            box-shadow 0.2s var(--sl-exquisitus-ease),
+            transform 0.2s var(--sl-exquisitus-ease);
+    }
 
-	.sl-link-card .title {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-		color: var(--sl-color-white);
-	}
+    .sl-link-card .title {
+        font-family: var(--sl-exquisitus-font-serif);
+        font-weight: 600;
+        color: var(--sl-color-white);
+    }
 
-	@media (hover: hover) {
-		.sl-link-card:hover,
-		.card:hover {
-			border-color: color-mix(in oklab, var(--sl-color-accent) 60%, var(--sl-color-gray-5));
-			box-shadow: var(--sl-shadow-sm);
-			transform: translateY(-2px);
-		}
-	}
+    @media (hover: hover) {
+        .sl-link-card:hover,
+        .card:hover {
+            border-color: color-mix(
+                in oklab,
+                var(--sl-color-accent) 60%,
+                var(--sl-color-gray-5)
+            );
+            box-shadow: var(--sl-shadow-sm);
+            transform: translateY(-2px);
+        }
+    }
 
-	.sl-link-card:hover .description {
-		color: var(--sl-color-gray-2);
-	}
+    .sl-link-card:hover .description {
+        color: var(--sl-color-gray-2);
+    }
 
-	/* ─────────────────────── Splash feature grid ────────────────────── */
-	/* The considered alternative to the identical card grid: two editorial
+    /* ─────────────────────── Splash feature grid ────────────────────── */
+    /* The considered alternative to the identical card grid: two editorial
 	   arrangements keyed off `data-layout`, both wrapping Starlight's own
 	   cards so each icon keeps its cycling tint (the Splash Tint Exception).
 	   Emitted by the FeatureGrid component; the first child always leads.
@@ -212,346 +230,367 @@
 	   carry no scope hash, so these child selectors must reach them directly.
 	   Mobile is a single column for every layout; `align-items: stretch`
 	   (the grid default) levels peers to a shared baseline. */
-	.exquisitus-feature-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-		margin-top: 1.5rem;
-	}
+    .exquisitus-feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
 
-	@media (min-width: 50rem) {
-		/* lead — a full-width thesis card over a row of supporting peers that
+    @media (min-width: 50rem) {
+        /* lead — a full-width thesis card over a row of supporting peers that
 		   auto-fit to the card count: 2 → halves, 3 → thirds, 4 → quarters.
 		   The author drops in however many fit; no prop, no breakpoint juggling. */
-		.exquisitus-feature-grid[data-layout='lead'] {
-			grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-		}
+        .exquisitus-feature-grid[data-layout="lead"] {
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        }
 
-		.exquisitus-feature-grid[data-layout='lead'] > :first-child {
-			grid-column: 1 / -1;
-		}
+        .exquisitus-feature-grid[data-layout="lead"] > :first-child {
+            grid-column: 1 / -1;
+        }
 
-		/* alternating — an editorial zigzag on a 5-track grid: the wider card
+        /* alternating — an editorial zigzag on a 5-track grid: the wider card
 		   flips side each row (3:2, then 2:3). Pairs fill a row exactly
 		   (3 + 2 = 5), so the rhythm reads like a magazine spread. */
-		.exquisitus-feature-grid[data-layout='alternating'] {
-			grid-template-columns: repeat(5, 1fr);
-		}
+        .exquisitus-feature-grid[data-layout="alternating"] {
+            grid-template-columns: repeat(5, 1fr);
+        }
 
-		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 1),
-		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 4) {
-			grid-column: span 3;
-		}
+        .exquisitus-feature-grid[data-layout="alternating"]
+            > :nth-child(4n + 1),
+        .exquisitus-feature-grid[data-layout="alternating"]
+            > :nth-child(4n + 4) {
+            grid-column: span 3;
+        }
 
-		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 2),
-		.exquisitus-feature-grid[data-layout='alternating'] > :nth-child(4n + 3) {
-			grid-column: span 2;
-		}
+        .exquisitus-feature-grid[data-layout="alternating"]
+            > :nth-child(4n + 2),
+        .exquisitus-feature-grid[data-layout="alternating"]
+            > :nth-child(4n + 3) {
+            grid-column: span 2;
+        }
 
-		/* A lone trailing card (odd total) takes the full width rather than
+        /* A lone trailing card (odd total) takes the full width rather than
 		   leaving a ragged gap beside empty tracks. */
-		.exquisitus-feature-grid[data-layout='alternating'] > :last-child:nth-child(odd) {
-			grid-column: 1 / -1;
-		}
-	}
+        .exquisitus-feature-grid[data-layout="alternating"]
+            > :last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
+    }
 
-	/* ───────────────────────────── Asides ───────────────────────────── */
-	/* Rewritten away from Starlight's 0.25rem inline-start stripe: a full,
+    /* ───────────────────────────── Asides ───────────────────────────── */
+    /* Rewritten away from Starlight's 0.25rem inline-start stripe: a full,
 	   softened hairline + tinted fill + the variant icon carry the meaning. */
-	.starlight-aside {
-		border: 1px solid color-mix(in oklab, var(--sl-color-asides-border) 45%, transparent);
-		border-radius: 0.625rem;
-		padding: 1rem 1.25rem;
-	}
+    .starlight-aside {
+        border: 1px solid
+            color-mix(in oklab, var(--sl-color-asides-border) 45%, transparent);
+        border-radius: 0.625rem;
+        padding: 1rem 1.25rem;
+    }
 
-	.starlight-aside__title {
-		font-family: var(--sl-exquisitus-font-serif);
-		letter-spacing: 0.005em;
-	}
+    .starlight-aside__title {
+        font-family: var(--sl-exquisitus-font-serif);
+        letter-spacing: 0.005em;
+    }
 
-	/* ─────────────────────────────── Tabs ───────────────────────────── */
-	/* Underline pattern — correct register for documentation. Three cues on
+    /* ─────────────────────────────── Tabs ───────────────────────────── */
+    /* Underline pattern — correct register for documentation. Three cues on
 	   the active tab (color + weight + 3px indicator) make selection unambiguous
 	   without adding chrome that competes with the content below. A 1px resting
 	   baseline on every tab gives the indicator line a clear "selected" reading
 	   rather than appearing as a random underline. */
-	starlight-tabs .tablist-wrapper ul[role='tablist'] {
-		border-bottom: 1px solid var(--sl-color-hairline);
-		gap: 0;
-	}
+    starlight-tabs .tablist-wrapper ul[role="tablist"] {
+        border-bottom: 1px solid var(--sl-color-hairline);
+        gap: 0;
+    }
 
-	starlight-tabs [role='tab'] {
-		border-bottom: 3px solid var(--sl-color-gray-6);
-		margin-block-end: -1px; /* overlap the tablist hairline so indicators sit flush */
-		padding-block: 0.5rem;
-		transition: color 0.15s var(--sl-exquisitus-ease),
-			border-color 0.15s var(--sl-exquisitus-ease),
-			font-weight 0s;
-	}
+    starlight-tabs [role="tab"] {
+        border-bottom: 3px solid var(--sl-color-gray-6);
+        margin-block-end: -1px; /* overlap the tablist hairline so indicators sit flush */
+        padding-block: 0.5rem;
+        transition:
+            color 0.15s var(--sl-exquisitus-ease),
+            border-color 0.15s var(--sl-exquisitus-ease),
+            font-weight 0s;
+    }
 
-	starlight-tabs [role='tab'][aria-selected='true'] {
-		color: var(--sl-color-text-accent);
-		border-bottom-color: var(--sl-color-accent);
-		font-weight: 600;
-	}
+    starlight-tabs [role="tab"][aria-selected="true"] {
+        color: var(--sl-color-text-accent);
+        border-bottom-color: var(--sl-color-accent);
+        font-weight: 600;
+    }
 
-	starlight-tabs [role='tab']:not([aria-selected='true']):hover {
-		color: var(--sl-color-white);
-		border-bottom-color: var(--sl-color-gray-4);
-	}
+    starlight-tabs [role="tab"]:not([aria-selected="true"]):hover {
+        color: var(--sl-color-white);
+        border-bottom-color: var(--sl-color-gray-4);
+    }
 
-	/* ─────────────────────────────── Steps ──────────────────────────── */
-	.sl-steps > li::before {
-		font-family: var(--sl-font-mono);
-		font-variant-numeric: tabular-nums;
-	}
+    /* ─────────────────────────────── Steps ──────────────────────────── */
+    .sl-steps > li::before {
+        font-family: var(--sl-font-mono);
+        font-variant-numeric: tabular-nums;
+    }
 
-	/* ──────────────────────── Link buttons ──────────────────────────── */
-	/* Bolder label — text on the filled accent reads cleanly at a glance. */
-	.sl-link-button {
-		font-weight: 600;
-	}
+    /* ──────────────────────── Link buttons ──────────────────────────── */
+    /* Bolder label — text on the filled accent reads cleanly at a glance. */
+    .sl-link-button {
+        font-weight: 600;
+    }
 
-	/* Honey-amber fill with an ink label — the brand colour at full strength.
+    /* Honey-amber fill with an ink label — the brand color at full strength.
 	   In light mode this is the one place the raw honey appears (it can't carry
 	   link text on white); dark mode keeps its existing honey-over-ink. */
-	.sl-link-button.primary,
-	.sl-link-button.primary:hover {
-		background: var(--sl-exquisitus-cta);
-		border-color: var(--sl-exquisitus-cta);
-		color: var(--sl-exquisitus-cta-ink);
-	}
+    .sl-link-button.primary,
+    .sl-link-button.primary:hover {
+        background: var(--sl-exquisitus-cta);
+        border-color: var(--sl-exquisitus-cta);
+        color: var(--sl-exquisitus-cta-ink);
+    }
 
-	.sl-link-button.primary {
-		border-radius: 0.5rem;
-		transition: transform 0.15s var(--sl-exquisitus-ease),
-			box-shadow 0.2s var(--sl-exquisitus-ease);
-	}
+    .sl-link-button.primary {
+        border-radius: 0.5rem;
+        transition:
+            transform 0.15s var(--sl-exquisitus-ease),
+            box-shadow 0.2s var(--sl-exquisitus-ease);
+    }
 
-	.sl-link-button.secondary {
-		border-radius: 0.5rem;
-		border-color: var(--sl-color-gray-4);
-	}
+    .sl-link-button.secondary {
+        border-radius: 0.5rem;
+        border-color: var(--sl-color-gray-4);
+    }
 
-	.sl-link-button.secondary:hover {
-		border-color: var(--sl-color-accent);
-		color: var(--sl-color-text-accent);
-	}
+    .sl-link-button.secondary:hover {
+        border-color: var(--sl-color-accent);
+        color: var(--sl-color-text-accent);
+    }
 
-	/* Minimal links carry the accent + an underline so they read as links,
+    /* Minimal links carry the accent + an underline so they read as links,
 	   not as plain text that happens to have an icon. */
-	.sl-link-button.minimal {
-		color: var(--sl-color-text-accent);
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-		text-underline-offset: 0.2em;
-		text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
-		transition: text-decoration-color 0.15s var(--sl-exquisitus-ease);
-	}
+    .sl-link-button.minimal {
+        color: var(--sl-color-text-accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+        text-decoration-color: color-mix(
+            in oklab,
+            currentColor 45%,
+            transparent
+        );
+        transition: text-decoration-color 0.15s var(--sl-exquisitus-ease);
+    }
 
-	.sl-link-button.minimal:hover {
-		color: var(--sl-color-text-accent);
-		text-decoration-color: currentColor;
-	}
+    .sl-link-button.minimal:hover {
+        color: var(--sl-color-text-accent);
+        text-decoration-color: currentColor;
+    }
 
-	@media (hover: hover) {
-		.sl-link-button.primary:hover {
-			transform: translateY(-1px);
-			box-shadow: var(--sl-shadow-md);
-		}
-	}
+    @media (hover: hover) {
+        .sl-link-button.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--sl-shadow-md);
+        }
+    }
 
-	/* ───────────────────────── Pagination ───────────────────────────── */
-	.pagination-links a {
-		border: 1px solid var(--sl-color-hairline);
-		border-radius: 0.75rem;
-		box-shadow: none;
-		transition: border-color 0.2s var(--sl-exquisitus-ease),
-			transform 0.2s var(--sl-exquisitus-ease);
-	}
+    /* ───────────────────────── Pagination ───────────────────────────── */
+    .pagination-links a {
+        border: 1px solid var(--sl-color-hairline);
+        border-radius: 0.75rem;
+        box-shadow: none;
+        transition:
+            border-color 0.2s var(--sl-exquisitus-ease),
+            transform 0.2s var(--sl-exquisitus-ease);
+    }
 
-	.pagination-links a:hover {
-		border-color: var(--sl-color-accent);
-	}
+    .pagination-links a:hover {
+        border-color: var(--sl-color-accent);
+    }
 
-	.pagination-links a .link-title {
-		color: var(--sl-color-white);
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-	}
+    .pagination-links a .link-title {
+        color: var(--sl-color-white);
+        font-family: var(--sl-exquisitus-font-serif);
+        font-weight: 600;
+    }
 
-	@media (hover: hover) {
-		.pagination-links a:hover {
-			transform: translateY(-2px);
-		}
-	}
+    @media (hover: hover) {
+        .pagination-links a:hover {
+            transform: translateY(-2px);
+        }
+    }
 
-	/* ───────────────────────────── Footer ───────────────────────────── */
-	footer.sl-flex {
-		color: var(--sl-color-gray-3);
-	}
+    /* ───────────────────────────── Footer ───────────────────────────── */
+    footer.sl-flex {
+        color: var(--sl-color-gray-3);
+    }
 
-	/* ─────────────────────── Selection & focus ──────────────────────── */
-	::selection {
-		background-color: color-mix(in oklab, var(--sl-color-accent) 28%, transparent);
-		color: var(--sl-color-white);
-	}
+    /* ─────────────────────── Selection & focus ──────────────────────── */
+    ::selection {
+        background-color: color-mix(
+            in oklab,
+            var(--sl-color-accent) 28%,
+            transparent
+        );
+        color: var(--sl-color-white);
+    }
 
-	/* A deliberate, on-brand keyboard-focus ring. Starlight's 1px accent outline
+    /* A deliberate, on-brand keyboard-focus ring. Starlight's 1px accent outline
 	   is functional but reads thin against the near-black dark surface; 2px plus
 	   a 2px offset separates cleanly from the element edge and matches the
 	   confident register. Only applies to keyboard navigation (pointer users see
 	   no ring), so it never clutters the resting interface. */
-	:focus-visible {
-		outline: 2px solid var(--sl-color-accent);
-		outline-offset: 2px;
-		border-radius: 0.25rem;
-	}
+    :focus-visible {
+        outline: 2px solid var(--sl-color-accent);
+        outline-offset: 2px;
+        border-radius: 0.25rem;
+    }
 
-	/* ──────────────────────────── Page title ────────────────────────── */
-	/* The document <h1> (id="_top") lives outside `.sl-markdown-content`; give it
+    /* ──────────────────────────── Page title ────────────────────────── */
+    /* The document <h1> (id="_top") lives outside `.sl-markdown-content`; give it
 	   the same serif treatment as the headings it sits above. */
-	h1#_top {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-		letter-spacing: -0.018em;
-		text-wrap: balance;
-	}
+    h1#_top {
+        font-family: var(--sl-exquisitus-font-serif);
+        font-weight: 600;
+        letter-spacing: -0.018em;
+        text-wrap: balance;
+    }
 
-	/* ───────────────────────────── Hero ─────────────────────────────── */
-	/* Overriding Hero.astro drops Starlight's scoped layout styles, so the
+    /* ───────────────────────────── Hero ─────────────────────────────── */
+    /* Overriding Hero.astro drops Starlight's scoped layout styles, so the
 	   structure is reproduced here (and refined) rather than inherited. */
-	.hero {
-		display: grid;
-		grid-template-columns: 100%;
-		align-items: center;
-		gap: 1rem;
-		padding-block: clamp(1rem, 4vw, 3rem) 1rem;
-	}
+    .hero {
+        display: grid;
+        grid-template-columns: 100%;
+        align-items: center;
+        gap: 1rem;
+        padding-block: clamp(1rem, 4vw, 3rem) 1rem;
+    }
 
-	.hero > img,
-	.hero > .hero-html {
-		object-fit: contain;
-		width: min(70%, 20rem);
-		height: auto;
-		margin-inline: auto;
-	}
+    .hero > img,
+    .hero > .hero-html {
+        object-fit: contain;
+        width: min(70%, 20rem);
+        height: auto;
+        margin-inline: auto;
+    }
 
-	.hero .stack {
-		flex-direction: column;
-		gap: clamp(1.25rem, calc(1rem + 1vw), 1.75rem);
-		text-align: center;
-	}
+    .hero .stack {
+        flex-direction: column;
+        gap: clamp(1.25rem, calc(1rem + 1vw), 1.75rem);
+        text-align: center;
+    }
 
-	.hero .copy {
-		flex-direction: column;
-		gap: 1rem;
-		align-items: center;
-	}
+    .hero .copy {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
 
-	.hero .copy > * {
-		max-width: 50ch;
-	}
+    .hero .copy > * {
+        max-width: 50ch;
+    }
 
-	.hero .actions {
-		gap: 1rem 1.5rem;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
+    .hero .actions {
+        gap: 1rem 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-	.hero h1 {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-		font-size: clamp(var(--sl-text-4xl), calc(1rem + 5vw), 5rem);
-		line-height: var(--sl-line-height-headings);
-		letter-spacing: -0.018em;
-		text-wrap: balance;
-		color: var(--sl-color-white);
-	}
+    .hero h1 {
+        font-family: var(--sl-exquisitus-font-serif);
+        font-weight: 600;
+        font-size: clamp(var(--sl-text-4xl), calc(1rem + 5vw), 5rem);
+        line-height: var(--sl-line-height-headings);
+        letter-spacing: -0.018em;
+        text-wrap: balance;
+        color: var(--sl-color-white);
+    }
 
-	.hero .tagline {
-		font-size: clamp(var(--sl-text-base), calc(0.5rem + 1.2vw), var(--sl-text-lg));
-		color: var(--sl-color-gray-2);
-		text-wrap: pretty;
-	}
+    .hero .tagline {
+        font-size: clamp(
+            var(--sl-text-base),
+            calc(0.5rem + 1.2vw),
+            var(--sl-text-lg)
+        );
+        color: var(--sl-color-gray-2);
+        text-wrap: pretty;
+    }
 
-	@media (min-width: 50rem) {
-		.hero {
-			/* Adjustable: override `--sl-exquisitus-hero-columns` to retune the
+    @media (min-width: 50rem) {
+        .hero {
+            /* Adjustable: override `--sl-exquisitus-hero-columns` to retune the
 			   split between the copy and the image. */
-			grid-template-columns: var(--sl-exquisitus-hero-columns);
-			gap: 3%;
-			padding-block: clamp(2.5rem, calc(1rem + 8vmin), 8rem);
-		}
+            grid-template-columns: var(--sl-exquisitus-hero-columns);
+            gap: 3%;
+            padding-block: clamp(2.5rem, calc(1rem + 8vmin), 8rem);
+        }
 
-		/* No image → no empty column. A single full-width editorial masthead. */
-		.hero:not(:has(> img, > .hero-html)) {
-			grid-template-columns: 100%;
-		}
+        /* No image → no empty column. A single full-width editorial masthead. */
+        .hero:not(:has(> img, > .hero-html)) {
+            grid-template-columns: 100%;
+        }
 
-		.hero > img,
-		.hero > .hero-html {
-			order: 2;
-			width: min(100%, 24rem);
-		}
+        .hero > img,
+        .hero > .hero-html {
+            order: 2;
+            width: min(100%, 24rem);
+        }
 
-		.hero .stack {
-			text-align: start;
-		}
+        .hero .stack {
+            text-align: start;
+        }
 
-		.hero .copy {
-			align-items: flex-start;
-		}
+        .hero .copy {
+            align-items: flex-start;
+        }
 
-		.hero .actions {
-			justify-content: flex-start;
-		}
-	}
+        .hero .actions {
+            justify-content: flex-start;
+        }
+    }
 
-	@media (prefers-reduced-motion: no-preference) {
-		.hero .copy > *,
-		.hero .actions {
-			animation: exquisitus-rise 0.6s var(--sl-exquisitus-ease) both;
-		}
-		.hero .copy > *:nth-child(1) {
-			animation-delay: 0.02s;
-		}
-		.hero .copy > *:nth-child(2) {
-			animation-delay: 0.09s;
-		}
-		.hero .copy > *:nth-child(3) {
-			animation-delay: 0.16s;
-		}
-		.hero .actions {
-			animation-delay: 0.23s;
-		}
-	}
+    @media (prefers-reduced-motion: no-preference) {
+        .hero .copy > *,
+        .hero .actions {
+            animation: exquisitus-rise 0.6s var(--sl-exquisitus-ease) both;
+        }
+        .hero .copy > *:nth-child(1) {
+            animation-delay: 0.02s;
+        }
+        .hero .copy > *:nth-child(2) {
+            animation-delay: 0.09s;
+        }
+        .hero .copy > *:nth-child(3) {
+            animation-delay: 0.16s;
+        }
+        .hero .actions {
+            animation-delay: 0.23s;
+        }
+    }
 
-	@keyframes exquisitus-rise {
-		from {
-			opacity: 0;
-			transform: translateY(0.75rem);
-		}
-	}
+    @keyframes exquisitus-rise {
+        from {
+            opacity: 0;
+            transform: translateY(0.75rem);
+        }
+    }
 
-	/* ──────────────────────── Reduced motion ─────────────────────────── */
-	/* The hero and search-dialog animations are gated by `no-preference`
+    /* ──────────────────────── Reduced motion ─────────────────────────── */
+    /* The hero and search-dialog animations are gated by `no-preference`
 	   above, so they already fall back to instant-on. This block covers the
 	   transitions on chrome that runs regardless — sidebar links, cards,
 	   tabs, TOC, pagination, link buttons — so a reader who requests reduced
-	   motion gets the same instant-on behaviour everywhere. Colour and
+	   motion gets the same instant-on behavior everywhere. Color and
 	   visibility are unaffected; only the interpolation is removed.
 	   The `!important` is the one sanctioned exception to this theme's no-
 	   `!important` rule: a universal selector has zero specificity and cannot
 	   otherwise override per-property transitions set by element selectors. */
-	@media (prefers-reduced-motion: reduce) {
-		*,
-		*::before,
-		*::after {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-			scroll-behavior: auto !important;
-		}
-	}
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
 }

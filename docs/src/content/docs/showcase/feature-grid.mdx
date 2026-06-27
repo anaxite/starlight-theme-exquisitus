@@ -8,7 +8,7 @@ sidebar:
 import { Card } from '@astrojs/starlight/components';
 import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
 
-`FeatureGrid` is Exquisitus's own layout component — the deliberate alternative to `CardGrid`'s uniform grid. It wraps Starlight's `<Card>` components, so each icon keeps its cycling tint, and **the first child always leads**. Two arrangements are available via the `layout` prop.
+`FeatureGrid` is Exquisitus's own layout component, a deliberate alternative to `CardGrid`'s uniform grid. It wraps Starlight's `<Card>` components, so each icon keeps its cycling tint, and *the first child always leads*. Two arrangements are available via the `layout` prop.
 
 ## Import
 
@@ -19,7 +19,7 @@ import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro
 
 ## Lead layout
 
-The default. A full-width thesis card spans the top row, followed by supporting peers that auto-fit the count — two cards become halves, three become thirds, four become quarters. The author drops in however many fit the argument; no breakpoints, no extra props required.
+The default. A full-width thesis card spans the top row, followed by supporting peers that auto-fit the count; two cards become halves, three become thirds, four become quarters. The author drops in however many fit the argument, with no breakpoints nor extra props required.
 
 <FeatureGrid>
 	<Card title="The thesis" icon="open-book">
@@ -33,7 +33,7 @@ The default. A full-width thesis card spans the top row, followed by supporting 
 	</Card>
 </FeatureGrid>
 
-The same auto-fit logic extends to three or four supporting cards — they become thirds or quarters automatically. Those wider arrangements need a unconstrained container to breathe (a splash page, no sidebar), so they aren't demoed here.
+The same auto-fit logic extends to three or four supporting cards, which become thirds or quarters automatically. Those wider arrangements need a unconstrained container to breathe (a splash page, no sidebar), so they aren't demoed here.
 
 ## Alternating layout
 
@@ -41,13 +41,13 @@ An editorial zigzag. The wider card (three of five columns) flips side each row,
 
 <FeatureGrid layout="alternating">
 	<Card title="Opens wide" icon="star">
-		The first card takes three of five columns — the wider cell on the opening row.
+		The first card takes three of five columns; the wider cell on the opening row.
 	</Card>
 	<Card title="Narrow counterpoint" icon="random">
 		Its partner takes the remaining two. The asymmetry gives the pair energy.
 	</Card>
 	<Card title="The flip" icon="seti:css">
-		On the next row the emphasis reverses — narrow first, then wide. The eye moves across the page.
+		On the next row the emphasis reverses. It's narrow first, then wide. The eye moves across the page.
 	</Card>
 	<Card title="Wide again" icon="approve-check">
 		The pairing closes the rhythm out, even on a two-row spread. Five tracks, always full.

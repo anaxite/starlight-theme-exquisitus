@@ -11,144 +11,165 @@
  * earns emphasis through weight, size and space.
  */
 @layer exquisitus {
-	.sl-markdown-content {
-		font-size: 1.0625rem; /* ≈18px after the root bump — editorial body size */
-		text-wrap: pretty;
-	}
+    .sl-markdown-content {
+        font-size: 1.0625rem; /* ≈18px after the root bump — editorial body size */
+        text-wrap: pretty;
+    }
 
-	/* ─────────────────────────── Headings ───────────────────────────── */
-	.sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-		letter-spacing: -0.012em;
-		text-wrap: balance;
-		/* Clear the sticky header when jumping to an anchor. */
-		scroll-margin-top: calc(var(--sl-nav-height) + 1rem);
-	}
+    /* ─────────────────────────── Headings ───────────────────────────── */
+    .sl-markdown-content
+        :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
+        font-family: var(--sl-exquisitus-font-serif);
+        font-weight: 600;
+        letter-spacing: -0.012em;
+        text-wrap: balance;
+        /* Clear the sticky header when jumping to an anchor. */
+        scroll-margin-top: calc(var(--sl-nav-height) + 1rem);
+    }
 
-	.sl-markdown-content h1:not(:where(.not-content *)) {
-		letter-spacing: -0.02em;
-	}
+    .sl-markdown-content h1:not(:where(.not-content *)) {
+        letter-spacing: -0.02em;
+    }
 
-	/* Emphasis lifts toward the ink end of the ramp rather than adding colour. */
-	.sl-markdown-content strong:not(:where(.not-content *)) {
-		font-weight: 700;
-		color: var(--sl-color-white);
-	}
+    /* Emphasis lifts toward the ink end of the ramp rather than adding color. */
+    .sl-markdown-content strong:not(:where(.not-content *)) {
+        font-weight: 700;
+        color: var(--sl-color-white);
+    }
 
-	/* ──────────────────────────── Links ─────────────────────────────── */
-	/* `.not-content` is excluded as a whole (and not just its descendants) so this
+    /* ──────────────────────────── Links ─────────────────────────────── */
+    /* `.not-content` is excluded as a whole (and not just its descendants) so this
 	   never bleeds onto link buttons / cards, which carry that class themselves. */
-	.sl-markdown-content a:not(:where(.not-content, .not-content *)) {
-		color: var(--sl-color-text-accent);
-		text-decoration-thickness: 1px;
-		text-underline-offset: 0.18em;
-		text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
-		transition: text-decoration-color 0.15s var(--sl-exquisitus-ease),
-			color 0.15s var(--sl-exquisitus-ease);
-	}
+    .sl-markdown-content a:not(:where(.not-content, .not-content *)) {
+        color: var(--sl-color-text-accent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+        text-decoration-color: color-mix(
+            in oklab,
+            currentColor 40%,
+            transparent
+        );
+        transition:
+            text-decoration-color 0.15s var(--sl-exquisitus-ease),
+            color 0.15s var(--sl-exquisitus-ease);
+    }
 
-	.sl-markdown-content a:hover:not(:where(.not-content, .not-content *)) {
-		color: var(--sl-color-text-accent);
-		text-decoration-color: currentColor;
-	}
+    .sl-markdown-content a:hover:not(:where(.not-content, .not-content *)) {
+        color: var(--sl-color-text-accent);
+        text-decoration-color: currentColor;
+    }
 
-	/* ──────────────────────────── <mark> ────────────────────────────── */
-	.sl-markdown-content mark:not(:where(.not-content *)) {
-		background-color: color-mix(in oklab, var(--sl-color-accent) 22%, transparent);
-		color: inherit;
-		padding: 0.05em 0.25em;
-		border-radius: 0.25rem;
-	}
+    /* ──────────────────────────── <mark> ────────────────────────────── */
+    .sl-markdown-content mark:not(:where(.not-content *)) {
+        background-color: color-mix(
+            in oklab,
+            var(--sl-color-accent) 22%,
+            transparent
+        );
+        color: inherit;
+        padding: 0.05em 0.25em;
+        border-radius: 0.25rem;
+    }
 
-	/* ───────────────────────── Inline code ──────────────────────────── */
-	/* Code reads in the cool counter-hue — the information register. A neutral
+    /* ───────────────────────── Inline code ──────────────────────────── */
+    /* Code reads in the cool counter-hue — the information register. A neutral
 	   chip (not a teal tint) keeps the teal text separated and legible. */
-	.sl-markdown-content code:not(:where(.not-content *)) {
-		background-color: var(--sl-color-gray-6);
-		border: 1px solid color-mix(in oklab, var(--sl-color-gray-4) 22%, transparent);
-		color: var(--sl-exquisitus-cool);
-		border-radius: 0.3125rem;
-		font-size: 0.9em;
-	}
+    .sl-markdown-content code:not(:where(.not-content *)) {
+        background-color: var(--sl-color-gray-6);
+        border: 1px solid
+            color-mix(in oklab, var(--sl-color-gray-4) 22%, transparent);
+        color: var(--sl-exquisitus-cool);
+        border-radius: 0.3125rem;
+        font-size: 0.9em;
+    }
 
-	.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) code:not(:where(.not-content *)) {
-		color: inherit;
-		background-color: color-mix(in oklab, var(--sl-color-gray-4) 18%, transparent);
-	}
+    .sl-markdown-content
+        :is(h1, h2, h3, h4, h5, h6)
+        code:not(:where(.not-content *)) {
+        color: inherit;
+        background-color: color-mix(
+            in oklab,
+            var(--sl-color-gray-4) 18%,
+            transparent
+        );
+    }
 
-	/* ───────────────────────── Blockquotes ──────────────────────────── */
-	/* Editorial pull-quote treatment — Spectral italic, no accent stripe. */
-	.sl-markdown-content blockquote:not(:where(.not-content *)) {
-		border-inline-start: none;
-		padding-inline: 0;
-		margin-inline: clamp(0rem, 4vw, 2rem);
-		font-family: var(--sl-exquisitus-font-serif);
-		font-style: italic;
-		font-size: 1.18em;
-		line-height: 1.5;
-		color: var(--sl-color-gray-2);
-	}
+    /* ───────────────────────── Blockquotes ──────────────────────────── */
+    /* Editorial pull-quote treatment — Spectral italic, no accent stripe. */
+    .sl-markdown-content blockquote:not(:where(.not-content *)) {
+        border-inline-start: none;
+        padding-inline: 0;
+        margin-inline: clamp(0rem, 4vw, 2rem);
+        font-family: var(--sl-exquisitus-font-serif);
+        font-style: italic;
+        font-size: 1.18em;
+        line-height: 1.5;
+        color: var(--sl-color-gray-2);
+    }
 
-	/* ──────────────────────────── Tables ────────────────────────────── */
-	/* `display: block` turns the table into its own horizontal-scroll container,
+    /* ──────────────────────────── Tables ────────────────────────────── */
+    /* `display: block` turns the table into its own horizontal-scroll container,
 	   so a table wider than the reading column scrolls instead of clipping a
 	   column off-screen on narrow viewports (no wrapper element, so Starlight's
 	   markup is untouched). `width: 100%` still makes tables that fit fill the
 	   column; a thin, themed scrollbar is the affordance when they don't. */
-	.sl-markdown-content table:not(:where(.not-content *)) {
-		display: block;
-		width: 100%;
-		max-width: 100%;
-		overflow-x: auto;
-		scrollbar-width: thin;
-		scrollbar-color: var(--sl-color-gray-5) transparent;
-	}
+    .sl-markdown-content table:not(:where(.not-content *)) {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--sl-color-gray-5) transparent;
+    }
 
-	.sl-markdown-content th:not(:where(.not-content *)) {
-		font-family: var(--sl-exquisitus-font-serif);
-		border-bottom: 1px solid var(--sl-color-gray-4);
-	}
+    .sl-markdown-content th:not(:where(.not-content *)) {
+        font-family: var(--sl-exquisitus-font-serif);
+        border-bottom: 1px solid var(--sl-color-gray-4);
+    }
 
-	.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
-		border-bottom: 1px solid var(--sl-color-hairline);
-	}
+    .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+        border-bottom: 1px solid var(--sl-color-hairline);
+    }
 
-	.sl-markdown-content tbody tr:nth-child(2n):not(:where(.not-content *)) {
-		background-color: color-mix(in oklab, var(--sl-color-gray-7) 60%, transparent);
-	}
+    .sl-markdown-content tbody tr:nth-child(2n):not(:where(.not-content *)) {
+        background-color: color-mix(
+            in oklab,
+            var(--sl-color-gray-7) 60%,
+            transparent
+        );
+    }
 
-	/* ─────────────────────────────── HR ─────────────────────────────── */
-	/* A short, centred editorial rule rather than a full-width divider. */
-	.sl-markdown-content hr:not(:where(.not-content *)) {
-		border: 0;
-		width: 4rem;
-		height: 2px;
-		margin-inline: auto;
-		margin-block: 2.5rem;
-		border-radius: 2px;
-		background-color: var(--sl-color-gray-5);
-	}
+    /* ─────────────────────────────── HR ─────────────────────────────── */
+    /* A short, centred editorial rule rather than a full-width divider. */
+    .sl-markdown-content hr:not(:where(.not-content *)) {
+        border: 0;
+        width: 4rem;
+        height: 2px;
+        margin-inline: auto;
+        margin-block: 2.5rem;
+        border-radius: 2px;
+        background-color: var(--sl-color-gray-5);
+    }
 
-	/* ──────────────────────────── Details ───────────────────────────── */
-	/* De-striped: a full hairline card instead of the 2px inline-start border. */
-	.sl-markdown-content details:not(:where(.not-content *)) {
-		border: 1px solid var(--sl-color-hairline);
-		border-inline-start-width: 1px;
-		border-radius: 0.625rem;
-		padding: 0.75rem 1rem;
-	}
+    /* ──────────────────────────── Details ───────────────────────────── */
+    /* De-striped: a full hairline card instead of the 2px inline-start border. */
+    .sl-markdown-content details:not(:where(.not-content *)) {
+        border: 1px solid var(--sl-color-hairline);
+        border-inline-start-width: 1px;
+        border-radius: 0.625rem;
+        padding: 0.75rem 1rem;
+    }
 
-	.sl-markdown-content details[open]:not(:where(.not-content *)) {
-		border-color: var(--sl-color-gray-4);
-	}
+    .sl-markdown-content details[open]:not(:where(.not-content *)) {
+        border-color: var(--sl-color-gray-4);
+    }
 
-	.sl-markdown-content summary:not(:where(.not-content *)) {
-		font-family: var(--sl-exquisitus-font-serif);
-	}
+    .sl-markdown-content summary:not(:where(.not-content *)) {
+        font-family: var(--sl-exquisitus-font-serif);
+    }
 
-	/* ──────────────────────────── Media ─────────────────────────────── */
-	.sl-markdown-content :is(img, picture > img):not(:where(.not-content *)) {
-		border-radius: 0.75rem;
-	}
+    /* ──────────────────────────── Media ─────────────────────────────── */
+    .sl-markdown-content :is(img, picture > img):not(:where(.not-content *)) {
+        border-radius: 0.75rem;
+    }
 }

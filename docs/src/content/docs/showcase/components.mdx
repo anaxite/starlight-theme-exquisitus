@@ -8,24 +8,24 @@ pagefind: false
 
 import { Aside, Tabs, TabItem, Card, CardGrid, LinkCard, Steps, Badge, LinkButton, FileTree } from '@astrojs/starlight/components';
 
-A complete visual reference for every Starlight built-in component, rendered in the Exquisitus style. Each component keeps its own behaviour and markup; the theme only changes how it looks.
+This page hosts a visual reference for every Starlight built-in component, rendered in the Exquisitus style. Each component keeps its own behavior and markup; the theme only changes how it looks.
 
 ## Asides
 
 Four semantic variants, each with a distinct hue and a softened full border instead of a side stripe.
 
-<Aside type="note">A note aside — calm petrol-teal, the information register. Set apart from prose, not competing with it.</Aside>
+<Aside type="note">A note aside: calm petrol-teal, the information register. Set apart from prose, not competing with it.</Aside>
 
-<Aside type="tip" title="A considered tip">A tip aside — violet, distinct from both the warm accent and the cool note so neither blurs into the other.</Aside>
+<Aside type="tip" title="A considered tip">A tip aside: violet, distinct from both the warm accent and the cool note so neither blurs into the other.</Aside>
 
-<Aside type="caution">A caution aside — amber-orange, deliberately separated from the brand's link colour so urgency and navigation never blend.</Aside>
+<Aside type="caution">A caution aside: amber-orange, deliberately separated from the brand's link color so urgency and navigation never blend.</Aside>
 
-<Aside type="danger">A danger aside — measured red, unmistakable without being lurid. It passes contrast on its own tint.</Aside>
+<Aside type="danger">A danger aside: measured red, unmistakable without being lurid. It passes contrast on its own tint.</Aside>
 
 ## Tabs
 
 <Tabs>
-	<TabItem label="Light">The active tab is marked three ways at once: accent colour, weight 600, and a 3px indicator — so selection is unambiguous without competing chrome. Light mode keeps a pure-white page.</TabItem>
+	<TabItem label="Light">The active tab is marked three ways at once: accent color, weight 600, and a 3px indicator. Selection is unambiguous without competing chrome. Light mode keeps a pure-white page.</TabItem>
 	<TabItem label="Dark">In dark mode the accent brightens from bronze to honey, and the petrol-teal lifts to match. Both modes are validated to WCAG 2.2 AA.</TabItem>
 	<TabItem label="A third tab">A resting baseline runs below the whole tab strip, so the indicator reads clearly as "selected" rather than as a random underline. Tabs are documentation-register: underline, not pill.</TabItem>
 </Tabs>
@@ -50,7 +50,7 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 
 <CardGrid>
 	<Card title="Hairline, not box" icon="approve-check">
-		Cards are defined by a single hairline and a generous radius. On hover they lift two pixels and warm their border — a small, earned reward, suppressed on touch.
+		Cards are defined by a single hairline and a generous radius. On hover they lift two pixels and warm their border for a small, earned reward, suppressed on touch.
 	</Card>
 	<Card title="Serif titles" icon="pencil">
 		Card titles are set in Spectral, tying them to the document headings rather than the interface chrome.
@@ -69,7 +69,7 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 <LinkButton href="#_" variant="secondary" icon="external">Secondary</LinkButton>
 <LinkButton href="#_" variant="minimal" icon="external">Minimal</LinkButton>
 
-The primary button uses the full honey-amber as a fill with an ink label — the one place in light mode where the brand colour appears at full strength. It can't carry link text on white (insufficient contrast), so links deepen to bronze; the button, with its dark ink label, carries it freely.
+The primary button uses the full honey-amber as a fill with an ink label—the one place in light mode where the brand color appears at full strength. It can't carry link text on white (insufficient contrast), so links deepen to bronze; the button, with its dark ink label, carries it freely.
 
 ## File tree
 
@@ -92,7 +92,7 @@ The primary button uses the full honey-amber as a fill with an ink label — the
 <details>
 <summary>The summary of a disclosure</summary>
 
-The content of the disclosure. It can hold any Markdown — prose, code blocks, lists. The summary is set in Spectral, tying it to the heading hierarchy.
+The content of the disclosure. It can hold any Markdown, whether prose, code blocks, or even lists. The summary is set in Spectral, tying it to the heading hierarchy.
 
 </details>
 
@@ -125,5 +125,7 @@ pnpm add starlight-theme-exquisitus
 ```
 
 ## Badges
+
+Of course, badges get represented here.
 
 <Badge text="New" variant="success" />, <Badge text="Beta" variant="caution" />, <Badge text="Note" variant="note" />, <Badge text="Deprecated" variant="danger" />, and <Badge text="Experimental" variant="tip" />.

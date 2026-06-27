@@ -90,9 +90,9 @@ components:
 
 **Creative North Star: "The Considered Reading Room"**
 
-Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, colour — exists to usher the reader into the text and then disappear. It draws its conviction from four pinnacles: the typographic authority of the *New York Times* online, the single-minded legibility of the *Readability Guidelines* wiki, the care-as-craft navigability of *MDN*, and the brave, accessible, larger-than-usual type of *Eleventy Excellent*. The thesis is that legibility and beauty are the same discipline at different scales, proved by example, page after page.
+Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, color — exists to usher the reader into the text and then disappear. It draws its conviction from four pinnacles: the typographic authority of the *New York Times* online, the single-minded legibility of the *Readability Guidelines* wiki, the care-as-craft navigability of *MDN*, and the brave, accessible, larger-than-usual type of *Eleventy Excellent*. The thesis is that legibility and beauty are the same discipline at different scales, proved by example, page after page.
 
-The system is built from two recurring moves. **Surfaces are flat and hairline-separated, never filled panels** — the page reads as one calm sheet, not a set of boxes; the sidebar shares the body surface and is divided by a single hairline or, more often, by nothing but de-emphasised type. And **colour is spent deliberately**: a warm honey-amber for emphasis and active state, a cool petrol-teal for the information and code register, and near-nothing everywhere else. Warmth lives in the ink and the accent, never in a tinted background. Depth is tonal, not cast: a surface nudged a step off the page, not floated on a shadow.
+The system is built from two recurring moves. **Surfaces are flat and hairline-separated, never filled panels** — the page reads as one calm sheet, not a set of boxes; the sidebar shares the body surface and is divided by a single hairline or, more often, by nothing but de-emphasised type. And **color is spent deliberately**: a warm honey-amber for emphasis and active state, a cool petrol-teal for the information and code register, and near-nothing everywhere else. Warmth lives in the ink and the accent, never in a tinted background. Depth is tonal, not cast: a surface nudged a step off the page, not floated on a shadow.
 
 This system explicitly rejects two things. It is **not** the hacker / terminal aesthetic — no monospace-everything, no green-on-black costume, no cyberpunk affectation. And it is **not** generic SaaS documentation — none of the Mintlify / Docusaurus default of clean-white-with-a-blue-primary and a forgettable sidebar. The voice is a senior colleague who explains something well: confident, masterful, useful — measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.
 
@@ -105,12 +105,12 @@ This system explicitly rejects two things. It is **not** the hacker / terminal a
 
 ## 2. Colors
 
-A full palette of two committed brand hues — a warm honey-amber and a cool petrol-teal — held against a disciplined near-neutral surface, with each colour carrying a defined semantic job rather than decorating. Authored entirely in OKLCH so lightness is perceptually even and hue holds as chroma changes. Every foreground/background pair is WCAG 2.2 AA validated: body and UI text ≥ 4.5:1, large text ≥ 3:1.
+A full palette of two committed brand hues — a warm honey-amber and a cool petrol-teal — held against a disciplined near-neutral surface, with each color carrying a defined semantic job rather than decorating. Authored entirely in OKLCH so lightness is perceptually even and hue holds as chroma changes. Every foreground/background pair is WCAG 2.2 AA validated: body and UI text ≥ 4.5:1, large text ≥ 3:1.
 
 ### Primary
 - **Honey-Amber** (dark accent `oklch(0.72 0.13 75)`; dark link text `oklch(0.84 0.115 82)`): The brand signature — links, active navigation, text selection, focus accents, emphasis. Warm, sun-cured, confident. Spent sparingly so its appearance always means something.
 - **Bronze** (`oklch(0.52 0.12 68)`): The light-mode face of the accent. The raw honey fails contrast as *text* on white (≈2:1), so light-mode accent **text** deepens to bronze (≥4.5:1). This is a contrast floor, not a stylistic choice.
-- **CTA Honey** (`oklch(0.78 0.14 80)`): The full brand honey, used in light mode only as a **fill** behind an ink label (ink-on-honey ≈ 8.5:1). It is the one place the brand colour appears at full strength on white, where links cannot carry it.
+- **CTA Honey** (`oklch(0.78 0.14 80)`): The full brand honey, used in light mode only as a **fill** behind an ink label (ink-on-honey ≈ 8.5:1). It is the one place the brand color appears at full strength on white, where links cannot carry it.
 
 ### Secondary
 - **Petrol-Teal** (dark `oklch(0.8 0.075 205)`; light `oklch(0.44 0.09 205)`): The amber's cool counterweight, held at low chroma for calm. Reserved for the information register — inline code, "note" admonitions, code accents. Its coolness lets the amber stay the warm protagonist.
@@ -124,15 +124,15 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 - **Code Surface** (dark `oklch(0.205 0.012 245)`; light `oklch(0.965 0.008 235)`): A cool-tinted panel for code blocks, clearly distinct from the page so code reads in the information register.
 
 ### Named Rules
-**The Sovereign Column Rule.** Colour never enters the body reading column except as a link or an inline `<mark>`. Prose is ink on surface — full stop. All brand colour lives in the chrome, the accents, and the semantic markers around the text.
+**The Sovereign Column Rule.** Color never enters the body reading column except as a link or an inline `<mark>`. Prose is ink on surface — full stop. All brand color lives in the chrome, the accents, and the semantic markers around the text.
 
 **The Two-Job Rule.** Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job. A full palette earns its richness through discipline, not abundance.
 
 **The No-Cream Rule.** The light-mode surface is pure white (`oklch(1 0 0)`); the dark surface is near-black (`oklch(0.17 0.006 80)`). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. Forbidden token names: `--cream`, `--sand`, `--paper`, `--parchment`.
 
-**The Deepened-Accent Rule.** Accent **text** is bronze in light mode and brightened honey in dark mode; the raw honey only ever appears as a **fill** with an ink label. Never "fix" the bronze link colour back to honey — the contrast floor forces it.
+**The Deepened-Accent Rule.** Accent **text** is bronze in light mode and brightened honey in dark mode; the raw honey only ever appears as a **fill** with an ink label. Never "fix" the bronze link color back to honey — the contrast floor forces it.
 
-**The Splash Tint Exception.** One sanctioned place lets colour appear without a semantic job: the icon chips inside a `FeatureGrid` on a splash page may each carry a soft, low-chroma tint from the wider semantic ramp (the muted `L ≈ 0.95` orange / purple / green / red set, never the bright RGBY default). It is a small, rare splash that gives a card grid life; it does not loosen the Two-Job Rule anywhere prose, chrome, or semantics live.
+**The Splash Tint Exception.** One sanctioned place lets color appear without a semantic job: the icon chips inside a `FeatureGrid` on a splash page may each carry a soft, low-chroma tint from the wider semantic ramp (the muted `L ≈ 0.95` orange / purple / green / red set, never the bright RGBY default). It is a small, rare splash that gives a card grid life; it does not loosen the Two-Job Rule anywhere prose, chrome, or semantics live.
 
 ## 3. Typography
 
@@ -163,7 +163,7 @@ All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard re
 
 Flat by default. Depth is conveyed through **tonal layering** — a surface nudged a step off the page — rather than drop shadows. The sidebar and TOC carry no dividing panel; hierarchy and a single hairline do that work. Shadows appear only as a quiet *response to state*: a card lifting 2px on hover, a button on hover, the sticky header separating from the content as it scrolls. There is no ambient, decorative shadow anywhere at rest.
 
-The header lift is mode-aware because the two surfaces take light differently. On white, a conventional soft drop shadow carries it. On near-black — which cannot take a cast shadow — depth comes *from light*: a 1px lit lower lip plus a soft upward bloom built from a low-opacity tint of the ink colour.
+The header lift is mode-aware because the two surfaces take light differently. On white, a conventional soft drop shadow carries it. On near-black — which cannot take a cast shadow — depth comes *from light*: a 1px lit lower lip plus a soft upward bloom built from a low-opacity tint of the ink color.
 
 Both the header and the mobile TOC are **opaque, never translucent**: a backdrop blur / scrim reads poorly for low-vision readers, so a near-solid fill over the page surface gives the clean scrolling edge instead.
 
@@ -180,9 +180,9 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 
 ### Buttons (Link Buttons)
 - **Shape:** Gently curved (0.5rem / `{rounded.md}`).
-- **Primary:** The full honey-amber as a **fill** (`{colors.cta-honey}`) with an ink label (`{colors.ink-light}`) — the brand colour at full strength. Bold (600) label. Hover lifts 1px and adds a soft `--sl-shadow-md`.
-- **Secondary:** Transparent with a muted (`gray-4`) border; on hover the border warms to the accent and the label takes the accent colour.
-- **Minimal:** No box — accent-coloured text with a thin underline that solidifies on hover, so it reads as a link rather than text that happens to have an icon.
+- **Primary:** The full honey-amber as a **fill** (`{colors.cta-honey}`) with an ink label (`{colors.ink-light}`) — the brand color at full strength. Bold (600) label. Hover lifts 1px and adds a soft `--sl-shadow-md`.
+- **Secondary:** Transparent with a muted (`gray-4`) border; on hover the border warms to the accent and the label takes the accent color.
+- **Minimal:** No box — accent-colored text with a thin underline that solidifies on hover, so it reads as a link rather than text that happens to have an icon.
 
 ### Cards
 - **Corner Style:** 0.75rem (`{rounded.xl}`).
@@ -192,8 +192,8 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Title:** Spectral 600, tying the card to the document's headings rather than the interface chrome.
 
 ### Asides (Admonitions)
-- **Style:** A full, softened hairline (the variant colour at 45% into transparent) plus a tinted fill and the variant icon — **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Spectral.
-- **Variants:** note = petrol-teal, tip = violet, caution = amber-orange (deliberately separated from the brand link colour so the two never blur), danger = measured red.
+- **Style:** A full, softened hairline (the variant color at 45% into transparent) plus a tinted fill and the variant icon — **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Spectral.
+- **Variants:** note = petrol-teal, tip = violet, caution = amber-orange (deliberately separated from the brand link color so the two never blur), danger = measured red.
 
 ### Inputs / Search
 - **Style:** The search trigger is a 0.5rem-radius control with a muted border; the search dialog is a 0.75rem hairline-bordered sheet. On hover the trigger border warms to the accent.
@@ -203,7 +203,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 ### Navigation (Sidebar + TOC)
 - **Sidebar:** No dividing line; quiet de-emphasised type and a gutter separate it from the column. Section labels are uppercase 0.06em-tracked `xs` muted small-caps. Links round at 0.375rem; hover lifts the text to ink over a faint `gray-7` fill. The active page takes the accent text on a 12%-accent tint, weight 600.
 - **TOC:** No structural divider. The active item carries a short inset accent tick (`box-shadow: inset 2px 0 0`) — a real "you are here" cue, the only job the old full-height line did.
-- **Tabs:** A documentation-register underline. The active tab is marked three ways at once — accent colour, weight 600, and a 3px accent indicator — over a 1px resting baseline, so selection is unambiguous without competing chrome.
+- **Tabs:** A documentation-register underline. The active tab is marked three ways at once — accent color, weight 600, and a 3px accent indicator — over a 1px resting baseline, so selection is unambiguous without competing chrome.
 
 ### Inline & Editorial Prose
 - **Inline code:** Petrol-teal text on a neutral `gray-6` chip with a hairline border, radius 0.3125rem — the information register, set apart from the prose.
@@ -227,7 +227,7 @@ Both collapse to a single column below 50rem. Layout rules are authored globally
 - **Do** give petrol-teal its one job — information and code — and keep it there.
 - **Do** separate surfaces with a single hairline and tonal steps; reach for a shadow only as a response to hover, focus, or scroll.
 - **Do** treat light and dark as equally first-class, both hitting WCAG 2.2 AA.
-- **Do** author all theme CSS in the `exquisitus` cascade layer and honour `prefers-reduced-motion` on every transition.
+- **Do** author all theme CSS in the `exquisitus` cascade layer and honor `prefers-reduced-motion` on every transition.
 
 ### Don't:
 - **Don't** ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.
@@ -236,7 +236,7 @@ Both collapse to a single column below 50rem. Layout rules are authored globally
 - **Don't** use side-stripe accent borders (`border-left` / `border-right` > 1px) on asides, callouts, blockquotes, details, or cards — full hairlines, tonal fills, or icons instead.
 - **Don't** use gradient text, decorative glassmorphism, or backdrop-blur on sticky chrome.
 - **Don't** use elegant-but-illegible light-grey body copy; muted text still clears 4.5:1.
-- **Don't** let colour enter the prose reading column beyond links and inline `<mark>`.
+- **Don't** let color enter the prose reading column beyond links and inline `<mark>`.
 - **Don't** ship the identical card grid; use `FeatureGrid`'s editorial layouts instead.
 - **Don't** shrink the body type to fit more on screen. The Generous Body Rule wins.
 - **Don't** reach for `!important`; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).

@@ -292,7 +292,8 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The full honey-amber as a fill with an ink label — the brand colour at full strength.",
+      "description": "The full honey-amber as a fill with an ink label — the brand
+      at full strength.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started</a>",
       "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
     },
@@ -341,13 +342,13 @@
       "kind": "custom",
       "refersTo": "card",
       "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid.",
-      "html": "<div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Colour with intent</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div>",
+      "html": "<div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Color with intent</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div>",
       "css": ".ds-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } .ds-fg-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; } .ds-fg-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
     }
   ],
   "narrative": {
     "northStar": "The Considered Reading Room",
-    "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, colour — exists to usher the reader into the text and then disappear. Surfaces are flat and hairline-separated, never filled panels; colour is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.",
+    "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, color — exists to usher the reader into the text and then disappear. Surfaces are flat and hairline-separated, never filled panels; color is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.",
     "keyCharacteristics": [
       "Content is sovereign — the reading column is the design; the rest is service.",
       "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.",
@@ -358,7 +359,7 @@
     "rules": [
       {
         "name": "The Sovereign Column Rule",
-        "body": "Colour never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface — full stop.",
+        "body": "Color never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface — full stop.",
         "section": "colors"
       },
       {
@@ -419,7 +420,7 @@
       "Do give petrol-teal its one job — information and code — and keep it there.",
       "Do separate surfaces with a single hairline and tonal steps; reach for a shadow only as a response to hover, focus, or scroll.",
       "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
-      "Do author all theme CSS in the exquisitus cascade layer and honour prefers-reduced-motion on every transition."
+      "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition."
     ],
     "donts": [
       "Don't ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.",
@@ -428,7 +429,7 @@
       "Don't use side-stripe accent borders (border-left / border-right > 1px) on asides, callouts, blockquotes, details, or cards.",
       "Don't use gradient text, decorative glassmorphism, or backdrop-blur on sticky chrome.",
       "Don't use elegant-but-illegible light-grey body copy; muted text still clears 4.5:1.",
-      "Don't let colour enter the prose reading column beyond links and inline <mark>.",
+      "Don't let color enter the prose reading column beyond links and inline <mark>.",
       "Don't ship the identical card grid; use FeatureGrid's editorial layouts instead.",
       "Don't shrink the body type to fit more on screen. The Generous Body Rule wins.",
       "Don't reach for !important; the cascade layer order makes it unnecessary."

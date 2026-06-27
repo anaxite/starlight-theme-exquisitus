@@ -9,7 +9,7 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
 
 <Steps>
 
-1. **Install the theme** alongside Starlight.
+1. Install the theme alongside Starlight.
 
    <Tabs syncKey="pkg">
    	<TabItem label="pnpm">
@@ -29,7 +29,7 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
    	</TabItem>
    </Tabs>
 
-2. **Register the plugin** in your Starlight configuration.
+2. Register the plugin in your Starlight configuration.
 
    ```js title="astro.config.mjs" ins={[2, 8]}
    import starlight from '@astrojs/starlight';
@@ -46,7 +46,7 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
    });
    ```
 
-3. **Start the dev server** and read.
+3. Start the dev server to see your new reading surface.
 
    ```sh
    pnpm dev
@@ -55,9 +55,9 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
 </Steps>
 
 <Aside type="note" title="Search runs in production builds">
-	Starlight's search is powered by [Pagefind](https://pagefind.app/), which indexes the site at
-	build time — so the search box is inert under `pnpm dev` and shows a short placeholder instead of
-	results. To try it, build and preview:
+	Starlight's search is powered by [Pagefind](https://pagefind.app/). Search indexes the site at
+	build time, so the search box is inert under `pnpm dev` and shows a short placeholder instead of
+	results. To try search, build and preview:
 
 	```sh
 	pnpm build && pnpm preview
@@ -65,7 +65,7 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
 </Aside>
 
 <Aside type="tip" title="Bring your own brand">
-	Every colour is a CSS custom property. Override `--sl-color-accent` and friends in your own
+	Every color is a CSS custom property. Override `--sl-color-accent` and friends in your own
 	stylesheet to retune the palette without forking the theme.
 </Aside>
 
@@ -73,11 +73,11 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
 
 Registering the plugin makes three changes to your site:
 
-- **Self-hosts three typefaces** — Atkinson Hyperlegible Next, Spectral, and JetBrains Mono — via `@fontsource`, so nothing is fetched from a third-party origin.
-- **Replaces the colour system** with an OKLCH palette for light and dark modes, layered so your own `customCss` still wins.
-- **Refines the core components** — header, sidebars, asides, cards, code frames, and the hero — without changing Starlight's markup or behaviour.
+1. It self-hosts three typefaces: Atkinson Hyperlegible Next, Spectral, and JetBrains Mono get added via `@fontsource`, so nothing is fetched from a third-party origin.
+2. It replaces the Starlight color system with an OKLCH palette for light and dark modes. Colors are layered so your own `customCss` still wins.
+3. It refines the core components—header, sidebars, asides, cards, code frames, and the hero—without changing Starlight's markup or behavior.
 
 <Aside type="note">
-	Exquisitus never overrides a component you have already set yourself. If there is a conflict, it
-	steps aside and logs a warning so your configuration stays in charge.
+	Exquisitus shouldn't override a component you have already set yourself. If there is a conflict, it should
+	step aside and log a warning so your configuration stays in charge.
 </Aside>
