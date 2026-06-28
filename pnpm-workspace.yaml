@@ -1,9 +1,10 @@
 packages:
-  - 'packages/*'
-  - 'docs'
+  - "packages/*"
+  - "docs"
 
 # Allow these dependencies to run their native install/build scripts.
 # (pnpm blocks build scripts by default; Astro needs both esbuild and sharp.)
 allowBuilds:
+  core-js: false
   esbuild: true
   sharp: true

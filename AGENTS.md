@@ -22,6 +22,7 @@ Before changing anything visual (color, type, spacing, motion, or a component's 
 pnpm dev        # docs preview site at http://localhost:4321 (alias: pnpm --filter docs dev)
 pnpm build      # production build of the docs site
 pnpm preview    # serve the built docs site
+pnpm lint       # lint/format docs and package
 ```
 
 Any command also works from a package subdirectory. There is **no unit-test suite** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Formatting/linting is per-workspace: the theme package uses Biome (`pnpm --filter starlight-theme-exquisitus lint`), the docs site uses rumdl for Markdown (`pnpm --filter docs lint`). Toolchain is pinned in `mise.toml`: Node 24, pnpm 11 (the published theme package declares a Node ≥22.12.0 floor).
