@@ -27,3 +27,6 @@ Thumbs.db
 # committed design-system sidecar, which tooling and the design docs consume.
 .impeccable/*
 !.impeccable/design.json
+
+# Wrangler
+.wrangler/*

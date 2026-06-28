@@ -9,6 +9,7 @@
     "dev": "pnpm --filter docs dev",
     "build": "pnpm --filter docs build",
     "preview": "pnpm --filter docs preview",
+    "deploy": "pnpm dlx wrangler deploy",
     "lint": "pnpm -r lint"
   },
   "engines": {

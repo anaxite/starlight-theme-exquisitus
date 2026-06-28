@@ -9,8 +9,7 @@
     "url": "https://github.com/anaxite/starlight-theme-exquisitus.git",
     "directory": "docs"
   },
-  "homepage": "https://github.com/anaxite/starlight-theme-exquisitus",
-  "bugs": "https://github.com/anaxite/starlight-theme-exquisitus/issues",
+  "homepage": "https://starlight-theme-exquisitus.aka-300.workers.dev/",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
