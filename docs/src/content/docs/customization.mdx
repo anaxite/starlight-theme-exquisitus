@@ -7,7 +7,8 @@ sidebar:
 
 import { Aside } from '@astrojs/starlight/components';
 
-Exquisitus is mainly layered CSS over Starlight. Understanding the layer order means your own styles win predictably.
+Exquisitus is mainly layered CSS over Starlight.
+Understanding the layer order means your own styles win predictably.
 
 ## Adding custom CSS
 
@@ -35,7 +36,8 @@ Exquisitus declares two cascade layers, in order:
 @layer starlight, exquisitus;
 ```
 
-All theme styles live inside `@layer exquisitus`. If you author layered CSS of your own, declare where your layers sit relative to the others to control the cascade explicitly:
+All theme styles live inside `@layer exquisitus`.
+If you author layered CSS of your own, declare where your layers sit relative to the others to control the cascade explicitly:
 
 ```css
 /* src/styles/custom.css */
@@ -48,7 +50,8 @@ All theme styles live inside `@layer exquisitus`. If you author layered CSS of y
 
 ## Token overrides
 
-Exquisitus maps its palette onto Starlight's `--sl-color-*` custom properties. Override any of them from your own stylesheet to retune the palette without forking the theme:
+Exquisitus maps its palette onto Starlight's `--sl-color-*` custom properties.
+Override any of them from your own stylesheet to retune the palette without forking the theme:
 
 ```css
 /* src/styles/custom.css */
@@ -77,14 +80,19 @@ Overrides placed in unlayered CSS apply in both modes unless you scope them to `
 
 ## FeatureGrid component
 
-Exquisitus exports one component, a feature grid. `FeatureGrid` is the theme's own splash layout, which acts as an editorial alternative to `CardGrid`'s uniform grid. Import it in any MDX page:
+Exquisitus exports one component, a feature grid.
+`FeatureGrid` is the theme's own splash layout, which acts as an editorial alternative to `CardGrid`'s uniform grid.
+Import it in any MDX page:
 
 ```mdx
 import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
 ```
 
-`FeatureGrid` wraps Starlight's `<Card>` components and accepts a `layout` prop (`'lead'` or `'alternating'`). See the [Feature Grid](/showcase/feature-grid/) showcase for live examples and arrangement options.
+`FeatureGrid` wraps Starlight's `<Card>` components and accepts a `layout` prop (`'lead'` or `'alternating'`).
+See the [Feature Grid](/showcase/feature-grid/) showcase for live examples and arrangement options.
 
 ## Design system
 
-This theme was developed using the [Impeccable](https://impeccable.style/) design system. You can find its files, `DESIGN.md` and `PRODUCT.md` in the repository root. Food for thought, or inspiration?
+This theme was developed using the [Impeccable](https://impeccable.style/) design system.
+You can find its files, `DESIGN.md` and `PRODUCT.md` in the repository root.
+Food for thought, or inspiration?

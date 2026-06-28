@@ -5,39 +5,59 @@ sidebar:
   order: 1
 ---
 
-This page is the reading room. Everything below is plain Markdown, rendered exactly as your documentation will be. If it is comfortable to read here, it will be comfortable to read anywhere on your site.
+This page is the reading room.
+Everything below is plain Markdown, rendered exactly as your documentation will be.
+If it is comfortable to read here, it will be comfortable to read anywhere on your site.
 
-Exquisitus sets body type in Atkinson Hyperlegible Next at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters. These three numbers are not just defaults. Seventeen pixels is the minimum the Readability Guidelines call comfortable for extended reading. Seventy characters is the width where the eye can return cleanly to the start of the next line without searching. 1.75 is the breathing room that lets ascenders and descenders live without crowding. I want documentation read at length to receive the same consideration as long-form prose.
+Exquisitus sets body type in Atkinson Hyperlegible Next at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters.
+These three numbers are not just defaults.
+Seventeen pixels is the minimum the Readability Guidelines call comfortable for extended reading.
+Seventy characters is the width where the eye can return cleanly to the start of the next line without searching. 1.75 is the breathing room that lets ascenders and descenders live without crowding.
+I want documentation read at length to receive the same consideration as long-form prose.
 
 ## Headings keep their place
 
-Headings are set in Spectral, a screen-first serif designed by Production Type. The shift between a sans-serif body and a serif heading is a navigational cue. When you scan a long document, the change of register tells you instantly that a new section has begun, without the heading needing to be large or loud about it.
+Headings are set in Spectral, a screen-first serif designed by Production Type.
+The shift between a sans-serif body and a serif heading is a navigational cue.
+When you scan a long document, the change of register tells you instantly that a new section has begun, without the heading needing to be large or loud about it.
 
-The scale descends gradually, so a document with four heading levels never loses legibility at the deeper ones. Every heading also reserves space above itself, so an anchor link never tucks the title under the sticky header.
+The scale descends gradually, so a document with four heading levels never loses legibility at the deeper ones.
+Every heading also reserves space above itself, so an anchor link never tucks the title under the sticky header.
 
 ### A third-level heading
 
-Third-level headings carry the same Spectral, fractionally smaller. At this scale, letter-spacing tightens slightly. The optical correction that keeps display type from feeling loose when it shrinks toward body size. The heading hierarchy is tuned to feel right at every level, not just the largest ones.
+Third-level headings carry the same Spectral, fractionally smaller.
+At this scale, letter-spacing tightens slightly.
+The optical correction that keeps display type from feeling loose when it shrinks toward body size.
+The heading hierarchy is tuned to feel right at every level, not just the largest ones.
 
 #### A fourth-level heading
 
-Four levels deep, the hierarchy is still legible. A document that requires more than four levels of heading should probably be split into separate pages, but the type handles it gracefully if it doesn't.
+Four levels deep, the hierarchy is still legible.
+A document that requires more than four levels of heading should probably be split into separate pages, but the type handles it gracefully if it doesn't.
 
 ## Within the column
 
-Color is spent on exactly two things in the reading column: [links](#), which carry the warm bronze accent in light mode and honey in dark, and `inline code`, which carries the cool petrol-teal. Everything else earns emphasis through weight and rhythm.
+Color is spent on exactly two things in the reading column: [links](#), which carry the warm bronze accent in light mode and honey in dark, and `inline code`, which carries the cool petrol-teal.
+Everything else earns emphasis through weight and rhythm.
 
-**Strong text** lifts toward the ink end of the neutral ramp. *Italic text* leans on Spectral's roman italic: warm, slightly condensed, unmistakable without being aggressive. The two are different enough to be useful in combination, so a function name and its description can share a sentence without blurring into each other.
+**Strong text** lifts toward the ink end of the neutral ramp.
+*Italic text* leans on Spectral's roman italic: warm, slightly condensed, unmistakable without being aggressive.
+The two are different enough to be useful in combination, so a function name and its description can share a sentence without blurring into each other.
 
-Links are underlined by default, which is the oldest and most reliable affordance the web has for "this goes somewhere." The underline uses the accent color at a lower opacity at rest and solidifies on hover, giving a quiet reward for attention that never clutters the resting page.
+Links are underlined by default, which is the oldest and most reliable affordance the web has for "this goes somewhere."
+The underline uses the accent color at a lower opacity at rest and solidifies on hover, giving a quiet reward for attention that never clutters the resting page.
 
 ## Quotation
 
-A pull-quote is set in Spectral italic, indented, with no side stripe. The change of typeface and the spacing carry the meaning without decoration.
+A pull-quote is set in Spectral italic, indented, with no side stripe.
+The change of typeface and the spacing carry the meaning without decoration.
 
-> The goal of typography is not to be noticed. It is to put the reader inside the argument without friction, so completely that they finish a page without once thinking about the type.
+> The goal of typography is not to be noticed.
+> It is to put the reader inside the argument without friction, so completely that they finish a page without once thinking about the type.
 
-Blockquotes work in the same register as the heading hierarchy: the serif marks editorial, not interface. A long quotation reads naturally here because Spectral italic is designed for extended reading, not just for headings.
+Blockquotes work in the same register as the heading hierarchy: the serif marks editorial, not interface.
+A long quotation reads naturally here because Spectral italic is designed for extended reading, not just for headings.
 
 ## Lists hold their rhythm
 
@@ -68,4 +88,6 @@ The header row is set in Spectral; every structural element in the page belongs 
 
 ---
 
-A horizontal rule is a short centred mark. It's an editorial pause, not a full-width divider. The page simply continues after it with the same ink and paper it started with.
+A horizontal rule is a short centred mark.
+It's an editorial pause, not a full-width divider.
+The page simply continues after it with the same ink and paper it started with.

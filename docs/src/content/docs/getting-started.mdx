@@ -5,28 +5,29 @@ description: Install Exquisitus and apply it to your Astro Starlight site in thr
 
 import { Steps, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
 
-Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugins/). You add it to an existing Starlight site; it brings its own fonts, palette, and component refinements.
+Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugins/).
+You add it to an existing Starlight site; it brings its own fonts, palette, and component refinements.
 
 <Steps>
 
 1. Install the theme alongside Starlight.
 
    <Tabs syncKey="pkg">
-   	<TabItem label="pnpm">
+   <TabItem label="pnpm">
    	```sh
    	pnpm add starlight-theme-exquisitus
    	```
-   	</TabItem>
-   	<TabItem label="npm">
+   </TabItem>
+   <TabItem label="npm">
    	```sh
    	npm install starlight-theme-exquisitus
    	```
-   	</TabItem>
-   	<TabItem label="Bun">
+   </TabItem>
+   <TabItem label="Bun">
    	```sh
    	bun add starlight-theme-exquisitus
    	```
-   	</TabItem>
+   </TabItem>
    </Tabs>
 
 2. Register the plugin in your Starlight configuration.
@@ -74,7 +75,8 @@ Exquisitus is a Starlight [plugin](https://starlight.astro.build/reference/plugi
 Registering the plugin makes three changes to your site:
 
 1. It self-hosts three typefaces: Atkinson Hyperlegible Next, Spectral, and JetBrains Mono get added via `@fontsource`, so nothing is fetched from a third-party origin.
-2. It replaces the Starlight color system with an OKLCH palette for light and dark modes. Colors are layered so your own `customCss` still wins.
+2. It replaces the Starlight color system with an OKLCH palette for light and dark modes.
+   Colors are layered so your own `customCss` still wins.
 3. It refines the core components—header, sidebars, asides, cards, code blocks, file trees, and the hero—without changing Starlight's markup or behavior.
 
 <Aside type="note">
