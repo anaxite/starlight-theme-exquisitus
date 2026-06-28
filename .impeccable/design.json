@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-27T00:00:00Z",
+  "generatedAt": "2026-06-28T00:00:00Z",
   "title": "Design System: Exquisitus",
   "extensions": {
     "colorMeta": {
@@ -181,6 +181,16 @@
         "name": "header-shadow-dark",
         "value": "0 1px 0 color-mix(in oklab, oklch(0.94 0.012 85) 13%, transparent), 0 11px 26px -11px color-mix(in oklab, oklch(0.94 0.012 85) 17%, transparent)",
         "purpose": "Header lift on near-black, built from light (lit lip + upward bloom) since dark can't take a cast shadow."
+      },
+      {
+        "name": "letterpress-light",
+        "value": "inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent)",
+        "purpose": "The letterpress (light): a debossed inset — recessed top shadow over a lit lower lip — pressed into the page at rest on the technical register (code blocks, terminals, file trees). The depth axis of the information register."
+      },
+      {
+        "name": "letterpress-dark",
+        "value": "inset 0 1px 0 color-mix(in oklab, oklch(0.94 0.012 85) 12%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.17 0.006 80) 45%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(0.17 0.006 80) 30%, transparent)",
+        "purpose": "The letterpress (dark): a lit top lip plus recessed inner shadow on near-black, pressing the technical register into the page at rest."
       }
     ],
     "motion": [
@@ -282,8 +292,8 @@
         "hex": "#13181C"
       },
       "code-surface-light": {
-        "oklch": "oklch(0.965 0.008 235)",
-        "hex": "#EFF4F8"
+        "oklch": "oklch(0.95 0.012 235)",
+        "hex": "#E7EEF4"
       }
     }
   },
@@ -292,8 +302,7 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The full honey-amber as a fill with an ink label — the brand
-      at full strength.",
+      "description": "The full honey-amber as a fill with an ink label — the brand at full strength.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started</a>",
       "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
     },
@@ -344,16 +353,33 @@
       "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid.",
       "html": "<div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Color with intent</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div>",
       "css": ".ds-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } .ds-fg-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; } .ds-fg-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Editorial code surface: a caption-folio filename above a cool, hairline-bordered, letterpressed panel — no IDE tab, no terminal dots.",
+      "html": "<figure class=\"ds-codeblock\"><figcaption class=\"ds-cb-caption\">astro.config.mjs</figcaption><pre class=\"ds-cb-pre\"><code>import { defineConfig } from 'astro/config';</code></pre></figure>",
+      "css": ".ds-codeblock { margin: 0; } .ds-cb-caption { padding: 0 0 0.5rem 0.9rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.01em; color: oklch(0.45 0.01 80); } .ds-cb-pre { margin: 0; background: oklch(0.95 0.012 235); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent); padding: 0.9rem; overflow-x: auto; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; line-height: 1.6; color: oklch(0.33 0.012 80); }"
+    },
+    {
+      "name": "File Tree",
+      "kind": "custom",
+      "refersTo": "file-tree",
+      "description": "An open hairline figure on the page surface, letterpressed at rest (which sets it apart from a flat card); petrol-teal marks structure, neutral icons mark files.",
+      "html": "<div class=\"ds-filetree\"><div class=\"ds-ft-row ds-ft-dir\">▾ src</div><div class=\"ds-ft-row ds-ft-indent ds-ft-file\">index.mdx</div></div>",
+      "css": ".ds-filetree { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent); padding: 1rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; } .ds-ft-row { padding: 0.125rem 0; } .ds-ft-dir { color: oklch(0.44 0.09 205); font-weight: 500; } .ds-ft-indent { padding-inline-start: 1.5rem; margin-inline-start: 0.5rem; border-inline-start: 1px solid color-mix(in oklab, oklch(0.44 0.09 205) 22%, oklch(0.8 0.005 80)); } .ds-ft-file { color: oklch(0.33 0.012 80); }"
     }
   ],
   "narrative": {
     "northStar": "The Considered Reading Room",
-    "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, color — exists to usher the reader into the text and then disappear. Surfaces are flat and hairline-separated, never filled panels; color is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.",
+    "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else exists to usher the reader into the text and then disappear — the one guest allowed to keep its presence is the technical register (code, terminals, file trees), the way the New York Times lets an interactive break the body's rules without dethroning the article. The reading surface is flat and hairline-separated; the technical register is letterpressed into that sheet — pressed in, the way a fine press deboss-prints type into paper, a tactile mark of care. Color is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. Depth is never a decorative cast shadow; it is depth-from-light in two directions: a transient lift in response to state, and a resting press that marks the technical register on a third axis alongside petrol-teal (color) and monospace (type). It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, acknowledging the reader without performing for them.",
     "keyCharacteristics": [
       "Content is sovereign — the reading column is the design; the rest is service.",
       "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.",
       "A full palette held in tight discipline: honey-amber for emphasis, petrol-teal for information.",
-      "Flat, hairline-separated surfaces; depth from tonal layering, not shadow.",
+      "A flat, hairline-separated reading surface, with the technical register letterpressed into it. Depth is depth-from-light in two directions — a transient lift, a resting press — never a decorative cast.",
+      "The information register marked on three axes at once — petrol-teal (color), monospace (type), and the letterpress (depth).",
       "Accessible by conviction — WCAG 2.2 AA floor, light and dark both, every motion gated behind prefers-reduced-motion."
     ],
     "rules": [
@@ -403,8 +429,13 @@
         "section": "elevation"
       },
       {
-        "name": "The Flat-At-Rest Rule",
-        "body": "No element carries a shadow at rest. A shadow is a reply to hover, focus, or scroll — never decoration.",
+        "name": "The Considered-Lift Rule",
+        "body": "No reading or chrome surface carries a shadow at rest. A lift is always a reply to hover, focus, or scroll — never decoration.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Letterpress Rule",
+        "body": "The technical register — code blocks, terminals, file trees, and future reference surfaces — carries a debossed inset (--sl-exquisitus-code-edge) at rest. Not an exception to flatness but the register's signature, the depth axis twinned with petrol-teal (color) and monospace (type). It presses in, never floats out, and is reserved for the information register; prose, cards, asides, and chrome never carry it.",
         "section": "elevation"
       },
       {
@@ -418,7 +449,8 @@
       "Do let the honey-amber accent appear rarely and meaningfully — links, active state, selection, focus. Its rarity is the point.",
       "Do keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a fill with an ink label.",
       "Do give petrol-teal its one job — information and code — and keep it there.",
-      "Do separate surfaces with a single hairline and tonal steps; reach for a shadow only as a response to hover, focus, or scroll.",
+      "Do keep the reading and chrome surfaces flat at rest, separated by a single hairline and tonal steps; a lift is only ever a response to hover, focus, or scroll.",
+      "Do letterpress the technical register (code blocks, terminals, file trees) at rest with --sl-exquisitus-code-edge — pressed in, never floated — as the depth axis of the information register, twinned with petrol-teal and monospace.",
       "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
       "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition."
     ],
@@ -432,6 +464,8 @@
       "Don't let color enter the prose reading column beyond links and inline <mark>.",
       "Don't ship the identical card grid; use FeatureGrid's editorial layouts instead.",
       "Don't shrink the body type to fit more on screen. The Generous Body Rule wins.",
+      "Don't letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.",
+      "Don't float the technical register on an outward / cast shadow — it presses in, never lifts out.",
       "Don't reach for !important; the cascade layer order makes it unnecessary."
     ]
   }
