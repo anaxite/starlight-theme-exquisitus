@@ -1,6 +1,5 @@
 {
   "name": "starlight-theme-exquisitus-docs",
-  "version": "0.0.1",
   "private": true,
   "description": "Demo documentation site for the Starlight theme Exquisitus.",
   "author": "Anaxite",
@@ -27,20 +26,9 @@
     "sharp": "^0.34.5",
     "starlight-theme-exquisitus": "workspace:*"
   },
-  "keywords": [
-    "starlight",
-    "starlight-theme",
-    "theme",
-    "plugin",
-    "astro",
-    "documentation",
-    "accessibility",
-    "typography"
-  ],
   "engines": {
     "node": ">=22.12.0"
   },
-  "packageManager": "pnpm@11.9.0",
   "devDependencies": {
     "rumdl": "^0.2.24"
   }

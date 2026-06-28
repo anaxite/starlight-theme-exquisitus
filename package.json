@@ -1,6 +1,5 @@
 {
   "name": "starlight-theme-exquisitus-monorepo",
-  "version": "0.1.0",
   "license": "MIT",
   "private": true,
   "author": "Anaxite",
@@ -19,21 +18,5 @@
   "packageManager": "pnpm@11.9.0",
   "devDependencies": {
     "@biomejs/biome": "~2.5.1"
-  },
-  "keywords": [
-    "starlight",
-    "starlight-theme",
-    "theme",
-    "plugin",
-    "astro",
-    "documentation",
-    "accessibility",
-    "typography"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/anaxite/starlight-theme-exquisitus.git"
-  },
-  "homepage": "https://github.com/anaxite/starlight-theme-exquisitus",
-  "bugs": "https://github.com/anaxite/starlight-theme-exquisitus/issues"
+  }
 }
