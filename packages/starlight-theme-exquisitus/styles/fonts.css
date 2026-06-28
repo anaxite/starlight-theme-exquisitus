@@ -13,17 +13,17 @@
  */
 
 /* Body & UI — Atkinson Hyperlegible Next (variable, wght 200–800). */
-@import '@fontsource-variable/atkinson-hyperlegible-next/index.css';
+@import "@fontsource-variable/atkinson-hyperlegible-next/index.css";
 
 /* Code — JetBrains Mono (variable, wght). */
-@import '@fontsource-variable/jetbrains-mono/index.css';
+@import "@fontsource-variable/jetbrains-mono/index.css";
 
 /* Display serif — Spectral. Static cuts, only the weights the theme renders:
    600 (headings, hero & card titles), 700 (bold — table headers, bold-in-
    headings), 400 (summary + base serif), plus 400/600 italics (blockquotes,
    emphasis in headings). 500 is intentionally omitted — no rule sets it. */
-@import '@fontsource/spectral/400.css';
-@import '@fontsource/spectral/600.css';
-@import '@fontsource/spectral/700.css';
-@import '@fontsource/spectral/400-italic.css';
-@import '@fontsource/spectral/600-italic.css';
+@import "@fontsource/spectral/400.css";
+@import "@fontsource/spectral/600.css";
+@import "@fontsource/spectral/700.css";
+@import "@fontsource/spectral/400-italic.css";
+@import "@fontsource/spectral/600-italic.css";

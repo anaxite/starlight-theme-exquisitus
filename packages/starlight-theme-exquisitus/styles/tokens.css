@@ -15,177 +15,173 @@
  *     "information / code" register opposite the amber "warmth / emphasis" one.
  */
 @layer exquisitus {
-    :root {
-        /* ── Typefaces ──────────────────────────────────────────────── */
-        --sl-font:
-            "Atkinson Hyperlegible Next Variable", system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", sans-serif;
-        --sl-font-mono:
-            "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
-            Consolas, monospace;
-        /* Display serif — applied to content headings, hero & card titles only. */
-        --sl-exquisitus-font-serif:
-            "Spectral", Georgia, "Times New Roman", serif;
+	:root {
+		/* ── Typefaces ──────────────────────────────────────────────── */
+		--sl-font:
+			"Atkinson Hyperlegible Next Variable", system-ui, -apple-system,
+			BlinkMacSystemFont, "Segoe UI", sans-serif;
+		--sl-font-mono:
+			"JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas,
+			monospace;
+		/* Display serif — applied to content headings, hero & card titles only. */
+		--sl-exquisitus-font-serif: "Spectral", Georgia, "Times New Roman", serif;
 
-        /* ── Reading rhythm ─────────────────────────────────────────── */
-        /* Nudge the global type scale up ~1px (16 → 17 at the default base).
+		/* ── Reading rhythm ─────────────────────────────────────────── */
+		/* Nudge the global type scale up ~1px (16 → 17 at the default base).
 		   A percentage, not a px value, so it still scales from the reader's own
 		   base size. rem-based layout scales with it, so the ~70ch measure holds. */
-        font-size: 106.25%;
-        --sl-line-height: 1.75;
-        --sl-line-height-headings: 1.18;
-        /* ~70ch at the content type size; fine-tuned against real Atkinson metrics. */
-        --sl-content-width: 42rem;
+		font-size: 106.25%;
+		--sl-line-height: 1.75;
+		--sl-line-height-headings: 1.18;
+		/* ~70ch at the content type size; fine-tuned against real Atkinson metrics. */
+		--sl-content-width: 42rem;
 
-        /* Flat, borderless reading environment — the sidebar shares the page
+		/* Flat, borderless reading environment — the sidebar shares the page
 		   surface in both themes and is separated by a hairline, not a panel. */
-        --sl-color-bg-sidebar: var(--sl-color-bg);
+		--sl-color-bg-sidebar: var(--sl-color-bg);
 
-        /* Theme-local handles reused by base.css / prose.css. */
-        --sl-exquisitus-ease: cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ); /* ease-out-quint */
-        /* Splash hero column split (copy / image). Override to retune. */
-        --sl-exquisitus-hero-columns: 2.1fr 1fr;
+		/* Theme-local handles reused by base.css / prose.css. */
+		--sl-exquisitus-ease: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out-quint */
+		/* Splash hero column split (copy / image). Override to retune. */
+		--sl-exquisitus-hero-columns: 2.1fr 1fr;
 
-        /* ── Color — dark mode (default) ───────────────────────────── */
-        --sl-color-white: oklch(
-            0.94 0.012 85
-        ); /* highest-contrast ink (headings) */
-        --sl-color-gray-1: oklch(0.9 0.012 85);
-        --sl-color-gray-2: oklch(0.82 0.014 85); /* body text */
-        --sl-color-gray-3: oklch(0.66 0.012 82); /* muted text */
-        --sl-color-gray-4: oklch(0.52 0.01 82);
-        --sl-color-gray-5: oklch(0.38 0.008 80); /* hairlines */
-        --sl-color-gray-6: oklch(0.24 0.007 80); /* raised surface */
-        --sl-color-gray-7: oklch(0.205 0.006 80); /* subtle fills, zebra rows */
-        --sl-color-black: oklch(0.17 0.006 80); /* page background */
+		/* ── Color — dark mode (default) ───────────────────────────── */
+		--sl-color-white: oklch(
+			0.94 0.012 85
+		); /* highest-contrast ink (headings) */
+		--sl-color-gray-1: oklch(0.9 0.012 85);
+		--sl-color-gray-2: oklch(0.82 0.014 85); /* body text */
+		--sl-color-gray-3: oklch(0.66 0.012 82); /* muted text */
+		--sl-color-gray-4: oklch(0.52 0.01 82);
+		--sl-color-gray-5: oklch(0.38 0.008 80); /* hairlines */
+		--sl-color-gray-6: oklch(0.24 0.007 80); /* raised surface */
+		--sl-color-gray-7: oklch(0.205 0.006 80); /* subtle fills, zebra rows */
+		--sl-color-black: oklch(0.17 0.006 80); /* page background */
 
-        /* Own the hairline explicitly. Starlight points --sl-color-hairline at
+		/* Own the hairline explicitly. Starlight points --sl-color-hairline at
 		   gray-6 (its raised-surface tone), which on this near-black page reads as
 		   no line at all. Pin it to gray-5 — the value the ramp calls "hairlines" —
 		   so tablist baselines, table rules, details, search and pagination borders
 		   are quiet but present. */
-        --sl-color-hairline: var(--sl-color-gray-5);
+		--sl-color-hairline: var(--sl-color-gray-5);
 
-        /* Accent — honey (brightened for dark surfaces). */
-        --sl-color-accent-low: oklch(0.3 0.06 70);
-        --sl-color-accent: oklch(0.72 0.13 75);
-        --sl-color-accent-high: oklch(0.84 0.115 82);
+		/* Accent — honey (brightened for dark surfaces). */
+		--sl-color-accent-low: oklch(0.3 0.06 70);
+		--sl-color-accent: oklch(0.72 0.13 75);
+		--sl-color-accent-high: oklch(0.84 0.115 82);
 
-        /* Primary-button fill. Dark mode already lands the brand honey with an
+		/* Primary-button fill. Dark mode already lands the brand honey with an
 		   ink label (text-accent over near-black), so just name that intent here
 		   for light mode to match. */
-        --sl-exquisitus-cta: var(--sl-color-text-accent);
-        --sl-exquisitus-cta-ink: var(--sl-color-black);
+		--sl-exquisitus-cta: var(--sl-color-text-accent);
+		--sl-exquisitus-cta-ink: var(--sl-color-black);
 
-        /* Petrol-teal counter-hue. */
-        --sl-exquisitus-cool: oklch(0.8 0.075 205);
+		/* Petrol-teal counter-hue. */
+		--sl-exquisitus-cool: oklch(0.8 0.075 205);
 
-        /* Code surfaces — cool-tinted, distinct from the page (dark mode). */
-        --sl-exquisitus-code-bg: oklch(0.205 0.012 245);
+		/* Code surfaces — cool-tinted, distinct from the page (dark mode). */
+		--sl-exquisitus-code-bg: oklch(0.205 0.012 245);
 
-        /* Code-block letterpress edge — depth from light (cf. the header lift):
+		/* Code-block letterpress edge — depth from light (cf. the header lift):
 		   a faint lit top lip and recessed inner shadow that press the panel into
 		   the page. The sanctioned twin of the header's depth-from-light treatment. */
-        --sl-exquisitus-code-edge:
-            inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 12%, transparent),
-            inset 0 4px 6px -4px color-mix(in oklab, var(--sl-color-black) 45%, transparent),
-            inset 0 -1px 0 color-mix(in oklab, var(--sl-color-black) 30%, transparent);
+		--sl-exquisitus-code-edge:
+			inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 12%, transparent),
+			inset 0 4px 6px -4px
+			color-mix(in oklab, var(--sl-color-black) 45%, transparent),
+			inset 0 -1px 0 color-mix(in oklab, var(--sl-color-black) 30%, transparent);
 
-        /* Sticky-header lift. Dark surfaces can't take a cast shadow, so depth
+		/* Sticky-header lift. Dark surfaces can't take a cast shadow, so depth
 		   comes from light: a lit lower lip plus a soft upward bloom. */
-        --sl-exquisitus-header-shadow:
-            0 1px 0 color-mix(in oklab, var(--sl-color-white) 13%, transparent),
-            0 11px 26px -11px
-                color-mix(in oklab, var(--sl-color-white) 17%, transparent);
+		--sl-exquisitus-header-shadow:
+			0 1px 0 color-mix(in oklab, var(--sl-color-white) 13%, transparent),
+			0 11px 26px -11px
+			color-mix(in oklab, var(--sl-color-white) 17%, transparent);
 
-        /* Semantic ramps — note(teal) · tip(violet) · caution · danger · success. */
-        --sl-color-blue-low: oklch(0.28 0.05 205);
-        --sl-color-blue: oklch(0.62 0.1 205);
-        --sl-color-blue-high: oklch(0.85 0.07 205);
-        --sl-color-purple-low: oklch(0.28 0.06 295);
-        --sl-color-purple: oklch(0.62 0.14 295);
-        --sl-color-purple-high: oklch(0.86 0.08 295);
-        --sl-color-orange-low: oklch(0.3 0.05 60);
-        --sl-color-orange: oklch(0.72 0.13 60);
-        --sl-color-orange-high: oklch(0.88 0.08 70);
-        --sl-color-red-low: oklch(0.3 0.07 25);
-        --sl-color-red: oklch(0.65 0.17 25);
-        --sl-color-red-high: oklch(0.85 0.09 25);
-        --sl-color-green-low: oklch(0.28 0.05 150);
-        --sl-color-green: oklch(0.62 0.12 150);
-        --sl-color-green-high: oklch(0.85 0.08 150);
-    }
+		/* Semantic ramps — note(teal) · tip(violet) · caution · danger · success. */
+		--sl-color-blue-low: oklch(0.28 0.05 205);
+		--sl-color-blue: oklch(0.62 0.1 205);
+		--sl-color-blue-high: oklch(0.85 0.07 205);
+		--sl-color-purple-low: oklch(0.28 0.06 295);
+		--sl-color-purple: oklch(0.62 0.14 295);
+		--sl-color-purple-high: oklch(0.86 0.08 295);
+		--sl-color-orange-low: oklch(0.3 0.05 60);
+		--sl-color-orange: oklch(0.72 0.13 60);
+		--sl-color-orange-high: oklch(0.88 0.08 70);
+		--sl-color-red-low: oklch(0.3 0.07 25);
+		--sl-color-red: oklch(0.65 0.17 25);
+		--sl-color-red-high: oklch(0.85 0.09 25);
+		--sl-color-green-low: oklch(0.28 0.05 150);
+		--sl-color-green: oklch(0.62 0.12 150);
+		--sl-color-green-high: oklch(0.85 0.08 150);
+	}
 
-    :root[data-theme="light"] {
-        /* ── Color — light mode ────────────────────────────────────── */
-        --sl-color-white: oklch(
-            0.22 0.015 80
-        ); /* highest-contrast ink (headings) */
-        --sl-color-gray-1: oklch(0.27 0.013 80);
-        --sl-color-gray-2: oklch(0.33 0.012 80); /* body text */
-        --sl-color-gray-3: oklch(0.45 0.01 80); /* muted text */
-        --sl-color-gray-4: oklch(0.62 0.008 80);
-        --sl-color-gray-5: oklch(0.8 0.005 80); /* hairlines */
-        --sl-color-gray-6: oklch(0.93 0.004 80); /* raised surface */
-        --sl-color-gray-7: oklch(0.965 0.003 80); /* subtle fills, zebra rows */
-        --sl-color-black: oklch(1 0 0); /* page background — pure white */
+	:root[data-theme="light"] {
+		/* ── Color — light mode ────────────────────────────────────── */
+		--sl-color-white: oklch(
+			0.22 0.015 80
+		); /* highest-contrast ink (headings) */
+		--sl-color-gray-1: oklch(0.27 0.013 80);
+		--sl-color-gray-2: oklch(0.33 0.012 80); /* body text */
+		--sl-color-gray-3: oklch(0.45 0.01 80); /* muted text */
+		--sl-color-gray-4: oklch(0.62 0.008 80);
+		--sl-color-gray-5: oklch(0.8 0.005 80); /* hairlines */
+		--sl-color-gray-6: oklch(0.93 0.004 80); /* raised surface */
+		--sl-color-gray-7: oklch(0.965 0.003 80); /* subtle fills, zebra rows */
+		--sl-color-black: oklch(1 0 0); /* page background — pure white */
 
-        /* Pin the hairline to gray-5 (see dark-mode note) so separators read on
+		/* Pin the hairline to gray-5 (see dark-mode note) so separators read on
 		   white rather than inheriting Starlight's near-invisible gray-6. */
-        --sl-color-hairline: var(--sl-color-gray-5);
+		--sl-color-hairline: var(--sl-color-gray-5);
 
-        /* Accent — bronze (deepened for contrast on white). */
-        --sl-color-accent-low: oklch(0.93 0.04 75);
-        --sl-color-accent: oklch(0.52 0.12 68);
-        --sl-color-accent-high: oklch(0.42 0.11 60);
+		/* Accent — bronze (deepened for contrast on white). */
+		--sl-color-accent-low: oklch(0.93 0.04 75);
+		--sl-color-accent: oklch(0.52 0.12 68);
+		--sl-color-accent-high: oklch(0.42 0.11 60);
 
-        /* The primary CTA is the one light-mode place the full honey-amber gets
+		/* The primary CTA is the one light-mode place the full honey-amber gets
 		   to appear: as a fill with an ink label. Honey fails as link TEXT on
 		   white (≈2:1) — hence the bronze accent — but ink-on-honey is ≈8.5:1, so
 		   the button carries the brand color at full strength where links can't. */
-        --sl-exquisitus-cta: oklch(0.78 0.14 80);
-        --sl-exquisitus-cta-ink: oklch(0.22 0.015 80);
+		--sl-exquisitus-cta: oklch(0.78 0.14 80);
+		--sl-exquisitus-cta-ink: oklch(0.22 0.015 80);
 
-        /* Petrol-teal counter-hue. Deepened from 0.5 so inline code
+		/* Petrol-teal counter-hue. Deepened from 0.5 so inline code
 		   clears WCAG AA body-text contrast (≥4.5:1) with comfortable headroom. */
-        --sl-exquisitus-cool: oklch(0.44 0.09 205);
+		--sl-exquisitus-cool: oklch(0.44 0.09 205);
 
-        /* Code surfaces — a soft cool panel, clearly not the white page (light mode).
+		/* Code surfaces — a soft cool panel, clearly not the white page (light mode).
 		   Deepened a step (0.965 → 0.95) with a touch more petrol chroma so the
 		   block reads as a distinct surface, not a near-white wash. */
-        --sl-exquisitus-code-bg: oklch(0.95 0.012 235);
+		--sl-exquisitus-code-bg: oklch(0.95 0.012 235);
 
-        /* Code-block letterpress edge — debossed into the white page: a recessed
+		/* Code-block letterpress edge — debossed into the white page: a recessed
 		   top shadow over a 1px lit lower lip. The light-mode twin of the
 		   header's depth-from-light lift. */
-        --sl-exquisitus-code-edge:
-            inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 22%, transparent),
-            inset 0 4px 6px -4px color-mix(in oklab, var(--sl-color-white) 26%, transparent),
-            inset 0 -1px 0 color-mix(in oklab, var(--sl-color-black) 90%, transparent);
+		--sl-exquisitus-code-edge:
+			inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 22%, transparent),
+			inset 0 4px 6px -4px
+			color-mix(in oklab, var(--sl-color-white) 26%, transparent),
+			inset 0 -1px 0 color-mix(in oklab, var(--sl-color-black) 90%, transparent);
 
-        /* On white, a conventional soft drop shadow carries the header lift. */
-        --sl-exquisitus-header-shadow: 0 8px 22px -11px rgba(20, 16, 8, 0.34);
+		/* On white, a conventional soft drop shadow carries the header lift. */
+		--sl-exquisitus-header-shadow: 0 8px 22px -11px rgba(20, 16, 8, 0.34);
 
-        /* Semantic ramps. */
-        --sl-color-blue-low: oklch(0.95 0.03 205);
-        --sl-color-blue: oklch(0.62 0.1 205);
-        --sl-color-blue-high: oklch(0.4 0.08 205);
-        --sl-color-purple-low: oklch(0.95 0.03 295);
-        --sl-color-purple: oklch(0.55 0.16 295);
-        --sl-color-purple-high: oklch(0.4 0.14 295);
-        --sl-color-orange-low: oklch(0.95 0.045 70);
-        --sl-color-orange: oklch(0.7 0.13 60);
-        --sl-color-orange-high: oklch(0.42 0.1 55);
-        --sl-color-red-low: oklch(0.95 0.035 25);
-        --sl-color-red: oklch(0.58 0.18 25);
-        --sl-color-red-high: oklch(0.45 0.16 25);
-        --sl-color-green-low: oklch(0.95 0.04 150);
-        --sl-color-green: oklch(0.58 0.12 150);
-        --sl-color-green-high: oklch(0.4 0.09 150);
-    }
+		/* Semantic ramps. */
+		--sl-color-blue-low: oklch(0.95 0.03 205);
+		--sl-color-blue: oklch(0.62 0.1 205);
+		--sl-color-blue-high: oklch(0.4 0.08 205);
+		--sl-color-purple-low: oklch(0.95 0.03 295);
+		--sl-color-purple: oklch(0.55 0.16 295);
+		--sl-color-purple-high: oklch(0.4 0.14 295);
+		--sl-color-orange-low: oklch(0.95 0.045 70);
+		--sl-color-orange: oklch(0.7 0.13 60);
+		--sl-color-orange-high: oklch(0.42 0.1 55);
+		--sl-color-red-low: oklch(0.95 0.035 25);
+		--sl-color-red: oklch(0.58 0.18 25);
+		--sl-color-red-high: oklch(0.45 0.16 25);
+		--sl-color-green-low: oklch(0.95 0.04 150);
+		--sl-color-green: oklch(0.58 0.12 150);
+		--sl-color-green-high: oklch(0.4 0.09 150);
+	}
 }

@@ -1,30 +1,30 @@
 ---
-import { Image } from 'astro:assets';
-import { LinkButton } from '@astrojs/starlight/components';
-import DraftContentNotice from 'virtual:starlight/components/DraftContentNotice';
+import { Image } from "astro:assets";
+import { LinkButton } from "@astrojs/starlight/components";
+import DraftContentNotice from "virtual:starlight/components/DraftContentNotice";
 
 // Mirrors Starlight's stock Hero so it stays a drop-in replacement. The serif
 // title treatment and column layout come from base.css (`.hero`).
-const PAGE_TITLE_ID = '_top';
+const PAGE_TITLE_ID = "_top";
 
 const { data } = Astro.locals.starlightRoute.entry;
 const { title = data.title, tagline, image, actions = [] } = data.hero || {};
 
 const imageAttrs = {
-	loading: 'eager' as const,
-	decoding: 'async' as const,
+	loading: "eager" as const,
+	decoding: "async" as const,
 	width: 400,
 	height: 400,
-	alt: image?.alt || '',
+	alt: image?.alt || "",
 };
 
 let darkImage: ImageMetadata | undefined;
 let lightImage: ImageMetadata | undefined;
 let rawHtml: string | undefined;
 if (image) {
-	if ('file' in image) {
+	if ("file" in image) {
 		darkImage = image.file;
-	} else if ('dark' in image) {
+	} else if ("dark" in image) {
 		darkImage = image.dark;
 		lightImage = image.light;
 	} else {
