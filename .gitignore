@@ -3,6 +3,7 @@ dist/
 .astro/
 .vercel/
 .netlify/
+*.tgz
 
 # dependencies
 node_modules/

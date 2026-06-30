@@ -1,0 +1,58 @@
+name: Publish to NPM registry
+permissions: {}
+on:
+  release:
+    types:
+      - published
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      tarball: ${{ steps.pack.outputs.tarball }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 #v7.0.0
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 #v6.0.9
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --filter starlight-theme-exquisitus --frozen-lockfile --ignore-scripts
+      - run: pnpm version $TAG_NAME --no-git-tag-version --allow-same-version --filter starlight-theme-exquisitus
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+      - id: pack
+        run: |-
+          TARBALL=$(pnpm --filter starlight-theme-exquisitus pack | tail -n 1)
+          echo "tarball=$(basename "$TARBALL")" >> $GITHUB_OUTPUT
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
+        with:
+          name: tarball
+          path: ${{ steps.pack.outputs.tarball }}
+  publish:
+    needs:
+      - package
+    runs-on: ubuntu-latest
+    environment: publish
+    permissions:
+      id-token: write
+    env:
+      TARBALL: ${{ needs.package.outputs.tarball }}
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
+        with:
+          name: tarball
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 #v6.0.9
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
+        with:
+          node-version: 24
+          # No checkout/install in this job, so there is no lockfile to cache.
+          package-manager-cache: false
+      - run: pnpm publish --access public --tag next $TARBALL
+        if: github.event.release.prerelease
+      - run: pnpm publish --access public $TARBALL
+        if: "!github.event.release.prerelease"
