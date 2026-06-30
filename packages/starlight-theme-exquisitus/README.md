@@ -1,31 +1,25 @@
 # starlight-theme-exquisitus
 
-A [Starlight](https://starlight.astro.build/) documentation theme aiming for the pinnacle of readability and beauty.
-
-Exquisitus self-hosts three OFL typefaces, replaces Starlight's palette with a WCAG-AA [OKLCH](https://oklch.com/) system (light + dark), and refines the core chrome — header, sidebar, table of contents, search, cards, asides, code blocks, and the reading column.
-
-<!-- TODO: add a hero screenshot (light + dark) of the showcase site here. -->
+Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme that blends readability and beauty.
 
 ## Features
 
-- **Self-hosted type.** [Spectral](https://github.com/productiontype/Spectral) for prose, [Atkinson Hyperlegible Next](https://www.brailleinstitute.org/freefont/) for UI, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code — bundled via `@fontsource`, no external requests.
-- **WCAG-AA OKLCH palette.** A perceptually-uniform color system mapped onto Starlight's `--sl-color-*` contract, so built-in components inherit the theme automatically. Light and dark.
-- **Refined chrome.** Header, sidebar, TOC, search, cards, asides, and tabs restyled with a consistent depth and register language.
-- **Editorial code surface.** [Expressive Code](https://expressive-code.com/) theming with a letterpress code panel, caption-above frames, and accessible (WCAG 1.4.1) diff markers.
-- **Splash components.** A serif `Hero` treatment (drop-in override) and an exported `FeatureGrid` layout.
+- Self-hosted type: [Spectral](https://github.com/productiontype/Spectral) for prose, [Atkinson Hyperlegible Next](https://www.brailleinstitute.org/freefont/) for UI, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code, all bundled via `@fontsource`.
+- A perceptually-uniform WCAG-AA OKLCH color system mapped onto Starlight's `--sl-color-*` contract, so built-in components inherit the theme automatically.
+- Header, sidebar, TOC, search, cards, asides, and tabs restyled with a consistent depth and register language.
+- [Expressive Code](https://expressive-code.com/) theming with a letterpress code panel, caption-above frames, and accessible (WCAG 1.4.1) diff markers.
+- A serif `Hero` treatment (drop-in override) and an exported `FeatureGrid` layout.
 
 ## Installation
+
+1. In an existing Astro Starlight site, run this command:
 
 ```bash
 pnpm add starlight-theme-exquisitus
 # or: npm install / yarn add
 ```
 
-This is a Starlight plugin. It expects `@astrojs/starlight` and `astro` as peer dependencies (you already have them in a Starlight project).
-
-## Usage
-
-Add the plugin to your Starlight config:
+2. Add the plugin to your Starlight config:
 
 ```js
 // astro.config.mjs
@@ -43,9 +37,7 @@ export default defineConfig({
 });
 ```
 
-That's it. The plugin registers its component overrides, injects its stylesheets in the correct cascade order, and extends your Expressive Code config with the theme's code-surface colors and mono font — preserving anything you've already set.
-
-## Components
+## Added components
 
 ### `FeatureGrid`
 
@@ -69,17 +61,13 @@ import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro
 
 ### `Hero`
 
-The serif masthead treatment is applied automatically via a component override — no import needed. If you already override `Hero` yourself, your override wins (the plugin warns on the collision).
+The serif masthead treatment is applied automatically via a component override, no import needed. If you already override `Hero` yourself, your override wins (the plugin warns on the collision).
 
 ## Configuration notes
 
-- **Expressive Code.** The theme sets sensible defaults but merges over your existing `expressiveCode` config rather than replacing it. Set `expressiveCode: false` in your Starlight config to opt out entirely.
-- **Cascade layers, not `!important`.** All theme CSS lives in an `@layer exquisitus` that is declared after Starlight's, so it wins on order rather than specificity.
-
-## Fonts & licensing
-
-The theme is MIT-licensed. The bundled typefaces are licensed separately under the [SIL Open Font License](https://openfontlicense.org/): Spectral, Atkinson Hyperlegible Next, and JetBrains Mono. They are installed as `@fontsource` dependencies, each carrying its own license.
+- Expressive Code: the theme sets sensible defaults but merges over your existing `expressiveCode` config rather than replacing it. Set `expressiveCode: false` in your Starlight config to opt out entirely.
+- All theme CSS lives in an `@layer exquisitus` that is declared after Starlight's, so it wins on order rather than specificity.
 
 ## License
 
-[MIT](./LICENSE) © Anaxite
+The theme is MIT-licensed. Bundled typefaces are licensed separately under the [SIL Open Font License](https://openfontlicense.org/).
