@@ -6,9 +6,9 @@
   "type": "module",
   "description": "Monorepo for starlight-theme-exquisitus, a Starlight theme.",
   "scripts": {
-    "dev": "pnpm --filter docs dev",
-    "build": "pnpm --filter docs build",
-    "preview": "pnpm --filter docs preview",
+    "dev": "pnpm --filter starlight-theme-exquisitus-docs dev",
+    "build": "pnpm --filter starlight-theme-exquisitus-docs build",
+    "preview": "pnpm --filter starlight-theme-exquisitus-docs preview",
     "deploy": "pnpm dlx wrangler deploy",
     "lint": "pnpm -r lint"
   },
