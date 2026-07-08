@@ -51,12 +51,24 @@
 		); /* highest-contrast ink (headings) */
 		--sl-color-gray-1: oklch(0.9 0.012 85);
 		--sl-color-gray-2: oklch(0.82 0.014 85); /* body text */
-		--sl-color-gray-3: oklch(0.66 0.012 82); /* muted text */
+		/* Muted text (TOC, sidebar labels, captions). Lifted 0.66 → 0.70 so this
+		   small navigational chrome clears ~7:1 (AAA) rather than resting at the
+		   ~6:1 AA pass — it still sits clearly below body (0.82) and heading
+		   (0.94), so the muted < body < ink hierarchy holds. */
+		--sl-color-gray-3: oklch(0.7 0.012 82);
 		--sl-color-gray-4: oklch(0.52 0.01 82);
 		--sl-color-gray-5: oklch(0.38 0.008 80); /* hairlines */
 		--sl-color-gray-6: oklch(0.24 0.007 80); /* raised surface */
 		--sl-color-gray-7: oklch(0.205 0.006 80); /* subtle fills, zebra rows */
 		--sl-color-black: oklch(0.17 0.006 80); /* page background */
+
+		/* Raised surface for cards. On near-black a hairline alone vanishes
+		   (gray-5 border is only ~1.9:1 on the page), so dark cards take a
+		   tonal step up to gray-6 — the ramp's designated raised-surface tone —
+		   and read by their fill, not a ghost outline (Tonal-First Rule). Light
+		   mode keeps the white page: there a dark-enough border already
+		   separates the card, so no step is needed. */
+		--sl-exquisitus-surface-raised: var(--sl-color-gray-6);
 
 		/* Own the hairline explicitly. Starlight points --sl-color-hairline at
 		   gray-6 (its raised-surface tone), which on this near-black page reads as
@@ -129,6 +141,11 @@
 		--sl-color-gray-6: oklch(0.93 0.004 80); /* raised surface */
 		--sl-color-gray-7: oklch(0.965 0.003 80); /* subtle fills, zebra rows */
 		--sl-color-black: oklch(1 0 0); /* page background — pure white */
+
+		/* Raised surface — the white page. On white the gray-5 card border is
+		   dark enough to separate the card on its own, so light mode needs no
+		   tonal step (the dark-mode counterpart lifts to gray-6). */
+		--sl-exquisitus-surface-raised: var(--sl-color-bg);
 
 		/* Pin the hairline to gray-5 (see dark-mode note) so separators read on
 		   white rather than inheriting Starlight's near-invisible gray-6. */

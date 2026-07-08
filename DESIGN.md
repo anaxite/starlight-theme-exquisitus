@@ -192,7 +192,7 @@ Both the header and the mobile TOC are **opaque, never translucent**: a backdrop
 - **Letterpress edge** (`var(--sl-exquisitus-code-edge)`, at rest): the debossed inset on the technical register — a lit lip and recessed inner shadow, mode-aware.
 
 ### Named Rules
-**The Tonal-First Rule.** For the reading surface, reach for a tonal step before any shadow. Surfaces are distinguished by lightness, not by floating.
+**The Tonal-First Rule.** For the reading surface, reach for a tonal step before any shadow. Surfaces are distinguished by lightness, not by floating. This cuts differently per mode, because the page grounds differ. On the white page a hairline (`gray-5`) is dark enough to separate a card on its own, so a raised surface keeps the page color. On the near-black page that same hairline is only ~1.9:1 and a card at page color reads as a ghost box — so dark raised surfaces (cards, link cards) take a real tonal step up to `gray-6` (`--sl-exquisitus-surface-raised`) and read by their fill, not their outline. Muted chrome type follows the same conviction: dark `gray-3` is set to clear ~7:1 (AAA) so small navigational text — the TOC, sidebar labels — is comfortable, not merely above the AA floor the theme sells.
 
 **The Considered-Lift Rule.** No reading or chrome surface carries a shadow at rest. A *lift* is always a reply to hover, focus, or scroll — never decoration. If it looks like a 2014 app, the shadow is too dark and too tight.
 
