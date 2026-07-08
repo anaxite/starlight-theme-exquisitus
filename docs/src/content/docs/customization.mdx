@@ -28,6 +28,30 @@ export default defineConfig({
 
 Unlayered CSS automatically sits above any `@layer` block in the cascade, so it overrides the theme without specificity tricks.
 
+## Theme options
+
+The plugin takes an options object.
+
+### `endMark`
+
+Type: `boolean` — Default: `true`
+
+Renders the editorial end mark: a small centred terminal that closes each content page's prose, in the tradition of a printed article's end sign.
+It never appears on the splash, whose colophon already closes that page.
+Set it to `false` to omit the mark entirely.
+
+```diff lang="js"
+// astro.config.mjs
+export default defineConfig({
+  integrations: [
+    starlight({
+-     plugins: [starlightThemeExquisitus()],
++     plugins: [starlightThemeExquisitus({ endMark: false })],
+    }),
+  ],
+});
+```
+
 ## Cascade layers
 
 Exquisitus declares two cascade layers, in order:

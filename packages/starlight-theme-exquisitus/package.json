@@ -22,6 +22,7 @@
     "./styles/tokens": "./styles/tokens.css",
     "./styles/base": "./styles/base.css",
     "./styles/prose": "./styles/prose.css",
+    "./styles/end-mark": "./styles/end-mark.css",
     "./package.json": "./package.json"
   },
   "scripts": {

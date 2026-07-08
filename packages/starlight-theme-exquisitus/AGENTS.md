@@ -19,8 +19,10 @@ There is **no unit-test suite**. Verify changes visually: run the docs showcase 
 `index.ts` is the `StarlightPlugin` entrypoint. Its `config:setup` hook does three things, in this order:
 
 1. registers component overrides via `overrideComponents()` (`libs/starlight.ts`), which merges the theme's overrides and **warns when the user already overrides the same component** — user config always wins;
-2. injects the five stylesheets **in dependency order** — `layers.css` must load first because it declares the cascade order everything else relies on, then `fonts`, `tokens`, `base`, `prose`;
+2. injects the five stylesheets **in dependency order** — `layers.css` must load first because it declares the cascade order everything else relies on, then `fonts`, `tokens`, `base`, `prose` — plus `end-mark.css` last, gated on the `endMark` option (default `true`);
 3. extends the user's Expressive Code config with the theme's code-surface colors and mono font, preserving anything the user already set.
+
+The plugin takes a `StarlightThemeExquisitusOptions` object; today its only field is `endMark` (default `true`), which gates the optional end-mark stylesheet.
 
 ```
 index.ts                       # StarlightPlugin entrypoint — the config:setup hook above
@@ -33,6 +35,7 @@ styles/
   tokens.css   # OKLCH palette mapped onto Starlight's --sl-* contract (light + dark)
   base.css     # application chrome: header, sidebar, TOC, search, cards, asides, tabs, hero, FeatureGrid layouts
   prose.css    # the reading column: headings, links, code, blockquotes, tables
+  end-mark.css # optional editorial end mark (SVG-mask ::after on content pages); gated by the `endMark` option
 ```
 
 ## Engineering decisions an agent must respect

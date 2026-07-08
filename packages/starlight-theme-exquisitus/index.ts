@@ -2,6 +2,16 @@ import type { StarlightPlugin } from "@astrojs/starlight/types";
 
 import { overrideComponents } from "./libs/starlight";
 
+export interface StarlightThemeExquisitusOptions {
+  /**
+   * Render the editorial end mark — a small centred terminal that closes each
+   * content page's prose (never the splash). Set `false` to omit it.
+   *
+   * @default true
+   */
+  endMark?: boolean;
+}
+
 /**
  * Exquisitus — a Starlight theme where readability and beauty are the same
  * discipline. Self-hosts its three OFL typefaces, replaces Starlight's palette
@@ -14,7 +24,11 @@ import { overrideComponents } from "./libs/starlight";
  *   plugins: [starlightThemeExquisitus()],
  * })
  */
-export default function starlightThemeExquisitus(): StarlightPlugin {
+export default function starlightThemeExquisitus(
+  options: StarlightThemeExquisitusOptions = {},
+): StarlightPlugin {
+  const { endMark = true } = options;
+
   return {
     name: "starlight-theme-exquisitus",
     hooks: {
@@ -34,6 +48,10 @@ export default function starlightThemeExquisitus(): StarlightPlugin {
             "starlight-theme-exquisitus/styles/tokens",
             "starlight-theme-exquisitus/styles/base",
             "starlight-theme-exquisitus/styles/prose",
+            // Optional editorial end mark, on by default (see the option above).
+            ...(endMark
+              ? ["starlight-theme-exquisitus/styles/end-mark"]
+              : []),
           ],
           expressiveCode:
             config.expressiveCode === false

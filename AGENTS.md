@@ -37,6 +37,6 @@ docs/                                   # showcase / dogfooding site; consumes t
     └── src/content/docs/               # splash + showcase pages
 ```
 
-The theme is a Starlight **plugin**: its `config:setup` hook registers component overrides, injects five stylesheets in dependency order, and extends Expressive Code. `docs/` exists only to dogfood it — anything in `packages/starlight-theme-exquisitus/` ships to consumers, so changes there are user-facing.
+The theme is a Starlight **plugin**: its `config:setup` hook registers component overrides, injects five stylesheets in dependency order (plus an optional sixth, the end mark, on by default), and extends Expressive Code. `docs/` exists only to dogfood it — anything in `packages/starlight-theme-exquisitus/` ships to consumers, so changes there are user-facing.
 
 The package's entrypoint, stylesheet cascade, and the non-obvious constraints that break if you don't know them (cascade layers over `!important`, the Starlight custom-property contract, the component-override CSS gotcha, self-hosted fonts under pnpm, OKLCH as source of truth, and the steps to add an override) live in [`packages/starlight-theme-exquisitus/AGENTS.md`](packages/starlight-theme-exquisitus/AGENTS.md). **Read it before editing package code.**
