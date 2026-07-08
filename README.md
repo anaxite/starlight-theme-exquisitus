@@ -1,6 +1,6 @@
 # Exquisitus
 
-A [Starlight](https://starlight.astro.build/) documentation theme aiming for the pinnacle of readability and beauty.
+A [Starlight](https://starlight.astro.build/) documentation theme built on the conviction that readability and beauty are the same discipline.
 
 This is the monorepo. The published theme lives in
 [`packages/starlight-theme-exquisitus`](./packages/starlight-theme-exquisitus) —

@@ -3,9 +3,9 @@ import type { StarlightPlugin } from "@astrojs/starlight/types";
 import { overrideComponents } from "./libs/starlight";
 
 /**
- * Exquisitus — a Starlight theme tuned for the pinnacle of readability and
- * beauty. Self-hosts its three OFL typefaces, replaces Starlight's palette with
- * a WCAG-AA OKLCH system (light + dark), and refines the core chrome.
+ * Exquisitus — a Starlight theme where readability and beauty are the same
+ * discipline. Self-hosts its three OFL typefaces, replaces Starlight's palette
+ * with a WCAG-AA OKLCH system (light + dark), and refines the core chrome.
  *
  * @example
  * // astro.config.mjs

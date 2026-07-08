@@ -1,6 +1,6 @@
 ---
 name: Exquisitus
-description: An Astro Starlight theme at the pinnacle of readability and beauty.
+description: An Astro Starlight theme where readability and beauty are the same discipline.
 colors:
   # Brand — honey-amber (warmth / emphasis register). Authored in OKLCH:
   # this project has an OKLCH-only doctrine, so OKLCH is the source of truth
@@ -88,6 +88,11 @@ components:
   file-tree:
     backgroundColor: "{colors.surface-light}"
     rounded: "{rounded.md}"
+  specimen-plate:
+    rounded: "{rounded.md}"
+  doorway:
+    backgroundColor: "{colors.surface-light}"
+    rounded: "{rounded.xl}"
 ---
 
 # Design System: Exquisitus
@@ -171,7 +176,7 @@ All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard re
 Depth is never a decorative cast shadow. It is **depth-from-light**, and it always serves comprehension — distinguishing surfaces, signposting registers, rewarding interaction — never decoration. It moves in exactly **two directions**:
 
 - **Lift** — a surface rises *toward* the reader as a transient **response to state**: a card lifting 2px on hover, a button on hover, the sticky header separating from the content as it scrolls. Never at rest.
-- **Press (letterpress)** — a surface is debossed *into* the page as a **resting property of the technical register**: code blocks, terminals, and file trees carry a faint inset (a lit lip over a recessed inner shadow), the way a fine press presses type into paper. Quiet enough never to compete with the reading column; present enough to mark reference material as set with care.
+- **Press (letterpress)** — a surface is debossed *into* the page as a **resting property of the technical register**: code blocks, terminals, file trees, and the specimen plate carry a faint inset (a lit lip over a recessed inner shadow), the way a fine press presses type into paper. Quiet enough never to compete with the reading column; present enough to mark reference material as set with care.
 
 The reading surface itself stays flat. Prose, sidebar, and TOC carry no dividing panel; hierarchy and a single hairline do that work, and **tonal layering** — a surface nudged a step off the page — separates what little needs separating.
 
@@ -189,7 +194,7 @@ Both the header and the mobile TOC are **opaque, never translucent**: a backdrop
 
 **The Considered-Lift Rule.** No reading or chrome surface carries a shadow at rest. A *lift* is always a reply to hover, focus, or scroll — never decoration. If it looks like a 2014 app, the shadow is too dark and too tight.
 
-**The Letterpress Rule.** The technical register — code blocks, terminals, file trees, and future reference surfaces — carries a debossed inset (`--sl-exquisitus-code-edge`) *at rest*. This is not an exception to flatness; it is the register's signature, the **depth axis** twinned with petrol-teal (color) and monospace (type). It only ever presses *in*, never floats *out*; it stays quiet enough to keep the reading column sovereign; and it is reserved for the information register — prose, cards, asides, and chrome never carry it.
+**The Letterpress Rule.** The technical register — code blocks, terminals, file trees, the specimen plate, and future reference surfaces — carries a debossed inset (`--sl-exquisitus-code-edge`) *at rest*. This is not an exception to flatness; it is the register's signature, the **depth axis** twinned with petrol-teal (color) and monospace (type). It only ever presses *in*, never floats *out*; it stays quiet enough to keep the reading column sovereign; and it is reserved for the information register — prose, cards, asides, and chrome never carry it.
 
 **The No-Blur Rule.** Sticky surfaces are opaque. No `backdrop-filter` glass on the header, TOC, or dialogs.
 
@@ -249,6 +254,18 @@ The theme's own splash layout and the deliberate alternative to the identical ca
 
 Both collapse to a single column below 50rem. Layout rules are authored globally in `base.css` (not scoped on the component) because slotted cards carry no scope hash — child-targeting selectors must reach them directly.
 
+### Splash Page (Signature Surface)
+The splash is the theme's **title spread** — the cover of the book, composed of four moves in order:
+
+- **Specimen Plate** (`SpecimenPlate.astro`, hero): the theme's typographic identity as its own hero object — a Spectral glyph board (`Aa Gg Qq &`), the thesis line in Spectral italic, the four working inks as labeled swatches (honey / petrol / ink / paper, each named with its *job*), and a mono folio caption. It fills the hero's image column so the splash never ships a void or a mascot. Surface: a `gray-6`-hairlined, `gray-7`-filled panel at `{rounded.md}` — the tonal step keeps it from ghosting on near-black — **letterpressed at rest** as a sanctioned member of the reference register (a type specimen is literally what a letterpress prints). Never interactive: it settles into the page once on load (opacity + press, `ease-out-quint`, erased under reduced motion) and does not respond to hover. Declaratively placed via `hero.image.html: <exquisitus-specimen />`, which the Hero override swaps for the component; heroes with a real image keep their image and today's column split.
+- **Install strip**: a single copyable install command in the letterpressed code panel, directly under the hero — the time-to-try is one glance, and the strip doubles as the first live component proof.
+- **Doorway cards** (`.exquisitus-doorways`): three equal thirds, each a link into a showcase page carrying a live **taste** of what's behind it — a Spectral italic specimen line, a micro note-aside, a 3:2/2:3 zigzag miniature — over a serif title. Navigation and proof in one object; the interiors differ by design, which is what keeps them off the identical-card-grid list. They behave as cards: flat at rest, warmed border + 2px lift on hover.
+- **Colophon** (`.exquisitus-colophon`): the page ends the way a fine book does — a short centred rule, a Spectral italic line naming the three faces, and a mono line of quiet facts (`self-hosted · ofl-licensed · wcag 2.2 aa`).
+
+**The Splash Measure Rule.** Starlight widens `--sl-content-width` to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal `42rem` centred column; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.
+
+**The Plate Ink Exception.** The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.
+
 ## 6. Do's and Don'ts
 
 ### Do:
@@ -260,6 +277,8 @@ Both collapse to a single column below 50rem. Layout rules are authored globally
 - **Do** letterpress the technical register (code blocks, terminals, file trees) at rest with `--sl-exquisitus-code-edge` — pressed *in*, never floated — as the depth axis of the information register, twinned with petrol-teal and monospace.
 - **Do** treat light and dark as equally first-class, both hitting WCAG 2.2 AA.
 - **Do** author all theme CSS in the `exquisitus` cascade layer and honor `prefers-reduced-motion` on every transition.
+- **Do** fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.
+- **Do** hold splash prose and code to the `42rem` centred measure (the Splash Measure Rule); only figures span the wide splash container.
 
 ### Don't:
 - **Don't** ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.
@@ -273,4 +292,5 @@ Both collapse to a single column below 50rem. Layout rules are authored globally
 - **Don't** shrink the body type to fit more on screen. The Generous Body Rule wins.
 - **Don't** letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.
 - **Don't** float the technical register on an outward / cast shadow — it presses *in*, never lifts *out*.
+- **Don't** make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.
 - **Don't** reach for `!important`; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).

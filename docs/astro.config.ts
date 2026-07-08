@@ -7,7 +7,7 @@ export default defineConfig({
 		starlight({
 			title: 'Exquisitus',
 			description:
-				'A Starlight documentation theme at the pinnacle of readability and beauty.',
+				'A Starlight documentation theme where readability and beauty are the same discipline.',
 			plugins: [starlightThemeExquisitus()],
 			social: [
 				{

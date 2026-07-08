@@ -12,7 +12,7 @@ Secondary: Developers who maintain OSS or product documentation and want their d
 
 ## Product Purpose
 
-An Astro Starlight theme that achieves the pinnacle of readability and beauty.
+An Astro Starlight theme where readability and beauty are the same discipline.
 
 Exquisitus is built on a simple conviction: that excellent documentation requires both rigorous legibility and genuine aesthetic ambition — and that these are not competing goals. It proves the case by example. Every page is a demonstration that craft and clarity are the same thing at different scales.
 
