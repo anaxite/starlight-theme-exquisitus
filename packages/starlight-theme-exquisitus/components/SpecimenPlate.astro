@@ -1,0 +1,47 @@
+---
+/**
+ * SpecimenPlate — the theme's typographic identity as a hero object.
+ *
+ * A type-specimen plate in the letterpress tradition: a Spectral glyph board,
+ * the working inks as labeled swatches, and a mono folio line, pressed into
+ * the page with the same edge the code blocks carry. Intended for a splash
+ * hero, where it fills the image column with the theme's own material instead
+ * of a mascot.
+ *
+ * Styling lives in `styles/base.css` (`.exquisitus-specimen`) so the plate is
+ * authored in the `exquisitus` cascade layer like the rest of the chrome and
+ * consumers can retune it from their own CSS. The markup here is inert: no
+ * props, no slots.
+ *
+ * @example Directly, anywhere on a page:
+ *   import SpecimenPlate from 'starlight-theme-exquisitus/components/SpecimenPlate.astro';
+ *   <SpecimenPlate />
+ *
+ * @example As a splash hero image, without an import — the theme's Hero
+ * override swaps the placeholder element for this component:
+ *   hero:
+ *     image:
+ *       html: <exquisitus-specimen />
+ */
+---
+
+<figure class="exquisitus-specimen">
+	<div class="exquisitus-specimen-glyphs" aria-hidden="true">
+		<span>Aa</span>
+		<span class="italic">Gg</span>
+		<span>Qq</span>
+		<span class="italic">&amp;</span>
+	</div>
+	<p class="exquisitus-specimen-motto">Legibility <em>is</em> beauty.</p>
+	<ul class="exquisitus-specimen-inks" role="list">
+		<li><span class="ink ink-honey"></span>honey<small>emphasis</small></li>
+		<li>
+			<span class="ink ink-petrol"></span>petrol<small>information</small>
+		</li>
+		<li><span class="ink ink-ink"></span>ink<small>text</small></li>
+		<li><span class="ink ink-paper"></span>paper<small>surface</small></li>
+	</ul>
+	<figcaption class="exquisitus-specimen-folio">
+		specimen · oklch · wcag 2.2 aa
+	</figcaption>
+</figure>

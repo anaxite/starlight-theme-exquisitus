@@ -562,6 +562,309 @@
 		}
 	}
 
+	/* ────────────────────── Specimen plate (hero) ───────────────────── */
+	/* The theme's typographic identity as its own hero object: a Spectral
+	   glyph board, the working inks as labeled swatches, a mono folio. A type
+	   specimen is literally what a letterpress prints, so the plate carries
+	   the resting press (`--sl-exquisitus-code-edge`) as a sanctioned member
+	   of the reference register — pressed in, never lifted, never interactive.
+	   The gray-7 fill is the tonal step that keeps it from reading as a ghost
+	   box on the near-black page. */
+	.exquisitus-specimen {
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+		width: 100%;
+		margin: 0;
+		padding: clamp(1.25rem, 3vw, 1.75rem);
+		background-color: var(--sl-color-gray-7);
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.5rem;
+		box-shadow: var(--sl-exquisitus-code-edge);
+	}
+
+	.exquisitus-specimen-glyphs {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		font-family: var(--sl-exquisitus-font-serif);
+		font-weight: 600;
+		font-size: clamp(2.75rem, 2rem + 2vw, 3.5rem);
+		line-height: 1;
+		color: var(--sl-color-white);
+	}
+
+	.exquisitus-specimen-glyphs .italic {
+		font-style: italic;
+		font-weight: 500;
+	}
+
+	.exquisitus-specimen-motto {
+		margin: 0;
+		font-family: var(--sl-exquisitus-font-serif);
+		font-style: italic;
+		font-size: var(--sl-text-lg);
+		line-height: 1.4;
+		color: var(--sl-color-gray-2);
+	}
+
+	.exquisitus-specimen-motto em {
+		color: var(--sl-color-text-accent);
+	}
+
+	.exquisitus-specimen-inks {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+		gap: 0.6rem 1rem;
+		margin: 0;
+		padding: 1rem 0 0;
+		border-top: 1px solid var(--sl-color-hairline);
+		list-style: none;
+	}
+
+	.exquisitus-specimen-inks li {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-family: var(--sl-font-mono);
+		font-size: 0.8125rem;
+		line-height: 1.3;
+		color: var(--sl-color-gray-2);
+	}
+
+	.exquisitus-specimen-inks small {
+		margin-inline-start: auto;
+		font-size: 0.6875rem;
+		color: var(--sl-color-gray-3);
+	}
+
+	.exquisitus-specimen-inks .ink {
+		flex: none;
+		width: 1rem;
+		height: 1rem;
+		border: 1px solid
+			color-mix(in oklab, var(--sl-color-white) 18%, transparent);
+		border-radius: 0.25rem;
+	}
+
+	/* The one surface where both brand inks appear together at rest — the
+	   splash-scoped sibling of the Splash Tint Exception. Honey shows at full
+	   strength (it is a fill, per the Deepened-Accent Rule). */
+	.exquisitus-specimen-inks .ink-honey {
+		background-color: var(--sl-exquisitus-cta);
+	}
+
+	.exquisitus-specimen-inks .ink-petrol {
+		background-color: var(--sl-exquisitus-cool);
+	}
+
+	.exquisitus-specimen-inks .ink-ink {
+		background-color: var(--sl-color-white);
+	}
+
+	.exquisitus-specimen-inks .ink-paper {
+		background-color: var(--sl-color-black);
+		border-color: var(--sl-color-hairline);
+	}
+
+	.exquisitus-specimen-folio {
+		font-family: var(--sl-font-mono);
+		font-size: 0.75rem;
+		letter-spacing: 0.04em;
+		color: var(--sl-color-gray-3);
+	}
+
+	/* In the hero, the plate earns more width than a mascot image would
+	   (scoped with :has so image heroes keep today's sizing). */
+	.hero > .hero-html:has(> .exquisitus-specimen) {
+		width: min(100%, 24rem);
+	}
+
+	@media (min-width: 50rem) {
+		.hero:has(.exquisitus-specimen) {
+			--sl-exquisitus-hero-columns: 1.6fr 1fr;
+		}
+
+		.hero > .hero-html:has(> .exquisitus-specimen) {
+			width: min(100%, 26rem);
+		}
+	}
+
+	/* The plate settles into the page once, after the copy has risen: it
+	   fades in as the letterpress edge presses it down. Never on hover — a
+	   printed object does not perform. */
+	@media (prefers-reduced-motion: no-preference) {
+		.hero .exquisitus-specimen {
+			animation: exquisitus-press 0.6s var(--sl-exquisitus-ease) 0.25s both;
+		}
+	}
+
+	@keyframes exquisitus-press {
+		from {
+			opacity: 0;
+			transform: translateY(-0.35rem);
+			box-shadow: none;
+		}
+	}
+
+	/* ───────────────────── Splash reading measure ────────────────────── */
+	/* The 65–75ch Rule does not stop applying because the sidebar is gone:
+	   on splash pages, prose and code hold the reading measure as a centred
+	   column while figures (grids, doorways, the plate) may span wide. The
+	   value is literal because Starlight widens --sl-content-width to
+	   67.5rem on splash templates. */
+	[data-has-hero]
+		.sl-markdown-content
+		> :where(p, .sl-heading-wrapper, ul, ol, blockquote, .expressive-code) {
+		max-width: 42rem;
+		margin-inline: auto;
+	}
+
+	/* ───────────────────────── Doorway cards ────────────────────────── */
+	/* Splash navigation into the showcase: each doorway holds a *taste* of
+	   the page behind it — a live specimen, not an icon — over a serif title.
+	   Navigation and proof in one object; three genuinely different interiors
+	   instead of an identical card grid. */
+	.exquisitus-doorways {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	@media (min-width: 50rem) {
+		.exquisitus-doorways {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.exquisitus-doorways .doorway {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1.25rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.75rem;
+		background-color: var(--sl-color-bg);
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+		transition:
+			border-color 0.2s var(--sl-exquisitus-ease),
+			box-shadow 0.2s var(--sl-exquisitus-ease),
+			transform 0.2s var(--sl-exquisitus-ease);
+	}
+
+	@media (hover: hover) {
+		.exquisitus-doorways .doorway:hover {
+			border-color: color-mix(
+				in oklab,
+				var(--sl-color-accent) 60%,
+				var(--sl-color-gray-5)
+			);
+			box-shadow: var(--sl-shadow-sm);
+			transform: translateY(-2px);
+		}
+	}
+
+	.exquisitus-doorways .taste {
+		display: flex;
+		align-items: center;
+		min-height: 4rem;
+		margin: 0;
+	}
+
+	.exquisitus-doorways .title {
+		font-family: var(--sl-exquisitus-font-serif);
+		font-size: var(--sl-text-lg);
+		font-weight: 600;
+		line-height: var(--sl-line-height-headings);
+		color: var(--sl-color-white);
+	}
+
+	.exquisitus-doorways .desc {
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+
+	/* Taste 1 — typography: a Spectral italic specimen line. */
+	.exquisitus-doorways .taste-type {
+		font-family: var(--sl-exquisitus-font-serif);
+		font-style: italic;
+		font-size: var(--sl-text-xl);
+		color: var(--sl-color-white);
+	}
+
+	/* Taste 2 — components: a micro "note" aside in the information register. */
+	.exquisitus-doorways .taste-aside span {
+		padding: 0.45rem 0.75rem;
+		border: 1px solid color-mix(in oklab, var(--sl-color-blue) 45%, transparent);
+		border-radius: 0.5rem;
+		background-color: color-mix(
+			in oklab,
+			var(--sl-color-blue) 12%,
+			transparent
+		);
+		font-family: var(--sl-font-mono);
+		font-size: 0.8125rem;
+		color: var(--sl-color-blue-high);
+	}
+
+	/* Taste 3 — feature grid: the alternating 3:2 / 2:3 zigzag in miniature. */
+	.exquisitus-doorways .taste-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.3rem;
+		width: 100%;
+	}
+
+	.exquisitus-doorways .taste-grid i {
+		height: 1.15rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.25rem;
+		background-color: var(--sl-color-gray-6);
+	}
+
+	.exquisitus-doorways .taste-grid i:nth-child(4n + 1),
+	.exquisitus-doorways .taste-grid i:nth-child(4n) {
+		grid-column: span 3;
+	}
+
+	.exquisitus-doorways .taste-grid i:nth-child(4n + 2),
+	.exquisitus-doorways .taste-grid i:nth-child(4n + 3) {
+		grid-column: span 2;
+	}
+
+	/* ───────────────────────────── Colophon ─────────────────────────── */
+	/* The splash ends the way a fine book does: a short centred rule, a
+	   serif line naming the faces, a mono line of quiet facts. */
+	.exquisitus-colophon {
+		margin-top: clamp(3rem, 8vw, 5rem);
+		text-align: center;
+	}
+
+	.exquisitus-colophon::before {
+		content: "";
+		display: block;
+		width: 4rem;
+		margin: 0 auto 1.5rem;
+		border-top: 1px solid var(--sl-color-hairline);
+	}
+
+	.exquisitus-colophon .set {
+		margin: 0 auto;
+		font-family: var(--sl-exquisitus-font-serif);
+		font-style: italic;
+		color: var(--sl-color-gray-2);
+	}
+
+	.exquisitus-colophon .meta {
+		margin: 0.5rem auto 0;
+		font-family: var(--sl-font-mono);
+		font-size: 0.8125rem;
+		letter-spacing: 0.02em;
+		color: var(--sl-color-gray-3);
+	}
+
 	/* ─────────────────────── Code blocks (Expressive Code) ──────────── */
 	/* EC ships its CSS in @layer starlight.components, so these exquisitus-
 	   layer rules win without !important. The IDE-tab metaphor is dropped:

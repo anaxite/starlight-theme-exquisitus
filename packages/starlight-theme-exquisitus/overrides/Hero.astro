@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { LinkButton } from "@astrojs/starlight/components";
 import DraftContentNotice from "virtual:starlight/components/DraftContentNotice";
+import SpecimenPlate from "../components/SpecimenPlate.astro";
 
 // Mirrors Starlight's stock Hero so it stays a drop-in replacement. The serif
 // title treatment and column layout come from base.css (`.hero`).
@@ -31,6 +32,12 @@ if (image) {
 		rawHtml = image.html;
 	}
 }
+
+// `hero.image.html: <exquisitus-specimen />` is the declarative way to put the
+// theme's SpecimenPlate in the hero without an MDX import — the placeholder
+// element is swapped for the real component here.
+const isSpecimen =
+	rawHtml !== undefined && /^<exquisitus-specimen\s*\/?>$/.test(rawHtml.trim());
 ---
 
 <div class="hero">
@@ -44,7 +51,15 @@ if (image) {
 		)
 	}
 	{lightImage && <Image src={lightImage} {...imageAttrs} class="dark:sl-hidden" />}
-	{rawHtml && <div class="hero-html sl-flex" set:html={rawHtml} />}
+	{
+		isSpecimen ? (
+			<div class="hero-html sl-flex">
+				<SpecimenPlate />
+			</div>
+		) : (
+			rawHtml && <div class="hero-html sl-flex" set:html={rawHtml} />
+		)
+	}
 	<div class="sl-flex stack">
 		<div class="sl-flex copy">
 			<h1 id={PAGE_TITLE_ID} data-page-title set:html={title} />
