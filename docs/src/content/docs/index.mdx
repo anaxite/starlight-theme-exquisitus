@@ -1,9 +1,11 @@
 ---
 title: Exquisitus
-description: A Starlight documentation theme at the pinnacle of readability and beauty.
+description: A Starlight documentation theme where readability and beauty are the same discipline.
 template: splash
 hero:
   tagline: A documentation theme that treats prose like print. Engineered legibility and editorial serif meet a disciplined honey-and-teal palette. Accessible by conviction, not by afterthought.
+  image:
+    html: <exquisitus-specimen />
   actions:
     - text: Get started
       link: /getting-started/
@@ -15,8 +17,9 @@ hero:
       variant: minimal
 ---
 
-import { Card } from '@astrojs/starlight/components';
-import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
+```sh
+pnpm add starlight-theme-exquisitus
+```
 
 ## A theme built around the sentence
 
@@ -24,24 +27,34 @@ A lot of documentation is skimmed.
 Why not make it more pleasant to read?
 Exquisitus is composed for the long read: a hyperlegible body face, a serif that gives headings the cadence of a printed page, and a measure held to a comfortable line length so your eyes never lose their place.
 
-{/* A wide lead card carries the thesis; three supporting cards auto-fit the
-    row beneath it, as opposed to a uniform 2×2. The cards stay Starlight's, so each
-    icon keeps its cycling tint (the Splash Tint Exception in DESIGN.md). */}
-<FeatureGrid layout="lead">
-    <Card title="Legible by design" icon="open-book">
-        Body text is set in *Atkinson Hyperlegible Next*, a typeface engineered by the
-        Braille Institute to keep letterforms distinct at every size.
-    </Card>
-    <Card title="Editorial structure" icon="document">
-        Headings shift to *Spectral*, a screen-first serif. Documents read with the
-        rhythm of print while the sans-serif body stays crisp.
-    </Card>
-    <Card title="Color with intent" icon="seti:css">
-        A warm honey-amber and a calm petrol-teal each do one job. Everything else is ink,
-        paper, and breathing room. It gets verified to WCAG&nbsp;2.2&nbsp;AA.
-    </Card>
-    <Card title="Yours to host" icon="rocket">
-        All three faces are OFL-licensed and self-hosted. No third-party font request, no
-        flash of unstyled text, no surprise dependency.
-    </Card>
-</FeatureGrid>
+## See for yourself
+
+The showcase pages are plain Markdown rendered by the theme — what your documentation would look like, not a mock-up of it.
+
+{/* Doorway cards: navigation into the showcase with a live taste of each
+    page inside — a specimen, not an icon. Styled by base.css
+    (`.exquisitus-doorways`); markup stays plain HTML so the splash needs no
+    extra components. */}
+
+<div class="exquisitus-doorways">
+  <a class="doorway" href="/showcase/typography/">
+    <p class="taste taste-type">Legibility is beauty.</p>
+    <span class="title">Typography</span>
+    <span class="desc">The reading room: prose, quotations, lists, and tables at a held measure.</span>
+  </a>
+  <a class="doorway" href="/showcase/components/">
+    <p class="taste taste-aside"><span>note — set apart, not shouted</span></p>
+    <span class="title">Components</span>
+    <span class="desc">Every Starlight built-in, refined: asides, tabs, code, file trees — honey and teal each doing one job.</span>
+  </a>
+  <a class="doorway" href="/showcase/feature-grid/">
+    <p class="taste taste-grid"><i></i><i></i><i></i><i></i></p>
+    <span class="title">Feature grid</span>
+    <span class="desc">An editorial alternative to the uniform card grid, in two arrangements.</span>
+  </a>
+</div>
+
+<div class="exquisitus-colophon">
+  <p class="set">Set in Spectral, Atkinson Hyperlegible Next &amp; JetBrains Mono.</p>
+  <p class="meta">self-hosted · ofl-licensed · wcag 2.2 aa</p>
+</div>

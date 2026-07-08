@@ -71,7 +71,19 @@ reflow-mode = "sentence-per-line"
 # headings = true  # Include headings in line length check
 
 [MD033]
-allowed-elements = ["br", "hr", "details", "summary"]
+allowed-elements = [
+    "br",
+    "hr",
+    "details",
+    "summary",
+    # Splash-page markup (doorway cards, colophon, specimen-plate placeholder)
+    "div",
+    "a",
+    "p",
+    "span",
+    "i",
+    "exquisitus-specimen",
+]
 
 # [MD044]
 # names = ["rumdl", "Markdown", "GitHub"]  # Proper names that should be capitalized correctly
