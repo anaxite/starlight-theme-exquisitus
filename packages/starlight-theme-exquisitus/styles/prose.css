@@ -54,6 +54,41 @@
 		text-decoration-color: currentColor;
 	}
 
+	/* ──────────────────────── Heading permalinks ────────────────────── */
+	/* Starlight renders these as content links, so the rule above paints them
+	   in the accent and underlines them — turning a permalink affordance into
+	   emphasis on every heading hover, which spends the honey where it means
+	   nothing (DESIGN.md: accent rarity is the point). Render the icon as quiet
+	   muted ink instead, and warm it to the accent only when the reader targets
+	   it directly — the one instant the colour carries intent. */
+	.sl-markdown-content .sl-anchor-link {
+		color: var(--sl-color-gray-3);
+		text-decoration: none;
+	}
+
+	.sl-markdown-content .sl-anchor-link:hover,
+	.sl-markdown-content .sl-anchor-link:focus {
+		color: var(--sl-color-text-accent);
+	}
+
+	/* Where the icon is hover-revealed (pointer devices), let it settle in from
+	   the heading rather than snapping — an editorial arrival, not a pop. Gated
+	   on reduced-motion; the accent warming above still applies without it. */
+	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+		.sl-markdown-content .sl-anchor-link {
+			transform: translateX(-0.15em);
+			transition:
+				opacity 0.16s var(--sl-exquisitus-ease),
+				transform 0.16s var(--sl-exquisitus-ease),
+				color 0.15s var(--sl-exquisitus-ease);
+		}
+
+		.sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link,
+		.sl-markdown-content .sl-anchor-link:focus {
+			transform: translateX(0);
+		}
+	}
+
 	/* ──────────────────────────── <mark> ────────────────────────────── */
 	.sl-markdown-content mark:not(:where(.not-content *)) {
 		background-color: color-mix(

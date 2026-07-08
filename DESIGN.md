@@ -138,6 +138,8 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 ### Named Rules
 **The Sovereign Column Rule.** Color never enters the body reading column except as a link or an inline `<mark>`. Prose is ink on surface — full stop. All brand color lives in the chrome, the accents, and the semantic markers around the text.
 
+**The Quiet Permalink Rule.** Heading permalink anchors are chrome, not emphasis. Starlight renders them as content links, so left untouched they inherit the accent and an underline and paint the honey on every heading hover — spending the accent where it means nothing. Render the icon in muted ink (`--sl-color-gray-3`) at rest, no underline, and warm it to the accent only on direct `:hover`/`:focus` of the anchor itself — the one instant the color carries intent. Where the icon is hover-revealed it settles in from the heading rather than snapping (a short `translateX`, gated on `hover: hover` and `prefers-reduced-motion`). Keep the chain-link glyph; a permalink trades recognisability for cleverness the moment it becomes a §.
+
 **The Two-Job Rule.** Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job. A full palette earns its richness through discipline, not abundance.
 
 **The No-Cream Rule.** The light-mode surface is pure white (`oklch(1 0 0)`); the dark surface is near-black (`oklch(0.17 0.006 80)`). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. Forbidden token names: `--cream`, `--sand`, `--paper`, `--parchment`.
