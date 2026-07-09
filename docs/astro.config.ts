@@ -8,7 +8,8 @@ export default defineConfig({
 			title: 'Exquisitus',
 			description:
 				'A Starlight documentation theme where readability and beauty are the same discipline.',
-			plugins: [starlightThemeExquisitus()],
+      plugins: [starlightThemeExquisitus()],
+      favicon: '/favicon.svg',
 			social: [
 				{
 					href: 'https://github.com/anaxite/starlight-theme-exquisitus',

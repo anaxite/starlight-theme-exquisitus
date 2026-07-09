@@ -1,6 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Exquisitus">
-  <rect width="32" height="32" rx="7" fill="#2b2620" />
-  <text x="50%" y="51%" dominant-baseline="central" text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif" font-size="21" font-weight="600"
-        fill="#e0a85a">E</text>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><g><rect width="512" height="512" stroke-linecap="square" stroke-width="25"/><rect x="25" y="25" width="462" height="462" rx="10" ry="10" fill="#fff"/><rect x="56" y="56" width="400" height="400" rx="9.71" ry="9.71"/></g><path d="m111 423v-8.08l42.9-20.7v-276l-42.9-20.7v-8.08h275v87.3h-8.08l-37.4-59.6h-111v120h77.7l28.3-43.4h8.08v114h-8.08l-28.3-42.4h-77.7v130h123l39.4-75.2h8.08v103z" fill="#fffdfd" stroke-linecap="square" stroke-width="149" aria-label="E"/></svg>
