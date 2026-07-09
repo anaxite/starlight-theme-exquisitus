@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-28T00:00:00Z",
+  "generatedAt": "2026-07-09T00:00:00Z",
   "title": "Design System: Exquisitus",
   "extensions": {
     "colorMeta": {
@@ -264,8 +264,8 @@
         "hex": "#39352F"
       },
       "muted-dark": {
-        "oklch": "oklch(0.66 0.012 82)",
-        "hex": "#96928A"
+        "oklch": "oklch(0.7 0.012 82)",
+        "hex": "#A29E96"
       },
       "muted-light": {
         "oklch": "oklch(0.45 0.01 80)",
@@ -286,6 +286,10 @@
       "surface-light": {
         "oklch": "oklch(1 0 0)",
         "hex": "#FFFFFF"
+      },
+      "surface-raised-dark": {
+        "oklch": "oklch(0.24 0.007 80)",
+        "hex": "#211F1C"
       },
       "code-surface-dark": {
         "oklch": "oklch(0.205 0.012 245)",
@@ -369,6 +373,14 @@
       "description": "An open hairline figure on the page surface, letterpressed at rest (which sets it apart from a flat card); petrol-teal marks structure, neutral icons mark files.",
       "html": "<div class=\"ds-filetree\"><div class=\"ds-ft-row ds-ft-dir\">▾ src</div><div class=\"ds-ft-row ds-ft-indent ds-ft-file\">index.mdx</div></div>",
       "css": ".ds-filetree { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent); padding: 1rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; } .ds-ft-row { padding: 0.125rem 0; } .ds-ft-dir { color: oklch(0.44 0.09 205); font-weight: 500; } .ds-ft-indent { padding-inline-start: 1.5rem; margin-inline-start: 0.5rem; border-inline-start: 1px solid color-mix(in oklab, oklch(0.44 0.09 205) 22%, oklch(0.8 0.005 80)); } .ds-ft-file { color: oklch(0.33 0.012 80); }"
+    },
+    {
+      "name": "End Mark",
+      "kind": "custom",
+      "refersTo": "end-mark",
+      "description": "The editorial terminal: a muted-ink jewel flanked by two hairlines, closing each content page's prose. SVG-mask, never a glyph; gated by the endMark plugin option (default on).",
+      "html": "<div class=\"ds-end-mark\" role=\"presentation\"></div>",
+      "css": ".ds-end-mark { width: 9rem; aspect-ratio: 160 / 24; margin: 1.5rem auto; background-color: oklch(0.45 0.01 80); -webkit-mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E\") center / contain no-repeat; mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E\") center / contain no-repeat; }"
     }
   ],
   "narrative": {
@@ -386,6 +398,16 @@
       {
         "name": "The Sovereign Column Rule",
         "body": "Color never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface — full stop.",
+        "section": "colors"
+      },
+      {
+        "name": "The Quiet Permalink Rule",
+        "body": "Heading permalink anchors are chrome, not emphasis. Render the icon in muted ink at rest, no underline, warming to the accent only on direct hover/focus of the anchor itself — the one instant the color carries intent. Where hover-revealed it settles in from the heading (a short translateX, gated on hover:hover and prefers-reduced-motion). Keep the chain-link glyph; a permalink trades recognisability for cleverness the moment it becomes a §.",
+        "section": "colors"
+      },
+      {
+        "name": "The End Mark Rule",
+        "body": "Every content page closes with a single editorial end mark — a small centred jewel flanked by two hairlines, the short centred hr evolved into a signed ending. It earns its place by doing a job (marking the end of the text): a mark that only decorates violates the Sovereign Column Rule; a mark that signs an ending is editorial heritage. Once per page, muted ink, never on the splash (whose colophon already closes it), drawn as an SVG mask because none of the three faces carries a fleuron. Gated by the endMark plugin option; ships on.",
         "section": "colors"
       },
       {
@@ -425,7 +447,7 @@
       },
       {
         "name": "The Tonal-First Rule",
-        "body": "Reach for a tonal step before a shadow. Surfaces are distinguished by lightness, not by floating.",
+        "body": "Reach for a tonal step before a shadow. Surfaces are distinguished by lightness, not by floating. This cuts differently per mode: on white a hairline is dark enough to separate a card, so raised surfaces keep the page color; on near-black that hairline is ~1.9:1 and a page-colored card reads as a ghost box — dark raised surfaces take a real tonal step to gray-6 (--sl-exquisitus-surface-raised) and read by their fill, not their outline. Dark muted chrome type follows the same conviction, lifted to ~7:1 (AAA).",
         "section": "elevation"
       },
       {
@@ -442,6 +464,16 @@
         "name": "The No-Blur Rule",
         "body": "Sticky surfaces are opaque. No backdrop-filter glass on the header, TOC, or dialogs.",
         "section": "elevation"
+      },
+      {
+        "name": "The Splash Measure Rule",
+        "body": "Starlight widens --sl-content-width to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal 42rem centred column; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.",
+        "section": "components"
+      },
+      {
+        "name": "The Plate Ink Exception",
+        "body": "The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.",
+        "section": "components"
       }
     ],
     "dos": [
@@ -452,7 +484,9 @@
       "Do keep the reading and chrome surfaces flat at rest, separated by a single hairline and tonal steps; a lift is only ever a response to hover, focus, or scroll.",
       "Do letterpress the technical register (code blocks, terminals, file trees) at rest with --sl-exquisitus-code-edge — pressed in, never floated — as the depth axis of the information register, twinned with petrol-teal and monospace.",
       "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
-      "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition."
+      "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition.",
+      "Do fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.",
+      "Do hold splash prose and code to the 42rem centred measure (the Splash Measure Rule); only figures span the wide splash container."
     ],
     "donts": [
       "Don't ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.",
@@ -466,7 +500,8 @@
       "Don't shrink the body type to fit more on screen. The Generous Body Rule wins.",
       "Don't letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.",
       "Don't float the technical register on an outward / cast shadow — it presses in, never lifts out.",
-      "Don't reach for !important; the cascade layer order makes it unnecessary."
+      "Don't make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.",
+      "Don't reach for !important; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset)."
     ]
   }
 }

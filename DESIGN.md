@@ -17,12 +17,16 @@ colors:
   ink-light: "oklch(0.22 0.015 80)"       # headings on white
   body-dark: "oklch(0.82 0.014 85)"       # body text, dark mode
   body-light: "oklch(0.33 0.012 80)"      # body text, light mode
-  muted-dark: "oklch(0.66 0.012 82)"      # captions / metadata, dark
+  muted-dark: "oklch(0.7 0.012 82)"       # captions / metadata, dark (lifted to ~7:1 AAA)
   muted-light: "oklch(0.45 0.01 80)"      # captions / metadata, light
   hairline-dark: "oklch(0.38 0.008 80)"   # separators, dark
   hairline-light: "oklch(0.8 0.005 80)"   # separators, light
   surface-dark: "oklch(0.17 0.006 80)"    # page background, dark
   surface-light: "oklch(1 0 0)"           # page background, light (pure white)
+  # Raised surface (cards, link cards). Dark takes a real tonal step (gray-6)
+  # so cards read by fill, not ghost outline; light keeps the page white —
+  # the hairline alone separates there (Tonal-First Rule).
+  surface-raised-dark: "oklch(0.24 0.007 80)"
   code-surface-dark: "oklch(0.205 0.012 245)"
   code-surface-light: "oklch(0.95 0.012 235)"
 typography:
@@ -130,10 +134,11 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 ### Neutral
 - **Ink** (dark `oklch(0.94 0.012 85)`; light `oklch(0.22 0.015 80)`): Highest-contrast foreground — headings and bold. Carries a whisper of the brand hue at very low chroma so the monochrome never reads as cold grey.
 - **Body** (dark `oklch(0.82 0.014 85)`; light `oklch(0.33 0.012 80)`): The reading column. Where most of the page lives.
-- **Muted** (dark `oklch(0.66 0.012 82)`; light `oklch(0.45 0.01 80)`): Secondary text, captions, metadata, nav section labels. Never the elegant-but-illegible light grey.
+- **Muted** (dark `oklch(0.7 0.012 82)`; light `oklch(0.45 0.01 80)`): Secondary text, captions, metadata, nav section labels. Never the elegant-but-illegible light grey — the dark step is deliberately lifted to ~7:1 (AAA) so small navigational chrome is comfortable, not merely compliant (see the Tonal-First Rule).
 - **Hairline** (dark `oklch(0.38 0.008 80)`; light `oklch(0.8 0.005 80)`): Separators, table rules, card borders, tablist baselines. Pinned explicitly to the ramp's hairline step — Starlight's default points it at the raised-surface tone, which reads as no line at all on these surfaces.
 - **Surface** (dark `oklch(0.17 0.006 80)`; light `oklch(1 0 0)` — pure white): The paper. No hidden warm tint, in either mode.
-- **Code Surface** (dark `oklch(0.205 0.012 245)`; light `oklch(0.965 0.008 235)`): A cool-tinted panel for code blocks, clearly distinct from the page so code reads in the information register.
+- **Code Surface** (dark `oklch(0.205 0.012 245)`; light `oklch(0.95 0.012 235)`): A cool-tinted panel for code blocks, clearly distinct from the page so code reads in the information register.
+- **Raised Surface** (dark `oklch(0.24 0.007 80)` — the ramp's `gray-6`; light = the page white): The tonal step for cards and link cards. Only dark mode steps up; on white the hairline alone does the separating (see the Tonal-First Rule).
 
 ### Named Rules
 **The Sovereign Column Rule.** Color never enters the body reading column except as a link or an inline `<mark>`. Prose is ink on surface — full stop. All brand color lives in the chrome, the accents, and the semantic markers around the text.
@@ -214,7 +219,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 
 ### Cards
 - **Corner Style:** 0.75rem (`{rounded.xl}`).
-- **Background:** The page surface (`{colors.surface-light}` / dark equivalent) — not a filled panel.
+- **Background:** The raised surface (`--sl-exquisitus-surface-raised`) — the page white in light mode, a real tonal step to `gray-6` in dark mode, where a hairline alone reads as a ghost box (Tonal-First Rule). Never a heavier filled panel than that.
 - **Border:** A single hairline (`gray-5`).
 - **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (a 60% mix into the hairline), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
 - **Title:** Spectral 600, tying the card to the document's headings rather than the interface chrome.
@@ -237,6 +242,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Inline code:** Petrol-teal text on a neutral `gray-6` chip with a hairline border, radius 0.3125rem — the information register, set apart from the prose.
 - **Blockquotes:** An editorial pull-quote — Spectral italic at 1.18em, indented by margin, **no** accent stripe.
 - **Horizontal rule:** A short (4rem) centred editorial rule, not a full-width divider.
+- **End mark:** The short centred rule evolved into a signed ending — a muted-ink jewel flanked by two hairlines closing each content page's prose (see the End Mark Rule). SVG-mask, never a glyph; gated by the `endMark` plugin option, on by default.
 - **Tables:** Header in Spectral; even rows take a faint tonal zebra; a too-wide table becomes its own horizontal-scroll container (thin themed scrollbar) rather than clipping a column.
 
 ### Code Blocks
