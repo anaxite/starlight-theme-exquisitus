@@ -1,6 +1,7 @@
 import type { StarlightPlugin } from "@astrojs/starlight/types";
 
 import { overrideComponents } from "./libs/starlight";
+import { tableWrapScript } from "./libs/table-wrap";
 
 export interface StarlightThemeExquisitusOptions {
   /**
@@ -32,11 +33,23 @@ export default function starlightThemeExquisitus(
   return {
     name: "starlight-theme-exquisitus",
     hooks: {
-      "config:setup"({ config, logger, updateConfig }) {
+      "config:setup"({ addIntegration, config, logger, updateConfig }) {
         const userExpressiveCodeConfig =
           !config.expressiveCode || config.expressiveCode === true
             ? {}
             : config.expressiveCode;
+
+        // Table accessibility: wrap content tables in a scroll container on
+        // the client. See libs/table-wrap.ts for why this is a script rather
+        // than a Markdown-pipeline transform (Astro 7 / Sätteri constraints).
+        addIntegration({
+          name: "starlight-theme-exquisitus/table-wrap",
+          hooks: {
+            "astro:config:setup"({ injectScript }) {
+              injectScript("page", tableWrapScript);
+            },
+          },
+        });
 
         updateConfig({
           components: overrideComponents(config, ["Hero"], logger),

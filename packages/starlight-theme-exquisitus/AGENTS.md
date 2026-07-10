@@ -16,17 +16,19 @@ There is **no unit-test suite**. Verify changes visually: run the docs showcase 
 
 ## Architecture
 
-`index.ts` is the `StarlightPlugin` entrypoint. Its `config:setup` hook does three things, in this order:
+`index.ts` is the `StarlightPlugin` entrypoint. Its `config:setup` hook does four things, in this order:
 
 1. registers component overrides via `overrideComponents()` (`libs/starlight.ts`), which merges the theme's overrides and **warns when the user already overrides the same component** — user config always wins;
-2. injects the five stylesheets **in dependency order** — `layers.css` must load first because it declares the cascade order everything else relies on, then `fonts`, `tokens`, `base`, `prose` — plus `end-mark.css` last, gated on the `endMark` option (default `true`);
-3. extends the user's Expressive Code config with the theme's code-surface colors and mono font, preserving anything the user already set.
+2. adds a tiny Astro integration that injects the client-side table-wrap script (`libs/table-wrap.ts`) — a progressive enhancement that restores table semantics for assistive tech (see that file for why it is not a Markdown-pipeline transform);
+3. injects the five stylesheets **in dependency order** — `layers.css` must load first because it declares the cascade order everything else relies on, then `fonts`, `tokens`, `base`, `prose` — plus `end-mark.css` last, gated on the `endMark` option (default `true`);
+4. extends the user's Expressive Code config with the theme's code-surface colors and mono font, preserving anything the user already set.
 
 The plugin takes a `StarlightThemeExquisitusOptions` object; today its only field is `endMark` (default `true`), which gates the optional end-mark stylesheet.
 
 ```
 index.ts                       # StarlightPlugin entrypoint — the config:setup hook above
 libs/starlight.ts              # overrideComponents() — merge + user-collision warning
+libs/table-wrap.ts             # client script: wraps content tables in an a11y scroll region
 components/FeatureGrid.astro   # exported splash layout component (lead / alternating)
 overrides/Hero.astro           # drop-in Hero replacement (serif masthead treatment)
 styles/

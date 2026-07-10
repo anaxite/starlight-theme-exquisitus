@@ -138,11 +138,14 @@
 	}
 
 	/* ──────────────────────────── Tables ────────────────────────────── */
-	/* `display: block` turns the table into its own horizontal-scroll container,
-	   so a table wider than the reading column scrolls instead of clipping a
-	   column off-screen on narrow viewports (no wrapper element, so Starlight's
-	   markup is untouched). `width: 100%` still makes tables that fit fill the
-	   column; a thin, themed scrollbar is the affordance when they don't. */
+	/* No-JS fallback: `display: block` turns the table into its own horizontal-
+	   scroll container, so a table wider than the reading column scrolls instead
+	   of clipping a column off-screen. The cost is that changing a table's
+	   display strips its implicit table semantics for assistive tech — which is
+	   why the theme injects a client script (libs/table-wrap.ts) that wraps each
+	   table in `.exquisitus-table-wrap` and the rules below hand the scrolling
+	   to the wrapper, restoring `display: table`. This rule only governs the
+	   brief pre-wrap paint and readers with JS disabled. */
 	.sl-markdown-content table:not(:where(.not-content *)) {
 		display: block;
 		width: 100%;
@@ -150,6 +153,22 @@
 		overflow-x: auto;
 		scrollbar-width: thin;
 		scrollbar-color: var(--sl-color-gray-5) transparent;
+	}
+
+	/* Wrapped state: the wrapper is the scroll region (keyboard-reachable via
+	   the script's tabindex; the global :focus-visible ring applies), the table
+	   goes back to being a real table. */
+	.sl-markdown-content .exquisitus-table-wrap {
+		max-width: 100%;
+		overflow-x: auto;
+		scrollbar-width: thin;
+		scrollbar-color: var(--sl-color-gray-5) transparent;
+	}
+
+	.sl-markdown-content .exquisitus-table-wrap > table {
+		display: table;
+		width: 100%;
+		overflow-x: visible;
 	}
 
 	.sl-markdown-content th:not(:where(.not-content *)) {
