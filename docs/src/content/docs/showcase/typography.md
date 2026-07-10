@@ -10,7 +10,6 @@ Everything below is plain Markdown, rendered exactly as your documentation will 
 If it is comfortable to read here, it will be comfortable to read anywhere on your site.
 
 Exquisitus sets body type in Atkinson Hyperlegible Next at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters.
-These three numbers are not just defaults.
 Seventeen pixels is the minimum the Readability Guidelines call comfortable for extended reading.
 Seventy characters is the width where the eye can return cleanly to the start of the next line without searching. 1.75 is the breathing room that lets ascenders and descenders live without crowding.
 I want documentation read at length to receive the same consideration as long-form prose.
@@ -28,8 +27,8 @@ Every heading also reserves space above itself, so an anchor link never tucks th
 
 Third-level headings carry the same Spectral, fractionally smaller.
 At this scale, letter-spacing tightens slightly.
-The optical correction that keeps display type from feeling loose when it shrinks toward body size.
-The heading hierarchy is tuned to feel right at every level, not just the largest ones.
+This optical correction keeps display type from feeling loose as it shrinks toward body size.
+The heading hierarchy is tuned to feel right at every level, including the deepest.
 
 #### A fourth-level heading
 
@@ -46,7 +45,7 @@ Everything else earns emphasis through weight and rhythm.
 The two are different enough to be useful in combination, so a function name and its description can share a sentence without blurring into each other.
 
 Links are underlined by default, which is the oldest and most reliable affordance the web has for "this goes somewhere."
-The underline uses the accent color at a lower opacity at rest and solidifies on hover, giving a quiet reward for attention that never clutters the resting page.
+The underline uses the accent color at a lower opacity at rest and solidifies on hover, so it answers attention without cluttering the page at rest.
 
 ## Quotation
 
@@ -72,7 +71,7 @@ An unordered list, for when it does not:
 - Self-hosted, OFL-licensed typefaces—no third-party request, nor flash of unstyled text.
 - An OKLCH palette tuned for light and dark, both modes validated to WCAG 2.2 AA.
 - A reading measure capped at seventy characters, regardless of viewport width.
-- Accessible by conviction, not by afterthought.
+- Accessibility built in from the start.
 
 ## Tables stay quiet
 

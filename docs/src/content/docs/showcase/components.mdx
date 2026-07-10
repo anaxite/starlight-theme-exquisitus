@@ -15,7 +15,7 @@ Each component keeps its own behavior and markup; the theme only changes how it 
 
 Four semantic variants, each with a distinct hue and a softened full border instead of a side stripe.
 
-<Aside type="note">A note aside: calm petrol-teal, the information register. Set apart from prose, not competing with it.</Aside>
+<Aside type="note">A note aside: calm petrol-teal, the information register. Set apart from the prose without competing with it.</Aside>
 
 <Aside type="tip" title="A considered tip">A tip aside: violet, distinct from both the warm accent and the cool note so neither blurs into the other.</Aside>
 
@@ -28,7 +28,7 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 <Tabs>
     <TabItem label="Light">The active tab is marked three ways at once: accent color, weight 600, and a 3px indicator. Selection is unambiguous without competing chrome. Light mode keeps a pure-white page.</TabItem>
     <TabItem label="Dark">In dark mode the accent brightens from bronze to honey, and the petrol-teal lifts to match. Both modes are validated to WCAG 2.2 AA.</TabItem>
-    <TabItem label="A third tab">A resting baseline runs below the whole tab strip, so the indicator reads clearly as "selected" rather than as a random underline. Tabs are documentation-register: underline, not pill.</TabItem>
+    <TabItem label="A third tab">A resting baseline runs below the whole tab strip, so the indicator reads clearly as "selected" rather than as a random underline. Tabs stay in the documentation register: an underline rather than a pill.</TabItem>
 </Tabs>
 
 ## Steps
@@ -51,7 +51,7 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 
 <CardGrid>
     <Card title="Hairline, not box" icon="approve-check">
-        Cards are defined by a single hairline and a generous radius. On hover they lift two pixels and warm their border for a small, earned reward, suppressed on touch.
+        Cards are defined by a single hairline and a generous radius. On hover they lift two pixels and warm their border; the lift is suppressed on touch.
     </Card>
     <Card title="Serif titles" icon="pencil">
         Card titles are set in Spectral, tying them to the document headings rather than the interface chrome.
@@ -107,8 +107,8 @@ The summary is set in Spectral, tying it to the heading hierarchy.
 ## Code blocks
 
 Code blocks are reframed as editorial figures.
-The filename becomes a quiet monospace caption above the panel—no editor tab, no traffic-light dots, no terminal costume—and the panel itself is a bordered, petrol-tinted surface pressed into the page.
-That letterpress is deliberate: code, like the file tree, belongs to the *information register*, marked on three axes at once—petrol-teal, monospace, and a debossed depth that sets it apart from the flat reading surface.
+The filename becomes a quiet monospace caption above the panel, without the usual editor-tab chrome or traffic-light dots, and the panel itself is a bordered, petrol-tinted surface pressed into the page.
+That letterpress is deliberate: code, like the file tree, belongs to the information register, and it reads that way on three counts—petrol-teal, monospace, and a slight debossed depth against the flat reading surface.
 Diff lines keep their familiar bands but also carry a `+`/`−` gutter glyph, so the change reads without relying on color alone.
 
 ```ts title="astro.config.mjs" ins={[2, 8]}
@@ -139,6 +139,6 @@ pnpm add starlight-theme-exquisitus
 
 ## Badges
 
-Of course, badges get represented here.
+Badges appear here as well:
 
 <Badge text="New" variant="success" />, <Badge text="Beta" variant="caution" />, <Badge text="Note" variant="note" />, <Badge text="Deprecated" variant="danger" />, and <Badge text="Experimental" variant="tip" />.
