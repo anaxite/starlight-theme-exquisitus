@@ -17,17 +17,15 @@
  */
 @layer exquisitus {
 	html:not([data-has-hero]) .sl-markdown-content::after {
+		/* The artwork, once — both mask properties below reference it. */
+		--exquisitus-end-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E");
 		content: "";
 		display: block;
 		width: 9rem;
 		aspect-ratio: 160 / 24;
 		margin: 3.25rem auto 0;
 		background-color: var(--sl-color-gray-3);
-		-webkit-mask:
-			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E")
-			center / contain no-repeat;
-		mask:
-			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E")
-			center / contain no-repeat;
+		-webkit-mask: var(--exquisitus-end-mark) center / contain no-repeat;
+		mask: var(--exquisitus-end-mark) center / contain no-repeat;
 	}
 }

@@ -177,7 +177,9 @@
 		height: 2px;
 		margin-inline: auto;
 		margin-block: 2.5rem;
-		border-radius: 2px;
+		/* Any radius ≥ half the 2px height renders a full pill; xs keeps it on
+		   the rounded scale. */
+		border-radius: 0.25rem;
 		background-color: var(--sl-color-gray-5);
 	}
 
@@ -185,7 +187,6 @@
 	/* De-striped: a full hairline card instead of the 2px inline-start border. */
 	.sl-markdown-content details:not(:where(.not-content *)) {
 		border: 1px solid var(--sl-color-hairline);
-		border-inline-start-width: 1px;
 		border-radius: 0.625rem;
 		padding: 0.75rem 1rem;
 	}
@@ -199,7 +200,7 @@
 	}
 
 	/* ──────────────────────────── Media ─────────────────────────────── */
-	.sl-markdown-content :is(img, picture > img):not(:where(.not-content *)) {
+	.sl-markdown-content img:not(:where(.not-content *)) {
 		border-radius: 0.75rem;
 	}
 }

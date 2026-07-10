@@ -1,7 +1,8 @@
 /*
  * Self-hosted typefaces. All three are OFL/SIL licensed and bundled via
  * @fontsource, so a site using this theme ships its own fonts — no Google
- * Fonts request, no third-party origin, no layout-shift on first paint.
+ * Fonts request, no third-party origin. (@fontsource uses font-display: swap,
+ * so a first, cold-cache visit can still reflow when the real faces arrive.)
  *
  * These @import specifiers resolve against THIS package's node_modules (where
  * the @fontsource deps are declared), which is what makes them work under

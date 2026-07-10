@@ -95,11 +95,7 @@
 	.sidebar-content a[aria-current="page"],
 	.sidebar-content a[aria-current="page"]:hover {
 		color: var(--sl-color-text-accent);
-		background-color: color-mix(
-			in oklab,
-			var(--sl-color-accent) 12%,
-			transparent
-		);
+		background-color: var(--sl-exquisitus-accent-wash);
 		font-weight: 600;
 	}
 
@@ -164,7 +160,8 @@
 	}
 
 	/* ───────────────────────────── Cards ────────────────────────────── */
-	.card {
+	.card,
+	.sl-link-card {
 		border: 1px solid var(--sl-color-gray-5);
 		border-radius: 0.75rem;
 		background-color: var(--sl-exquisitus-surface-raised);
@@ -174,7 +171,13 @@
 			transform 0.2s var(--sl-exquisitus-ease);
 	}
 
-	.card .title {
+	/* Flat-At-Rest: clear Starlight's resting link-card shadow. */
+	.sl-link-card {
+		box-shadow: none;
+	}
+
+	.card .title,
+	.sl-link-card .title {
 		font-family: var(--sl-exquisitus-font-serif);
 		font-weight: 600;
 		color: var(--sl-color-white);
@@ -184,38 +187,17 @@
 		color: var(--sl-color-text-accent);
 	}
 
-	.sl-link-card {
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: 0.75rem;
-		background-color: var(--sl-exquisitus-surface-raised);
-		box-shadow: none;
-		transition:
-			border-color 0.2s var(--sl-exquisitus-ease),
-			box-shadow 0.2s var(--sl-exquisitus-ease),
-			transform 0.2s var(--sl-exquisitus-ease);
-	}
-
-	.sl-link-card .title {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
-		color: var(--sl-color-white);
-	}
-
 	@media (hover: hover) {
 		.sl-link-card:hover,
 		.card:hover {
-			border-color: color-mix(
-				in oklab,
-				var(--sl-color-accent) 60%,
-				var(--sl-color-gray-5)
-			);
+			border-color: var(--sl-exquisitus-border-hover);
 			box-shadow: var(--sl-shadow-sm);
 			transform: translateY(-2px);
 		}
-	}
 
-	.sl-link-card:hover .description {
-		color: var(--sl-color-gray-2);
+		.sl-link-card:hover .description {
+			color: var(--sl-color-gray-2);
+		}
 	}
 
 	/* ─────────────────────── Splash feature grid ────────────────────── */
@@ -427,10 +409,13 @@
 	   a 2px offset separates cleanly from the element edge and matches the
 	   confident register. Only applies to keyboard navigation (pointer users see
 	   no ring), so it never clutters the resting interface. */
+	/* No border-radius here: it would round the focused element itself (its
+	   background and border), not just the ring. Outlines follow each element's
+	   own border-radius in modern browsers, so the ring hugs cards, chips and
+	   inputs correctly without touching their shape. */
 	:focus-visible {
 		outline: 2px solid var(--sl-color-accent);
 		outline-offset: 2px;
-		border-radius: 0.25rem;
 	}
 
 	/* ──────────────────────────── Page title ────────────────────────── */
@@ -597,7 +582,9 @@
 
 	.exquisitus-specimen-glyphs .italic {
 		font-style: italic;
-		font-weight: 500;
+		/* 600 to match the roman glyphs — the specimen is one cut, two styles.
+		   Must be a shipped weight (fonts.css imports 400/600 italic only). */
+		font-weight: 600;
 	}
 
 	.exquisitus-specimen-motto {
@@ -757,11 +744,7 @@
 
 	@media (hover: hover) {
 		.exquisitus-doorways .doorway:hover {
-			border-color: color-mix(
-				in oklab,
-				var(--sl-color-accent) 60%,
-				var(--sl-color-gray-5)
-			);
+			border-color: var(--sl-exquisitus-border-hover);
 			box-shadow: var(--sl-shadow-sm);
 			transform: translateY(-2px);
 		}
@@ -950,7 +933,7 @@
 	}
 
 	.expressive-code .copy button div {
-		background: color-mix(in oklab, var(--sl-color-accent) 12%, transparent);
+		background: var(--sl-exquisitus-accent-wash);
 		opacity: 0;
 	}
 

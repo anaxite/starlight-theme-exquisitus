@@ -42,6 +42,20 @@
 
 		/* Theme-local handles reused by base.css / prose.css. */
 		--sl-exquisitus-ease: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out-quint */
+		/* Hover-state hairline: the resting border warmed 60% toward the accent.
+		   Shared by cards and doorways so the lift-on-hover family stays in step. */
+		--sl-exquisitus-border-hover: color-mix(
+			in oklab,
+			var(--sl-color-accent) 60%,
+			var(--sl-color-gray-5)
+		);
+		/* Quiet accent wash — the 12% tint behind the sidebar's current page and
+		   the copy button's hover face. */
+		--sl-exquisitus-accent-wash: color-mix(
+			in oklab,
+			var(--sl-color-accent) 12%,
+			transparent
+		);
 		/* Splash hero column split (copy / image). Override to retune. */
 		--sl-exquisitus-hero-columns: 2.1fr 1fr;
 
