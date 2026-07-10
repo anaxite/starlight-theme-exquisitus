@@ -17,14 +17,19 @@
 @layer exquisitus {
 	:root {
 		/* ── Typefaces ──────────────────────────────────────────────── */
+		/* Each stack lists its metric-matched "… Fallback" face (fonts.css)
+		   right after the real one, so the pre-swap paint holds the same space
+		   and the swap causes near-zero layout shift. */
 		--sl-font:
-			"Atkinson Hyperlegible Next Variable", system-ui, -apple-system,
+			"Atkinson Hyperlegible Next Variable",
+			"Atkinson Hyperlegible Next Fallback", system-ui, -apple-system,
 			BlinkMacSystemFont, "Segoe UI", sans-serif;
 		--sl-font-mono:
-			"JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas,
-			monospace;
+			"JetBrains Mono Variable", "JetBrains Mono Fallback", ui-monospace,
+			SFMono-Regular, Menlo, Consolas, monospace;
 		/* Display serif — applied to content headings, hero & card titles only. */
-		--sl-exquisitus-font-serif: "Spectral", Georgia, "Times New Roman", serif;
+		--sl-exquisitus-font-serif:
+			"Spectral", "Spectral Fallback", Georgia, "Times New Roman", serif;
 
 		/* ── Reading rhythm ─────────────────────────────────────────── */
 		/* Nudge the global type scale up ~1px (16 → 17 at the default base).

@@ -28,3 +28,58 @@
 @import "@fontsource/spectral/700.css";
 @import "@fontsource/spectral/400-italic.css";
 @import "@fontsource/spectral/600-italic.css";
+
+/*
+ * Metric-matched fallback faces — near-zero layout shift on the font swap.
+ *
+ * During the font-display: swap window (cold-cache first visit), text paints
+ * in a system face with different metrics, then reflows when the real face
+ * arrives. These local() wrappers pin the fallback to the web font's metrics
+ * (size-adjust matches average glyph width; the *-override descriptors match
+ * the vertical box), so the swap moves almost nothing. tokens.css inserts
+ * them into each stack right after the real face.
+ *
+ * Values derived from @capsizecss/metrics 4.1.0 via the Capsize/fontaine
+ * formula (size-adjust = web xWidthAvg/UPM ÷ fallback xWidthAvg/UPM; each
+ * override = web metric/UPM ÷ size-adjust). Authored by hand rather than via
+ * fontaine or Astro's Fonts API because those run in the consumer's build —
+ * a published theme can't ship them; plain CSS it can.
+ *
+ * Caveats, accepted: Safari ignores the *-override descriptors (size-adjust
+ * still applies, so the residual shift is small, not zero). The metrics
+ * target the Windows/macOS cuts; each src also lists the deliberately
+ * metric-compatible Linux substitutes (local() does not follow fontconfig
+ * aliases, so e.g. local("Arial") alone resolves to nothing there), which
+ * the same override numbers fit by design. Systems with none of the listed
+ * faces simply skip the entry — today's behavior, no worse.
+ */
+
+/* Atkinson Hyperlegible Next ← Arial (metric-compatible: Liberation Sans, Arimo) */
+@font-face {
+	font-family: "Atkinson Hyperlegible Next Fallback";
+	src: local("Arial"), local("Liberation Sans"), local("Arimo");
+	size-adjust: 99.6%;
+	ascent-override: 98.8%;
+	descent-override: 31.73%;
+	line-gap-override: 0%;
+}
+
+/* Spectral ← Georgia (metric-compatible: Gelasio) */
+@font-face {
+	font-family: "Spectral Fallback";
+	src: local("Georgia"), local("Gelasio");
+	size-adjust: 100.04%;
+	ascent-override: 105.85%;
+	descent-override: 46.28%;
+	line-gap-override: 0%;
+}
+
+/* JetBrains Mono ← Courier New (metric-compatible: Liberation Mono, Cousine) */
+@font-face {
+	font-family: "JetBrains Mono Fallback";
+	src: local("Courier New"), local("Liberation Mono"), local("Cousine");
+	size-adjust: 99.98%;
+	ascent-override: 102.02%;
+	descent-override: 30%;
+	line-gap-override: 0%;
+}
