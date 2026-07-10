@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-09T00:00:00Z",
+  "generatedAt": "2026-07-11T00:00:00Z",
   "title": "Design System: Exquisitus",
   "extensions": {
     "colorMeta": {
@@ -443,6 +443,11 @@
       {
         "name": "The Serif-Marks-Structure Rule",
         "body": "Spectral marks every structural or editorial element; the sans never carries a heading, the serif never carries running body.",
+        "section": "typography"
+      },
+      {
+        "name": "The Metric-Matched Fallback Rule",
+        "body": "Each stack's first fallback is a local() wrapper (fonts.css) pinned to the web font's metrics with size-adjust and the *-override descriptors, listing the platform face and its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. font-display: swap stays - the brand faces must appear on first visit; optional is forbidden. Values derive from @capsizecss/metrics; never hand-tune them by eye.",
         "section": "typography"
       },
       {

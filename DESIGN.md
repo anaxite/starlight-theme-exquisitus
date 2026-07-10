@@ -30,41 +30,45 @@ colors:
   code-surface-dark: "oklch(0.205 0.012 245)"
   code-surface-light: "oklch(0.95 0.012 235)"
 typography:
+  # Each stack carries a metric-matched "… Fallback" face (fonts.css) right
+  # after the real font: a local() wrapper around the platform fallback with
+  # size-adjust / *-override descriptors pinned to the web font's metrics, so
+  # the font-display: swap reflow moves almost nothing.
   display:
-    fontFamily: "Spectral, Georgia, 'Times New Roman', serif"
+    fontFamily: "Spectral, 'Spectral Fallback', Georgia, 'Times New Roman', serif"
     fontSize: "clamp(2.1875rem, calc(1rem + 5vw), 5rem)"
     fontWeight: 600
     lineHeight: 1.18
     letterSpacing: "-0.018em"
   headline:
-    fontFamily: "Spectral, Georgia, 'Times New Roman', serif"
+    fontFamily: "Spectral, 'Spectral Fallback', Georgia, 'Times New Roman', serif"
     fontSize: "var(--sl-text-2xl)"
     fontWeight: 600
     lineHeight: 1.18
     letterSpacing: "-0.012em"
   title:
-    fontFamily: "Spectral, Georgia, 'Times New Roman', serif"
+    fontFamily: "Spectral, 'Spectral Fallback', Georgia, 'Times New Roman', serif"
     fontWeight: 600
     lineHeight: 1.18
     letterSpacing: "-0.012em"
   body:
-    fontFamily: "'Atkinson Hyperlegible Next Variable', system-ui, sans-serif"
+    fontFamily: "'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.75
     letterSpacing: "normal"
   label:
-    fontFamily: "'Atkinson Hyperlegible Next Variable', system-ui, sans-serif"
+    fontFamily: "'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif"
     fontSize: "var(--sl-text-xs)"
     fontWeight: 600
     letterSpacing: "0.06em"
   code:
-    fontFamily: "'JetBrains Mono Variable', ui-monospace, monospace"
+    fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono Fallback', ui-monospace, monospace"
     fontSize: "0.9em"
     fontWeight: 400
 rounded:
-  xs: "0.25rem"    # focus ring, inline mark
-  sm: "0.375rem"   # nav & TOC links, inline code
+  xs: "0.25rem"    # inline mark, hr pill (the focus ring carries no radius of its own)
+  sm: "0.375rem"   # nav & TOC links
   md: "0.5rem"     # buttons, search trigger, code blocks, file tree
   lg: "0.625rem"   # asides, details
   xl: "0.75rem"    # cards, dialogs, pagination, images
@@ -85,7 +89,9 @@ components:
     rounded: "{rounded.lg}"
   code-inline:
     textColor: "{colors.petrol-teal-light}"
-    rounded: "{rounded.sm}"
+    # Deliberate half-step between xs and sm: the chip hugs a 0.9em glyph box,
+    # where sm reads pill-ish and xs reads sharp. Component-specific by design.
+    rounded: "0.3125rem"
   code-block:
     backgroundColor: "{colors.code-surface-light}"
     rounded: "{rounded.md}"
@@ -157,11 +163,11 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 
 ## 3. Typography
 
-**Display Font:** Spectral (Production Type; OFL) — fallback `Georgia, 'Times New Roman', serif`.
-**Body Font:** Atkinson Hyperlegible Next (Braille Institute; OFL, variable wght 200–800) — fallback `system-ui, sans-serif`.
-**Mono Font:** JetBrains Mono (OFL, variable) — fallback `ui-monospace, monospace`.
+**Display Font:** Spectral (Production Type; OFL) — fallback `'Spectral Fallback', Georgia, 'Times New Roman', serif`.
+**Body Font:** Atkinson Hyperlegible Next (Braille Institute; OFL, variable wght 200–800) — fallback `'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif`.
+**Mono Font:** JetBrains Mono (OFL, variable) — fallback `'JetBrains Mono Fallback', ui-monospace, monospace`.
 
-All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard requirement for a distributed theme. No Google Fonts request, no third-party origin, no first-paint layout shift. The root font-size is nudged to `106.25%` (~17px base) so the whole rem-based scale, including the ~70ch measure, lifts with the reader's own base size.
+All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard requirement for a distributed theme. No Google Fonts request, no third-party origin, and near-zero swap layout shift (see the Metric-Matched Fallback Rule). The root font-size is nudged to `106.25%` (~17px base) so the whole rem-based scale, including the ~70ch measure, lifts with the reader's own base size.
 
 **Character:** A true contrast-axis pairing — Spectral's sturdy editorial serif against Atkinson Hyperlegible Next's humanist sans reading column. Headings carry the cadence of print; the body carries maximal screen legibility at a larger-than-default scale. The two never blur into one undifferentiated family.
 
@@ -179,6 +185,8 @@ All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard re
 **The 65–75ch Rule.** The reading measure is capped at ~70 characters regardless of viewport. A wide screen gets wider margins, never a wider line.
 
 **The Serif-Marks-Structure Rule.** Spectral marks every structural or editorial element — headings, titles, blockquotes (italic), table headers, `summary`. The sans never carries a heading; the serif never carries running body.
+
+**The Metric-Matched Fallback Rule.** Each stack's first fallback is a `local()` wrapper (`fonts.css`) pinned to the web font's metrics with `size-adjust` and the `*-override` descriptors, listing the platform face *and* its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. `font-display: swap` stays — the brand faces must appear on first visit; `optional` is forbidden. Values derive from `@capsizecss/metrics`; never hand-tune them by eye.
 
 ## 4. Elevation
 
@@ -221,7 +229,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Corner Style:** 0.75rem (`{rounded.xl}`).
 - **Background:** The raised surface (`--sl-exquisitus-surface-raised`) — the page white in light mode, a real tonal step to `gray-6` in dark mode, where a hairline alone reads as a ghost box (Tonal-First Rule). Never a heavier filled panel than that.
 - **Border:** A single hairline (`gray-5`).
-- **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (a 60% mix into the hairline), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
+- **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (`--sl-exquisitus-border-hover`, a 60% mix into the hairline — shared with the doorways so the lift family stays in step), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
 - **Title:** Spectral 600, tying the card to the document's headings rather than the interface chrome.
 
 ### Asides (Admonitions)
@@ -234,7 +242,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Motion:** The dialog rises and scale-settles over 0.2s on open, gated behind `no-preference`.
 
 ### Navigation (Sidebar + TOC)
-- **Sidebar:** No dividing line; quiet de-emphasised type and a gutter separate it from the column. Section labels are uppercase 0.06em-tracked `xs` muted small-caps. Links round at 0.375rem; hover lifts the text to ink over a faint `gray-7` fill. The active page takes the accent text on a 12%-accent tint, weight 600.
+- **Sidebar:** No dividing line; quiet de-emphasised type and a gutter separate it from the column. Section labels are uppercase 0.06em-tracked `xs` muted small-caps. Links round at 0.375rem; hover lifts the text to ink over a faint `gray-7` fill. The active page takes the accent text on a 12%-accent tint (`--sl-exquisitus-accent-wash`, shared with the copy button's hover face), weight 600.
 - **TOC:** No structural divider. The active item carries a short inset accent tick (`box-shadow: inset 2px 0 0`) — a real "you are here" cue, the only job the old full-height line did.
 - **Tabs:** A documentation-register underline. The active tab is marked three ways at once — accent color, weight 600, and a 3px accent indicator — over a 1px resting baseline, so selection is unambiguous without competing chrome.
 
@@ -243,7 +251,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Blockquotes:** An editorial pull-quote — Spectral italic at 1.18em, indented by margin, **no** accent stripe.
 - **Horizontal rule:** A short (4rem) centred editorial rule, not a full-width divider.
 - **End mark:** The short centred rule evolved into a signed ending — a muted-ink jewel flanked by two hairlines closing each content page's prose (see the End Mark Rule). SVG-mask, never a glyph; gated by the `endMark` plugin option, on by default.
-- **Tables:** Header in Spectral; even rows take a faint tonal zebra; a too-wide table becomes its own horizontal-scroll container (thin themed scrollbar) rather than clipping a column.
+- **Tables:** Header in Spectral; even rows take a faint tonal zebra. A too-wide table scrolls inside an injected wrapper (`.exquisitus-table-wrap`, thin themed scrollbar) rather than clipping a column — the wrapper, not the table, is the scroll region, so the table keeps `display: table` and its semantics for assistive tech; it becomes a keyboard-reachable labeled region only while it actually overflows. No-JS readers fall back to the CSS-only `display: block` scroll.
 
 ### Code Blocks
 - **Surface:** The cool code panel (`code-surface`) — the filled exception to the flat reading surface, clearly not the page, set in the information register.
