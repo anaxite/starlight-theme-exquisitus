@@ -23,6 +23,7 @@ pnpm dev        # docs preview site at http://localhost:4321 (alias: pnpm --filt
 pnpm build      # production build of the docs site
 pnpm preview    # serve the built docs site
 pnpm lint       # lint/format docs and package
+pnpm deploy     # deploy the built docs site to Cloudflare Workers (wrangler.jsonc)
 ```
 
 Any command also works from a package subdirectory. There is **no unit-test suite** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Formatting/linting is per-workspace: the theme package uses Biome (`pnpm --filter starlight-theme-exquisitus lint`), the docs site uses rumdl for Markdown (`pnpm --filter docs lint`). Toolchain is pinned in `mise.toml`: Node 24, pnpm 11 (the published theme package declares a Node ≥22.12.0 floor).
@@ -39,4 +40,7 @@ docs/                                   # showcase / dogfooding site; consumes t
 
 The theme is a Starlight **plugin**: its `config:setup` hook registers component overrides, injects five stylesheets in dependency order (plus an optional sixth, the end mark, on by default), and extends Expressive Code. `docs/` exists only to dogfood it — anything in `packages/starlight-theme-exquisitus/` ships to consumers, so changes there are user-facing.
 
-The package's entrypoint, stylesheet cascade, and the non-obvious constraints that break if you don't know them (cascade layers over `!important`, the Starlight custom-property contract, the component-override CSS gotcha, self-hosted fonts under pnpm, OKLCH as source of truth, and the steps to add an override) live in [`packages/starlight-theme-exquisitus/AGENTS.md`](packages/starlight-theme-exquisitus/AGENTS.md). **Read it before editing package code.**
+The package's entrypoint, stylesheet cascade, and the non-obvious constraints that break if you don't know them (cascade layers over `!important`, the Starlight custom-property contract, the component-override CSS gotcha, self-hosted fonts under pnpm, OKLCH as source of truth, and the steps to add an override) live in [`packages/starlight-theme-exquisitus/AGENTS.md`](packages/starlight-theme-exquisitus/AGENTS.md). **Read it before editing package code.** The docs site's own conventions (rumdl, content layout) live in [`docs/AGENTS.md`](docs/AGENTS.md).
+
+## Release & deploy
+- **Docs deploy** (`.github/workflows/deploy-demo.yml`): Cloudflare Workers static assets from `docs/dist` (see `wrangler.jsonc`). Currently **manual only** (`workflow_dispatch`; the push-to-main trigger is commented out). Locally: `pnpm build && pnpm deploy`.
