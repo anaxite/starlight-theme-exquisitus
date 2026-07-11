@@ -13,10 +13,10 @@
     "lint": "pnpm -r lint"
   },
   "devDependencies": {
-    "@biomejs/biome": "~2.5.1",
+    "@biomejs/biome": "~2.5.3",
     "wrangler": "^4.110.0"
   },
-   "devEngines": {
+  "devEngines": {
     "packageManager": {
       "name": "pnpm",
       "version": ">=11.0.0 <12.0.0",
