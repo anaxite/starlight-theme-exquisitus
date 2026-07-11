@@ -7,7 +7,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anaxite/starlight-theme-exquisitus.git",
+    "url": "git+https://github.com/anaxite/starlight-theme-exquisitus.git",
     "directory": "packages/starlight-theme-exquisitus"
   },
   "homepage": "https://github.com/anaxite/starlight-theme-exquisitus",
