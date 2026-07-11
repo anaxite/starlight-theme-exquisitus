@@ -1,5 +1,5 @@
 # Changelog
 
-## 0.99.0
+## 1.0.0
 
-GitHub-only prerelease.
+First public release.
