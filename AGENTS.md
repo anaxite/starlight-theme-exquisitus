@@ -43,4 +43,6 @@ The theme is a Starlight **plugin**: its `config:setup` hook registers component
 The package's entrypoint, stylesheet cascade, and the non-obvious constraints that break if you don't know them (cascade layers over `!important`, the Starlight custom-property contract, the component-override CSS gotcha, self-hosted fonts under pnpm, OKLCH as source of truth, and the steps to add an override) live in [`packages/starlight-theme-exquisitus/AGENTS.md`](packages/starlight-theme-exquisitus/AGENTS.md). **Read it before editing package code.** The docs site's own conventions (rumdl, content layout) live in [`docs/AGENTS.md`](docs/AGENTS.md).
 
 ## Release & deploy
+
+- **NPM registry publish** (`.github/workflows/publish.yml`): fires when a GitHub **release is published**. The release tag name becomes the package version (`pnpm version $TAG_NAME` but stripping the leading v—it is *not* read from `package.json`); a prerelease publishes under the `next` dist-tag, a full release under `latest`. Publishing is OIDC-based (no npm token in the repo) via the `publish` environment.
 - **Docs deploy** (`.github/workflows/deploy-demo.yml`): Cloudflare Workers static assets from `docs/dist` (see `wrangler.jsonc`). Currently **manual only** (`workflow_dispatch`; the push-to-main trigger is commented out). Locally: `pnpm build && pnpm deploy`.
