@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlightThemeExquisitus from 'starlight-theme-exquisitus';
 
 export default defineConfig({
+  site: 'https://starlight-theme-exquisitus.aka-300.workers.dev/',
 	integrations: [
 		starlight({
 			title: 'Exquisitus',
