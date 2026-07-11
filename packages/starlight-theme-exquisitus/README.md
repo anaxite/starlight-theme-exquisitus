@@ -1,6 +1,8 @@
 # starlight-theme-exquisitus
 
-Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme that blends readability and beauty.
+Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme that tries to blend readability and beauty without compromising on either.
+
+This theme was built with LLM assistance.
 
 ## Features
 
@@ -8,7 +10,9 @@ Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme that bl
 - A perceptually-uniform WCAG-AA OKLCH color system mapped onto Starlight's `--sl-color-*` contract, so built-in components inherit the theme automatically.
 - Header, sidebar, TOC, search, cards, asides, and tabs restyled with a consistent depth and register language.
 - [Expressive Code](https://expressive-code.com/) theming with a letterpress code panel, caption-above frames, and accessible (WCAG 1.4.1) diff markers.
-- A serif `Hero` treatment (drop-in override) and an exported `FeatureGrid` layout.
+- A serif `Hero` treatment (drop-in override) and an alternative front page layout.
+- Editorial end marks on documentation pages.
+- A design system generated with the _Impeccable_ agent skill system.
 
 ## Installation
 
@@ -16,7 +20,7 @@ Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme that bl
 
 ```bash
 pnpm add starlight-theme-exquisitus
-# or: npm install / yarn add
+# or: npm install
 ```
 
 2. Add the plugin to your Starlight config:
@@ -41,7 +45,8 @@ export default defineConfig({
 
 ### `FeatureGrid`
 
-An editorial splash layout for Starlight's `<Card>`s. The first child carries the emphasis.
+An editorial splash layout for Starlight `<Card>`s.
+The first child carries the emphasis.
 
 ```astro
 ---
@@ -56,12 +61,13 @@ import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro
 </FeatureGrid>
 ```
 
-- `layout="lead"` (default) — a full-width thesis card above a row of supporting peers.
-- `layout="alternating"` — an editorial zigzag where the wider card flips side each row.
+- `layout="lead"` (default): a full-width thesis card above a row of supporting peers.
+- `layout="alternating"`: an editorial zigzag where the wider card flips side each row.
 
 ### `Hero`
 
-The serif masthead treatment is applied automatically via a component override, no import needed. If you already override `Hero` yourself, your override wins (the plugin warns on the collision).
+The serif masthead treatment is applied automatically via a component override, no import needed.
+If you already override `Hero` yourself, your override wins (the plugin warns on the collision).
 
 ## Configuration notes
 
@@ -70,4 +76,5 @@ The serif masthead treatment is applied automatically via a component override, 
 
 ## License
 
-The theme is MIT-licensed. Bundled typefaces are licensed separately under the [SIL Open Font License](https://openfontlicense.org/).
+This theme is [MIT-licensed](./LICENSE).
+Bundled typefaces are licensed separately under the [SIL Open Font License](https://openfontlicense.org/).

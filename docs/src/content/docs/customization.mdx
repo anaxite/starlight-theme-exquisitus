@@ -34,11 +34,13 @@ The plugin takes an options object.
 
 ### `endMark`
 
-Type: `boolean` — Default: `true`
+| Type | Default |
+|---|---|
+| Boolean | `true` |
 
-Renders the editorial end mark: a small centred terminal that closes each content page's prose, in the tradition of a printed article's end sign.
+Renders an editorial end mark: a small centred terminal that closes each content page's prose, in the tradition of a printed article's end sign.
 It never appears on the splash, whose colophon already closes that page.
-Set it to `false` to omit the mark entirely.
+Set to `false` to omit the mark entirely.
 
 ```diff lang="js"
 // astro.config.mjs
@@ -102,9 +104,11 @@ Exquisitus also exposes theme-specific tokens under the `--sl-exquisitus-*` name
 
 Overrides placed in unlayered CSS apply in both modes unless you scope them to `:root[data-theme='light']` or `:root[data-theme='dark']`.
 
-## FeatureGrid component
+## Added components
 
-Exquisitus exports one component, a feature grid.
+### FeatureGrid
+
+Exquisitus exports a feature grid component.
 `FeatureGrid` is the theme's own splash layout, which acts as an editorial alternative to `CardGrid`'s uniform grid.
 Import it in any MDX page:
 
