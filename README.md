@@ -1,6 +1,6 @@
 # Exquisitus
 
-Monorepo for Exquisitus, w [Starlight](https://starlight.astro.build/) documentation theme.
+Monorepo for Exquisitus, a [Starlight](https://starlight.astro.build/) documentation theme.
 
 ## Quick start
 
