@@ -23,14 +23,14 @@
  *   </FeatureGrid>
  */
 interface Props {
-    /**
-     * `lead` (default): a full-width thesis card above a row of supporting
-     * peers that auto-fit 2–4 across. `alternating`: an editorial zigzag where
-     * the wider card flips side each row. The first child leads in both.
-     */
-    layout?: "lead" | "alternating";
-    /** Extra class names merged onto the grid container. */
-    class?: string;
+	/**
+	 * `lead` (default): a full-width thesis card above a row of supporting
+	 * peers that auto-fit 2–4 across. `alternating`: an editorial zigzag where
+	 * the wider card flips side each row. The first child leads in both.
+	 */
+	layout?: "lead" | "alternating";
+	/** Extra class names merged onto the grid container. */
+	class?: string;
 }
 
 const { layout = "lead", class: className } = Astro.props;

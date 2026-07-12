@@ -272,6 +272,8 @@ The theme's own splash layout and the deliberate alternative to the identical ca
 
 Both collapse to a single column below 50rem. Layout rules are authored globally in `base.css` (not scoped on the component) because slotted cards carry no scope hash — child-targeting selectors must reach them directly.
 
+**The Card-Relative Title Rule.** A card in this grid is a sizing container, and its title is set from the cell it landed in — `clamp(h5, 0.9rem + 2.5cqi, h4)` — never from the viewport. A full-width lead card reaches the h4 title; a 2-of-5 cell in a sidebar'd column resolves near h5 and stays inside its border. The rule is uniform: no per-cell exceptions, no breakpoint juggling, and it holds for whatever container a consumer drops the grid into, which the theme cannot know in advance. Card padding is trimmed to `1.5rem` (Starlight's own tops out at 2.5rem, which a narrow cell cannot spare). The 3:2 asymmetry is never softened to win space — that asymmetry *is* the component.
+
 ### Splash Page (Signature Surface)
 The splash is the theme's **title spread** — the cover of the book, composed of four moves in order:
 

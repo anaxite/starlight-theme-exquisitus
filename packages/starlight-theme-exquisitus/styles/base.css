@@ -216,6 +216,30 @@
 		margin-top: 1.5rem;
 	}
 
+	/* Each card is its own sizing context, so the title can be set from the
+	   cell it landed in rather than from the viewport (The Card-Relative Title
+	   Rule). Starlight's own card padding tops out at 2.5rem, which a narrow
+	   cell cannot spare. */
+	.exquisitus-feature-grid > .card {
+		container-type: inline-size;
+		padding: 1.5rem;
+		/* Starlight's markdown sibling spacing (`--sl-content-gap-y`) reaches
+		   these cards and offsets every one but the first inside its row. */
+		margin-top: 0;
+	}
+
+	.exquisitus-feature-grid > .card .title {
+		font-size: clamp(var(--sl-text-h5), 0.9rem + 2.5cqi, var(--sl-text-h4));
+	}
+
+	/* The title is a flex row; its text is a flex item whose `min-width: auto`
+	   floors it at the longest word. Starlight's `overflow-wrap: break-word`
+	   cannot lower that floor, so a long word escapes the card entirely. */
+	.exquisitus-feature-grid > .card .title > span {
+		min-width: 0;
+		hyphens: auto;
+	}
+
 	@media (min-width: 50rem) {
 		/* lead — a full-width thesis card over a row of supporting peers that
 		   auto-fit to the card count: 2 → halves, 3 → thirds, 4 → quarters.
