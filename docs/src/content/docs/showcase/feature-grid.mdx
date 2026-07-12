@@ -33,7 +33,7 @@ The author drops in however many fit the argument, with no breakpoints nor extra
         Two supporting cards divide the row equally — a wider, more editorial feel than thirds.
     </Card>
     <Card title="Right support" icon="rocket">
-        On narrow viewports the whole grid folds to a single readable column.
+        In a narrow container the whole grid folds to a single readable column.
     </Card>
 </FeatureGrid>
 
@@ -69,3 +69,6 @@ A lone trailing card takes the full width rather than leaving a ragged gap.
 | `class` | `string` | — | Additional CSS class names. |
 
 The component accepts a default slot containing Starlight `<Card>` elements.
+
+Both arrangements are gated on the width of the grid's own container, not the window.
+A container narrower than `34rem` folds to a single readable column however wide the screen is, and each card's title is sized from the cell it lands in — so a grid dropped into a sidebar'd column stays composed instead of spilling its headings.

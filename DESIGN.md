@@ -230,7 +230,7 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Background:** The raised surface (`--sl-exquisitus-surface-raised`) — the page white in light mode, a real tonal step to `gray-6` in dark mode, where a hairline alone reads as a ghost box (Tonal-First Rule). Never a heavier filled panel than that.
 - **Border:** A single hairline (`gray-5`).
 - **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (`--sl-exquisitus-border-hover`, a 60% mix into the hairline — shared with the doorways so the lift family stays in step), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
-- **Title:** Spectral 600, tying the card to the document's headings rather than the interface chrome.
+- **Title:** Spectral 600, tying the card to the document's headings rather than the interface chrome. Inside a FeatureGrid the size is set by the card's own width, not the viewport (The Card-Relative Title Rule).
 
 ### Asides (Admonitions)
 - **Style:** A full, softened hairline (the variant color at 45% into transparent) plus a tinted fill and the variant icon — **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Spectral.
@@ -314,3 +314,5 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 - **Don't** float the technical register on an outward / cast shadow — it presses *in*, never lifts *out*.
 - **Don't** make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.
 - **Don't** reach for `!important`; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).
+- **Don't** gate a component's layout on a viewport media query when its width actually comes from its container. The 42rem reading column hands a component ~37rem at *any* screen size, so `@media (min-width: 50rem)` cheerfully applies a multi-track layout to a column with no room for it. Ask the container (`@container`), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.
+- **Don't** let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and `overflow-wrap: break-word` does not lower that floor. Size the type to the container (`cqi`), and keep `min-width: 0` on the text as the net.

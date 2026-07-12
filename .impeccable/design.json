@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-11T00:00:00Z",
+  "generatedAt": "2026-07-12T00:00:00Z",
   "title": "Design System: Exquisitus",
   "extensions": {
     "colorMeta": {
@@ -219,7 +219,12 @@
       {
         "name": "wide",
         "value": "50rem",
-        "purpose": "Hero goes two-column; FeatureGrid layouts engage; below this everything is a single column."
+        "purpose": "Viewport gate for the page chrome: the Hero goes two-column. It no longer gates FeatureGrid, which asks its own container instead."
+      },
+      {
+        "name": "feature-grid",
+        "value": "34rem (container)",
+        "purpose": "Container gate on FeatureGrid's wrapper. Below 34rem of container width every layout folds to a single column, however wide the window is. A viewport query is the wrong question here: the 42rem reading column hands the grid ~37rem at any screen size."
       }
     ],
     "hexMirror": {
@@ -354,9 +359,9 @@
       "name": "FeatureGrid (lead)",
       "kind": "custom",
       "refersTo": "card",
-      "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid.",
-      "html": "<div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Color with intent</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div>",
-      "css": ".ds-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } .ds-fg-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; } .ds-fg-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+      "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid. Gated on its container's width, not the viewport; each card sizes its own title.",
+      "html": "<div class=\"ds-fg-container\"><div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Narrow counterpoint</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div></div>",
+      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } @media (hover: hover) { .ds-fg-card:hover { border-color: oklch(0.62 0.11 65); box-shadow: 0 2px 8px oklch(0.22 0.015 80 / 0.08); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
     },
     {
       "name": "Code Block",
@@ -479,6 +484,11 @@
         "name": "The Plate Ink Exception",
         "body": "The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.",
         "section": "components"
+      },
+      {
+        "name": "The Card-Relative Title Rule",
+        "body": "A card in the FeatureGrid is a sizing container, and its title is set from the cell it landed in — clamp(h5, 0.9rem + 2.5cqi, h4) — never from the viewport. A full-width lead card reaches the h4 title; a 2-of-5 cell in a sidebar'd column resolves near h5 and stays inside its border. The rule is uniform: no per-cell exceptions, no breakpoint juggling, and it holds for whatever container a consumer drops the grid into, which the theme cannot know in advance. The 3:2 asymmetry is never softened to win space — that asymmetry is the component.",
+        "section": "components"
       }
     ],
     "dos": [
@@ -506,7 +516,9 @@
       "Don't letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.",
       "Don't float the technical register on an outward / cast shadow — it presses in, never lifts out.",
       "Don't make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.",
-      "Don't reach for !important; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset)."
+      "Don't reach for !important; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).",
+      "Don't gate a component's layout on a viewport media query when its width actually comes from its container. The 42rem reading column hands a component ~37rem at any screen size, so @media (min-width: 50rem) cheerfully applies a multi-track layout to a column with no room for it. Ask the container (@container), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.",
+      "Don't let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and overflow-wrap: break-word does not lower that floor. Size the type to the container (cqi), and keep min-width: 0 on the text as the net."
     ]
   }
 }
