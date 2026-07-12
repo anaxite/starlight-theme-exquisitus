@@ -209,11 +209,19 @@
 	   carry no scope hash, so these child selectors must reach them directly.
 	   Mobile is a single column for every layout; `align-items: stretch`
 	   (the grid default) levels peers to a shared baseline. */
+	/* The grid asks how much room *it* has, not how wide the window is: a
+	   sidebar'd 42rem column hands it far less than a splash page does. The
+	   query has to sit on a wrapper because an element can never be styled by
+	   its own container query. */
+	.exquisitus-feature-grid-container {
+		container-type: inline-size;
+		margin-top: 1.5rem;
+	}
+
 	.exquisitus-feature-grid {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 1rem;
-		margin-top: 1.5rem;
 	}
 
 	/* Each card is its own sizing context, so the title can be set from the
@@ -240,7 +248,7 @@
 		hyphens: auto;
 	}
 
-	@media (min-width: 50rem) {
+	@container (min-width: 34rem) {
 		/* lead — a full-width thesis card over a row of supporting peers that
 		   auto-fit to the card count: 2 → halves, 3 → thirds, 4 → quarters.
 		   The author drops in however many fit; no prop, no breakpoint juggling. */

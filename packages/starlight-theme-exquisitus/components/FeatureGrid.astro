@@ -12,6 +12,10 @@
  * hash, so child-targeting selectors (`> :first-child`, `> :nth-child()`) only
  * match when they're authored globally.
  *
+ * The outer wrapper is the size container the layouts are gated on — the grid
+ * itself cannot be it, because an element is never styled by its own container
+ * query. Don't collapse the two elements into one.
+ *
  * @example
  *   import { Card } from '@astrojs/starlight/components';
  *   import FeatureGrid from 'starlight-theme-exquisitus/components/FeatureGrid.astro';
@@ -36,6 +40,8 @@ interface Props {
 const { layout = "lead", class: className } = Astro.props;
 ---
 
-<div class:list={["exquisitus-feature-grid", className]} data-layout={layout}>
-    <slot />
+<div class="exquisitus-feature-grid-container">
+    <div class:list={["exquisitus-feature-grid", className]} data-layout={layout}>
+        <slot />
+    </div>
 </div>
