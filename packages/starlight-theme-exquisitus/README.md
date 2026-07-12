@@ -1,6 +1,6 @@
 # starlight-theme-exquisitus
 
-Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme that tries to blend readability and beauty without compromising on either.
+Exquisitus is an Astro [Starlight](https://starlight.astro.build/) theme where readability and beauty are the same discipline.
 
 This theme was built with LLM assistance.
 

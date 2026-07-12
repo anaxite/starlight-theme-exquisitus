@@ -2,7 +2,7 @@
   "name": "starlight-theme-exquisitus",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "A Starlight documentation theme aiming for readability and beauty.",
+  "description": "An Astro Starlight theme where readability and beauty are the same discipline.",
   "author": "Anaxite",
   "type": "module",
   "repository": {

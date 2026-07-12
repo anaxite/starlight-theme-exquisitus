@@ -6,7 +6,7 @@ This file is monorepo-level. The published theme package has its own [`AGENTS.md
 
 ## Project
 
-**Exquisitus** is an Astro Starlight documentation theme, consumed by Starlight sites as a plugin. It is an attempt to merge readability and beauty. The theme self-hosts three OFL typefaces, replaces Starlight's palette with a WCAG-AA OKLCH system (light + dark), and refines the core chrome.
+**Exquisitus** is an Astro Starlight documentation theme, consumed by Starlight sites as a plugin. It is built on the conviction that readability and beauty are the same discipline. The theme self-hosts three OFL typefaces, replaces Starlight's palette with a WCAG-AA OKLCH system (light + dark), and refines the core chrome.
 
 ## Design system
 
