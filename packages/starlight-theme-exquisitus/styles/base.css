@@ -249,14 +249,26 @@
 	}
 
 	@container (min-width: 34rem) {
-		/* lead — a full-width thesis card over a row of supporting peers that
-		   auto-fit to the card count: 2 → halves, 3 → thirds, 4 → quarters.
-		   The author drops in however many fit; no prop, no breakpoint juggling. */
+		/* lead — a full-width thesis card over a row of supporting peers sized
+		   from the card count, not the container width: 2 → halves, 3 → thirds,
+		   4 → quarters. Counted with quantity queries because `auto-fit` cannot
+		   do it: the spanning lead occupies every track, so no track is ever
+		   empty enough to collapse and the count would follow container width —
+		   on a wide splash, two peers ended up quarter-width with half the row
+		   blank. Halves are the floor; thirds and quarters wait for the wider
+		   thresholds below so a cell keeps roughly the 15rem minimum the old
+		   minmax() enforced. */
 		.exquisitus-feature-grid[data-layout="lead"] {
-			grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+			grid-template-columns: repeat(2, 1fr);
 		}
 
 		.exquisitus-feature-grid[data-layout="lead"] > :first-child {
+			grid-column: 1 / -1;
+		}
+
+		/* An odd peer count in the two-column arrangement leaves an orphan;
+		   it takes the full width, as alternating's trailing card does. */
+		.exquisitus-feature-grid[data-layout="lead"] > :last-child:nth-child(even) {
 			grid-column: 1 / -1;
 		}
 
@@ -283,6 +295,32 @@
 				odd
 			) {
 			grid-column: 1 / -1;
+		}
+	}
+
+	/* Three peers → thirds once each third clears the 15rem floor
+	   (3 × 15rem + 2 × 1rem gap = 47rem). The orphan rule above no longer
+	   applies: the row is exact, so the last peer takes a plain cell. */
+	@container (min-width: 47rem) {
+		.exquisitus-feature-grid[data-layout="lead"]:has(
+				> :nth-child(4):last-child
+			) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.exquisitus-feature-grid[data-layout="lead"]:has(> :nth-child(4):last-child)
+			> :last-child {
+			grid-column: auto;
+		}
+	}
+
+	/* Four peers → quarters once each quarter clears the floor
+	   (4 × 15rem + 3 × 1rem gap = 63rem). */
+	@container (min-width: 63rem) {
+		.exquisitus-feature-grid[data-layout="lead"]:has(
+				> :nth-child(5):last-child
+			) {
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 
