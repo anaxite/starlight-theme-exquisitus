@@ -39,11 +39,15 @@
 	/* ──────────────────────────── Links ─────────────────────────────── */
 	/* `.not-content` is excluded as a whole (and not just its descendants) so this
 	   never bleeds onto link buttons / cards, which carry that class themselves. */
+	/* The underline sits at 65%, not the 40% it started at. It is the one link
+	   cue that does not depend on colour, so it is what a colourblind reader is
+	   actually reading; at 40% it was decorative. It still solidifies to full
+	   strength on hover, so the resting/active distinction survives. */
 	.sl-markdown-content a:not(:where(.not-content, .not-content *)) {
 		color: var(--sl-color-text-accent);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 0.18em;
-		text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+		text-decoration-color: color-mix(in oklab, currentColor 65%, transparent);
 		transition:
 			text-decoration-color 0.15s var(--sl-exquisitus-ease),
 			color 0.15s var(--sl-exquisitus-ease);
