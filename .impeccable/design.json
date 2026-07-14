@@ -289,8 +289,8 @@
         "hex": "#110F0D"
       },
       "surface-light": {
-        "oklch": "oklch(1 0 0)",
-        "hex": "#FFFFFF"
+        "oklch": "oklch(0.985 0 0)",
+        "hex": "#FAFAFA"
       },
       "surface-raised-dark": {
         "oklch": "oklch(0.24 0.007 80)",

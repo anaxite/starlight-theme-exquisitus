@@ -85,7 +85,7 @@
 		   (gray-5 border is only ~1.9:1 on the page), so dark cards take a
 		   tonal step up to gray-6 — the ramp's designated raised-surface tone —
 		   and read by their fill, not a ghost outline (Tonal-First Rule). Light
-		   mode keeps the white page: there a dark-enough border already
+		   mode keeps the page surface: there a dark-enough border already
 		   separates the card, so no step is needed. */
 		--sl-exquisitus-surface-raised: var(--sl-color-gray-6);
 
@@ -159,11 +159,18 @@
 		--sl-color-gray-5: oklch(0.8 0.005 80); /* hairlines */
 		--sl-color-gray-6: oklch(0.93 0.004 80); /* raised surface */
 		--sl-color-gray-7: oklch(0.965 0.003 80); /* subtle fills, zebra rows */
-		--sl-color-black: oklch(1 0 0); /* page background — pure white */
+		/* Page background — a chroma-0 off-white, not pure white. The No-Cream
+		   Rule forbids warmth in the paper, not off-white: at chroma 0 this
+		   cannot read as cream under any light, but it takes the glare edge off
+		   a surface the reader is asked to sit with for a long time. The step is
+		   small enough that nobody names it and large enough that they stop
+		   squinting; the ramp below it (gray-7 at 0.965, the code panel at 0.95)
+		   still separates cleanly. */
+		--sl-color-black: oklch(0.985 0 0);
 
-		/* Raised surface — the white page. On white the gray-5 card border is
-		   dark enough to separate the card on its own, so light mode needs no
-		   tonal step (the dark-mode counterpart lifts to gray-6). */
+		/* Raised surface — the page itself. On the light page the gray-5 card
+		   border is dark enough to separate the card on its own, so light mode
+		   needs no tonal step (the dark-mode counterpart lifts to gray-6). */
 		--sl-exquisitus-surface-raised: var(--sl-color-bg);
 
 		/* Pin the hairline to gray-5 (see dark-mode note) so separators read on
@@ -186,12 +193,12 @@
 		   clears WCAG AA body-text contrast (≥4.5:1) with comfortable headroom. */
 		--sl-exquisitus-cool: oklch(0.44 0.09 205);
 
-		/* Code surfaces — a soft cool panel, clearly not the white page (light mode).
+		/* Code surfaces — a soft cool panel, clearly not the page (light mode).
 		   Deepened a step (0.965 → 0.95) with a touch more petrol chroma so the
 		   block reads as a distinct surface, not a near-white wash. */
 		--sl-exquisitus-code-bg: oklch(0.95 0.012 235);
 
-		/* Code-block letterpress edge — debossed into the white page: a recessed
+		/* Code-block letterpress edge — debossed into the light page: a recessed
 		   top shadow over a 1px lit lower lip. The light-mode twin of the
 		   header's depth-from-light lift. */
 		--sl-exquisitus-code-edge:

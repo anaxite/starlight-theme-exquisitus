@@ -22,7 +22,7 @@ colors:
   hairline-dark: "oklch(0.38 0.008 80)"   # separators, dark
   hairline-light: "oklch(0.8 0.005 80)"   # separators, light
   surface-dark: "oklch(0.17 0.006 80)"    # page background, dark
-  surface-light: "oklch(1 0 0)"           # page background, light (pure white)
+  surface-light: "oklch(0.985 0 0)"       # page background, light (chroma-0 off-white)
   # Raised surface (cards, link cards). Dark takes a real tonal step (gray-6)
   # so cards read by fill, not ghost outline; light keeps the page white —
   # the hairline alone separates there (Tonal-First Rule).
@@ -142,7 +142,7 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 - **Body** (dark `oklch(0.82 0.014 85)`; light `oklch(0.33 0.012 80)`): The reading column. Where most of the page lives.
 - **Muted** (dark `oklch(0.7 0.012 82)`; light `oklch(0.45 0.01 80)`): Secondary text, captions, metadata, nav section labels. Never the elegant-but-illegible light grey — the dark step is deliberately lifted to ~7:1 (AAA) so small navigational chrome is comfortable, not merely compliant (see the Tonal-First Rule).
 - **Hairline** (dark `oklch(0.38 0.008 80)`; light `oklch(0.8 0.005 80)`): Separators, table rules, card borders, tablist baselines. Pinned explicitly to the ramp's hairline step — Starlight's default points it at the raised-surface tone, which reads as no line at all on these surfaces.
-- **Surface** (dark `oklch(0.17 0.006 80)`; light `oklch(1 0 0)` — pure white): The paper. No hidden warm tint, in either mode.
+- **Surface** (dark `oklch(0.17 0.006 80)`; light `oklch(0.985 0 0)` — a chroma-0 off-white): The paper. No hidden warm tint, in either mode. The light surface is *off* white, not white: chroma is exactly 0, so it cannot read as cream under any light, but it takes the glare edge off a surface the Generous Body Rule asks the reader to sit with for a long time (see the No-Cream Rule).
 - **Code Surface** (dark `oklch(0.205 0.012 245)`; light `oklch(0.95 0.012 235)`): A cool-tinted panel for code blocks, clearly distinct from the page so code reads in the information register.
 - **Raised Surface** (dark `oklch(0.24 0.007 80)` — the ramp's `gray-6`; light = the page white): The tonal step for cards and link cards. Only dark mode steps up; on white the hairline alone does the separating (see the Tonal-First Rule).
 
@@ -155,7 +155,7 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 
 **The Two-Job Rule.** Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job. A full palette earns its richness through discipline, not abundance.
 
-**The No-Cream Rule.** The light-mode surface is pure white (`oklch(1 0 0)`); the dark surface is near-black (`oklch(0.17 0.006 80)`). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. Forbidden token names: `--cream`, `--sand`, `--paper`, `--parchment`.
+**The No-Cream Rule.** The rule forbids **warmth in the paper**, not off-white. The light-mode surface is a chroma-0 off-white (`oklch(0.985 0 0)`); the dark surface is near-black (`oklch(0.17 0.006 80)`). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. **The test is chroma, not lightness: a light surface may sit below L 1.0, but its chroma must be exactly 0.** Any chroma in the paper — however small, however it is named — is the cream move and is forbidden. (Pure white was the original reading of this rule, and it overcorrected: it banned the thing that most helps a long read in order to avoid a thing chroma 0 already makes impossible.) Forbidden token names: `--cream`, `--sand`, `--paper`, `--parchment`.
 
 **The Deepened-Accent Rule.** Accent **text** is bronze in light mode and brightened honey in dark mode; the raw honey only ever appears as a **fill** with an ink label. Never "fix" the bronze link color back to honey — the contrast floor forces it.
 
@@ -303,7 +303,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 ### Don't:
 - **Don't** ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.
 - **Don't** ship generic SaaS docs — the Mintlify / Docusaurus default of clean-white-plus-blue-primary with a forgettable sidebar.
-- **Don't** carry warmth in the body background — no cream / sand / parchment surface. Warmth lives in the amber and the type.
+- **Don't** carry warmth in the body background — no cream / sand / parchment surface. Warmth lives in the amber and the type. The light paper may sit *below* pure white (it does: `oklch(0.985 0 0)`), but its chroma must be exactly 0; the No-Cream Rule tests chroma, not lightness.
 - **Don't** use side-stripe accent borders (`border-left` / `border-right` > 1px) on asides, callouts, blockquotes, details, or cards — full hairlines, tonal fills, or icons instead.
 - **Don't** use gradient text, decorative glassmorphism, or backdrop-blur on sticky chrome.
 - **Don't** use elegant-but-illegible light-grey body copy; muted text still clears 4.5:1.
