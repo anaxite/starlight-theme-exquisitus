@@ -734,9 +734,15 @@
 		background-color: var(--sl-color-white);
 	}
 
+	/* Paper is the one ink that can never read by its fill: the chip shows the
+	   page colour, and it sits on a plate whose gray-7 fill is a hair off the
+	   page in either mode (dark: L 0.17 on L 0.205). So it reads by its *edge* —
+	   a gray-4 border rather than the hairline the tinted chips use. That is also
+	   the truth of the thing: paper is the absence of ink, and what you can see
+	   of it is its boundary. */
 	.exquisitus-specimen-inks .ink-paper {
 		background-color: var(--sl-color-black);
-		border-color: var(--sl-color-hairline);
+		border-color: var(--sl-color-gray-4);
 	}
 
 	.exquisitus-specimen-folio {
