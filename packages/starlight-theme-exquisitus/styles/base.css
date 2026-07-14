@@ -123,12 +123,14 @@
 		border-radius: 0 0.375rem 0.375rem 0;
 	}
 
-	/* Opaque, not translucent — mirrors the header's no-blur principle (a
-	   scrim reads poorly for low-vision readers). A near-solid fill over the
-	   page surface gives a clean edge as content scrolls under it. */
+	/* Opaque, not translucent — mirrors the header's no-blur principle (a scrim
+	   reads poorly for low-vision readers). This was a 96% color-mix, which is
+	   still 4% transparent: content scrolling under it showed through faintly,
+	   which is the exact effect the No-Blur Rule exists to prevent. A solid fill,
+	   and the hairline gives the edge. */
 	mobile-starlight-toc nav {
 		border-top: 1px solid var(--sl-color-hairline);
-		background-color: color-mix(in oklab, var(--sl-color-bg) 96%, transparent);
+		background-color: var(--sl-color-bg);
 	}
 
 	/* ───────────────────────────── Search ───────────────────────────── */
