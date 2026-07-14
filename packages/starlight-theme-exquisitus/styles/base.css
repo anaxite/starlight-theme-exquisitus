@@ -592,29 +592,43 @@
 		}
 	}
 
+	/* The masthead settles in on first paint. This is a *transition* from a
+	   `@starting-style`, not a keyframe animation with `fill-mode: both` —
+	   which is the same effect but the opposite failure mode. `both` applies the
+	   keyframe's `from` state (opacity: 0) during the delay, so the hero did not
+	   exist for the first ~850ms of every visit: screenshot, OG-image and
+	   print-to-PDF renderers all captured a blank spread. Here the resting state
+	   is the visible one and only the *entry* interpolates, so anything that
+	   cannot run the transition simply gets the finished hero. */
 	@media (prefers-reduced-motion: no-preference) {
 		.hero .copy > *,
 		.hero .actions {
-			animation: exquisitus-rise 0.6s var(--sl-exquisitus-ease) both;
+			opacity: 1;
+			translate: none;
+			transition:
+				opacity 0.6s var(--sl-exquisitus-ease),
+				translate 0.6s var(--sl-exquisitus-ease);
 		}
+
+		@starting-style {
+			.hero .copy > *,
+			.hero .actions {
+				opacity: 0;
+				translate: 0 0.75rem;
+			}
+		}
+
 		.hero .copy > *:nth-child(1) {
-			animation-delay: 0.02s;
+			transition-delay: 0.02s;
 		}
 		.hero .copy > *:nth-child(2) {
-			animation-delay: 0.09s;
+			transition-delay: 0.09s;
 		}
 		.hero .copy > *:nth-child(3) {
-			animation-delay: 0.16s;
+			transition-delay: 0.16s;
 		}
 		.hero .actions {
-			animation-delay: 0.23s;
-		}
-	}
-
-	@keyframes exquisitus-rise {
-		from {
-			opacity: 0;
-			transform: translateY(0.75rem);
+			transition-delay: 0.23s;
 		}
 	}
 
@@ -748,20 +762,27 @@
 		}
 	}
 
-	/* The plate settles into the page once, after the copy has risen: it
-	   fades in as the letterpress edge presses it down. Never on hover — a
-	   printed object does not perform. */
+	/* The plate settles into the page once, after the copy has risen: it fades in
+	   as the letterpress edge presses it down. Never on hover — a printed object
+	   does not perform. Same starting-style construction as the masthead above:
+	   the resting state is the pressed, visible plate, so a renderer that cannot
+	   transition still gets a finished plate rather than an empty column. */
 	@media (prefers-reduced-motion: no-preference) {
 		.hero .exquisitus-specimen {
-			animation: exquisitus-press 0.6s var(--sl-exquisitus-ease) 0.25s both;
+			opacity: 1;
+			translate: none;
+			transition:
+				opacity 0.6s var(--sl-exquisitus-ease) 0.25s,
+				translate 0.6s var(--sl-exquisitus-ease) 0.25s,
+				box-shadow 0.6s var(--sl-exquisitus-ease) 0.25s;
 		}
-	}
 
-	@keyframes exquisitus-press {
-		from {
-			opacity: 0;
-			transform: translateY(-0.35rem);
-			box-shadow: none;
+		@starting-style {
+			.hero .exquisitus-specimen {
+				opacity: 0;
+				translate: 0 -0.35rem;
+				box-shadow: none;
+			}
 		}
 	}
 
