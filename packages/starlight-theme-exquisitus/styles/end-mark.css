@@ -5,11 +5,18 @@
  * earns its place without breaking the Sovereign Column Rule: it appears once,
  * at the very bottom, in muted ink, and never competes with the reading.
  *
- * The form is deliberately the short centred rule (the `hr` in prose.css)
- * evolved into a signed ending — a small jewel flanked by two hairlines — so
- * the divider and the terminal read as one family. Drawn as an SVG mask, not a
- * glyph, because none of the three self-hosted typefaces carries a fleuron; the
- * mask takes its colour from the muted ink token like any other mark.
+ * The form is a single centred jewel — deliberately NOT the flanked-by-hairlines
+ * shape it used to carry. That shape borrowed the `hr`'s silhouette (a rule with
+ * something in the middle), so on any page that ends near a content `hr` the two
+ * marks read as the same object twice and the terminal lost its force. A divider
+ * and a terminal must differ in *kind*, not in degree: the rule is a line across
+ * the column, the end mark is a single sign. It is also what the tradition it
+ * cites actually looks like — the printed article's end sign (the New York Times
+ * "▪", the old "—30—") is one mark, never a ruled one.
+ *
+ * Drawn as an SVG mask, not a glyph, because none of the three self-hosted
+ * typefaces carries a fleuron; the mask takes its colour from the muted ink
+ * token like any other mark.
  *
  * Injected by index.ts only when the `endMark` plugin option is not `false`
  * (on by default), and scoped to `html:not([data-has-hero])` so it never lands
@@ -18,11 +25,14 @@
 @layer exquisitus {
 	html:not([data-has-hero]) .sl-markdown-content::after {
 		/* The artwork, once — both mask properties below reference it. */
-		--exquisitus-end-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E");
+		--exquisitus-end-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5 L21.5 12 L12 21.5 L2.5 12 Z'/%3E%3C/svg%3E");
 		content: "";
 		display: block;
-		width: 9rem;
-		aspect-ratio: 160 / 24;
+		/* Sized against the body, not the page: a printed end sign is about the
+		   size of a lowercase letter. Below ~0.6rem it stops reading as a mark
+		   and starts reading as dust on the screen. */
+		width: 0.625rem;
+		aspect-ratio: 1;
 		margin: 3.25rem auto 0;
 		background-color: var(--sl-color-gray-3);
 		-webkit-mask: var(--exquisitus-end-mark) center / contain no-repeat;
