@@ -73,7 +73,13 @@
 		padding-inline-end: 1.25rem;
 	}
 
+	/* Nav links carry the reading base size (Starlight ships them a step down at
+	   --sl-text-sm). At 17px they sit just under the 18px reading column, so the
+	   sidebar is legible without competing; the de-emphasis that separates nav
+	   from the column stays on colour (gray) and the small-caps labels, not on a
+	   shrunken body size. */
 	.sidebar-content a {
+		font-size: var(--sl-text-base);
 		border-radius: 0.375rem;
 		transition:
 			color 0.15s var(--sl-exquisitus-ease),
@@ -111,7 +117,11 @@
 		border-inline-start: 0;
 	}
 
+	/* Bumped a step off Starlight's --sl-text-xs default: at 14.875px the TOC is
+	   comfortably readable and still the quietest nav on the page (below the
+	   17px sidebar, well below the reading column). */
 	starlight-toc a {
+		font-size: var(--sl-text-sm);
 		border-radius: 0.375rem;
 		transition:
 			color 0.15s var(--sl-exquisitus-ease),
@@ -806,16 +816,22 @@
 
 	/* ───────────────────── Splash reading measure ────────────────────── */
 	/* The 65–75ch Rule does not stop applying because the sidebar is gone:
-	   on splash pages, prose and code hold the reading measure as a centred
-	   column while figures (grids, doorways, the plate) may span wide. The
-	   value is literal (Starlight widens --sl-content-width to 67.5rem on splash
-	   templates) and tracks the docs measure — 35rem for ~70ch of Literata,
-	   re-derived live from the real face's average advance. */
+	   on splash pages, prose and code hold the reading measure while figures
+	   (grids, doorways, the plate) may span wide. The value is literal (Starlight
+	   widens --sl-content-width to 67.5rem on splash templates) and tracks the
+	   docs measure — 35rem for ~70ch of Literata, re-derived live from the real
+	   face's average advance.
+	   The measured column HANGS ON THE LEFT SPINE (`margin-inline: 0 auto`), not
+	   centred: the hero copy, the prose, and the install strip then share one
+	   left edge down the page. Centring it reset the reader's left margin twice
+	   (hero at the content edge → prose indented → doorways back at the edge);
+	   left-hanging gives the splash a single dominant spine, with only the
+	   colophon deliberately centred as a book-ending. */
 	[data-has-hero]
 		.sl-markdown-content
 		> :where(p, .sl-heading-wrapper, ul, ol, blockquote, .expressive-code) {
 		max-width: 35rem;
-		margin-inline: auto;
+		margin-inline: 0 auto;
 	}
 
 	/* ───────────────────────── Doorway cards ────────────────────────── */
