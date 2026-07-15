@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0
+
+### Changed
+
+`1.1.0` brings a significant but minor-ish change: typefaces change from Spectral+Atkinson Hyperlegible to Alegreya Sans+Literata.
+
+In short, I wasn't satisfied with my first typeface choice.
+I wanted a bit more personality to the theme: something that was still great to read, but didn't follow Serif+Sans conventions just because.
+Literata is a great typeface for long-form reading, and it pairs well with Alegreya Sans (which I happen to like).
+
+Theme functionality is otherwise unchanged.
+
 ## 1.0.4
 
 ### Fixed
