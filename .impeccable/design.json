@@ -138,7 +138,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Page titles and hero headings; Spectral serif, clamp topping at 5rem."
+        "purpose": "Page titles and hero headings; Alegreya Sans register, clamp topping at 5rem."
       },
       "headline": {
         "displayName": "Headline",
@@ -150,7 +150,7 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "The reading column: Atkinson ~18px / 1.75, capped at ~70ch."
+        "purpose": "The reading column: Literata ~18px / 1.75, capped at ~70ch."
       },
       "label": {
         "displayName": "Label",
@@ -224,7 +224,7 @@
       {
         "name": "feature-grid",
         "value": "34rem (container)",
-        "purpose": "Container gate on FeatureGrid's wrapper. Below 34rem of container width every layout folds to a single column, however wide the window is. A viewport query is the wrong question here: the 42rem reading column hands the grid ~37rem at any screen size."
+        "purpose": "Container gate on FeatureGrid's wrapper. Below 34rem of container width every layout folds to a single column, however wide the window is. A viewport query is the wrong question here: the 35rem reading column hands the grid ~30rem at any screen size."
       }
     ],
     "hexMirror": {
@@ -313,7 +313,7 @@
       "refersTo": "button-primary",
       "description": "The full honey-amber as a fill with an ink label — the brand at full strength.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started</a>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
     },
     {
       "name": "Secondary Button",
@@ -321,7 +321,7 @@
       "refersTo": "button-secondary",
       "description": "Transparent with a muted border that warms to the accent on hover.",
       "html": "<a class=\"ds-btn-secondary\" href=\"#\">View on GitHub</a>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: oklch(0.52 0.12 68); border: 1px solid oklch(0.62 0.008 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: border-color 0.15s cubic-bezier(0.22,1,0.36,1), color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-secondary:hover { border-color: oklch(0.52 0.12 68); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: oklch(0.52 0.12 68); border: 1px solid oklch(0.62 0.008 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: border-color 0.15s cubic-bezier(0.22,1,0.36,1), color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-secondary:hover { border-color: oklch(0.52 0.12 68); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
     },
     {
       "name": "Minimal Button",
@@ -329,15 +329,15 @@
       "refersTo": "button-minimal",
       "description": "No box — accent text with a thin underline that solidifies on hover, so it reads as a link.",
       "html": "<a class=\"ds-btn-minimal\" href=\"#\">Learn more</a>",
-      "css": ".ds-btn-minimal { color: oklch(0.52 0.12 68); font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: color-mix(in oklab, currentColor 45%, transparent); transition: text-decoration-color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-minimal:hover { text-decoration-color: currentColor; }"
+      "css": ".ds-btn-minimal { color: oklch(0.52 0.12 68); font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: color-mix(in oklab, currentColor 45%, transparent); transition: text-decoration-color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-minimal:hover { text-decoration-color: currentColor; }"
     },
     {
       "name": "Card",
       "kind": "card",
       "refersTo": "card",
       "description": "A hairline-defined card on the page surface that lifts and warms its border on hover; serif title.",
-      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Legible by design</h3><p class=\"ds-card-body\">Body text is set in Atkinson Hyperlegible Next, engineered to keep letterforms distinct at every size.</p></article>",
-      "css": ".ds-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; transition: border-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } .ds-card-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-card-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Legible by design</h3><p class=\"ds-card-body\">Body text is set in Literata, a text serif tuned for reading at length.</p></article>",
+      "css": ".ds-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; transition: border-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } .ds-card-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-card-body { margin: 0; font-family: 'Literata Variable', Georgia, serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
     },
     {
       "name": "Aside (Note)",
@@ -345,7 +345,7 @@
       "refersTo": "aside",
       "description": "Full softened hairline + tinted fill + icon — never a side stripe. Note variant in petrol-teal.",
       "html": "<aside class=\"ds-aside-note\"><p class=\"ds-aside-title\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM7.25 7.25h1.5v4h-1.5v-4zM8 4.5a.9.9 0 110 1.8.9.9 0 010-1.8z\"/></svg> Note</p><p class=\"ds-aside-body\">A note shares the calm petrol-teal of inline code — it is information, set apart.</p></aside>",
-      "css": ".ds-aside-note { background: oklch(0.95 0.03 205); border: 1px solid oklch(0.62 0.10 205 / 0.45); border-radius: 0.625rem; padding: 1rem 1.25rem; } .ds-aside-title { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.25rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: 0.005em; color: oklch(0.40 0.08 205); } .ds-aside-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+      "css": ".ds-aside-note { background: oklch(0.95 0.03 205); border: 1px solid oklch(0.62 0.10 205 / 0.45); border-radius: 0.625rem; padding: 1rem 1.25rem; } .ds-aside-title { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: 0.005em; color: oklch(0.40 0.08 205); } .ds-aside-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
     },
     {
       "name": "Inline Code",
@@ -353,15 +353,15 @@
       "refersTo": "code-inline",
       "description": "Petrol-teal text on a neutral chip with a hairline border — the information register.",
       "html": "<p class=\"ds-code-context\">Install with <code class=\"ds-code-inline\">pnpm add starlight-theme-exquisitus</code> and go.</p>",
-      "css": ".ds-code-context { font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } .ds-code-inline { background: oklch(0.93 0.004 80); border: 1px solid color-mix(in oklab, oklch(0.62 0.008 80) 22%, transparent); color: oklch(0.44 0.09 205); border-radius: 0.3125rem; padding: 0.1em 0.35em; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; }"
+      "css": ".ds-code-context { font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } .ds-code-inline { background: oklch(0.93 0.004 80); border: 1px solid color-mix(in oklab, oklch(0.62 0.008 80) 22%, transparent); color: oklch(0.44 0.09 205); border-radius: 0.3125rem; padding: 0.1em 0.35em; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; }"
     },
     {
       "name": "FeatureGrid (lead)",
       "kind": "custom",
       "refersTo": "card",
       "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid. Gated on its container's width, not the viewport; each card sizes its own title.",
-      "html": "<div class=\"ds-fg-container\"><div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Spectral.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Narrow counterpoint</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div></div>",
-      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } @media (hover: hover) { .ds-fg-card:hover { border-color: oklch(0.62 0.11 65); box-shadow: 0 2px 8px oklch(0.22 0.015 80 / 0.08); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: Spectral, Georgia, serif; font-weight: 600; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
+      "html": "<div class=\"ds-fg-container\"><div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Alegreya Sans.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Narrow counterpoint</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div></div>",
+      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } @media (hover: hover) { .ds-fg-card:hover { border-color: oklch(0.62 0.11 65); box-shadow: 0 2px 8px oklch(0.22 0.015 80 / 0.08); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
     },
     {
       "name": "Code Block",
@@ -446,8 +446,8 @@
         "section": "typography"
       },
       {
-        "name": "The Serif-Marks-Structure Rule",
-        "body": "Spectral marks every structural or editorial element; the sans never carries a heading, the serif never carries running body.",
+        "name": "The Register-Marks-Structure Rule",
+        "body": "The register sans (Alegreya Sans) marks every structural or wayfinding element; the reading serif (Literata) carries running body and blockquotes. The sans never carries running body; the serif never carries a heading.",
         "section": "typography"
       },
       {
@@ -477,7 +477,7 @@
       },
       {
         "name": "The Splash Measure Rule",
-        "body": "Starlight widens --sl-content-width to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal 42rem centred column; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.",
+        "body": "Starlight widens --sl-content-width to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal 35rem centred column; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.",
         "section": "components"
       },
       {
@@ -492,7 +492,7 @@
       }
     ],
     "dos": [
-      "Do keep the body reading column ink-on-surface, capped at ~70ch (42rem), set generously larger than the docs default (~18px / 1.75).",
+      "Do keep the body reading column ink-on-surface, capped at ~70ch (35rem of Literata), set generously larger than the docs default (~18px / 1.75).",
       "Do let the honey-amber accent appear rarely and meaningfully — links, active state, selection, focus. Its rarity is the point.",
       "Do keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a fill with an ink label.",
       "Do give petrol-teal its one job — information and code — and keep it there.",
@@ -501,7 +501,7 @@
       "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
       "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition.",
       "Do fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.",
-      "Do hold splash prose and code to the 42rem centred measure (the Splash Measure Rule); only figures span the wide splash container."
+      "Do hold splash prose and code to the 35rem centred measure (the Splash Measure Rule); only figures span the wide splash container."
     ],
     "donts": [
       "Don't ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.",
@@ -517,7 +517,7 @@
       "Don't float the technical register on an outward / cast shadow — it presses in, never lifts out.",
       "Don't make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.",
       "Don't reach for !important; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).",
-      "Don't gate a component's layout on a viewport media query when its width actually comes from its container. The 42rem reading column hands a component ~37rem at any screen size, so @media (min-width: 50rem) cheerfully applies a multi-track layout to a column with no room for it. Ask the container (@container), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.",
+      "Don't gate a component's layout on a viewport media query when its width actually comes from its container. The 35rem reading column hands a component ~30rem at any screen size, so @media (min-width: 50rem) cheerfully applies a multi-track layout to a column with no room for it. Ask the container (@container), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.",
       "Don't let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and overflow-wrap: break-word does not lower that floor. Size the type to the container (cqi), and keep min-width: 0 on the text as the net."
     ]
   }
