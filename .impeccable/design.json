@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-12T00:00:00Z",
+  "generatedAt": "2026-07-15T00:00:00Z",
   "title": "Design System: Exquisitus",
   "extensions": {
     "colorMeta": {
@@ -146,7 +146,7 @@
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Sub-headings, card / aside titles, table headers, summary — the serif on interface objects."
+        "purpose": "Sub-headings, card / aside titles, table headers, summary — the sans register on interface objects."
       },
       "body": {
         "displayName": "Body",
@@ -335,7 +335,7 @@
       "name": "Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "A hairline-defined card on the page surface that lifts and warms its border on hover; serif title.",
+      "description": "A hairline-defined card on the page surface that lifts and warms its border on hover; register-sans title (Alegreya Sans).",
       "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Legible by design</h3><p class=\"ds-card-body\">Body text is set in Literata, a text serif tuned for reading at length.</p></article>",
       "css": ".ds-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; transition: border-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } .ds-card-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-card-body { margin: 0; font-family: 'Literata Variable', Georgia, serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
     },
@@ -361,7 +361,7 @@
       "refersTo": "card",
       "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid. Gated on its container's width, not the viewport; each card sizes its own title.",
       "html": "<div class=\"ds-fg-container\"><div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Alegreya Sans.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Narrow counterpoint</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div></div>",
-      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } @media (hover: hover) { .ds-fg-card:hover { border-color: oklch(0.62 0.11 65); box-shadow: 0 2px 8px oklch(0.22 0.015 80 / 0.08); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
+      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); } @media (hover: hover) { .ds-fg-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
     },
     {
       "name": "Code Block",
@@ -383,9 +383,9 @@
       "name": "End Mark",
       "kind": "custom",
       "refersTo": "end-mark",
-      "description": "The editorial terminal: a muted-ink jewel flanked by two hairlines, closing each content page's prose. SVG-mask, never a glyph; gated by the endMark plugin option (default on).",
+      "description": "The editorial terminal: a single muted-ink diamond jewel, closing each content page's prose. SVG-mask, never a glyph; gated by the endMark plugin option (default on). It differs in kind from the hr — a line is a pause, a jewel is an ending.",
       "html": "<div class=\"ds-end-mark\" role=\"presentation\"></div>",
-      "css": ".ds-end-mark { width: 9rem; aspect-ratio: 160 / 24; margin: 1.5rem auto; background-color: oklch(0.45 0.01 80); -webkit-mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E\") center / contain no-repeat; mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Crect x='14' y='11.4' width='46' height='1.2'/%3E%3Cpath d='M80 6 L86 12 L80 18 L74 12 Z'/%3E%3Crect x='100' y='11.4' width='46' height='1.2'/%3E%3C/svg%3E\") center / contain no-repeat; }"
+      "css": ".ds-end-mark { width: 0.625rem; aspect-ratio: 1; margin: 3rem auto 0; background-color: oklch(0.45 0.01 80); -webkit-mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5 L21.5 12 L12 21.5 L2.5 12 Z'/%3E%3C/svg%3E\") center / contain no-repeat; mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5 L21.5 12 L12 21.5 L2.5 12 Z'/%3E%3C/svg%3E\") center / contain no-repeat; }"
     }
   ],
   "narrative": {
@@ -412,7 +412,7 @@
       },
       {
         "name": "The End Mark Rule",
-        "body": "Every content page closes with a single editorial end mark — a small centred jewel flanked by two hairlines, the short centred hr evolved into a signed ending. It earns its place by doing a job (marking the end of the text): a mark that only decorates violates the Sovereign Column Rule; a mark that signs an ending is editorial heritage. Once per page, muted ink, never on the splash (whose colophon already closes it), drawn as an SVG mask because none of the three faces carries a fleuron. Gated by the endMark plugin option; ships on.",
+        "body": "Every content page closes with a single editorial end mark — one small centred jewel, a signed ending that differs in kind from the hr (a line is a pause; a jewel is an ending). It earns its place by doing a job (marking the end of the text): a mark that only decorates violates the Sovereign Column Rule; a mark that signs an ending is editorial heritage. It appears once, at the very bottom, in muted ink; it never lands on the splash (whose colophon already closes it); and it is drawn as a single SVG-mask diamond, not a glyph, because none of the three faces carries a fleuron. Never give it rules, never give it more than one jewel. Gated by the endMark plugin option; ships on.",
         "section": "colors"
       },
       {
@@ -422,7 +422,7 @@
       },
       {
         "name": "The No-Cream Rule",
-        "body": "Light surface is pure white, dark is near-black. Warmth is carried by ink, amber, and type — never by tinting the paper.",
+        "body": "Light surface is a chroma-0 off-white (oklch(0.985 0 0)), dark is near-black. Warmth is carried by ink, amber, and type — never by tinting the paper. The No-Cream Rule tests chroma, not lightness: the paper may sit below pure white, but its chroma must be exactly 0; any chroma in the paper is the cream move and is forbidden.",
         "section": "colors"
       },
       {
