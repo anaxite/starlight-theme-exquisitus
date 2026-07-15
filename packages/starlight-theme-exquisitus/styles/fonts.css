@@ -11,23 +11,30 @@
  * Each @fontsource stylesheet declares per-subset @font-face rules gated by
  * `unicode-range`, so the browser only downloads the subsets a page actually
  * renders. Importing extra weights is therefore cheap.
+ *
+ * The pairing (see DESIGN.md): a humanist *serif* carries the reading column
+ * (Literata) and a humanist *sans* carries the register — headings, chrome,
+ * wayfinding (Alegreya Sans). Contrast on the serif/sans axis; shared
+ * calligraphic DNA keeps them a family, not a collision.
  */
 
-/* Body & UI — Atkinson Hyperlegible Next (variable, wght 200–800). */
-@import "@fontsource-variable/atkinson-hyperlegible-next/index.css";
+/* Reading column — Literata (variable, wght 200–900). Roman + italic; the
+   italic is a characterful reading face (blockquotes, the specimen motto). */
+@import "@fontsource-variable/literata/index.css";
+@import "@fontsource-variable/literata/wght-italic.css";
+
+/* Register & UI — Alegreya Sans. Static cuts, only the weights the theme
+   renders: 400 (base UI, small register), 500 (small register emphasis),
+   700 (headings, hero & card titles, bold). No variable cut exists; there is
+   no 600, so the register maps to 500/700 rather than the old 600. Roman
+   only — every italic surface in the theme is a *reading* surface and belongs
+   to Literata italic, so Alegreya Sans ships no italics. */
+@import "@fontsource/alegreya-sans/400.css";
+@import "@fontsource/alegreya-sans/500.css";
+@import "@fontsource/alegreya-sans/700.css";
 
 /* Code — JetBrains Mono (variable, wght). */
 @import "@fontsource-variable/jetbrains-mono/index.css";
-
-/* Display serif — Spectral. Static cuts, only the weights the theme renders:
-   600 (headings, hero & card titles), 700 (bold — table headers, bold-in-
-   headings), 400 (summary + base serif), plus 400/600 italics (blockquotes,
-   emphasis in headings). 500 is intentionally omitted — no rule sets it. */
-@import "@fontsource/spectral/400.css";
-@import "@fontsource/spectral/600.css";
-@import "@fontsource/spectral/700.css";
-@import "@fontsource/spectral/400-italic.css";
-@import "@fontsource/spectral/600-italic.css";
 
 /*
  * Metric-matched fallback faces — near-zero layout shift on the font swap.
@@ -39,39 +46,38 @@
  * the vertical box), so the swap moves almost nothing. tokens.css inserts
  * them into each stack right after the real face.
  *
- * Values derived from @capsizecss/metrics 4.1.0 via the Capsize/fontaine
- * formula (size-adjust = web xWidthAvg/UPM ÷ fallback xWidthAvg/UPM; each
- * override = web metric/UPM ÷ size-adjust). Authored by hand rather than via
- * fontaine or Astro's Fonts API because those run in the consumer's build —
- * a published theme can't ship them; plain CSS it can.
+ * Values derived from @capsizecss/metrics via the Capsize/fontaine formula
+ * (size-adjust = web xWidthAvg/UPM ÷ fallback xWidthAvg/UPM; each override =
+ * web metric/UPM ÷ size-adjust). Authored by hand rather than via fontaine or
+ * Astro's Fonts API because those run in the consumer's build — a published
+ * theme can't ship them; plain CSS it can.
  *
  * Caveats, accepted: Safari ignores the *-override descriptors (size-adjust
  * still applies, so the residual shift is small, not zero). The metrics
  * target the Windows/macOS cuts; each src also lists the deliberately
  * metric-compatible Linux substitutes (local() does not follow fontconfig
- * aliases, so e.g. local("Arial") alone resolves to nothing there), which
+ * aliases, so e.g. local("Georgia") alone resolves to nothing there), which
  * the same override numbers fit by design. Systems with none of the listed
  * faces simply skip the entry — today's behavior, no worse.
+ *
+ * PROVISIONAL VALUES — placeholder overrides so the stacks are valid for the
+ * live-validation gate. The final Capsize-derived numbers land after the gate:
+ * Literata ← Georgia (easy), Alegreya Sans ← a narrow-advance sans (the hard
+ * one — its 0.390em average advance is unusually tight).
  */
 
-/* Atkinson Hyperlegible Next ← Arial (metric-compatible: Liberation Sans, Arimo) */
+/* Literata ← Georgia (metric-compatible: Gelasio) — PROVISIONAL */
 @font-face {
-	font-family: "Atkinson Hyperlegible Next Fallback";
-	src: local("Arial"), local("Liberation Sans"), local("Arimo");
-	size-adjust: 99.6%;
-	ascent-override: 98.8%;
-	descent-override: 31.73%;
-	line-gap-override: 0%;
+	font-family: "Literata Fallback";
+	src: local("Georgia"), local("Gelasio");
+	size-adjust: 100%;
 }
 
-/* Spectral ← Georgia (metric-compatible: Gelasio) */
+/* Alegreya Sans ← Trebuchet MS (metric-compatible: Fira Sans, DejaVu Sans) — PROVISIONAL */
 @font-face {
-	font-family: "Spectral Fallback";
-	src: local("Georgia"), local("Gelasio");
-	size-adjust: 100.04%;
-	ascent-override: 105.85%;
-	descent-override: 46.28%;
-	line-gap-override: 0%;
+	font-family: "Alegreya Sans Fallback";
+	src: local("Trebuchet MS"), local("Fira Sans"), local("DejaVu Sans");
+	size-adjust: 100%;
 }
 
 /* JetBrains Mono ← Courier New (metric-compatible: Liberation Mono, Cousine) */

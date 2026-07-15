@@ -30,8 +30,11 @@
 		border-top: 0;
 	}
 
+	/* Register maps 600 → 500 for small chrome: Alegreya Sans has no 600 cut, so
+	   a literal 600 rounds up to 700 — too heavy at masthead size. 500 carries
+	   the emphasis without the weight jump. */
 	.site-title {
-		font-weight: 600;
+		font-weight: 500;
 		letter-spacing: -0.01em;
 		color: var(--sl-color-white);
 	}
@@ -86,7 +89,7 @@
 	.sidebar-content .top-level > li > .large,
 	.sidebar-content summary .large {
 		font-size: var(--sl-text-xs);
-		font-weight: 600;
+		font-weight: 500;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--sl-color-gray-3);
@@ -96,7 +99,7 @@
 	.sidebar-content a[aria-current="page"]:hover {
 		color: var(--sl-color-text-accent);
 		background-color: var(--sl-exquisitus-accent-wash);
-		font-weight: 600;
+		font-weight: 500;
 	}
 
 	/* ─────────────────────── Table of contents ──────────────────────── */
@@ -118,7 +121,7 @@
 	starlight-toc a[aria-current="true"],
 	starlight-toc a[aria-current="true"]:hover {
 		color: var(--sl-color-text-accent);
-		font-weight: 600;
+		font-weight: 500;
 		box-shadow: inset 2px 0 0 var(--sl-color-accent);
 		border-radius: 0 0.375rem 0.375rem 0;
 	}
@@ -180,8 +183,8 @@
 
 	.card .title,
 	.sl-link-card .title {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
+		font-family: var(--sl-exquisitus-font-register);
+		font-weight: 700;
 		color: var(--sl-color-white);
 	}
 
@@ -337,7 +340,7 @@
 	}
 
 	.starlight-aside__title {
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-register);
 		letter-spacing: 0.005em;
 	}
 
@@ -365,7 +368,7 @@
 	starlight-tabs [role="tab"][aria-selected="true"] {
 		color: var(--sl-color-text-accent);
 		border-bottom-color: var(--sl-color-accent);
-		font-weight: 600;
+		font-weight: 500;
 	}
 
 	starlight-tabs [role="tab"]:not([aria-selected="true"]):hover {
@@ -380,9 +383,11 @@
 	}
 
 	/* ──────────────────────── Link buttons ──────────────────────────── */
-	/* Bolder label — text on the filled accent reads cleanly at a glance. */
+	/* Bolder label — text on the filled accent reads cleanly at a glance. 700 is
+	   the register's bold cut (no 600 in Alegreya Sans); a button is an action,
+	   so it takes the heading weight, not the small-label 500. */
 	.sl-link-button {
-		font-weight: 600;
+		font-weight: 700;
 	}
 
 	/* Honey-amber fill with an ink label — the brand color at full strength.
@@ -451,8 +456,8 @@
 
 	.pagination-links a .link-title {
 		color: var(--sl-color-white);
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
+		font-family: var(--sl-exquisitus-font-register);
+		font-weight: 700;
 	}
 
 	@media (hover: hover) {
@@ -492,10 +497,10 @@
 
 	/* ──────────────────────────── Page title ────────────────────────── */
 	/* The document <h1> (id="_top") lives outside `.sl-markdown-content`; give it
-	   the same serif treatment as the headings it sits above. */
+	   the same register treatment as the headings it sits above. */
 	h1#_top {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
+		font-family: var(--sl-exquisitus-font-register);
+		font-weight: 700;
 		letter-spacing: -0.018em;
 		text-wrap: balance;
 	}
@@ -542,8 +547,8 @@
 	}
 
 	.hero h1 {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
+		font-family: var(--sl-exquisitus-font-register);
+		font-weight: 700;
 		font-size: clamp(var(--sl-text-4xl), calc(1rem + 5vw), 5rem);
 		line-height: var(--sl-line-height-headings);
 		letter-spacing: -0.018em;
@@ -635,13 +640,15 @@
 	}
 
 	/* ────────────────────── Specimen plate (hero) ───────────────────── */
-	/* The theme's typographic identity as its own hero object: a Spectral
-	   glyph board, the working inks as labeled swatches, a mono folio. A type
-	   specimen is literally what a letterpress prints, so the plate carries
-	   the resting press (`--sl-exquisitus-code-edge`) as a sanctioned member
-	   of the reference register — pressed in, never lifted, never interactive.
-	   The gray-7 fill is the tonal step that keeps it from reading as a ghost
-	   box on the near-black page. */
+	/* The theme's typographic identity as its own hero object: a Literata
+	   glyph board, the working inks as labeled swatches, a mono folio. The plate
+	   specimens the *reading* face (the column the reader lives in), so it holds
+	   Literata, not the register sans. A type specimen is literally what a
+	   letterpress prints, so the plate carries the resting press
+	   (`--sl-exquisitus-code-edge`) as a sanctioned member of the reference
+	   register — pressed in, never lifted, never interactive. The gray-7 fill is
+	   the tonal step that keeps it from reading as a ghost box on the near-black
+	   page. */
 	.exquisitus-specimen {
 		display: flex;
 		flex-direction: column;
@@ -659,7 +666,7 @@
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-reading);
 		font-weight: 600;
 		font-size: clamp(2.75rem, 2rem + 2vw, 3.5rem);
 		line-height: 1;
@@ -669,13 +676,14 @@
 	.exquisitus-specimen-glyphs .italic {
 		font-style: italic;
 		/* 600 to match the roman glyphs — the specimen is one cut, two styles.
-		   Must be a shipped weight (fonts.css imports 400/600 italic only). */
+		   Literata is variable (roman + italic axes), so any weight is a real
+		   instance; no static-weight constraint here. */
 		font-weight: 600;
 	}
 
 	.exquisitus-specimen-motto {
 		margin: 0;
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-reading);
 		font-style: italic;
 		font-size: var(--sl-text-lg);
 		line-height: 1.4;
@@ -857,9 +865,9 @@
 	}
 
 	.exquisitus-doorways .title {
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-register);
 		font-size: var(--sl-text-lg);
-		font-weight: 600;
+		font-weight: 700;
 		line-height: var(--sl-line-height-headings);
 		color: var(--sl-color-white);
 	}
@@ -869,9 +877,9 @@
 		color: var(--sl-color-gray-3);
 	}
 
-	/* Taste 1 — typography: a Spectral italic specimen line. */
+	/* Taste 1 — typography: a Literata italic specimen line (the reading face). */
 	.exquisitus-doorways .taste-type {
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-reading);
 		font-style: italic;
 		font-size: var(--sl-text-xl);
 		color: var(--sl-color-white);
@@ -935,7 +943,7 @@
 
 	.exquisitus-colophon .set {
 		margin: 0 auto;
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-reading);
 		font-style: italic;
 		color: var(--sl-color-gray-2);
 	}

@@ -1,10 +1,10 @@
 /*
  * The reading column.
  *
- * This is where the theme earns its name. The body is Atkinson Hyperlegible
- * Next — engineered for legibility — set at an editorial size and measure.
- * Headings switch to Spectral, a screen-first serif, giving documents the
- * cadence of a printed page without sacrificing the sans-serif body's clarity.
+ * This is where the theme earns its name. The body is Literata — a variable
+ * text serif — set at an editorial size and measure. Headings switch to
+ * Alegreya Sans, a humanist sans, so the register change (reading → wayfinding)
+ * reads as sans-against-serif: a new voice for a new section.
  *
  * The "Sovereign Column" rule: prose stays monochrome ink except for two
  * deliberate spends — links (bronze/honey) and <mark> (amber). Everything else
@@ -12,14 +12,17 @@
  */
 @layer exquisitus {
 	.sl-markdown-content {
+		font-family: var(--sl-exquisitus-font-reading);
 		font-size: 1.0625rem; /* ≈18px after the root bump — editorial body size */
 		text-wrap: pretty;
 	}
 
 	/* ─────────────────────────── Headings ───────────────────────────── */
+	/* Register voice: Alegreya Sans at 700 (its heading weight — there is no 600
+	   cut) against the Literata reading column below. */
 	.sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
-		font-family: var(--sl-exquisitus-font-serif);
-		font-weight: 600;
+		font-family: var(--sl-exquisitus-font-register);
+		font-weight: 700;
 		letter-spacing: -0.012em;
 		text-wrap: balance;
 		/* Clear the sticky header when jumping to an anchor. */
@@ -129,12 +132,14 @@
 	}
 
 	/* ───────────────────────── Blockquotes ──────────────────────────── */
-	/* Editorial pull-quote treatment — Spectral italic, no accent stripe. */
+	/* Editorial pull-quote treatment — Literata italic, no accent stripe. The
+	   blockquote is a reading surface, so it keeps the reading face; the italic
+	   is where Literata's variable italic gets to perform. */
 	.sl-markdown-content blockquote:not(:where(.not-content *)) {
 		border-inline-start: none;
 		padding-inline: 0;
 		margin-inline: clamp(0rem, 4vw, 2rem);
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-reading);
 		font-style: italic;
 		font-size: 1.18em;
 		line-height: 1.5;
@@ -176,7 +181,8 @@
 	}
 
 	.sl-markdown-content th:not(:where(.not-content *)) {
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-register);
+		font-weight: 700;
 		border-bottom: 1px solid var(--sl-color-gray-4);
 	}
 
@@ -219,7 +225,7 @@
 	}
 
 	.sl-markdown-content summary:not(:where(.not-content *)) {
-		font-family: var(--sl-exquisitus-font-serif);
+		font-family: var(--sl-exquisitus-font-register);
 	}
 
 	/* ──────────────────────────── Media ─────────────────────────────── */

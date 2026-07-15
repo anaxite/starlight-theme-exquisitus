@@ -17,19 +17,36 @@
 @layer exquisitus {
 	:root {
 		/* ── Typefaces ──────────────────────────────────────────────── */
-		/* Each stack lists its metric-matched "… Fallback" face (fonts.css)
-		   right after the real one, so the pre-swap paint holds the same space
-		   and the swap causes near-zero layout shift. */
+		/* Two humanist faces on a serif/sans contrast axis (see DESIGN.md's
+		   Two-Job Rule): a serif carries the *reading* column and a sans carries
+		   the *register* — headings, chrome, wayfinding. This inverts the older
+		   sans-body/serif-heading arrangement; the register cue now reads as
+		   sans-against-serif rather than serif-against-sans.
+		   Each stack lists its metric-matched "… Fallback" face (fonts.css) right
+		   after the real one, so the pre-swap paint holds the same space and the
+		   swap causes near-zero layout shift. */
+		/* Register & UI chrome — Alegreya Sans (headings, sidebar, TOC, header,
+		   card & hero titles). No 600 cut exists; the register maps to 700
+		   (headings) / 500 (small labels), never 600. */
 		--sl-font:
-			"Atkinson Hyperlegible Next Variable",
-			"Atkinson Hyperlegible Next Fallback", system-ui, -apple-system,
+			"Alegreya Sans", "Alegreya Sans Fallback", system-ui, -apple-system,
 			BlinkMacSystemFont, "Segoe UI", sans-serif;
 		--sl-font-mono:
 			"JetBrains Mono Variable", "JetBrains Mono Fallback", ui-monospace,
 			SFMono-Regular, Menlo, Consolas, monospace;
-		/* Display serif — applied to content headings, hero & card titles only. */
-		--sl-exquisitus-font-serif:
-			"Spectral", "Spectral Fallback", Georgia, "Times New Roman", serif;
+		/* Register handle — the same Alegreya Sans stack, named for the surfaces
+		   that opt into the wayfinding voice explicitly (headings, card & doorway
+		   titles, th, aside/pagination titles, the masthead). Kept independent of
+		   --sl-font so the register can diverge from raw chrome later. */
+		--sl-exquisitus-font-register:
+			"Alegreya Sans", "Alegreya Sans Fallback", system-ui, -apple-system,
+			BlinkMacSystemFont, "Segoe UI", sans-serif;
+		/* Reading column — Literata (variable serif, roman + italic). The face
+		   the reader lives in: body prose, blockquotes, and the specimen surfaces
+		   that show off the reading face (glyph board, motto, taste line). */
+		--sl-exquisitus-font-reading:
+			"Literata Variable", "Literata Fallback", Georgia, "Times New Roman",
+			serif;
 
 		/* ── Reading rhythm ─────────────────────────────────────────── */
 		/* Nudge the global type scale up ~1px (16 → 17 at the default base).
