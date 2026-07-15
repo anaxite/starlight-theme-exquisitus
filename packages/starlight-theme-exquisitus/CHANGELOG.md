@@ -10,7 +10,7 @@
 - Make the specimen plate's paper swatch read by its edge
 - Set the light page in a chroma-0 off-white, not pure white
 - Paint the hero at rest instead of animating it in from invisible
-- 
+
 ## 1.0.3
 
 ### Fixed
