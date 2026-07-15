@@ -35,32 +35,32 @@ typography:
   # size-adjust / *-override descriptors pinned to the web font's metrics, so
   # the font-display: swap reflow moves almost nothing.
   display:
-    fontFamily: "Spectral, 'Spectral Fallback', Georgia, 'Times New Roman', serif"
+    fontFamily: "'Alegreya Sans', 'Alegreya Sans Fallback', system-ui, sans-serif"
     fontSize: "clamp(2.1875rem, calc(1rem + 5vw), 5rem)"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.18
     letterSpacing: "-0.018em"
   headline:
-    fontFamily: "Spectral, 'Spectral Fallback', Georgia, 'Times New Roman', serif"
+    fontFamily: "'Alegreya Sans', 'Alegreya Sans Fallback', system-ui, sans-serif"
     fontSize: "var(--sl-text-2xl)"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.18
     letterSpacing: "-0.012em"
   title:
-    fontFamily: "Spectral, 'Spectral Fallback', Georgia, 'Times New Roman', serif"
-    fontWeight: 600
+    fontFamily: "'Alegreya Sans', 'Alegreya Sans Fallback', system-ui, sans-serif"
+    fontWeight: 700
     lineHeight: 1.18
     letterSpacing: "-0.012em"
   body:
-    fontFamily: "'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif"
+    fontFamily: "'Literata Variable', 'Literata Fallback', Georgia, 'Times New Roman', serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.75
     letterSpacing: "normal"
   label:
-    fontFamily: "'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif"
+    fontFamily: "'Alegreya Sans', 'Alegreya Sans Fallback', system-ui, sans-serif"
     fontSize: "var(--sl-text-xs)"
-    fontWeight: 600
+    fontWeight: 500
     letterSpacing: "0.06em"
   code:
     fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono Fallback', ui-monospace, monospace"
@@ -165,20 +165,20 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 
 ## 3. Typography
 
-**Display Font:** Spectral (Production Type; OFL) — fallback `'Spectral Fallback', Georgia, 'Times New Roman', serif`.
-**Body Font:** Atkinson Hyperlegible Next (Braille Institute; OFL, variable wght 200–800) — fallback `'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif`.
+**Reading Font:** Literata (Type Network; OFL, variable wght 200–900, roman + italic) — fallback `'Literata Fallback', Georgia, 'Times New Roman', serif`. Carries the reading column.
+**Register Font:** Alegreya Sans (Huerta Tipográfica; OFL, static 400/500/700 — no 600 cut) — fallback `'Alegreya Sans Fallback', system-ui, sans-serif`. Carries headings, titles, and all chrome.
 **Mono Font:** JetBrains Mono (OFL, variable) — fallback `'JetBrains Mono Fallback', ui-monospace, monospace`.
 
 All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard requirement for a distributed theme. No Google Fonts request, no third-party origin, and near-zero swap layout shift (see the Metric-Matched Fallback Rule). The root font-size is nudged to `106.25%` (~17px base) so the whole rem-based scale, including the ~70ch measure, lifts with the reader's own base size.
 
-**Character:** A true contrast-axis pairing — Spectral's sturdy editorial serif against Atkinson Hyperlegible Next's humanist sans reading column. Headings carry the cadence of print; the body carries maximal screen legibility at a larger-than-default scale. The two never blur into one undifferentiated family.
+**Character:** A true contrast-axis pairing, run the editorial way round — Literata's text serif carries the reading column while Alegreya Sans's humanist sans carries the register. The reading body reads like a well-set book; a heading announces a new section by switching *out* of the serif into the sans. The register cue is sans-against-serif; the two share a calligraphic humanism but never blur into one undifferentiated family.
 
 ### Hierarchy
-- **Display** (Spectral 600, `clamp(2.1875rem, calc(1rem + 5vw), 5rem)`, line-height 1.18, letter-spacing −0.018em): Page titles and hero headings. The clamp tops out at 5rem — below the shouting line.
-- **Headline** (Spectral 600, `var(--sl-text-2xl)`, line-height 1.18, letter-spacing −0.012em): Major section headings within a document.
-- **Title** (Spectral 600, letter-spacing −0.012em): Sub-section headings, card titles, aside titles, pagination labels, `summary`, table headers — the serif tying interface objects back to the document.
-- **Body** (Atkinson 400, `1.0625rem` ≈ 18px, line-height 1.75): The reading column, capped at the ~70ch measure (`--sl-content-width: 42rem`). The single most important spec in the system. `text-wrap: pretty` to reduce orphans.
-- **Label** (Atkinson 600, `var(--sl-text-xs)`, letter-spacing 0.06em, uppercase): Sidebar section labels and UI chrome. Caps reserved for short labels only — never body copy.
+- **Display** (Alegreya Sans 700, `clamp(2.1875rem, calc(1rem + 5vw), 5rem)`, line-height 1.18, letter-spacing −0.018em): Page titles and hero headings. The clamp tops out at 5rem — below the shouting line.
+- **Headline** (Alegreya Sans 700, `var(--sl-text-2xl)`, line-height 1.18, letter-spacing −0.012em): Major section headings within a document.
+- **Title** (Alegreya Sans 700, letter-spacing −0.012em): Sub-section headings, card titles, aside titles, pagination labels, `summary`, table headers — the register sans tying interface objects to the heading voice. (Alegreya Sans has no 600; the register bolds to 700, never 600.)
+- **Body** (Literata 400, `1.0625rem` ≈ 18px, line-height 1.75): The reading column, capped at the ~70ch measure (`--sl-content-width: 35rem`, re-derived live against Literata's average advance — its wider advance ran the old 42rem past 80 characters). The single most important spec in the system. `text-wrap: pretty` to reduce orphans.
+- **Label** (Alegreya Sans 500, `var(--sl-text-xs)`, letter-spacing 0.06em, uppercase): Sidebar section labels and UI chrome. The register's small chrome maps 600 → 500 (no 600 cut; 500 carries the emphasis without jumping to 700). Caps reserved for short labels only — never body copy.
 - **Code** (JetBrains Mono, `0.9em`): Inline and block code; step counters use tabular figures so multi-digit sequences stay aligned. Monospace is the **type axis of the information register** — twinned with petrol-teal (color) and the letterpress (depth).
 
 ### Named Rules
@@ -186,7 +186,7 @@ All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard re
 
 **The 65–75ch Rule.** The reading measure is capped at ~70 characters regardless of viewport. A wide screen gets wider margins, never a wider line.
 
-**The Serif-Marks-Structure Rule.** Spectral marks every structural or editorial element — headings, titles, blockquotes (italic), table headers, `summary`. The sans never carries a heading; the serif never carries running body.
+**The Register-Marks-Structure Rule.** The register sans (Alegreya Sans) marks every structural, navigational, or wayfinding element — headings, titles, table headers, `summary`, and the whole chrome (sidebar, TOC, header). The reading serif (Literata) carries everything the reader *reads at length*: running body, blockquotes (its italic), and the specimen surfaces that show the reading face off (glyph board, motto, taste line, colophon). The sans never carries running body; the serif never carries a heading. A section change reads as the serif giving way to the sans.
 
 **The Metric-Matched Fallback Rule.** Each stack's first fallback is a `local()` wrapper (`fonts.css`) pinned to the web font's metrics with `size-adjust` and the `*-override` descriptors, listing the platform face *and* its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. `font-display: swap` stays — the brand faces must appear on first visit; `optional` is forbidden. Values derive from `@capsizecss/metrics`; never hand-tune them by eye.
 
@@ -232,10 +232,10 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Background:** The raised surface (`--sl-exquisitus-surface-raised`) — the page white in light mode, a real tonal step to `gray-6` in dark mode, where a hairline alone reads as a ghost box (Tonal-First Rule). Never a heavier filled panel than that.
 - **Border:** A single hairline (`gray-5`).
 - **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (`--sl-exquisitus-border-hover`, a 60% mix into the hairline — shared with the doorways so the lift family stays in step), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
-- **Title:** Spectral 600, tying the card to the document's headings rather than the interface chrome. Inside a FeatureGrid the size is set by the card's own width, not the viewport (The Card-Relative Title Rule).
+- **Title:** Alegreya Sans 700 (the register), tying the card to the document's heading voice. Inside a FeatureGrid the size is set by the card's own width, not the viewport (The Card-Relative Title Rule).
 
 ### Asides (Admonitions)
-- **Style:** A full, softened hairline (the variant color at 45% into transparent) plus a tinted fill and the variant icon — **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Spectral.
+- **Style:** A full, softened hairline (the variant color at 45% into transparent) plus a tinted fill and the variant icon — **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Alegreya Sans.
 - **Variants:** note = petrol-teal, tip = violet, caution = amber-orange (deliberately separated from the brand link color so the two never blur), danger = measured red.
 
 ### Inputs / Search
@@ -244,16 +244,16 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Motion:** The dialog rises and scale-settles over 0.2s on open, gated behind `no-preference`.
 
 ### Navigation (Sidebar + TOC)
-- **Sidebar:** No dividing line; quiet de-emphasised type and a gutter separate it from the column. Section labels are uppercase 0.06em-tracked `xs` muted small-caps. Links round at 0.375rem; hover lifts the text to ink over a faint `gray-7` fill. The active page takes the accent text on a 12%-accent tint (`--sl-exquisitus-accent-wash`, shared with the copy button's hover face), weight 600.
+- **Sidebar:** No dividing line; quiet de-emphasised type and a gutter separate it from the column. Section labels are uppercase 0.06em-tracked `xs` muted small-caps. Links round at 0.375rem; hover lifts the text to ink over a faint `gray-7` fill. The active page takes the accent text on a 12%-accent tint (`--sl-exquisitus-accent-wash`, shared with the copy button's hover face), weight 500 (the register's small-chrome bold; color and wash carry the state, not a weight jump).
 - **TOC:** No structural divider. The active item carries a short inset accent tick (`box-shadow: inset 2px 0 0`) — a real "you are here" cue, the only job the old full-height line did.
-- **Tabs:** A documentation-register underline. The active tab is marked three ways at once — accent color, weight 600, and a 3px accent indicator — over a 1px resting baseline, so selection is unambiguous without competing chrome.
+- **Tabs:** A documentation-register underline. The active tab is marked three ways at once — accent color, weight 500, and a 3px accent indicator — over a 1px resting baseline, so selection is unambiguous without competing chrome.
 
 ### Inline & Editorial Prose
 - **Inline code:** Petrol-teal text on a neutral `gray-6` chip with a hairline border, radius 0.3125rem — the information register, set apart from the prose.
-- **Blockquotes:** An editorial pull-quote — Spectral italic at 1.18em, indented by margin, **no** accent stripe.
+- **Blockquotes:** An editorial pull-quote — Literata italic at 1.18em (a reading surface, so it keeps the reading serif), indented by margin, **no** accent stripe.
 - **Horizontal rule:** A short (4rem) centred editorial rule, not a full-width divider.
 - **End mark:** A single muted-ink jewel, centred, closing each content page's prose — a signed ending, not a divider (see the End Mark Rule). SVG-mask, never a glyph; gated by the `endMark` plugin option, on by default.
-- **Tables:** Header in Spectral; even rows take a faint tonal zebra. A too-wide table scrolls inside an injected wrapper (`.exquisitus-table-wrap`, thin themed scrollbar) rather than clipping a column — the wrapper, not the table, is the scroll region, so the table keeps `display: table` and its semantics for assistive tech; it becomes a keyboard-reachable labeled region only while it actually overflows. No-JS readers fall back to the CSS-only `display: block` scroll.
+- **Tables:** Header in Alegreya Sans (the register); even rows take a faint tonal zebra. A too-wide table scrolls inside an injected wrapper (`.exquisitus-table-wrap`, thin themed scrollbar) rather than clipping a column — the wrapper, not the table, is the scroll region, so the table keeps `display: table` and its semantics for assistive tech; it becomes a keyboard-reachable labeled region only while it actually overflows. No-JS readers fall back to the CSS-only `display: block` scroll.
 
 ### Code Blocks
 - **Surface:** The cool code panel (`code-surface`) — the filled exception to the flat reading surface, clearly not the page, set in the information register.
@@ -272,26 +272,26 @@ The theme's own splash layout and the deliberate alternative to the identical ca
 - **`lead`** (default): a full-width thesis card over a row of supporting peers that auto-fit the count — 2 → halves, 3 → thirds, 4 → quarters.
 - **`alternating`**: an editorial zigzag on a 5-track grid where the wider card flips side each row (3:2, then 2:3); a lone trailing card spans full width to avoid a ragged row.
 
-Both collapse to a single column below **34rem of container width** — a container query, not a viewport one: the grid asks how much room *it* has, since a sidebar'd 42rem column hands it far less than a splash page does. The query sits on a wrapper element, because an element is never styled by its own container query. Layout rules are authored globally in `base.css` (not scoped on the component) because slotted cards carry no scope hash — child-targeting selectors must reach them directly.
+Both collapse to a single column below **34rem of container width** — a container query, not a viewport one: the grid asks how much room *it* has, since a sidebar'd 35rem reading column hands it far less than a splash page does (an embedded grid sits below the threshold and stays single-column; only the wide splash triggers the multi-track layouts). The query sits on a wrapper element, because an element is never styled by its own container query. Layout rules are authored globally in `base.css` (not scoped on the component) because slotted cards carry no scope hash — child-targeting selectors must reach them directly.
 
 **The Card-Relative Title Rule.** A card in this grid is a sizing container, and its title is set from the cell it landed in — `clamp(h5, 0.9rem + 2.5cqi, h4)` — never from the viewport. A full-width lead card reaches the h4 title; a 2-of-5 cell in a sidebar'd column resolves near h5 and stays inside its border. The rule is uniform: no per-cell exceptions, no breakpoint juggling, and it holds for whatever container a consumer drops the grid into, which the theme cannot know in advance. Card padding is trimmed to `1.5rem` (Starlight's own tops out at 2.5rem, which a narrow cell cannot spare). The 3:2 asymmetry is never softened to win space — that asymmetry *is* the component.
 
 ### Splash Page (Signature Surface)
 The splash is the theme's **title spread** — the cover of the book, composed of four moves in order:
 
-- **Specimen Plate** (`SpecimenPlate.astro`, hero): the theme's typographic identity as its own hero object — a Spectral glyph board (`Aa Gg Qq &`), the thesis line in Spectral italic, the four working inks as labeled swatches (honey / petrol / ink / paper, each named with its *job*), and a mono folio caption. It fills the hero's image column so the splash never ships a void or a mascot. Surface: a `gray-6`-hairlined, `gray-7`-filled panel at `{rounded.md}` — the tonal step keeps it from ghosting on near-black — **letterpressed at rest** as a sanctioned member of the reference register (a type specimen is literally what a letterpress prints). Never interactive: it settles into the page once on load (opacity + press, `ease-out-quint`, erased under reduced motion) and does not respond to hover. Declaratively placed via `hero.image.html: <exquisitus-specimen />`, which the Hero override swaps for the component; heroes with a real image keep their image and today's column split.
+- **Specimen Plate** (`SpecimenPlate.astro`, hero): the theme's typographic identity as its own hero object — a Literata glyph board (`Aa Gg Qq &`) that specimens the *reading* face, the thesis line in Literata italic, the four working inks as labeled swatches (honey / petrol / ink / paper, each named with its *job*), and a mono folio caption. It fills the hero's image column so the splash never ships a void or a mascot. Surface: a `gray-6`-hairlined, `gray-7`-filled panel at `{rounded.md}` — the tonal step keeps it from ghosting on near-black — **letterpressed at rest** as a sanctioned member of the reference register (a type specimen is literally what a letterpress prints). Never interactive: it settles into the page once on load (opacity + press, `ease-out-quint`, erased under reduced motion) and does not respond to hover. Declaratively placed via `hero.image.html: <exquisitus-specimen />`, which the Hero override swaps for the component; heroes with a real image keep their image and today's column split.
 - **Install strip**: a single copyable install command in the letterpressed code panel, directly under the hero — the time-to-try is one glance, and the strip doubles as the first live component proof.
-- **Doorway cards** (`.exquisitus-doorways`): three equal thirds, each a link into a showcase page carrying a live **taste** of what's behind it — a Spectral italic specimen line, a micro note-aside, a 3:2/2:3 zigzag miniature — over a serif title. Navigation and proof in one object; the interiors differ by design, which is what keeps them off the identical-card-grid list. They behave as cards: flat at rest, warmed border + 2px lift on hover.
-- **Colophon** (`.exquisitus-colophon`): the page ends the way a fine book does — a short centred rule, a Spectral italic line naming the three faces, and a mono line of quiet facts (`self-hosted · ofl-licensed · wcag 2.2 aa`).
+- **Doorway cards** (`.exquisitus-doorways`): three equal thirds, each a link into a showcase page carrying a live **taste** of what's behind it — a Literata italic specimen line, a micro note-aside, a 3:2/2:3 zigzag miniature — over a sans register title. Navigation and proof in one object; the interiors differ by design, which is what keeps them off the identical-card-grid list. They behave as cards: flat at rest, warmed border + 2px lift on hover.
+- **Colophon** (`.exquisitus-colophon`): the page ends the way a fine book does — a short centred rule, a Literata italic line naming the three faces, and a mono line of quiet facts (`self-hosted · ofl-licensed · wcag 2.2 aa`).
 
-**The Splash Measure Rule.** Starlight widens `--sl-content-width` to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal `42rem` centred column; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.
+**The Splash Measure Rule.** Starlight widens `--sl-content-width` to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal `35rem` centred column (matching the docs measure); only figures — the plate, the doorways, a FeatureGrid — may span the wide container.
 
 **The Plate Ink Exception.** The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.
 
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep the body reading column ink-on-surface, capped at ~70ch (`42rem`), set generously larger than the docs default (~18px / 1.75).
+- **Do** keep the body reading column ink-on-surface, capped at ~70ch (`35rem` of Literata), set generously larger than the docs default (~18px / 1.75).
 - **Do** let the honey-amber accent appear rarely and meaningfully — links, active state, selection, focus. Its rarity is the point.
 - **Do** keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a *fill* with an ink label.
 - **Do** give petrol-teal its one job — information and code — and keep it there.
@@ -300,7 +300,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 - **Do** treat light and dark as equally first-class, both hitting WCAG 2.2 AA.
 - **Do** author all theme CSS in the `exquisitus` cascade layer and honor `prefers-reduced-motion` on every transition.
 - **Do** fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.
-- **Do** hold splash prose and code to the `42rem` centred measure (the Splash Measure Rule); only figures span the wide splash container.
+- **Do** hold splash prose and code to the `35rem` centred measure (the Splash Measure Rule); only figures span the wide splash container.
 
 ### Don't:
 - **Don't** ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.
@@ -316,5 +316,5 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 - **Don't** float the technical register on an outward / cast shadow — it presses *in*, never lifts *out*.
 - **Don't** make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.
 - **Don't** reach for `!important`; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).
-- **Don't** gate a component's layout on a viewport media query when its width actually comes from its container. The 42rem reading column hands a component ~37rem at *any* screen size, so `@media (min-width: 50rem)` cheerfully applies a multi-track layout to a column with no room for it. Ask the container (`@container`), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.
+- **Don't** gate a component's layout on a viewport media query when its width actually comes from its container. The 35rem reading column hands a component ~30rem at *any* screen size, so `@media (min-width: 50rem)` cheerfully applies a multi-track layout to a column with no room for it. Ask the container (`@container`), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.
 - **Don't** let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and `overflow-wrap: break-word` does not lower that floor. Size the type to the container (`cqi`), and keep `min-width: 0` on the text as the net.
