@@ -134,19 +134,19 @@ The system is built from three recurring moves. First, **the reading surface is 
 This system explicitly rejects two things. It is **not** the hacker / terminal aesthetic — no monospace-everything, no green-on-black costume, no cyberpunk affectation. And it is **not** generic SaaS documentation — none of the Mintlify / Docusaurus default of clean-white-with-a-blue-primary and a forgettable sidebar. The voice is a senior colleague who explains something well: confident, masterful, useful — measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.
 
 **Key Characteristics:**
-- Content is sovereign — the reading column is the design; the rest is service.
+- Content is sovereign: the reading column is the design; the rest is service.
 - Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.
 - A full palette held in tight discipline: honey-amber for emphasis, petrol-teal for information.
 - A flat, hairline-separated reading surface, with the technical register letterpressed *into* it. Depth is depth-from-light in two directions — a transient lift, a resting press — never a decorative cast.
-- The information register marked on three axes at once — petrol-teal (color), monospace (type), and the letterpress (depth).
-- Accessible by conviction — WCAG 2.2 AA is the floor, light and dark modes both, every motion gated behind `prefers-reduced-motion`.
+- The information register marked on three axes at once: petrol-teal (color), monospace (type), and the letterpress (depth).
+- Accessible by conviction: WCAG 2.2 AA is the floor, light and dark modes both, every motion gated behind `prefers-reduced-motion`.
 
 ## 2. Colors
 
 A full palette of two committed brand hues — a warm honey-amber and a cool petrol-teal — held against a disciplined near-neutral surface, with each color carrying a defined semantic job rather than decorating. Authored entirely in OKLCH so lightness is perceptually even and hue holds as chroma changes. Every foreground/background pair is WCAG 2.2 AA validated: body and UI text ≥ 4.5:1, large text ≥ 3:1.
 
 ### Primary
-- **Honey-Amber** (dark accent `oklch(0.72 0.13 75)`; dark link text `oklch(0.84 0.115 82)`): The brand signature — links, active navigation, text selection, focus accents, emphasis. Warm, sun-cured, confident. Spent sparingly so its appearance always means something.
+- **Honey-Amber** (dark accent `oklch(0.72 0.13 75)`; dark link text `oklch(0.84 0.115 82)`): The brand signature: links, active navigation, text selection, focus accents, emphasis. Warm, sun-cured, confident. Spent sparingly so its appearance always means something.
 - **Bronze** (`oklch(0.52 0.12 68)`): The light-mode face of the accent. The raw honey fails contrast as *text* on white (≈2:1), so light-mode accent **text** deepens to bronze (≥4.5:1). This is a contrast floor, not a stylistic choice.
 - **CTA Honey** (`oklch(0.78 0.14 80)`): The full brand honey, used in light mode only as a **fill** behind an ink label (ink-on-honey ≈ 8.5:1). It is the one place the brand color appears at full strength on white, where links cannot carry it.
 
@@ -156,14 +156,14 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 ### Neutral
 - **Ink** (dark `oklch(0.94 0.012 85)`; light `oklch(0.22 0.015 80)`): Highest-contrast foreground — headings and bold. Carries a whisper of the brand hue at very low chroma so the monochrome never reads as cold grey.
 - **Body** (dark `oklch(0.82 0.014 85)`; light `oklch(0.33 0.012 80)`): The reading column. Where most of the page lives.
-- **Muted** (dark `oklch(0.7 0.012 82)`; light `oklch(0.45 0.01 80)`): Secondary text, captions, metadata, nav section labels. Never the elegant-but-illegible light grey — the dark step is deliberately lifted to ~7:1 (AAA) so small navigational chrome is comfortable, not merely compliant (see the Tonal-First Rule).
+- **Muted** (dark `oklch(0.7 0.012 82)`; light `oklch(0.45 0.01 80)`): Secondary text, captions, metadata, nav section labels. Never the elegant-but-illegible light grey. The dark step is deliberately lifted to ~7:1 (AAA) so small navigational chrome is comfortable, not merely compliant (see the Tonal-First Rule).
 - **Hairline** (dark `oklch(0.38 0.008 80)`; light `oklch(0.8 0.005 80)`): Separators, table rules, card borders, tablist baselines. Pinned explicitly to the ramp's hairline step — Starlight's default points it at the raised-surface tone, which reads as no line at all on these surfaces.
 - **Surface** (dark `oklch(0.17 0.006 80)`; light `oklch(0.985 0 0)` — a chroma-0 off-white): The paper. No hidden warm tint, in either mode. The light surface is *off* white, not white: chroma is exactly 0, so it cannot read as cream under any light, but it takes the glare edge off a surface the Generous Body Rule asks the reader to sit with for a long time (see the No-Cream Rule).
 - **Code Surface** (dark `oklch(0.205 0.012 245)`; light `oklch(0.95 0.012 235)`): A cool-tinted panel for code blocks, clearly distinct from the page so code reads in the information register.
 - **Raised Surface** (dark `oklch(0.24 0.007 80)` — the ramp's `gray-6`; light = the page white): The tonal step for cards and link cards. Only dark mode steps up; on white the hairline alone does the separating (see the Tonal-First Rule).
 
 ### Named Rules
-**The Sovereign Column Rule.** Color never enters the body reading column except as a link or an inline `<mark>`. Prose is ink on surface — full stop. All brand color lives in the chrome, the accents, and the semantic markers around the text.
+**The Sovereign Column Rule.** Color never enters the body reading column except as a link or an inline `<mark>`. Prose is ink on surface. Full stop. All brand color lives in the chrome, the accents, and the semantic markers around the text.
 
 **The Quiet Permalink Rule.** Heading permalink anchors are chrome, not emphasis. Starlight renders them as content links, so left untouched they inherit the accent and an underline and paint the honey on every heading hover — spending the accent where it means nothing. Render the icon in muted ink (`--sl-color-gray-3`) at rest, no underline, and warm it to the accent only on direct `:hover`/`:focus` of the anchor itself — the one instant the color carries intent. Where the icon is hover-revealed it settles in from the heading rather than snapping (a short `translateX`, gated on `hover: hover` and `prefers-reduced-motion`). Keep the chain-link glyph; a permalink trades recognisability for cleverness the moment it becomes a §.
 
@@ -173,7 +173,7 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 
 **The Two-Job Rule.** Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job. A full palette earns its richness through discipline, not abundance.
 
-**The No-Cream Rule.** The rule forbids **warmth in the paper**, not off-white. The light-mode surface is a chroma-0 off-white (`oklch(0.985 0 0)`); the dark surface is near-black (`oklch(0.17 0.006 80)`). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. **The test is chroma, not lightness: a light surface may sit below L 1.0, but its chroma must be exactly 0.** Any chroma in the paper — however small, however it is named — is the cream move and is forbidden. (Pure white was the original reading of this rule, and it overcorrected: it banned the thing that most helps a long read in order to avoid a thing chroma 0 already makes impossible.) Forbidden token names: `--cream`, `--sand`, `--paper`, `--parchment`.
+**The No-Cream Rule.** The rule forbids **warmth in the paper**, not off-white. The light-mode surface is a chroma-0 off-white (`oklch(0.985 0 0)`); the dark surface is near-black (`oklch(0.17 0.006 80)`). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. **The test is chroma, not lightness: a light surface may sit below L 1.0, but its chroma must be exactly 0.** Any chroma in the paper — however small, however it is named — is the cream move and is forbidden. (Pure white was the original reading of this rule, and it overcorrected: it banned the thing that most helps a long read to avoid a thing chroma 0 already makes impossible.) Forbidden token names: `--cream`, `--sand`, `--paper`, `--parchment`.
 
 **The Deepened-Accent Rule.** Accent **text** is bronze in light mode and brightened honey in dark mode; the raw honey only ever appears as a **fill** with an ink label. Never "fix" the bronze link color back to honey — the contrast floor forces it.
 
@@ -185,12 +185,12 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 **Register Font:** Alegreya Sans (Huerta Tipográfica; OFL, static 400/500/700 — no 600 cut) — fallback `'Alegreya Sans Fallback', system-ui, sans-serif`. Carries headings, titles, and all chrome.
 **Mono Font:** JetBrains Mono (OFL, variable) — fallback `'JetBrains Mono Fallback', ui-monospace, monospace`.
 
-All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard requirement for a distributed theme. No Google Fonts request, no third-party origin, and near-zero swap layout shift (see the Metric-Matched Fallback Rule). The root font-size is nudged to `106.25%` (~17px base) so the whole rem-based scale, including the ~70ch measure, lifts with the reader's own base size.
+All three faces are OFL-licensed and self-hosted via `@fontsource`, a hard requirement for a distributed theme. No Google Fonts request, no third-party origin, and near-zero swap layout shift (see the Metric-Matched Fallback Rule). The root font-size is nudged to `106.25%` (~17px base) so the whole rem-based scale, including the ~70ch measure, lifts with the reader's own base size.
 
 **Character:** A true contrast-axis pairing, run the editorial way round — Literata's text serif carries the reading column while Alegreya Sans's humanist sans carries the register. The reading body reads like a well-set book; a heading announces a new section by switching *out* of the serif into the sans. The register cue is sans-against-serif; the two share a calligraphic humanism but never blur into one undifferentiated family.
 
 ### Hierarchy
-- **Display** (Alegreya Sans 700, `clamp(2.1875rem, calc(1rem + 5vw), 5rem)`, line-height 1.18, letter-spacing −0.018em): Page titles and hero headings. The clamp tops out at 5rem — below the shouting line.
+- **Display** (Alegreya Sans 700, `clamp(2.1875rem, calc(1rem + 5vw), 5rem)`, line-height 1.18, letter-spacing −0.018em): Page titles and hero headings. The clamp tops out at 5rem, below the shouting line.
 - **Headline** (Alegreya Sans 700, `var(--sl-text-2xl)`, line-height 1.18, letter-spacing −0.012em): Major section headings within a document.
 - **Title** (Alegreya Sans 700, letter-spacing −0.012em): Sub-section headings, card titles, aside titles, pagination labels, `summary`, table headers — the register sans tying interface objects to the heading voice. (Alegreya Sans has no 600; the register bolds to 700, never 600.)
 - **Body** (Literata 400, `1.0625rem` ≈ 18px, line-height 1.75): The reading column, capped at the ~70ch measure (`--sl-content-width: 35rem`, re-derived live against Literata's average advance — its wider advance ran the old 42rem past 80 characters). The single most important spec in the system. `text-wrap: pretty` to reduce orphans.
@@ -271,11 +271,11 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Corner Style:** 0.75rem (`{rounded.xl}`).
 - **Background:** The raised surface (`--sl-exquisitus-surface-raised`) — the page white in light mode, a real tonal step to `gray-6` in dark mode, where a hairline alone reads as a ghost box (Tonal-First Rule). Never a heavier filled panel than that.
 - **Border:** A single hairline (`gray-5`).
-- **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (`--sl-exquisitus-border-hover`, a 60% mix into the hairline — shared with the doorways so the lift family stays in step), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
+- **Shadow Strategy:** None at rest (see Elevation). On hover the border warms toward the accent (`--sl-exquisitus-border-hover`, a 60% mix into the hairline, shared with the doorways so the lift family stays in step), a soft `--sl-shadow-sm` appears, and the card lifts 2px — a small, earned reward, suppressed on touch (`hover: hover`) and under reduced motion.
 - **Title:** Alegreya Sans 700 (the register), tying the card to the document's heading voice. Inside a FeatureGrid the size is set by the card's own width, not the viewport (The Card-Relative Title Rule).
 
 ### Asides (Admonitions)
-- **Style:** A full, softened hairline (the variant color at 45% into transparent) plus a tinted fill and the variant icon — **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Alegreya Sans.
+- **Style:** A full, softened hairline (the variant color at 45% into transparent) plus a tinted fill and the variant icon, **never** a side stripe. Radius 0.625rem (`{rounded.lg}`). Title in Alegreya Sans.
 - **Variants:** note = petrol-teal, tip = violet, caution = amber-orange (deliberately separated from the brand link color so the two never blur), danger = measured red.
 
 ### Inputs / Search
@@ -293,17 +293,17 @@ The overall feel is **measured and self-assured**: confident but restrained, wit
 - **Blockquotes:** An editorial pull-quote — Literata italic at 1.18em (a reading surface, so it keeps the reading serif), indented by margin, **no** accent stripe.
 - **Horizontal rule:** A short (4rem) centred editorial rule, not a full-width divider.
 - **End mark:** A single muted-ink jewel, centred, closing each content page's prose — a signed ending, not a divider (see the End Mark Rule). SVG-mask, never a glyph; gated by the `endMark` plugin option, on by default.
-- **Tables:** Header in Alegreya Sans (the register); even rows take a faint tonal zebra. A too-wide table scrolls inside an injected wrapper (`.exquisitus-table-wrap`, thin themed scrollbar) rather than clipping a column — the wrapper, not the table, is the scroll region, so the table keeps `display: table` and its semantics for assistive tech; it becomes a keyboard-reachable labeled region only while it actually overflows. No-JS readers fall back to the CSS-only `display: block` scroll.
+- **Tables:** Header in Alegreya Sans (the register); even rows take a faint tonal zebra. A too-wide table scrolls inside an injected wrapper (`.exquisitus-table-wrap`, thin themed scrollbar) rather than clipping a column. The wrapper, not the table, is the scroll region, so the table keeps `display: table` and its semantics for assistive tech; it becomes a keyboard-reachable labeled region only while it actually overflows. No-JS readers fall back to the CSS-only `display: block` scroll.
 
 ### Code Blocks
 - **Surface:** The cool code panel (`code-surface`) — the filled exception to the flat reading surface, clearly not the page, set in the information register.
-- **Frame:** No IDE costume. The filename is a quiet monospace **caption-folio** *above* the panel (not an editor tab); terminal traffic-light dots are removed. A full hairline border and `0.5rem` (`{rounded.md}`) radius — tighter than the cards' `xl`, so code reads as a typeset block, not a UI card.
+- **Frame:** No IDE costume. The filename is a quiet monospace **caption-folio** *above* the panel (not an editor tab); terminal traffic-light dots are removed. A full hairline border and `0.5rem` (`{rounded.md}`) radius, tighter than the cards' `xl`, so code reads as a typeset block, not a UI card.
 - **Depth:** Letterpressed at rest (`--sl-exquisitus-code-edge`) — pressed into the page (see Elevation, The Letterpress Rule).
 - **Diffs:** Proof-correction marks — a soft pastel band carries the familiar line-highlight, while the `+` / `−` gutter glyph (driven from the high-contrast `-high` ramp) is the non-color cue that distinguishes insert from delete for red-green colorblind readers (WCAG 1.4.1).
 - **Copy button:** A quiet panel-colored chip (hairline outline, muted icon) at rest, warming to the accent on hover/focus per the secondary-button language; seated in the panel's top-right corner, clear of the caption.
 
 ### File Tree
-- **Surface:** An **open hairline figure** on the page surface — *unfilled*, because the filled cool panel is the code block's exception; the tree is a reference diagram, not featured content. `0.5rem` (`{rounded.md}`) radius.
+- **Surface:** An **open hairline figure** on the page surface, *unfilled* because the filled cool panel is the code block's exception; the tree is a reference diagram, not featured content. `0.5rem` (`{rounded.md}`) radius.
 - **Depth:** Letterpressed at rest, like the code block — which is also what tells it apart from a card: a card is flat-at-rest and *lifts* toward the reader on hover; the tree is *pressed in*. Same surface, opposite depth direction.
 - **Color:** The Two-Job Rule applied to structure — petrol-teal marks containers (directory icons, disclosure markers, indent guides); files keep neutral icons; honey/bronze is reserved for interaction (folder hover) and the highlighted file (a bronze fill).
 
@@ -312,7 +312,7 @@ The theme's own splash layout and the deliberate alternative to the identical ca
 - **`lead`** (default): a full-width thesis card over a row of supporting peers that auto-fit the count — 2 → halves, 3 → thirds, 4 → quarters.
 - **`alternating`**: an editorial zigzag on a 5-track grid where the wider card flips side each row (3:2, then 2:3); a lone trailing card spans full width to avoid a ragged row.
 
-Both collapse to a single column below **34rem of container width** — a container query, not a viewport one: the grid asks how much room *it* has, since a sidebar'd 35rem reading column hands it far less than a splash page does (an embedded grid sits below the threshold and stays single-column; only the wide splash triggers the multi-track layouts). The query sits on a wrapper element, because an element is never styled by its own container query. Layout rules are authored globally in `base.css` (not scoped on the component) because slotted cards carry no scope hash — child-targeting selectors must reach them directly.
+Both collapse to a single column below **34rem of container width**, a container query (not a viewport one): the grid asks how much room *it* has, since a sidebar'd 35rem reading column hands it far less than a splash page does (an embedded grid sits below the threshold and stays single-column; only the wide splash triggers the multi-track layouts). The query sits on a wrapper element, because an element is never styled by its own container query. Layout rules are authored globally in `base.css` (not scoped on the component) because slotted cards carry no scope hash — child-targeting selectors must reach them directly.
 
 **The Card-Relative Title Rule.** A card in this grid is a sizing container, and its title is set from the cell it landed in — `clamp(h5, 0.9rem + 2.5cqi, h4)` — never from the viewport. A full-width lead card reaches the h4 title; a 2-of-5 cell in a sidebar'd column resolves near h5 and stays inside its border. The rule is uniform: no per-cell exceptions, no breakpoint juggling, and it holds for whatever container a consumer drops the grid into, which the theme cannot know in advance. Card padding is trimmed to `1.5rem` (Starlight's own tops out at 2.5rem, which a narrow cell cannot spare). The 3:2 asymmetry is never softened to win space — that asymmetry *is* the component.
 
@@ -320,7 +320,7 @@ Both collapse to a single column below **34rem of container width** — a contai
 The splash is the theme's **title spread** — the cover of the book, composed of four moves in order:
 
 - **Specimen Plate** (`SpecimenPlate.astro`, hero): the theme's typographic identity as its own hero object — a Literata glyph board (`Aa Gg Qq &`) that specimens the *reading* face, the thesis line in Literata italic, the four working inks as labeled swatches (honey / petrol / ink / paper, each named with its *job*), and a mono folio caption. It fills the hero's image column so the splash never ships a void or a mascot. Surface: a `gray-6`-hairlined, `gray-7`-filled panel at `{rounded.md}` — the tonal step keeps it from ghosting on near-black — **letterpressed at rest** as a sanctioned member of the reference register (a type specimen is literally what a letterpress prints). Never interactive: it settles into the page once on load (opacity + press, `ease-out-quint`, erased under reduced motion) and does not respond to hover. Declaratively placed via `hero.image.html: <exquisitus-specimen />`, which the Hero override swaps for the component; heroes with a real image keep their image and today's column split.
-- **Install strip**: a single copyable install command in the letterpressed code panel, directly under the hero — the time-to-try is one glance, and the strip doubles as the first live component proof.
+- **Install strip**: a single copyable install command in the letterpressed code panel, directly under the hero. The time-to-try is one glance, and the strip doubles as the first live component proof.
 - **Doorway cards** (`.exquisitus-doorways`): three equal thirds, each a link into a showcase page carrying a live **taste** of what's behind it — a Literata italic specimen line, a micro note-aside, a 3:2/2:3 zigzag miniature — over a sans register title. Navigation and proof in one object; the interiors differ by design, which is what keeps them off the identical-card-grid list. They behave as cards: flat at rest, warmed border + 2px lift on hover.
 - **Colophon** (`.exquisitus-colophon`): the page ends the way a fine book does — a short centred rule, a Literata italic line naming the three faces, and a mono line of quiet facts (`self-hosted · ofl-licensed · wcag 2.2 aa`).
 
@@ -332,7 +332,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 
 ### Do:
 - **Do** keep the body reading column ink-on-surface, capped at ~70ch (`35rem` of Literata), set generously larger than the docs default (~18px / 1.75).
-- **Do** let the honey-amber accent appear rarely and meaningfully — links, active state, selection, focus. Its rarity is the point.
+- **Do** let the honey-amber accent appear rarely and meaningfully: links, active state, selection, focus. Its rarity is the point.
 - **Do** keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a *fill* with an ink label.
 - **Do** give petrol-teal its one job — information and code — and keep it there.
 - **Do** keep the reading and chrome surfaces flat at rest, separated by a single hairline and tonal steps; a *lift* is only ever a response to hover, focus, or scroll.

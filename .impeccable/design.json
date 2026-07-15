@@ -392,17 +392,17 @@
     "northStar": "The Considered Reading Room",
     "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else exists to usher the reader into the text and then disappear — the one guest allowed to keep its presence is the technical register (code, terminals, file trees), the way the New York Times lets an interactive break the body's rules without dethroning the article. The reading surface is flat and hairline-separated; the technical register is letterpressed into that sheet — pressed in, the way a fine press deboss-prints type into paper, a tactile mark of care. Color is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. Depth is never a decorative cast shadow; it is depth-from-light in two directions: a transient lift in response to state, and a resting press that marks the technical register on a third axis alongside petrol-teal (color) and monospace (type). It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, acknowledging the reader without performing for them.",
     "keyCharacteristics": [
-      "Content is sovereign — the reading column is the design; the rest is service.",
+      "Content is sovereign: the reading column is the design; the rest is service.",
       "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.",
       "A full palette held in tight discipline: honey-amber for emphasis, petrol-teal for information.",
       "A flat, hairline-separated reading surface, with the technical register letterpressed into it. Depth is depth-from-light in two directions — a transient lift, a resting press — never a decorative cast.",
-      "The information register marked on three axes at once — petrol-teal (color), monospace (type), and the letterpress (depth).",
-      "Accessible by conviction — WCAG 2.2 AA floor, light and dark both, every motion gated behind prefers-reduced-motion."
+      "The information register marked on three axes at once: petrol-teal (color), monospace (type), and the letterpress (depth).",
+      "Accessible by conviction: WCAG 2.2 AA floor, light and dark both, every motion gated behind prefers-reduced-motion."
     ],
     "rules": [
       {
         "name": "The Sovereign Column Rule",
-        "body": "Color never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface — full stop.",
+        "body": "Color never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface. Full stop.",
         "section": "colors"
       },
       {
@@ -493,7 +493,7 @@
     ],
     "dos": [
       "Do keep the body reading column ink-on-surface, capped at ~70ch (35rem of Literata), set generously larger than the docs default (~18px / 1.75).",
-      "Do let the honey-amber accent appear rarely and meaningfully — links, active state, selection, focus. Its rarity is the point.",
+      "Do let the honey-amber accent appear rarely and meaningfully: links, active state, selection, focus. Its rarity is the point.",
       "Do keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a fill with an ink label.",
       "Do give petrol-teal its one job — information and code — and keep it there.",
       "Do keep the reading and chrome surfaces flat at rest, separated by a single hairline and tonal steps; a lift is only ever a response to hover, focus, or scroll.",

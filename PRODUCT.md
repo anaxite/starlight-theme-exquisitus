@@ -14,7 +14,7 @@ Secondary: Developers who maintain OSS or product documentation and want their d
 
 An Astro Starlight theme where readability and beauty are the same discipline.
 
-Exquisitus is built on a simple conviction: that excellent documentation requires both rigorous legibility and genuine aesthetic ambition — and that these are not competing goals. It proves the case by example. Every page is a demonstration that craft and clarity are the same thing at different scales.
+Exquisitus is built on a simple conviction: that excellent documentation requires both rigorous legibility and aesthetic ambition — and that these are not competing goals. It proves the case by example. Every page is a demonstration that craft and clarity are the same thing at different scales.
 
 Success looks like: a reader who doesn't notice the design because they're too busy reading, but who would feel its absence immediately.
 
