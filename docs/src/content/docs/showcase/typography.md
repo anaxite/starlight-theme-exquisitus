@@ -68,7 +68,7 @@ An ordered list, for when sequence matters:
 
 An unordered list, for when it does not:
 
-- Self-hosted, OFL-licensed typefaces—no third-party request, nor flash of unstyled text.
+- Self-hosted, OFL-licensed typefaces prevent third-party requests, and flashes of unstyled text.
 - An OKLCH palette tuned for light and dark, both modes validated to WCAG 2.2 AA.
 - A reading measure capped at seventy characters, regardless of viewport width.
 - Accessibility built in from the start.

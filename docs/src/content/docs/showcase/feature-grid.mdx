@@ -1,6 +1,6 @@
 ---
 title: Feature grid
-description: The theme's own splash layout component — an editorial alternative to the uniform card grid.
+description: "The theme's own splash layout component: an editorial alternative to the uniform card grid."
 sidebar:
   order: 2
 ---
@@ -30,7 +30,7 @@ The author drops in however many fit the argument, with no breakpoints nor extra
         The lead card spans the full width, carrying the one idea everything else supports.
     </Card>
     <Card title="Left support" icon="document">
-        Two supporting cards divide the row equally — a wider, more editorial feel than thirds.
+        Two supporting cards divide the row equally for a wider, more editorial feel than thirds.
     </Card>
     <Card title="Right support" icon="rocket">
         In a narrow container the whole grid folds to a single readable column.
@@ -66,9 +66,10 @@ A lone trailing card takes the full width rather than leaving a ragged gap.
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `layout` | `'lead' \| 'alternating'` | `'lead'` | Grid arrangement. |
-| `class` | `string` | — | Additional CSS class names. |
+| `class` | `string` | - | Additional CSS class names. |
 
 The component accepts a default slot containing Starlight `<Card>` elements.
 
 Both arrangements are gated on the width of the grid's own container, not the window.
-A container narrower than `34rem` folds to a single readable column however wide the screen is, and each card's title is sized from the cell it lands in — so a grid dropped into a sidebar'd column stays composed instead of spilling its headings.
+A container narrower than `34rem` folds to a single readable column however wide the screen is.
+Each card's title is sized from the cell it lands in, so a grid dropped into a sidebar column stays composed instead of spilling its headings.

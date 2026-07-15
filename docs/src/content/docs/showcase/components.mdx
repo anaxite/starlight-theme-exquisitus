@@ -26,7 +26,7 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 ## Tabs
 
 <Tabs>
-    <TabItem label="Light">The active tab is marked three ways at once: accent color, weight 600, and a 3px indicator. Selection is unambiguous without competing chrome. Light mode sets the page in a chroma-0 off-white — never a warm tint.</TabItem>
+    <TabItem label="Light">The active tab is marked three ways at once: accent color, weight 600, and a 3px indicator. Selection is unambiguous without competing chrome. Light mode sets the page in a chroma-0 off-white, never a warm tint.</TabItem>
     <TabItem label="Dark">In dark mode the accent brightens from bronze to honey, and the petrol-teal lifts to match. Both modes are validated to WCAG 2.2 AA.</TabItem>
     <TabItem label="A third tab">A resting baseline runs below the whole tab strip, so the indicator reads clearly as "selected" rather than as a random underline. Tabs stay in the documentation register: an underline rather than a pill.</TabItem>
 </Tabs>
@@ -37,7 +37,7 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 
 1. Step counters are set in JetBrains Mono with tabular figures, so multi-digit sequences stay aligned.
 
-2. The connecting guide fades into the page rather than ending in a hard stop.
+2. The connecting guide fades softly into the page below the last step.
 
    ```js title="example.js"
    const step = 2;
@@ -70,14 +70,15 @@ Four semantic variants, each with a distinct hue and a softened full border inst
 <LinkButton href="#_" variant="secondary" icon="external">Secondary</LinkButton>
 <LinkButton href="#_" variant="minimal" icon="external">Minimal</LinkButton>
 
-The primary button uses the full honey-amber as a fill with an ink label—the one place in light mode where the brand color appears at full strength.
+The primary button uses the full honey-amber as a fill with an ink label: the one place in light mode where the brand color appears at full strength.
 It can't carry link text on white (insufficient contrast), so links deepen to bronze; the button, with its dark ink label, carries it freely.
 
 ## File tree
 
-An open hairline figure rather than a filled box.
+An open hairline figure, not a filled box.
 It sits on the page surface and is pressed slightly into it with the same letterpress as the code block below, so the two read as one family without twinning.
-Petrol-teal marks structure—folder icons, disclosure markers, and the indent guides—while files stay neutral and the warm accent is reserved for hover and the highlighted file.
+Petrol-teal marks structure: folder icons, disclosure markers, and the indent guides.
+Files stay neutral, and the warm accent is reserved for hover and the highlighted file.
 
 <FileTree>
 
@@ -108,7 +109,7 @@ The summary is set in Alegreya Sans, tying it to the heading hierarchy.
 
 Code blocks are reframed as editorial figures.
 The filename becomes a quiet monospace caption above the panel, without the usual editor-tab chrome or traffic-light dots, and the panel itself is a bordered, petrol-tinted surface pressed into the page.
-That letterpress is deliberate: code, like the file tree, belongs to the information register, and it reads that way on three counts—petrol-teal, monospace, and a slight debossed depth against the flat reading surface.
+The letterpress ties code to the file tree: both belong to the information register, signalled by petrol-teal, monospace, and a slight debossed depth against the flat reading surface.
 Diff lines keep their familiar bands but also carry a `+`/`−` gutter glyph, so the change reads without relying on color alone.
 
 ```ts title="astro.config.mjs" ins={[2, 8]}
