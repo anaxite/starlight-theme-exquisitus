@@ -1034,7 +1034,7 @@
 	.expressive-code .frame .title {
 		all: unset;
 		display: block;
-		padding-inline-start: var(--ec-codePadInl);
+		padding-inline-start: var(--ec-codePaddingInline);
 		color: var(--sl-color-gray-3);
 		font-family: var(--sl-font-mono);
 		font-size: 0.8125rem;
