@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.1
+
+### Changed
+
+- Added a CSS token-based spacing scale, replacing a bunch of inconsistent spacing declarations
+
+### Fixed
+
+- Fixed a CSS rule that used an incorrect Expressive Code variable
+
 ## 1.1.0
 
 ### Changed
