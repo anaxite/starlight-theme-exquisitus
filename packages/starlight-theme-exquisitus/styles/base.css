@@ -215,9 +215,11 @@
 	   Mobile is a single column for every layout; `align-items: stretch`
 	   (the grid default) levels peers to a shared baseline. */
 	/* The grid asks how much room *it* has, not how wide the window is: a
-	   sidebar'd 42rem column hands it far less than a splash page does. The
-	   query has to sit on a wrapper because an element can never be styled by
-	   its own container query. */
+	   sidebar'd reading column (35rem) hands it far less than a splash page's
+	   full width does, so an embedded grid stays single-column and only the
+	   splash triggers the multi-column layouts below. The query has to sit on a
+	   wrapper because an element can never be styled by its own container
+	   query. */
 	.exquisitus-feature-grid-container {
 		container-type: inline-size;
 		margin-top: 1.5rem;
@@ -806,12 +808,13 @@
 	/* The 65–75ch Rule does not stop applying because the sidebar is gone:
 	   on splash pages, prose and code hold the reading measure as a centred
 	   column while figures (grids, doorways, the plate) may span wide. The
-	   value is literal because Starlight widens --sl-content-width to
-	   67.5rem on splash templates. */
+	   value is literal (Starlight widens --sl-content-width to 67.5rem on splash
+	   templates) and tracks the docs measure — 35rem for ~70ch of Literata,
+	   re-derived live from the real face's average advance. */
 	[data-has-hero]
 		.sl-markdown-content
 		> :where(p, .sl-heading-wrapper, ul, ol, blockquote, .expressive-code) {
-		max-width: 42rem;
+		max-width: 35rem;
 		margin-inline: auto;
 	}
 

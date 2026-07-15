@@ -55,8 +55,12 @@
 		font-size: 106.25%;
 		--sl-line-height: 1.75;
 		--sl-line-height-headings: 1.18;
-		/* ~70ch at the content type size; fine-tuned against real Atkinson metrics. */
-		--sl-content-width: 42rem;
+		/* ~70ch of Literata at the content type size. Measured live against the
+		   real face's average advance (not the `ch` unit, which is the width of
+		   "0" and overstates the count): the old 42rem ran ~83 characters with
+		   Literata's wider advance, past the 65–75ch rule, so the column tightens
+		   to 35rem. */
+		--sl-content-width: 35rem;
 
 		/* Flat, borderless reading environment — the sidebar shares the page
 		   surface in both themes and is separated by a hairline, not a panel. */

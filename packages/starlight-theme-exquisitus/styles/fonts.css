@@ -46,11 +46,11 @@
  * the vertical box), so the swap moves almost nothing. tokens.css inserts
  * them into each stack right after the real face.
  *
- * Values derived from @capsizecss/metrics via the Capsize/fontaine formula
- * (size-adjust = web xWidthAvg/UPM ÷ fallback xWidthAvg/UPM; each override =
- * web metric/UPM ÷ size-adjust). Authored by hand rather than via fontaine or
- * Astro's Fonts API because those run in the consumer's build — a published
- * theme can't ship them; plain CSS it can.
+ * Values derived from @capsizecss/metrics 4.1.0 via the Capsize/fontaine
+ * formula (size-adjust = web xWidthAvg/UPM ÷ fallback xWidthAvg/UPM; each
+ * override = web metric/UPM ÷ size-adjust). Authored by hand rather than via
+ * fontaine or Astro's Fonts API because those run in the consumer's build — a
+ * published theme can't ship them; plain CSS it can.
  *
  * Caveats, accepted: Safari ignores the *-override descriptors (size-adjust
  * still applies, so the residual shift is small, not zero). The metrics
@@ -60,24 +60,30 @@
  * the same override numbers fit by design. Systems with none of the listed
  * faces simply skip the entry — today's behavior, no worse.
  *
- * PROVISIONAL VALUES — placeholder overrides so the stacks are valid for the
- * live-validation gate. The final Capsize-derived numbers land after the gate:
- * Literata ← Georgia (easy), Alegreya Sans ← a narrow-advance sans (the hard
- * one — its 0.390em average advance is unusually tight).
+ * Alegreya Sans's 0.387 average-advance ratio is narrower than any common
+ * system sans, so its size-adjust is a real squeeze (~87% of Arial): Arial and
+ * its exact metric clones (Liberation Sans, Arimo) are the closest available
+ * base, and the shared numbers fit all three by design.
  */
 
-/* Literata ← Georgia (metric-compatible: Gelasio) — PROVISIONAL */
+/* Literata ← Georgia (metric-compatible: Gelasio) */
 @font-face {
 	font-family: "Literata Fallback";
 	src: local("Georgia"), local("Gelasio");
-	size-adjust: 100%;
+	size-adjust: 107.67%;
+	ascent-override: 109.31%;
+	descent-override: 28.61%;
+	line-gap-override: 0%;
 }
 
-/* Alegreya Sans ← Trebuchet MS (metric-compatible: Fira Sans, DejaVu Sans) — PROVISIONAL */
+/* Alegreya Sans ← Arial (metric-compatible: Liberation Sans, Arimo) */
 @font-face {
 	font-family: "Alegreya Sans Fallback";
-	src: local("Trebuchet MS"), local("Fira Sans"), local("DejaVu Sans");
-	size-adjust: 100%;
+	src: local("Arial"), local("Liberation Sans"), local("Arimo");
+	size-adjust: 86.81%;
+	ascent-override: 103.67%;
+	descent-override: 34.56%;
+	line-gap-override: 0%;
 }
 
 /* JetBrains Mono ← Courier New (metric-compatible: Liberation Mono, Cousine) */
