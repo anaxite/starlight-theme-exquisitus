@@ -30,10 +30,10 @@ index.ts                       # StarlightPlugin entrypoint — the config:setup
 libs/starlight.ts              # overrideComponents() — merge + user-collision warning
 libs/table-wrap.ts             # client script: wraps content tables in an a11y scroll region
 components/FeatureGrid.astro   # exported splash layout component (lead / alternating)
-overrides/Hero.astro           # drop-in Hero replacement (serif masthead treatment)
+overrides/Hero.astro           # drop-in Hero replacement (sans masthead treatment)
 styles/
   layers.css   # @layer starlight, exquisitus;  — the cascade order everything relies on; loads first
-  fonts.css    # self-hosted @fontsource imports (Spectral, Atkinson, JetBrains Mono)
+  fonts.css    # self-hosted @fontsource imports (Literata, Alegreya Sans, JetBrains Mono)
   tokens.css   # OKLCH palette mapped onto Starlight's --sl-* contract (light + dark)
   base.css     # application chrome: header, sidebar, TOC, search, cards, asides, tabs, hero, FeatureGrid layouts
   prose.css    # the reading column: headings, links, code, blockquotes, tables
@@ -52,7 +52,7 @@ These are the non-obvious constraints. The *why* behind the visual choices lives
 
 **FeatureGrid's wrapper is load-bearing.** `FeatureGrid.astro` emits a `.exquisitus-feature-grid-container` around the grid, and the layouts are gated on `@container (min-width: 34rem)` against *that* wrapper — a viewport media query is the wrong question, because the 42rem content column hands the grid ~37rem no matter how wide the window is. The wrapper cannot be collapsed into the grid: **an element is never styled by its own container query**, so `grid-template-columns` on the grid would silently stop applying. Card titles are sized in `cqi` against each card (which is itself an inline-size container), so a title fits the cell it lands in rather than the window. Also note the cards must keep `margin-top: 0`: Starlight's markdown sibling spacing otherwise reaches them and offsets every card but the first inside its row.
 
-**Self-hosted fonts under pnpm.** `fonts.css` uses bare `@import` specifiers (e.g. `@import '@fontsource-variable/atkinson-hyperlegible-next/index.css'`). These resolve against the **theme package's own** `node_modules`, where the `@fontsource` deps are declared. This makes them work under pnpm's isolated store when consumed from another package. **Do not** rewrite these as relative paths.
+**Self-hosted fonts under pnpm.** `fonts.css` uses bare `@import` specifiers (e.g. `@import '@fontsource-variable/literata/index.css'`). These resolve against the **theme package's own** `node_modules`, where the `@fontsource` deps are declared. This makes them work under pnpm's isolated store when consumed from another package. **Do not** rewrite these as relative paths.
 
 **OKLCH is the source of truth.** All color is authored in OKLCH in `tokens.css`. Hex values in `.impeccable/design.json` are a clamped sRGB mirror for external tooling — never the canonical value. Don't "correct" a token by editing hex.
 

@@ -6,7 +6,7 @@ This theme was built with LLM assistance.
 
 ## Features
 
-- Self-hosted type: [Spectral](https://github.com/productiontype/Spectral) for prose, [Atkinson Hyperlegible Next](https://www.brailleinstitute.org/freefont/) for UI, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code, all bundled via `@fontsource`.
+- Self-hosted type: [Literata](https://fontsource.org/fonts/literata) for the reading column, [Alegreya Sans](https://fontsource.org/fonts/alegreya-sans) for headings and chrome, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code, all bundled via `@fontsource`.
 - A perceptually-uniform WCAG-AA OKLCH color system mapped onto Starlight's `--sl-color-*` contract, so built-in components inherit the theme automatically.
 - Header, sidebar, TOC, search, cards, asides, and tabs restyled with a consistent depth and register language.
 - [Expressive Code](https://expressive-code.com/) theming with a letterpress code panel, caption-above frames, and accessible (WCAG 1.4.1) diff markers.

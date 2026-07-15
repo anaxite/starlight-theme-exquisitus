@@ -9,15 +9,15 @@ This page is the reading room.
 Everything below is plain Markdown, rendered exactly as your documentation will be.
 If it is comfortable to read here, it will be comfortable to read anywhere on your site.
 
-Exquisitus sets body type in Atkinson Hyperlegible Next at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters.
+Exquisitus sets body type in Literata at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters.
 Seventeen pixels is the minimum the Readability Guidelines call comfortable for extended reading.
 Seventy characters is the width where the eye can return cleanly to the start of the next line without searching. 1.75 is the breathing room that lets ascenders and descenders live without crowding.
 I want documentation read at length to receive the same consideration as long-form prose.
 
 ## Headings keep their place
 
-Headings are set in Spectral, a screen-first serif designed by Production Type.
-The shift between a sans-serif body and a serif heading is a navigational cue.
+Headings are set in Alegreya Sans, a humanist sans built for the wayfinding register.
+The shift between a serif body and a sans heading is a navigational cue.
 When you scan a long document, the change of register tells you instantly that a new section has begun, without the heading needing to be large or loud about it.
 
 The scale descends gradually, so a document with four heading levels never loses legibility at the deeper ones.
@@ -25,7 +25,7 @@ Every heading also reserves space above itself, so an anchor link never tucks th
 
 ### A third-level heading
 
-Third-level headings carry the same Spectral, fractionally smaller.
+Third-level headings carry the same Alegreya Sans, fractionally smaller.
 At this scale, letter-spacing tightens slightly.
 This optical correction keeps display type from feeling loose as it shrinks toward body size.
 The heading hierarchy is tuned to feel right at every level, including the deepest.
@@ -41,7 +41,7 @@ Color is spent on exactly two things in the reading column: [links](#), which ca
 Everything else earns emphasis through weight and rhythm.
 
 **Strong text** lifts toward the ink end of the neutral ramp.
-*Italic text* leans on Spectral's roman italic: warm, slightly condensed, unmistakable without being aggressive.
+*Italic text* leans on Literata's italic: warm, slightly condensed, unmistakable without being aggressive.
 The two are different enough to be useful in combination, so a function name and its description can share a sentence without blurring into each other.
 
 Links are underlined by default, which is the oldest and most reliable affordance the web has for "this goes somewhere."
@@ -49,14 +49,14 @@ The underline uses the accent color at a lower opacity at rest and solidifies on
 
 ## Quotation
 
-A pull-quote is set in Spectral italic, indented, with no side stripe.
+A pull-quote is set in Literata italic, indented, with no side stripe.
 The change of typeface and the spacing carry the meaning without decoration.
 
 > The goal of typography is not to be noticed.
 > It is to put the reader inside the argument without friction, so completely that they finish a page without once thinking about the type.
 
-Blockquotes work in the same register as the heading hierarchy: the serif marks editorial, not interface.
-A long quotation reads naturally here because Spectral italic is designed for extended reading, not just for headings.
+Blockquotes stay in the reading voice, not the wayfinding register: the pull-quote keeps the body serif's italic, where a heading would switch out to the sans.
+A long quotation reads naturally here because Literata italic is a text serif's italic, designed for extended reading rather than display.
 
 ## Lists hold their rhythm
 
@@ -77,13 +77,13 @@ An unordered list, for when it does not:
 
 Tables earn their structure from a single header rule and gentle alternating rows without heavy grids, boxed cells, nor color that competes with the text.
 
-| Role       | Typeface                    | Where it appears                          |
-| ---------- | --------------------------- | ----------------------------------------- |
-| Body & UI  | Atkinson Hyperlegible Next  | Paragraphs, navigation, sidebar, search   |
-| Headings   | Spectral                    | Titles, hero, card titles, aside headings |
-| Code       | JetBrains Mono              | Inline code, code blocks, step counters   |
+| Role              | Typeface       | Where it appears                                                       |
+| ----------------- | -------------- | ------------------------------------------------------------------------ |
+| Reading column     | Literata       | Paragraphs, blockquotes, prose                                          |
+| Headings & chrome | Alegreya Sans  | Titles, hero, card titles, aside headings, navigation, sidebar, search   |
+| Code               | JetBrains Mono | Inline code, code blocks, step counters                                 |
 
-The header row is set in Spectral; every structural element in the page belongs to the same serif family, so a table doesn't feel like a foreign object dropped into the prose.
+The header row is set in Alegreya Sans; every structural and wayfinding element in the page belongs to the same sans family, so a table doesn't feel like a foreign object dropped into the prose.
 
 ---
 
