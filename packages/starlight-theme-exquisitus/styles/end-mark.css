@@ -33,7 +33,7 @@
 		   and starts reading as dust on the screen. */
 		width: 0.625rem;
 		aspect-ratio: 1;
-		margin: 3.25rem auto 0;
+		margin: var(--sl-exquisitus-space-4xl) auto 0;
 		background-color: var(--sl-color-gray-3);
 		-webkit-mask: var(--exquisitus-end-mark) center / contain no-repeat;
 		mask: var(--exquisitus-end-mark) center / contain no-repeat;

@@ -72,6 +72,22 @@ rounded:
   md: "0.5rem"     # buttons, search trigger, code blocks, file tree
   lg: "0.625rem"   # asides, details
   xl: "0.75rem"    # cards, dialogs, pagination, images
+spacing:
+  # A 0.25rem-based ramp on t-shirt names (mirroring `rounded`), exposed as
+  # --sl-exquisitus-space-* in tokens.css. Every padding/margin/gap resolves to
+  # a step; widths, container-query thresholds and computed offsets stay literal.
+  2xs: "0.25rem"   # tightest gaps (feature-grid taste miniatures)
+  xs: "0.5rem"     # small gaps, tab & caption padding, swatch rows
+  sm: "0.75rem"    # doorway gap, details padding
+  md: "1rem"       # the base rhythm unit — default gap & inline padding
+  lg: "1.25rem"    # aside & doorway padding, sidebar gutter
+  xl: "1.5rem"     # card padding, section margin-top, colophon rule gap
+  2xl: "2rem"      # specimen-plate & blockquote insets
+  3xl: "2.5rem"    # editorial hr rhythm, hero floor padding
+  4xl: "3rem"      # end-mark gap, mobile hero ceiling
+  5xl: "4rem"      # reserved for large block spacing
+  6xl: "5rem"      # colophon top space
+  7xl: "8rem"      # splash-hero deep top space (fluid ceiling)
 components:
   button-primary:
     backgroundColor: "{colors.cta-honey}"
@@ -190,7 +206,31 @@ All three faces are OFL-licensed and self-hosted via `@fontsource` — a hard re
 
 **The Metric-Matched Fallback Rule.** Each stack's first fallback is a `local()` wrapper (`fonts.css`) pinned to the web font's metrics with `size-adjust` and the `*-override` descriptors, listing the platform face *and* its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. `font-display: swap` stays — the brand faces must appear on first visit; `optional` is forbidden. Values derive from `@capsizecss/metrics`; never hand-tune them by eye.
 
-## 4. Elevation
+## 4. Spacing
+
+Padding, margin, and gap resolve to a single **0.25rem-based ramp** on t-shirt names — the same vocabulary as the `rounded` scale — exposed as `--sl-exquisitus-space-*` tokens (`tokens.css`). Design Principle 4 names *"consistent rhythm, precise spacing"* as a craft signal; the scale is what makes that a system rather than a per-rule improvisation. Because the ramp is rem-based, it lifts with the reader's own base size exactly as the type does.
+
+| token | rem | role |
+|---|---|---|
+| `2xs` | 0.25 | tightest gaps — the feature-grid taste miniatures |
+| `xs` | 0.5 | small gaps, tab & caption padding, swatch rows |
+| `sm` | 0.75 | doorway gap, `<details>` padding |
+| `md` | 1 | the base rhythm unit — the default gap and inline padding |
+| `lg` | 1.25 | aside & doorway padding, the sidebar gutter |
+| `xl` | 1.5 | card padding, section `margin-top`, the colophon rule gap |
+| `2xl` | 2 | the specimen-plate and blockquote insets |
+| `3xl` | 2.5 | the editorial `hr` rhythm, the hero's floor padding |
+| `4xl` | 3 | the end-mark gap, the mobile hero's ceiling |
+| `5xl` | 4 | reserved for large block spacing |
+| `6xl` | 5 | the colophon's top space |
+| `7xl` | 8 | the splash hero's deep top space (fluid ceiling) |
+
+Fluid spacing keeps its `clamp()` but anchors *both* endpoints to scale tokens (e.g. the splash hero's `clamp(var(--…-3xl), 8vmin, var(--…-7xl))`), so even responsive rhythm draws from the ramp.
+
+### Named Rules
+**The One-Ramp Rule.** Every padding, margin, and gap in the theme's chrome and components resolves to a `--sl-exquisitus-space-*` step — no raw rem spacing, no improvised in-between value. Three kinds of length are deliberately *not* spacing and stay literal: **layout widths** (the 35rem reading measure, the hero's 24rem image column), **container-query thresholds** (34 / 47 / 63rem — they describe the room a component has, not its rhythm), and **computed component offsets** (the Expressive Code copy-button seat, pinned to EC's own metrics). Sizing a divider or an icon is not spacing either. When a value doesn't fit a step, snap it to the nearest one rather than mint a bespoke number; the discipline *is* the rhythm.
+
+## 5. Elevation
 
 Depth is never a decorative cast shadow. It is **depth-from-light**, and it always serves comprehension — distinguishing surfaces, signposting registers, rewarding interaction — never decoration. It moves in exactly **two directions**:
 
@@ -217,7 +257,7 @@ Both the header and the mobile TOC are **opaque, never translucent**: a backdrop
 
 **The No-Blur Rule.** Sticky surfaces are opaque. No `backdrop-filter` glass on the header, TOC, or dialogs.
 
-## 5. Components
+## 6. Components
 
 The overall feel is **measured and self-assured**: confident but restrained, with clear intent. Interactions acknowledge the reader without performing — a 2px lift, a warmed border, an accent underline, each on the `ease-out-quint` curve (`cubic-bezier(0.22, 1, 0.36, 1)`) over 150–200ms, and each erased under `prefers-reduced-motion`.
 
@@ -288,7 +328,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 
 **The Plate Ink Exception.** The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.
 
-## 6. Do's and Don'ts
+## 7. Do's and Don'ts
 
 ### Do:
 - **Do** keep the body reading column ink-on-surface, capped at ~70ch (`35rem` of Literata), set generously larger than the docs default (~18px / 1.75).
@@ -301,6 +341,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 - **Do** author all theme CSS in the `exquisitus` cascade layer and honor `prefers-reduced-motion` on every transition.
 - **Do** fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.
 - **Do** hold splash prose and code to the `35rem` centred measure (the Splash Measure Rule); only figures span the wide splash container.
+- **Do** draw every padding, margin and gap from the `--sl-exquisitus-space-*` ramp (the One-Ramp Rule); keep widths, container-query thresholds and computed offsets literal.
 
 ### Don't:
 - **Don't** ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.
@@ -315,6 +356,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 - **Don't** letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.
 - **Don't** float the technical register on an outward / cast shadow — it presses *in*, never lifts *out*.
 - **Don't** make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.
+- **Don't** improvise a raw rem for spacing or mint an in-between value; snap to the nearest `--sl-exquisitus-space-*` step instead (the One-Ramp Rule).
 - **Don't** reach for `!important`; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).
 - **Don't** gate a component's layout on a viewport media query when its width actually comes from its container. The 35rem reading column hands a component ~30rem at *any* screen size, so `@media (min-width: 50rem)` cheerfully applies a multi-track layout to a column with no room for it. Ask the container (`@container`), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.
 - **Don't** let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and `overflow-wrap: break-word` does not lower that floor. Size the type to the container (`cqi`), and keep `min-width: 0` on the text as the net.

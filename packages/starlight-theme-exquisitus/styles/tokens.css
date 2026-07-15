@@ -62,6 +62,27 @@
 		   to 35rem. */
 		--sl-content-width: 35rem;
 
+		/* ── Spacing scale ──────────────────────────────────────────── */
+		/* One rhythm for the whole theme: a 0.25rem-based ramp on t-shirt names
+		   (mirroring the `rounded` scale). Every padding, margin and gap in the
+		   chrome and components resolves to a step here — Design Principle 4's
+		   "precise spacing" made a system rather than improvised per rule. Widths,
+		   container-query thresholds and computed component offsets are NOT
+		   spacing and stay literal. Being rem-based, the whole ramp scales with
+		   the reader's base size like the type does. See DESIGN.md §4. */
+		--sl-exquisitus-space-2xs: 0.25rem;
+		--sl-exquisitus-space-xs: 0.5rem;
+		--sl-exquisitus-space-sm: 0.75rem;
+		--sl-exquisitus-space-md: 1rem; /* the base rhythm unit */
+		--sl-exquisitus-space-lg: 1.25rem;
+		--sl-exquisitus-space-xl: 1.5rem;
+		--sl-exquisitus-space-2xl: 2rem;
+		--sl-exquisitus-space-3xl: 2.5rem;
+		--sl-exquisitus-space-4xl: 3rem;
+		--sl-exquisitus-space-5xl: 4rem;
+		--sl-exquisitus-space-6xl: 5rem;
+		--sl-exquisitus-space-7xl: 8rem; /* deep section space (splash hero) */
+
 		/* Flat, borderless reading environment — the sidebar shares the page
 		   surface in both themes and is separated by a hairline, not a panel. */
 		--sl-color-bg-sidebar: var(--sl-color-bg);
