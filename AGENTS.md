@@ -16,17 +16,17 @@ This project uses [`impeccable` skills](https://impeccable.style/) for product r
 
 Before changing anything visual (color, type, spacing, motion, or a component's look) read these files.
 
-## Commands
+## Top-level commands
 
 ```bash
-pnpm dev        # docs preview site at http://localhost:4321 (alias: pnpm --filter docs dev)
-pnpm build      # production build of the docs site
-pnpm preview    # serve the built docs site
-pnpm lint       # lint/format docs and package
-pnpm deploy     # deploy the built docs site to Cloudflare Workers (wrangler.jsonc)
+pnpm dev        # `docs/` theme demo preview site at http://localhost:4321
+pnpm build      # production build of the demo site
+pnpm preview    # serve the built demo site
+pnpm lint       # lint/format all workspaces: *rumdl* for demo docs, *biome* for theme package
+pnpm deploy     # deploy a built demo site to Cloudflare Workers (wrangler.jsonc)
 ```
 
-Any command also works from a package subdirectory. There is **no unit-test suite** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Formatting/linting is per-workspace: the theme package uses Biome (`pnpm --filter starlight-theme-exquisitus lint`), the docs site uses rumdl for Markdown (`pnpm --filter docs lint`). Toolchain is pinned in `mise.toml`: Node 24, pnpm 11 (the published theme package declares a Node ≥22.12.0 floor).
+There is **no unit-test suite** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Toolchain is pinned in `mise.toml`: Node 24, pnpm 11 (the published theme package declares a Node ≥22.12.0 floor).
 
 ## Architecture
 
