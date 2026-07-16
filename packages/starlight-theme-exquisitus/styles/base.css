@@ -149,14 +149,27 @@
 	/* ───────────────────── Wide-screen contained shell ────────────────── */
 	/* See tokens.css. Cap the sidebar + content + TOC band and centre it so
 	   wide viewports produce equal outer margins instead of a cavernous internal
-	   gutter. Gated on [data-has-sidebar]: splash/hero pages keep Starlight's
-	   full-width defaults. 72rem matches Starlight's own two-column breakpoint. */
+	   gutter. The band (and the header system built on it) applies to EVERY
+	   template; only the sidebar/TOC column arrangement is gated on
+	   [data-has-sidebar]. 72rem matches Starlight's own two-column breakpoint. */
 	@media (min-width: 72rem) {
-		[data-has-sidebar] {
+		:root {
 			--sl-exquisitus-shell-inset: max(
 				var(--sl-content-pad-x),
 				calc((100vw - var(--sl-exquisitus-shell-band)) / 2)
 			);
+		}
+
+		/* Splash/hero (and any sidebar-less) pages take the band as their
+		   content canvas, replacing Starlight's 67.5rem, so the canvas edges
+		   coincide with the shell edges and the one header system below aligns
+		   with the content on every template. Declared on .page because
+		   Starlight sets the 67.5rem from an UNLAYERED Page.astro style block
+		   on html — an own-element declaration one level down wins over the
+		   inherited value regardless of layers. (No cycle: the band derives
+		   from --sl-exquisitus-measure, not from this property.) */
+		html:not([data-has-sidebar]) .page {
+			--sl-content-width: var(--sl-exquisitus-shell-band);
 		}
 
 		/* Feeds BOTH the main-frame start padding (PageFrame) and the header
@@ -202,24 +215,29 @@
 			width: var(--sl-exquisitus-toc-width);
 		}
 
-		/* Header: Starlight centres it with a grid keyed to
-		   --sl-content-inline-start; once the sidebar is inset that math
-		   double-counts and the site title drifts to the content column. Give the
-		   OUTER <header> the same inset padding, then rebuild the INNER grid with
-		   three explicit tracks that mirror the body shell: col 1 = sidebar +
-		   gutter (title sits over the sidebar), col 2 = the reading measure (search
-		   centres over the content column), col 3 = the rest (actions pin to the
-		   right margin). The `> .header` reaches only the inner Header.astro grid,
-		   not the outer PageFrame <header>; the child selectors depend on
-		   Starlight's header order (title, search, actions). */
-		[data-has-sidebar] header.header {
+		/* Header: ONE positioning system on every template. Starlight centres
+		   its header with a grid keyed to --sl-content-inline-start, which
+		   double-counts once the sidebar is inset — and drifts against the
+		   canvas on splash pages. Instead the OUTER <header> takes the shell
+		   inset, and the INNER grid is rebuilt with three explicit tracks that
+		   mirror the band: col 1 = sidebar + gutter (title sits over the
+		   sidebar, or over the splash spine — same x either way), col 2 = the
+		   reading measure (search centres over the reading column's position),
+		   col 3 = the rest (actions pin to the band's right edge). Because
+		   every template shares the band, the masthead, search, and actions
+		   never move between pages. The `> .header` reaches only the inner
+		   Header.astro grid, not the outer PageFrame <header>; the child
+		   selectors depend on Starlight's header order (title, search,
+		   actions). Col 2 reads --sl-exquisitus-measure (not
+		   --sl-content-width, which is the band on splash pages). */
+		header.header {
 			padding-inline: var(--sl-exquisitus-shell-inset);
 		}
 
-		[data-has-sidebar] header.header > .header {
+		header.header > .header {
 			grid-template-columns:
 				calc(var(--sl-sidebar-width) + var(--sl-exquisitus-shell-gutter))
-				minmax(0, var(--sl-content-width))
+				minmax(0, var(--sl-exquisitus-measure))
 				1fr;
 			align-items: center;
 		}
@@ -227,28 +245,13 @@
 		/* The search wrapper (2nd child) is a flex row; centre the search button
 		   within its content-measure track so it reads as belonging to the reading
 		   column, not jammed against the title. */
-		[data-has-sidebar] header.header > .header > :nth-child(2) {
+		header.header > .header > :nth-child(2) {
 			justify-content: center;
 		}
 
 		/* Actions (last child) pin to the right margin. */
-		[data-has-sidebar] header.header > .header > :last-child {
+		header.header > .header > :last-child {
 			justify-self: end;
-		}
-
-		/* Splash sibling of the contained shell: sidebar-less pages centre a
-		   67.5rem canvas (Starlight sets --sl-content-width there), but the
-		   header keeps framing the VIEWPORT — the masthead ends up hundreds of
-		   px from any content edge on wide screens. Give the header the canvas's
-		   own inset so the masthead sits on the splash spine (directly over the
-		   hero title) and the actions align with the canvas's right edge. The
-		   inner grid needs no rebuild here: with no sidebar there is no
-		   double-counting to correct. */
-		html:not([data-has-sidebar]) header.header {
-			padding-inline: max(
-				var(--sl-nav-pad-x),
-				calc((100vw - var(--sl-content-width)) / 2)
-			);
 		}
 	}
 

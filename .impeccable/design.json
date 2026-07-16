@@ -229,7 +229,7 @@
       {
         "name": "contained-shell",
         "value": "72rem",
-        "purpose": "Matches Starlight's own two-column breakpoint: past it the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band, 76.25rem) and centred so surplus width becomes equal outer margins (the Contained Shell Rule). Gated on [data-has-sidebar]; splash pages keep the full-width canvas."
+        "purpose": "Matches Starlight's own two-column breakpoint: past it the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band, 76.25rem) and centred so surplus width becomes equal outer margins (the Contained Shell Rule). The band is the one wide width of the site: splash pages take it as their content canvas and the header runs a single positioning system over every template; only the sidebar/TOC column arrangement is gated on [data-has-sidebar]."
       },
       {
         "name": "high-res-1",
@@ -502,7 +502,7 @@
       },
       {
         "name": "The Contained Shell Rule",
-        "body": "Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as (100% − content − sidebar)/2 with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed --sl-exquisitus-toc-width (15rem — TOC entries are short; freed width returns to the margins); the column sits --sl-exquisitus-shell-gutter from each neighbour. Gated on [data-has-sidebar], so splash/hero pages keep the full-width canvas.",
+        "body": "Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as (100% − content − sidebar)/2 with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed --sl-exquisitus-toc-width (15rem — TOC entries are short; freed width returns to the margins); the column sits --sl-exquisitus-shell-gutter from each neighbour. The band is the one wide width of the whole site: splash/hero pages take it as their content canvas (replacing Starlight's 67.5rem), and the header runs a single positioning system over every template — masthead on the band's left edge, search centred over the reading column's position, actions on the band's right edge, never moving between pages. Only the sidebar/TOC column arrangement is gated on [data-has-sidebar].",
         "section": "components"
       },
       {

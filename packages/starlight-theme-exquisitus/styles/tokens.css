@@ -78,13 +78,18 @@
 		   width returns to the margins), and the surplus becomes EQUAL outer
 		   margins. The reader gets wider margins, never a longer line — the
 		   65–75ch Rule still governs. Widths are literal rem (the documented
-		   exception to the spacing ramp). --shell-inset is defined on
-		   [data-has-sidebar] in base.css, so splash/hero pages never see it. */
+		   exception to the spacing ramp). The band is the ONE wide width of the
+		   whole site: sidebar'd pages arrange their three columns inside it, and
+		   splash/hero pages take it as their content canvas (base.css), so the
+		   header can run a single positioning system over every template.
+		   --shell-inset (the centring margin) is derived from it in base.css.
+		   The calc reads --sl-exquisitus-measure, not --sl-content-width, so
+		   splash pages can set --sl-content-width to the band without a cycle. */
 		--sl-exquisitus-shell-gutter: 2.75rem; /* column ↔ sidebar / column ↔ TOC */
 		--sl-exquisitus-toc-width: 15rem; /* fixed right rail — TOC entries are short */
 		--sl-exquisitus-shell-band: calc(
 			var(--sl-sidebar-width) +
-			var(--sl-content-width) +
+			var(--sl-exquisitus-measure) +
 			2 *
 			var(--sl-exquisitus-shell-gutter) +
 			var(--sl-exquisitus-toc-width)
