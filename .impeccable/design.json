@@ -150,7 +150,7 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "The reading column: Literata ~18px / 1.75, capped at ~70ch."
+        "purpose": "The reading column: Literata ~18px / 1.75, capped at ~74ch."
       },
       "label": {
         "displayName": "Label",
@@ -224,7 +224,27 @@
       {
         "name": "feature-grid",
         "value": "34rem (container)",
-        "purpose": "Container gate on FeatureGrid's wrapper. Below 34rem of container width every layout folds to a single column, however wide the window is. A viewport query is the wrong question here: the 35rem reading column hands the grid ~30rem at any screen size."
+        "purpose": "Container gate on FeatureGrid's wrapper. Below 34rem of container width every layout folds to a single column, however wide the window is. A viewport query is the wrong question here: the 37rem reading column hands the grid the same room at any screen size — it clears this base threshold (two-track arrangements run embedded), while the wider thirds/quarters gates (47/63rem) only trip on the splash's unconstrained canvas."
+      },
+      {
+        "name": "contained-shell",
+        "value": "72rem",
+        "purpose": "Matches Starlight's own two-column breakpoint: past it the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band, 76.25rem) and centred so surplus width becomes equal outer margins (the Contained Shell Rule). Gated on [data-has-sidebar]; splash pages keep the full-width canvas."
+      },
+      {
+        "name": "high-res-1",
+        "value": "100em (1600px)",
+        "purpose": "Root font-size steps 106.25% → 112.5% (~18px). First step of the High-Resolution Scaling Rule; the whole rem-based system scales together, holding the ~74ch measure."
+      },
+      {
+        "name": "high-res-2",
+        "value": "125em (2000px)",
+        "purpose": "Root font-size steps to 125% (~20px)."
+      },
+      {
+        "name": "high-res-3",
+        "value": "135em (2160px)",
+        "purpose": "Root font-size steps to 137.5% (~22px). Full-screen 4K at typical OS scaling; QHD at 100%."
       }
     ],
     "hexMirror": {
@@ -393,7 +413,7 @@
     "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else exists to usher the reader into the text and then disappear — the one guest allowed to keep its presence is the technical register (code, terminals, file trees), the way the New York Times lets an interactive break the body's rules without dethroning the article. The reading surface is flat and hairline-separated; the technical register is letterpressed into that sheet — pressed in, the way a fine press deboss-prints type into paper, a tactile mark of care. Color is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. Depth is never a decorative cast shadow; it is depth-from-light in two directions: a transient lift in response to state, and a resting press that marks the technical register on a third axis alongside petrol-teal (color) and monospace (type). It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, acknowledging the reader without performing for them. Restraint and generosity are not opposed here; they are spent on different things. Restraint governs everything that surrounds the reading — color, depth, motion, chrome — held in tight discipline. Generosity governs the reading itself — type size, the comfort of the measure, the space it sits in — which is why the body is set larger than convention and, on large displays, grows further rather than shrinking to fill the space. A bigger reading experience is never a lapse in restraint; a louder chrome always is.",
     "keyCharacteristics": [
       "Content is sovereign: the reading column is the design; the rest is service.",
-      "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.",
+      "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~74ch measure.",
       "A full palette held in tight discipline: honey-amber for emphasis, petrol-teal for information.",
       "A flat, hairline-separated reading surface, with the technical register letterpressed into it. Depth is depth-from-light in two directions — a transient lift, a resting press — never a decorative cast.",
       "The information register marked on three axes at once: petrol-teal (color), monospace (type), and the letterpress (depth).",
@@ -442,7 +462,7 @@
       },
       {
         "name": "The 65-75ch Rule",
-        "body": "The reading measure is capped at ~70 characters regardless of viewport. A wide screen gets wider margins, never a wider line.",
+        "body": "The reading measure is capped at ~74 characters regardless of viewport. A wide screen gets wider margins, never a wider line.",
         "section": "typography"
       },
       {
@@ -477,8 +497,18 @@
       },
       {
         "name": "The Splash Measure Rule",
-        "body": "Starlight widens --sl-content-width to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold a literal 35rem centred column; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.",
+        "body": "Starlight widens --sl-content-width to 67.5rem on splash templates; the 65–75ch Rule still governs. Prose, headings, and code hold the --sl-exquisitus-measure (37rem) column — the theme-owned token the docs measure derives from, immune to Starlight's splash override; only figures — the plate, the doorways, a FeatureGrid — may span the wide container.",
         "section": "components"
+      },
+      {
+        "name": "The Contained Shell Rule",
+        "body": "Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as (100% − content − sidebar)/2 with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed --sl-exquisitus-toc-width (15rem — TOC entries are short; freed width returns to the margins); the column sits --sl-exquisitus-shell-gutter from each neighbour. Gated on [data-has-sidebar], so splash/hero pages keep the full-width canvas.",
+        "section": "components"
+      },
+      {
+        "name": "The High-Resolution Scaling Rule",
+        "body": "On displays ≥1600, ≥2000, and ≥2160 CSS px the root font-size steps up (106.25% → 112.5% → 125% → 137.5%). Because the whole system is rem-based, type, spacing, the reading measure, and the shell band all enlarge together: a big monitor gets physically larger reading, never a longer line. This is the Generous Body Rule extended to the hardware axis — the same conviction that sets ~18px body type, now applied to the display. Restraint in this system is spent on the chrome, never on the reading, so scaling the reading up on large hardware is on-doctrine rather than a concession.",
+        "section": "typography"
       },
       {
         "name": "The Plate Ink Exception",
@@ -492,7 +522,7 @@
       }
     ],
     "dos": [
-      "Do keep the body reading column ink-on-surface, capped at ~70ch (35rem of Literata), set generously larger than the docs default (~18px / 1.75).",
+      "Do keep the body reading column ink-on-surface, capped at ~74ch (37rem of Literata), set generously larger than the docs default (~18px / 1.75).",
       "Do let the honey-amber accent appear rarely and meaningfully: links, active state, selection, focus. Its rarity is the point.",
       "Do keep accent text bronze in light mode and brightened honey in dark mode; only ever show the full honey as a fill with an ink label.",
       "Do give petrol-teal its one job — information and code — and keep it there.",
@@ -501,7 +531,7 @@
       "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
       "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition.",
       "Do fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.",
-      "Do hold splash prose and code to the 35rem centred measure (the Splash Measure Rule); only figures span the wide splash container."
+      "Do hold splash prose and code to the 37rem centred measure (the Splash Measure Rule); only figures span the wide splash container."
     ],
     "donts": [
       "Don't ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.",
@@ -517,7 +547,7 @@
       "Don't float the technical register on an outward / cast shadow — it presses in, never lifts out.",
       "Don't make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.",
       "Don't reach for !important; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).",
-      "Don't gate a component's layout on a viewport media query when its width actually comes from its container. The 35rem reading column hands a component ~30rem at any screen size, so @media (min-width: 50rem) cheerfully applies a multi-track layout to a column with no room for it. Ask the container (@container), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.",
+      "Don't gate a component's layout on a viewport media query when its width actually comes from its container. The 37rem reading column hands a component the same 37rem at any screen size, so @media (min-width: 50rem) cheerfully applies the widest multi-track layout to a column with no room for it. Ask the container (@container), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.",
       "Don't let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and overflow-wrap: break-word does not lower that floor. Size the type to the container (cqi), and keep min-width: 0 on the text as the net."
     ]
   }
