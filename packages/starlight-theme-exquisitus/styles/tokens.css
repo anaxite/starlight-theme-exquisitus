@@ -217,6 +217,31 @@
 		--sl-color-green-high: oklch(0.85 0.08 150);
 	}
 
+	/* High-resolution displays: scale the whole rem-based system up so big
+	   monitors get physically larger type and chrome instead of ever-wider
+	   margins. The ~74ch measure is preserved (font and column scale together).
+	   Media-query units use the 16px browser baseline: 100em = 1600px,
+	   125em = 2000px, 135em = 2160px. Inside @layer exquisitus, same as the
+	   base 106.25% above — Starlight sets no root font-size, so these win. */
+	@media (min-width: 100em) {
+		:root {
+			font-size: 112.5%; /* ~18px base — 1600px+ */
+		}
+	}
+
+	@media (min-width: 125em) {
+		:root {
+			font-size: 125%; /* ~20px base — 2000px+ */
+		}
+	}
+
+	@media (min-width: 135em) {
+		:root {
+			font-size: 137.5%; /* ~22px base — 2160px+ (full-screen 4K at typical
+			   OS scaling; QHD at 100%) */
+		}
+	}
+
 	:root[data-theme="light"] {
 		/* ── Color — light mode ────────────────────────────────────── */
 		--sl-color-white: oklch(
