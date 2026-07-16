@@ -68,6 +68,28 @@
 		--sl-exquisitus-measure: 37rem;
 		--sl-content-width: var(--sl-exquisitus-measure);
 
+		/* ── Wide-screen shell ──────────────────────────────────────── */
+		/* Beyond Starlight's 72rem two-column breakpoint, Starlight spreads ALL
+		   leftover width as (100% − content − sidebar)/2 with effectively no
+		   ceiling, so on a 1920px canvas the reading column drifts ~300px off the
+		   sidebar and the TOC trails a ~470px void. Instead we cap the
+		   three-column band and centre it: a fixed gutter holds the column beside
+		   the sidebar, the TOC takes a fixed 15rem (TOC entries are short; freed
+		   width returns to the margins), and the surplus becomes EQUAL outer
+		   margins. The reader gets wider margins, never a longer line — the
+		   65–75ch Rule still governs. Widths are literal rem (the documented
+		   exception to the spacing ramp). --shell-inset is defined on
+		   [data-has-sidebar] in base.css, so splash/hero pages never see it. */
+		--sl-exquisitus-shell-gutter: 2.75rem; /* column ↔ sidebar / column ↔ TOC */
+		--sl-exquisitus-toc-width: 15rem; /* fixed right rail — TOC entries are short */
+		--sl-exquisitus-shell-band: calc(
+			var(--sl-sidebar-width) +
+			var(--sl-content-width) +
+			2 *
+			var(--sl-exquisitus-shell-gutter) +
+			var(--sl-exquisitus-toc-width)
+		);
+
 		/* ── Spacing scale ──────────────────────────────────────────── */
 		/* One rhythm for the whole theme: a 0.25rem-based ramp on t-shirt names
 		   (mirroring the `rounded` scale). Every padding, margin and gap in the

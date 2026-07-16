@@ -146,6 +146,97 @@
 		background-color: var(--sl-color-bg);
 	}
 
+	/* ───────────────────── Wide-screen contained shell ────────────────── */
+	/* See tokens.css. Cap the sidebar + content + TOC band and centre it so
+	   wide viewports produce equal outer margins instead of a cavernous internal
+	   gutter. Gated on [data-has-sidebar]: splash/hero pages keep Starlight's
+	   full-width defaults. 72rem matches Starlight's own two-column breakpoint. */
+	@media (min-width: 72rem) {
+		[data-has-sidebar] {
+			--sl-exquisitus-shell-inset: max(
+				var(--sl-content-pad-x),
+				calc((100vw - var(--sl-exquisitus-shell-band)) / 2)
+			);
+		}
+
+		/* Feeds BOTH the main-frame start padding (PageFrame) and the header
+		   centring grid, keeping the reading column and the header aligned.
+		   Declared on .page (PageFrame's wrapper, which contains every consumer),
+		   NOT on [data-has-sidebar]: Starlight sets this property there from an
+		   UNLAYERED Page.astro style block, which would beat any layered
+		   declaration on the same element — an own-element declaration one level
+		   down wins over the inherited value regardless of layers. */
+		[data-has-sidebar] .page {
+			--sl-content-inline-start: calc(
+				var(--sl-exquisitus-shell-inset) +
+				var(--sl-sidebar-width)
+			);
+		}
+
+		/* Inset the fixed sidebar to the shell's left edge (its background is the
+		   page colour, so the pane extending to 0 would be invisible anyway — the
+		   inset is what makes the outer margin symmetric with the TOC side). */
+		[data-has-sidebar] .sidebar-pane {
+			inset-inline-start: var(--sl-exquisitus-shell-inset);
+		}
+
+		/* Right outer margin (the start margin comes from --sl-content-inline-start
+		   above, consumed by PageFrame's padding-inline-start). */
+		[data-has-sidebar] .main-frame {
+			padding-inline-end: var(--sl-exquisitus-shell-inset);
+		}
+
+		/* Replace Starlight's unbounded leftover split with fixed columns: the
+		   content pane is content + a gutter on each side (content centred within
+		   it), the TOC takes its fixed width. Below the band width the
+		   min() lets the pane shrink gracefully rather than overflow. */
+		[data-has-sidebar][data-has-toc] .main-pane {
+			width: min(
+				calc(2 * var(--sl-exquisitus-shell-gutter) + var(--sl-content-width)),
+				calc(100% - var(--sl-exquisitus-toc-width))
+			);
+			--sl-content-margin-inline: auto;
+		}
+
+		[data-has-sidebar][data-has-toc] .right-sidebar-container {
+			width: var(--sl-exquisitus-toc-width);
+		}
+
+		/* Header: Starlight centres it with a grid keyed to
+		   --sl-content-inline-start; once the sidebar is inset that math
+		   double-counts and the site title drifts to the content column. Give the
+		   OUTER <header> the same inset padding, then rebuild the INNER grid with
+		   three explicit tracks that mirror the body shell: col 1 = sidebar +
+		   gutter (title sits over the sidebar), col 2 = the reading measure (search
+		   centres over the content column), col 3 = the rest (actions pin to the
+		   right margin). The `> .header` reaches only the inner Header.astro grid,
+		   not the outer PageFrame <header>; the child selectors depend on
+		   Starlight's header order (title, search, actions). */
+		[data-has-sidebar] header.header {
+			padding-inline: var(--sl-exquisitus-shell-inset);
+		}
+
+		[data-has-sidebar] header.header > .header {
+			grid-template-columns:
+				calc(var(--sl-sidebar-width) + var(--sl-exquisitus-shell-gutter))
+				minmax(0, var(--sl-content-width))
+				1fr;
+			align-items: center;
+		}
+
+		/* The search wrapper (2nd child) is a flex row; centre the search button
+		   within its content-measure track so it reads as belonging to the reading
+		   column, not jammed against the title. */
+		[data-has-sidebar] header.header > .header > :nth-child(2) {
+			justify-content: center;
+		}
+
+		/* Actions (last child) pin to the right margin. */
+		[data-has-sidebar] header.header > .header > :last-child {
+			justify-self: end;
+		}
+	}
+
 	/* ───────────────────────────── Search ───────────────────────────── */
 	site-search button[data-open-modal] {
 		border-radius: 0.5rem;
