@@ -224,12 +224,13 @@
 	   carry no scope hash, so these child selectors must reach them directly.
 	   Mobile is a single column for every layout; `align-items: stretch`
 	   (the grid default) levels peers to a shared baseline. */
-	/* The grid asks how much room *it* has, not how wide the window is: a
-	   sidebar'd reading column (35rem) hands it far less than a splash page's
-	   full width does, so an embedded grid stays single-column and only the
-	   splash triggers the multi-column layouts below. The query has to sit on a
-	   wrapper because an element can never be styled by its own container
-	   query. */
+	/* The grid asks how much room *it* has, not how wide the window is: the
+	   sidebar'd reading column (37rem) clears the 34rem base threshold, so an
+	   embedded grid runs the two-track arrangements (each cell still clears the
+	   ~15rem floor), while the wider thirds/quarters thresholds below only trip
+	   on a splash page's unconstrained canvas. Anything narrower than 34rem
+	   folds to a single readable column. The query has to sit on a wrapper
+	   because an element can never be styled by its own container query. */
 	.exquisitus-feature-grid-container {
 		container-type: inline-size;
 		margin-top: var(--sl-exquisitus-space-xl);
@@ -834,10 +835,11 @@
 	/* ───────────────────── Splash reading measure ────────────────────── */
 	/* The 65–75ch Rule does not stop applying because the sidebar is gone:
 	   on splash pages, prose and code hold the reading measure while figures
-	   (grids, doorways, the plate) may span wide. The value is literal (Starlight
-	   widens --sl-content-width to 67.5rem on splash templates) and tracks the
-	   docs measure — 35rem for ~70ch of Literata, re-derived live from the real
-	   face's average advance.
+	   (grids, doorways, the plate) may span wide. Starlight widens
+	   --sl-content-width itself to 67.5rem on splash templates (that's the wide
+	   canvas), so the prose is re-capped with the theme-owned
+	   --sl-exquisitus-measure token the docs measure derives from — 37rem for
+	   ~74ch of Literata, re-derived live from the real face's average advance.
 	   The measured column HANGS ON THE LEFT SPINE (`margin-inline: 0 auto`), not
 	   centred: the hero copy, the prose, and the install strip then share one
 	   left edge down the page. Centring it reset the reader's left margin twice
@@ -847,7 +849,7 @@
 	[data-has-hero]
 		.sl-markdown-content
 		> :where(p, .sl-heading-wrapper, ul, ol, blockquote, .expressive-code) {
-		max-width: 35rem;
+		max-width: var(--sl-exquisitus-measure);
 		margin-inline: 0 auto;
 	}
 

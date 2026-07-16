@@ -55,12 +55,18 @@
 		font-size: 106.25%;
 		--sl-line-height: 1.75;
 		--sl-line-height-headings: 1.18;
-		/* ~70ch of Literata at the content type size. Measured live against the
+		/* ~74ch of Literata at the content type size. Measured live against the
 		   real face's average advance (not the `ch` unit, which is the width of
-		   "0" and overstates the count): the old 42rem ran ~83 characters with
-		   Literata's wider advance, past the 65–75ch rule, so the column tightens
-		   to 35rem. */
-		--sl-content-width: 35rem;
+		   "0" and overstates the count): 35rem ran ~70ch, and the reading column
+		   is nudged one ramp step wider to 37rem (~74ch) for a touch more
+		   generosity — still inside the 65–75ch Rule.
+		   The measure lives in a theme-owned token because Starlight overrides
+		   --sl-content-width to 67.5rem on splash templates (element-level, so it
+		   beats this inherited value there): surfaces that must hold the reading
+		   measure on ANY template (the splash prose cap) read
+		   --sl-exquisitus-measure directly. */
+		--sl-exquisitus-measure: 37rem;
+		--sl-content-width: var(--sl-exquisitus-measure);
 
 		/* ── Spacing scale ──────────────────────────────────────────── */
 		/* One rhythm for the whole theme: a 0.25rem-based ramp on t-shirt names
