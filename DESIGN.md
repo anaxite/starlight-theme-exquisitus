@@ -133,6 +133,8 @@ The system is built from three recurring moves. First, **the reading surface is 
 
 This system explicitly rejects two things. It is **not** the hacker / terminal aesthetic — no monospace-everything, no green-on-black costume, no cyberpunk affectation. And it is **not** generic SaaS documentation — none of the Mintlify / Docusaurus default of clean-white-with-a-blue-primary and a forgettable sidebar. The voice is a senior colleague who explains something well: confident, masterful, useful — measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.
 
+Restraint and generosity are not opposed here; they are spent on different things. **Restraint governs everything that *surrounds* the reading** — color, depth, motion, chrome — which is why each is held in tight discipline. **Generosity governs the reading *itself*** — type size, the comfort of the measure, the space it sits in — which is why the body is set larger than documentation convention (the Generous Body Rule) and, on large displays, grows further rather than shrinking to fill the space. A bigger reading experience is never a lapse in restraint; a louder chrome always is.
+
 **Key Characteristics:**
 - Content is sovereign: the reading column is the design; the rest is service.
 - Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~70ch measure.
