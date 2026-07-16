@@ -235,6 +235,21 @@
 		[data-has-sidebar] header.header > .header > :last-child {
 			justify-self: end;
 		}
+
+		/* Splash sibling of the contained shell: sidebar-less pages centre a
+		   67.5rem canvas (Starlight sets --sl-content-width there), but the
+		   header keeps framing the VIEWPORT — the masthead ends up hundreds of
+		   px from any content edge on wide screens. Give the header the canvas's
+		   own inset so the masthead sits on the splash spine (directly over the
+		   hero title) and the actions align with the canvas's right edge. The
+		   inner grid needs no rebuild here: with no sidebar there is no
+		   double-counting to correct. */
+		html:not([data-has-sidebar]) header.header {
+			padding-inline: max(
+				var(--sl-nav-pad-x),
+				calc((100vw - var(--sl-content-width)) / 2)
+			);
+		}
 	}
 
 	/* ───────────────────────────── Search ───────────────────────────── */
