@@ -30,12 +30,13 @@ index.ts                       # StarlightPlugin entrypoint — the config:setup
 libs/starlight.ts              # overrideComponents() — merge + user-collision warning
 libs/table-wrap.ts             # client script: wraps content tables in an a11y scroll region
 components/FeatureGrid.astro   # exported splash layout component (lead / alternating)
-overrides/Hero.astro           # drop-in Hero replacement (sans masthead treatment)
+components/SpecimenPlate.astro # exported hero specimen plate, placed via `hero.image.html: <exquisitus-specimen />`
+overrides/Hero.astro           # drop-in Hero replacement; swaps the `<exquisitus-specimen />` placeholder for SpecimenPlate (layout CSS lives in base.css)
 styles/
   layers.css   # @layer starlight, exquisitus;  — the cascade order everything relies on; loads first
   fonts.css    # self-hosted @fontsource imports (Literata, Alegreya Sans, JetBrains Mono)
   tokens.css   # OKLCH palette mapped onto Starlight's --sl-* contract (light + dark)
-  base.css     # application chrome: header, sidebar, TOC, search, cards, asides, tabs, hero, FeatureGrid layouts
+  base.css     # application chrome: header, wide-screen shell, sidebar, TOC, search, cards, asides, tabs, hero + splash surfaces, FeatureGrid layouts
   prose.css    # the reading column: headings, links, code, blockquotes, tables
   end-mark.css # optional editorial end mark (SVG-mask ::after on content pages); gated by the `endMark` option
 ```

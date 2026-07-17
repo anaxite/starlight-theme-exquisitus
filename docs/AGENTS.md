@@ -20,8 +20,9 @@ pnpm lint    # rumdl fmt — formats Markdown/MDX (check-only: pnpm check:mdx)
 
 - `index.mdx` — the **splash** (specimen-plate hero, install strip, doorway cards, colophon).
   It uses raw HTML blocks (`.exquisitus-doorways`, `.exquisitus-colophon`, the `<exquisitus-specimen />` hero placeholder) whose CSS lives in the *package's* `base.css`, not here.
-- `getting-started.mdx`, `customization.mdx` — user docs.
+- `getting-started.mdx`, `customization.mdx`, `resources.mdx` — user docs.
   Document every new plugin option in `customization.mdx`.
+- `404.md` — the not-found page; sidebar-less, so it shares the splash's centred canvas rules.
 - `showcase/` — visual test surfaces (typography, feature-grid, components).
   When a theme change alters a component's look, these pages are where you verify it — screenshot light **and** dark.
   Add new theme features here so they stay dogfooded.
