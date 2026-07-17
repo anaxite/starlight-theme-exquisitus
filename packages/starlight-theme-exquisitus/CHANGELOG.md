@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.2.0
+
+This release refines the theme's page layouts and reading geometry.
+The biggest change is on docs pages with a sidebar, where the sidebar and ToC hug the prose on wide screens, unlike default Starlight where the sidebar sticks to the left window border. 
+
+### Changed
+
+- Increased the reading column to ~74 characters up from ~70 characters.
+- Capped and centered docs pages.
+  On very wide displays, docs pages are no longer stretched edge to edge with space between prose and sidebars.
+  Page content is capped and centered with symmetric margins, so the document keeps a sane width no matter how big the
+  window gets.
+- Reworked the site header to match the centered pages.
+- Refined the splash page layout to better compose prose, figures, and code blocks.
+- Improved the root font size on high-resolution displays.
+
+### Fixed
+
+- Fixed stale info in AGENTS and DESIGN files.
+
 ## 1.1.1
 
 ### Changed
@@ -12,15 +32,16 @@
 
 ## 1.1.0
 
-### Changed
+This release changes theme typefaces.
 
-`1.1.0` brings a significant but minor-ish change: typefaces change from Spectral+Atkinson Hyperlegible to Alegreya Sans+Literata.
-
-In short, I wasn't satisfied with my first typeface choice.
-I wanted a bit more personality to the theme: something that was still great to read, but didn't follow Serif+Sans conventions just because.
+I wanted a bit more personality to the theme: something that was great to read, regardless of current docs conventions.
 Literata is a great typeface for long-form reading, and it pairs well with Alegreya Sans (which I happen to like).
 
 Theme functionality is otherwise unchanged.
+
+### Changed
+
+- Change typefaces from Spectral+Atkinson Hyperlegible to Alegreya Sans+Literata.
 
 ## 1.0.4
 
