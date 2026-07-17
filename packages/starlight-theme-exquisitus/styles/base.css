@@ -160,16 +160,25 @@
 			);
 		}
 
-		/* Splash/hero (and any sidebar-less) pages take the band as their
-		   content canvas, replacing Starlight's 67.5rem, so the canvas edges
-		   coincide with the shell edges and the one header system below aligns
-		   with the content on every template. Declared on .page because
-		   Starlight sets the 67.5rem from an UNLAYERED Page.astro style block
-		   on html — an own-element declaration one level down wins over the
-		   inherited value regardless of layers. (No cycle: the band derives
-		   from --sl-exquisitus-measure, not from this property.) */
+		/* Splash/hero (and any sidebar-less) pages take a contained, CENTRED
+		   canvas: the band minus the room the docs template gives its sidebar
+		   column (sidebar + gutter, 21.5rem) — ~54.75rem, replacing Starlight's
+		   67.5rem. The canvas is the natural width of the hero's contents
+		   (copy + gutter + plate), so the hero fills it with no pooled slack,
+		   and .sl-container's own auto margins centre it symmetrically —
+		   an off-centre column with no sidebar to justify it reads as a bug,
+		   so sidebar-less pages balance the whitespace instead of spending it
+		   on one side. Declared on .page because Starlight sets the 67.5rem
+		   from an UNLAYERED Page.astro style block on html — an own-element
+		   declaration one level down wins over the inherited value regardless
+		   of layers. (No cycle: the band derives from --sl-exquisitus-measure,
+		   not from this property.) */
 		html:not([data-has-sidebar]) .page {
-			--sl-content-width: var(--sl-exquisitus-shell-band);
+			--sl-content-width: calc(
+				var(--sl-exquisitus-shell-band) -
+				var(--sl-sidebar-width) -
+				var(--sl-exquisitus-shell-gutter)
+			);
 		}
 
 		/* Feeds BOTH the main-frame start padding (PageFrame) and the header
@@ -734,6 +743,31 @@
 		}
 	}
 
+	/* On the wide-screen canvas the image/plate track sizes to its content
+	   and pins to the canvas's right edge, the copy takes what remains
+	   (~26rem — inside its 50ch cap), and the fr-ratio slack that pooled
+	   BETWEEN copy and plate disappears: the canvas above is sized so
+	   copy + gutter + plate fill it exactly. The gap becomes the shell
+	   gutter — the same seam the docs column keeps beside the sidebar.
+	   Note: this supersedes --sl-exquisitus-hero-columns at ≥72rem (the
+	   token keeps governing 50–72rem); consumers retuning the wide split
+	   override grid-template-columns directly, and any unlayered consumer
+	   CSS still beats this layered rule as usual. The no-image
+	   single-column rule above wins here by specificity, unchanged. */
+	@media (min-width: 72rem) {
+		.hero {
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: var(--sl-exquisitus-shell-gutter);
+		}
+
+		/* The base margin-inline: auto would re-centre the plate if the auto
+		   track ends up wider than the element; pin it to the canvas edge. */
+		.hero > img,
+		.hero > .hero-html {
+			margin-inline: auto 0;
+		}
+	}
+
 	/* The masthead settles in on first paint. This is a *transition* from a
 	   `@starting-style`, not a keyframe animation with `fill-mode: both` —
 	   which is the same effect but the opposite failure mode. `both` applies the
@@ -943,23 +977,32 @@
 
 	/* ───────────────────── Splash reading measure ────────────────────── */
 	/* The 65–75ch Rule does not stop applying because the sidebar is gone:
-	   on splash pages, prose and code hold the reading measure while figures
-	   (grids, doorways, the plate) may span wide. Starlight widens
-	   --sl-content-width itself to 67.5rem on splash templates (that's the wide
-	   canvas), so the prose is re-capped with the theme-owned
+	   on splash pages, TEXT holds the reading measure while FIGURES compose
+	   on the canvas — the page's two grammars. Starlight widens
+	   --sl-content-width itself on splash templates (the theme sets the wide
+	   canvas above), so the prose is re-capped with the theme-owned
 	   --sl-exquisitus-measure token the docs measure derives from — 37rem for
 	   ~74ch of Literata, re-derived live from the real face's average advance.
-	   The measured column HANGS ON THE LEFT SPINE (`margin-inline: 0 auto`), not
-	   centred: the hero copy, the prose, and the install strip then share one
-	   left edge down the page. Centring it reset the reader's left margin twice
-	   (hero at the content edge → prose indented → doorways back at the edge);
-	   left-hanging gives the splash a single dominant spine, with only the
-	   colophon deliberately centred as a book-ending. */
+	   The measured column HANGS ON THE LEFT SPINE (`margin-inline: 0 auto`),
+	   not centred: the hero copy and the prose share one left edge down the
+	   page. Everything that is NOT running text — the plate, the code strip,
+	   the doorways, the colophon — is a figure and follows the figure grammar
+	   below instead. */
 	[data-has-hero]
 		.sl-markdown-content
-		> :where(p, .sl-heading-wrapper, ul, ol, blockquote, .expressive-code) {
+		> :where(p, .sl-heading-wrapper, ul, ol, blockquote) {
 		max-width: var(--sl-exquisitus-measure);
 		margin-inline: 0 auto;
+	}
+
+	/* Figure grammar: code blocks on a splash are objects the reader looks
+	   AT, not text read line-to-line — the install strip above all. They keep
+	   the measure as a width cap (a one-line command needs no more) but centre
+	   in the canvas like every other figure (plate, doorways, colophon),
+	   instead of hanging off the reading spine as boxed UI in a text column. */
+	[data-has-hero] .sl-markdown-content > .expressive-code {
+		max-width: var(--sl-exquisitus-measure);
+		margin-inline: auto;
 	}
 
 	/* ───────────────────────── Doorway cards ────────────────────────── */
