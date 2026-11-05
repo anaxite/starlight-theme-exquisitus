@@ -98,11 +98,11 @@
 		/* ── Spacing scale ──────────────────────────────────────────── */
 		/* One rhythm for the whole theme: a 0.25rem-based ramp on t-shirt names
 		   (mirroring the `rounded` scale). Every padding, margin and gap in the
-		   chrome and components resolves to a step here — Design Principle 4's
+		   chrome and components resolves to a step here — PRODUCT.md principle 4's
 		   "precise spacing" made a system rather than improvised per rule. Widths,
 		   container-query thresholds and computed component offsets are NOT
 		   spacing and stay literal. Being rem-based, the whole ramp scales with
-		   the reader's base size like the type does. See DESIGN.md §4. */
+		   the reader's base size like the type does. See DESIGN.md, Layout. */
 		--sl-exquisitus-space-2xs: 0.25rem;
 		--sl-exquisitus-space-xs: 0.5rem;
 		--sl-exquisitus-space-sm: 0.75rem;

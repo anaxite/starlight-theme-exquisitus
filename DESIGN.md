@@ -123,7 +123,7 @@ components:
 
 # Design System: Exquisitus
 
-## 1. Overview
+## Overview
 
 **Creative North Star: "The Considered Reading Room"**
 
@@ -143,7 +143,7 @@ Restraint and generosity are not opposed here; they are spent on different thing
 - The information register marked on three axes at once: petrol-teal (color), monospace (type), and the letterpress (depth).
 - Accessible by conviction: WCAG 2.2 AA is the floor, light and dark modes both, every motion gated behind `prefers-reduced-motion`.
 
-## 2. Colors
+## Colors
 
 A full palette of two committed brand hues — a warm honey-amber and a cool petrol-teal — held against a disciplined near-neutral surface, with each color carrying a defined semantic job rather than decorating. Authored entirely in OKLCH so lightness is perceptually even and hue holds as chroma changes. Every foreground/background pair is WCAG 2.2 AA validated: body and UI text ≥ 4.5:1, large text ≥ 3:1.
 
@@ -181,7 +181,7 @@ A full palette of two committed brand hues — a warm honey-amber and a cool pet
 
 **The Splash Tint Exception.** One sanctioned place lets color appear without a semantic job: the icon chips inside a `FeatureGrid` on a splash page may each carry a soft, low-chroma tint from the wider semantic ramp (the muted `L ≈ 0.95` orange / purple / green / red set, never the bright RGBY default). It is a small, rare splash that gives a card grid life; it does not loosen the Two-Job Rule anywhere prose, chrome, or semantics live.
 
-## 3. Typography
+## Typography
 
 **Reading Font:** Literata (Type Network; OFL, variable wght 200–900, roman + italic) — fallback `'Literata Fallback', Georgia, 'Times New Roman', serif`. Carries the reading column.
 **Register Font:** Alegreya Sans (Huerta Tipográfica; OFL, static 400/500/700 — no 600 cut) — fallback `'Alegreya Sans Fallback', system-ui, sans-serif`. Carries headings, titles, and all chrome.
@@ -208,9 +208,13 @@ All three faces are OFL-licensed and self-hosted via `@fontsource`, a hard requi
 
 **The Metric-Matched Fallback Rule.** Each stack's first fallback is a `local()` wrapper (`fonts.css`) pinned to the web font's metrics with `size-adjust` and the `*-override` descriptors, listing the platform face *and* its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. `font-display: swap` stays — the brand faces must appear on first visit; `optional` is forbidden. Values derive from `@capsizecss/metrics`; never hand-tune them by eye.
 
-## 4. Spacing
+## Layout
 
-Padding, margin, and gap resolve to a single **0.25rem-based ramp** on t-shirt names — the same vocabulary as the `rounded` scale — exposed as `--sl-exquisitus-space-*` tokens (`tokens.css`). Design Principle 4 names *"consistent rhythm, precise spacing"* as a craft signal; the scale is what makes that a system rather than a per-rule improvisation. Because the ramp is rem-based, it lifts with the reader's own base size exactly as the type does.
+The page is one centred band. Docs pages arrange the sidebar, the 37rem reading column (`--sl-exquisitus-measure`) and a fixed 15rem TOC inside `--sl-exquisitus-shell-band`; sidebar-less pages (splash, 404) take a narrower centred canvas (≈54.75rem). Width beyond the band becomes equal outer margins, never a longer line, and on large displays the whole rem-based system scales up instead (the High-Resolution Scaling Rule). Components size themselves from their container, not the viewport: FeatureGrid's thresholds (34 / 47 / 63rem) are container queries.
+
+### Spacing
+
+Padding, margin, and gap resolve to a single **0.25rem-based ramp** on t-shirt names — the same vocabulary as the `rounded` scale — exposed as `--sl-exquisitus-space-*` tokens (`tokens.css`). PRODUCT.md's principle 4 names *"consistent rhythm, precise spacing"* as a craft signal; the scale is what makes that a system rather than a per-rule improvisation. Because the ramp is rem-based, it lifts with the reader's own base size exactly as the type does.
 
 | token | rem | role |
 |---|---|---|
@@ -232,7 +236,13 @@ Fluid spacing keeps its `clamp()` but anchors *both* endpoints to scale tokens (
 ### Named Rules
 **The One-Ramp Rule.** Every padding, margin, and gap in the theme's chrome and components resolves to a `--sl-exquisitus-space-*` step — no raw rem spacing, no improvised in-between value. Three kinds of length are deliberately *not* spacing and stay literal: **layout widths** (the 37rem reading measure, the hero's 24rem image column, the wide-screen shell tokens), **container-query thresholds** (34 / 47 / 63rem — they describe the room a component has, not its rhythm), and **computed component offsets** (the Expressive Code copy-button seat, pinned to EC's own metrics). Sizing a divider or an icon is not spacing either. When a value doesn't fit a step, snap it to the nearest one rather than mint a bespoke number; the discipline *is* the rhythm.
 
-## 5. Elevation
+**The Contained Shell Rule.** Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (`--sl-exquisitus-shell-band`) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as `(100% − content − sidebar)/2` with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed `--sl-exquisitus-toc-width` (15rem — TOC entries are short; freed width returns to the margins); the column sits `--sl-exquisitus-shell-gutter` from each neighbour. The band is the docs template's width; sidebar-less pages (splash, 404) take a narrower **centred canvas** — the band minus the sidebar column's room (sidebar + gutter, ≈54.75rem, replacing Starlight's 67.5rem) — because an off-centre column with nothing visible to justify the asymmetry reads as a bug: sidebar-less pages balance their whitespace instead of banking it on one side. The header runs a single positioning system over every template — masthead on the band's left edge, search centred over the reading column's position, actions on the band's right edge, never moving between pages. Only the sidebar/TOC column arrangement is gated on `[data-has-sidebar]`.
+
+**The High-Resolution Scaling Rule.** On displays ≥1600, ≥2000, and ≥2160 CSS px the root font-size steps up (106.25% → 112.5% → 125% → 137.5%). Because the whole system is rem-based, type, spacing, the reading measure, and the shell band all enlarge together: a big monitor gets physically larger reading, never a longer line. This is the Generous Body Rule extended to the hardware axis — the same conviction that sets ~18px body type, now applied to the display. Restraint in this system is spent on the chrome, never on the reading, so scaling the reading up on large hardware is on-doctrine rather than a concession.
+
+**The Splash Measure Rule.** Starlight widens `--sl-content-width` on splash templates (the theme re-caps it to the sidebar-less canvas — see the Contained Shell Rule); the 65–75ch Rule still governs the running text. The splash speaks **two grammars**. *Text* — prose, headings, lists, quotes — holds the `--sl-exquisitus-measure` (37rem) column hung on the canvas's left spine, the theme-owned token the docs measure derives from, immune to Starlight's splash override. *Figures* — the plate, the doorways, a FeatureGrid, the colophon, and any code block, the install strip above all — compose on the canvas instead: spanning it or centred within it, never hung on the text spine. A code block on a splash is an object the reader looks *at*, not text read line-to-line, so it keeps the measure only as a width cap and centres.
+
+## Elevation & Depth
 
 Depth is never a decorative cast shadow. It is **depth-from-light**, and it always serves comprehension — distinguishing surfaces, signposting registers, rewarding interaction — never decoration. It moves in exactly **two directions**:
 
@@ -259,13 +269,26 @@ Both the header and the mobile TOC are **opaque, never translucent**: a backdrop
 
 **The No-Blur Rule.** Sticky surfaces are opaque. No `backdrop-filter` glass on the header, TOC, or dialogs.
 
-## 6. Components
+## Shapes
+
+Corners are gently curved and step up with an object's size and role: the smaller and more inline the object, the tighter the radius. Code blocks and the file tree stay at `{rounded.md}`, tighter than the cards' `{rounded.xl}`, so reference material reads as a typeset block rather than a UI card.
+
+- **Extra small** (`{rounded.xs}`): inline `<mark>` and the `hr` pill.
+- **Small** (`{rounded.sm}`): sidebar and TOC links.
+- **Medium** (`{rounded.md}`): buttons, the search trigger, code blocks, the file tree, the specimen plate.
+- **Large** (`{rounded.lg}`): asides and `<details>`.
+- **Extra large** (`{rounded.xl}`): cards, doorways, dialogs, pagination links, content images.
+- **Inline code** (0.3125rem): a deliberate half-step between `xs` and `sm`, because the chip hugs a 0.9em glyph box.
+
+Borders are full 1px hairlines on every side. An edge is never an accent stripe, and the keyboard focus ring (`2px solid` accent at a `2px` offset) carries no radius of its own.
+
+## Components
 
 The overall feel is **measured and self-assured**: confident but restrained, with clear intent. Interactions acknowledge the reader without performing — a 2px lift, a warmed border, an accent underline, each on the `ease-out-quint` curve (`cubic-bezier(0.22, 1, 0.36, 1)`) over 150–200ms, and each erased under `prefers-reduced-motion`.
 
 ### Buttons (Link Buttons)
 - **Shape:** Gently curved (0.5rem / `{rounded.md}`).
-- **Primary:** The full honey-amber as a **fill** (`{colors.cta-honey}`) with an ink label (`{colors.ink-light}`) — the brand color at full strength. Bold (600) label. Hover lifts 1px and adds a soft `--sl-shadow-md`.
+- **Primary:** The full honey-amber as a **fill** (`{colors.cta-honey}`) with an ink label (`{colors.ink-light}`) — the brand color at full strength. Bold label at 700, the register's bold cut (Alegreya Sans has no 600). Hover lifts 1px and adds a soft `--sl-shadow-md`.
 - **Secondary:** Transparent with a muted (`gray-4`) border; on hover the border warms to the accent and the label takes the accent color.
 - **Minimal:** No box — accent-colored text with a thin underline that solidifies on hover, so it reads as a link rather than text that happens to have an icon.
 
@@ -321,20 +344,14 @@ Both collapse to a single column below **34rem of container width**, a container
 ### Splash Page (Signature Surface)
 The splash is the theme's **title spread** — the cover of the book, composed of four moves in order:
 
-- **Specimen Plate** (`SpecimenPlate.astro`, hero): the theme's typographic identity as its own hero object — a Literata glyph board (`Aa Gg Qq &`) that specimens the *reading* face, the thesis line in Literata italic, the four working inks as labeled swatches (honey / petrol / ink / paper, each named with its *job*), and a mono folio caption. It fills the hero's image column so the splash never ships a void or a mascot. Surface: a `gray-6`-hairlined, `gray-7`-filled panel at `{rounded.md}` — the tonal step keeps it from ghosting on near-black — **letterpressed at rest** as a sanctioned member of the reference register (a type specimen is literally what a letterpress prints). Never interactive: it settles into the page once on load (opacity + press, `ease-out-quint`, erased under reduced motion) and does not respond to hover. Declaratively placed via `hero.image.html: <exquisitus-specimen />`, which the Hero override swaps for the component; heroes with a real image keep their image and today's column split.
+- **Specimen Plate** (`SpecimenPlate.astro`, hero): the theme's typographic identity as its own hero object — a Literata glyph board (`Aa Gg Qq &`) that specimens the *reading* face, the thesis line in Literata italic, the four working inks as labeled swatches (honey / petrol / ink / paper, each named with its *job*), and a mono folio caption. It fills the hero's image column so the splash never ships a void or a mascot. Surface: a hairline-bordered (`gray-5`), `gray-7`-filled panel at `{rounded.md}` — the tonal step keeps it from ghosting on near-black — **letterpressed at rest** as a sanctioned member of the reference register (a type specimen is literally what a letterpress prints). Never interactive: it settles into the page once on load (opacity + press, `ease-out-quint`, erased under reduced motion) and does not respond to hover. Declaratively placed via `hero.image.html: <exquisitus-specimen />`, which the Hero override swaps for the component; heroes with a real image keep their image and today's column split.
 - **Install strip**: a single copyable install command in the letterpressed code panel, directly under the hero. The time-to-try is one glance, and the strip doubles as the first live component proof.
 - **Doorway cards** (`.exquisitus-doorways`): three equal thirds, each a link into a showcase page carrying a live **taste** of what's behind it — a Literata italic specimen line, a micro note-aside, a 3:2/2:3 zigzag miniature — over a sans register title. Navigation and proof in one object; the interiors differ by design, which is what keeps them off the identical-card-grid list. They behave as cards: flat at rest, warmed border + 2px lift on hover.
 - **Colophon** (`.exquisitus-colophon`): the page ends the way a fine book does — a short centred rule, a Literata italic line naming the three faces, and a mono line of quiet facts (`self-hosted · ofl-licensed · wcag 2.2 aa`).
 
-**The Splash Measure Rule.** Starlight widens `--sl-content-width` on splash templates (the theme re-caps it to the sidebar-less canvas — see the Contained Shell Rule); the 65–75ch Rule still governs the running text. The splash speaks **two grammars**. *Text* — prose, headings, lists, quotes — holds the `--sl-exquisitus-measure` (37rem) column hung on the canvas's left spine, the theme-owned token the docs measure derives from, immune to Starlight's splash override. *Figures* — the plate, the doorways, a FeatureGrid, the colophon, and any code block, the install strip above all — compose on the canvas instead: spanning it or centred within it, never hung on the text spine. A code block on a splash is an object the reader looks *at*, not text read line-to-line, so it keeps the measure only as a width cap and centres.
-
-**The Contained Shell Rule.** Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (`--sl-exquisitus-shell-band`) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as `(100% − content − sidebar)/2` with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed `--sl-exquisitus-toc-width` (15rem — TOC entries are short; freed width returns to the margins); the column sits `--sl-exquisitus-shell-gutter` from each neighbour. The band is the docs template's width; sidebar-less pages (splash, 404) take a narrower **centred canvas** — the band minus the sidebar column's room (sidebar + gutter, ≈54.75rem, replacing Starlight's 67.5rem) — because an off-centre column with nothing visible to justify the asymmetry reads as a bug: sidebar-less pages balance their whitespace instead of banking it on one side. The header runs a single positioning system over every template — masthead on the band's left edge, search centred over the reading column's position, actions on the band's right edge, never moving between pages. Only the sidebar/TOC column arrangement is gated on `[data-has-sidebar]`.
-
-**The High-Resolution Scaling Rule.** On displays ≥1600, ≥2000, and ≥2160 CSS px the root font-size steps up (106.25% → 112.5% → 125% → 137.5%). Because the whole system is rem-based, type, spacing, the reading measure, and the shell band all enlarge together: a big monitor gets physically larger reading, never a longer line. This is the Generous Body Rule extended to the hardware axis — the same conviction that sets ~18px body type, now applied to the display. Restraint in this system is spent on the chrome, never on the reading, so scaling the reading up on large hardware is on-doctrine rather than a concession.
-
 **The Plate Ink Exception.** The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.
 
-## 7. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do:
 - **Do** keep the body reading column ink-on-surface, capped at ~74ch (`37rem` of Literata), set generously larger than the docs default (~18px / 1.75).
@@ -358,6 +375,7 @@ The splash is the theme's **title spread** — the cover of the book, composed o
 - **Don't** use elegant-but-illegible light-grey body copy; muted text still clears 4.5:1.
 - **Don't** let color enter the prose reading column beyond links and inline `<mark>`.
 - **Don't** ship the identical card grid; use `FeatureGrid`'s editorial layouts instead.
+- **Don't** use AI-scaffold patterns: an eyebrow label above every section, or hero-metric templates (a big number with a small caption, repeated).
 - **Don't** shrink the body type to fit more on screen. The Generous Body Rule wins.
 - **Don't** letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.
 - **Don't** float the technical register on an outward / cast shadow — it presses *in*, never lifts *out*.

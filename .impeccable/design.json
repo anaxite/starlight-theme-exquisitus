@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T00:00:00Z",
+  "generatedAt": "2026-11-05T19:26:27Z",
   "title": "Design System: Exquisitus",
   "extensions": {
     "colorMeta": {
@@ -184,7 +184,7 @@
       },
       {
         "name": "letterpress-light",
-        "value": "inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent)",
+        "value": "inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(0.985 0 0) 90%, transparent)",
         "purpose": "The letterpress (light): a debossed inset — recessed top shadow over a lit lower lip — pressed into the page at rest on the technical register (code blocks, terminals, file trees). The depth axis of the information register."
       },
       {
@@ -200,9 +200,14 @@
         "purpose": "The single theme easing curve for every transition and entrance."
       },
       {
-        "name": "rise",
-        "value": "exquisitus-rise 0.6s ease-out-quint both, staggered 0.02s/0.09s/0.16s/0.23s",
-        "purpose": "Hero copy + actions entrance; gated behind prefers-reduced-motion: no-preference."
+        "name": "hero-settle",
+        "value": "@starting-style transition: opacity + translate 0 0.75rem, 0.6s ease-out-quint, staggered 0.02s/0.09s/0.16s/0.23s",
+        "purpose": "Hero copy + actions settle in on first paint; the resting state is the visible one, so renderers that cannot transition get the finished hero. Gated behind prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "plate-press",
+        "value": "@starting-style transition: opacity + translate 0 -0.35rem + box-shadow, 0.6s ease-out-quint, 0.25s delay",
+        "purpose": "The specimen plate fades in as the letterpress edge presses it down, once, after the copy. Never on hover."
       },
       {
         "name": "dialog-in",
@@ -333,7 +338,7 @@
       "refersTo": "button-primary",
       "description": "The full honey-amber as a fill with an ink label — the brand at full strength.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started</a>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: oklch(0.78 0.14 80); color: oklch(0.22 0.015 80); border: 1px solid oklch(0.78 0.14 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; text-decoration: none; transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(20,16,8,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
     },
     {
       "name": "Secondary Button",
@@ -341,7 +346,7 @@
       "refersTo": "button-secondary",
       "description": "Transparent with a muted border that warms to the accent on hover.",
       "html": "<a class=\"ds-btn-secondary\" href=\"#\">View on GitHub</a>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: oklch(0.52 0.12 68); border: 1px solid oklch(0.62 0.008 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; text-decoration: none; transition: border-color 0.15s cubic-bezier(0.22,1,0.36,1), color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-secondary:hover { border-color: oklch(0.52 0.12 68); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: oklch(0.52 0.12 68); border: 1px solid oklch(0.62 0.008 80); border-radius: 0.5rem; padding: 0.5rem 1.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; text-decoration: none; transition: border-color 0.15s cubic-bezier(0.22,1,0.36,1), color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-secondary:hover { border-color: oklch(0.52 0.12 68); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(0.52 0.12 68); outline-offset: 2px; }"
     },
     {
       "name": "Minimal Button",
@@ -349,7 +354,7 @@
       "refersTo": "button-minimal",
       "description": "No box — accent text with a thin underline that solidifies on hover, so it reads as a link.",
       "html": "<a class=\"ds-btn-minimal\" href=\"#\">Learn more</a>",
-      "css": ".ds-btn-minimal { color: oklch(0.52 0.12 68); font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: color-mix(in oklab, currentColor 45%, transparent); transition: text-decoration-color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-minimal:hover { text-decoration-color: currentColor; }"
+      "css": ".ds-btn-minimal { color: oklch(0.52 0.12 68); font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: color-mix(in oklab, currentColor 45%, transparent); transition: text-decoration-color 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-minimal:hover { text-decoration-color: currentColor; }"
     },
     {
       "name": "Card",
@@ -357,7 +362,7 @@
       "refersTo": "card",
       "description": "A hairline-defined card on the page surface that lifts and warms its border on hover; register-sans title (Alegreya Sans).",
       "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Legible by design</h3><p class=\"ds-card-body\">Body text is set in Literata, a text serif tuned for reading at length.</p></article>",
-      "css": ".ds-card { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; transition: border-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } .ds-card-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-card-body { margin: 0; font-family: 'Literata Variable', Georgia, serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+      "css": ".ds-card { background: oklch(0.985 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; transition: border-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } .ds-card-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.012em; color: oklch(0.22 0.015 80); } .ds-card-body { margin: 0; font-family: 'Literata Variable', Georgia, serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
     },
     {
       "name": "Aside (Note)",
@@ -365,7 +370,7 @@
       "refersTo": "aside",
       "description": "Full softened hairline + tinted fill + icon — never a side stripe. Note variant in petrol-teal.",
       "html": "<aside class=\"ds-aside-note\"><p class=\"ds-aside-title\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM7.25 7.25h1.5v4h-1.5v-4zM8 4.5a.9.9 0 110 1.8.9.9 0 010-1.8z\"/></svg> Note</p><p class=\"ds-aside-body\">A note shares the calm petrol-teal of inline code — it is information, set apart.</p></aside>",
-      "css": ".ds-aside-note { background: oklch(0.95 0.03 205); border: 1px solid oklch(0.62 0.10 205 / 0.45); border-radius: 0.625rem; padding: 1rem 1.25rem; } .ds-aside-title { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: 0.005em; color: oklch(0.40 0.08 205); } .ds-aside-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
+      "css": ".ds-aside-note { background: oklch(0.95 0.03 205); border: 1px solid oklch(0.62 0.10 205 / 0.45); border-radius: 0.625rem; padding: 1rem 1.25rem; } .ds-aside-title { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.25rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: 0.005em; color: oklch(0.40 0.08 205); } .ds-aside-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); }"
     },
     {
       "name": "Inline Code",
@@ -373,7 +378,7 @@
       "refersTo": "code-inline",
       "description": "Petrol-teal text on a neutral chip with a hairline border — the information register.",
       "html": "<p class=\"ds-code-context\">Install with <code class=\"ds-code-inline\">pnpm add starlight-theme-exquisitus</code> and go.</p>",
-      "css": ".ds-code-context { font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } .ds-code-inline { background: oklch(0.93 0.004 80); border: 1px solid color-mix(in oklab, oklch(0.62 0.008 80) 22%, transparent); color: oklch(0.44 0.09 205); border-radius: 0.3125rem; padding: 0.1em 0.35em; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; }"
+      "css": ".ds-code-context { font-family: 'Literata Variable', 'Literata Fallback', Georgia, serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } .ds-code-inline { background: oklch(0.93 0.004 80); border: 1px solid color-mix(in oklab, oklch(0.62 0.008 80) 22%, transparent); color: oklch(0.44 0.09 205); border-radius: 0.3125rem; padding: 0.1em 0.35em; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; }"
     },
     {
       "name": "FeatureGrid (lead)",
@@ -381,7 +386,7 @@
       "refersTo": "card",
       "description": "Signature splash layout: a full-width thesis card over auto-fit supporting peers. The deliberate alternative to the identical card grid. Gated on its container's width, not the viewport; each card sizes its own title.",
       "html": "<div class=\"ds-fg-container\"><div class=\"ds-feature-grid\"><article class=\"ds-fg-card ds-fg-lead\"><h3 class=\"ds-fg-title\">A theme built around the sentence</h3><p class=\"ds-fg-body\">The lead card carries the one idea everything else supports.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Editorial structure</h3><p class=\"ds-fg-body\">Headings shift to Alegreya Sans.</p></article><article class=\"ds-fg-card\"><h3 class=\"ds-fg-title\">Narrow counterpoint</h3><p class=\"ds-fg-body\">Each hue does one job.</p></article></div></div>",
-      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); } @media (hover: hover) { .ds-fg-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Alegreya Sans', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
+      "css": ".ds-fg-container { container-type: inline-size; } .ds-feature-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; } @container (min-width: 34rem) { .ds-feature-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } .ds-feature-grid .ds-fg-lead { grid-column: 1 / -1; } } .ds-fg-card { container-type: inline-size; background: oklch(0.985 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.75rem; padding: 1.5rem; margin-top: 0; transition: border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); } @media (hover: hover) { .ds-fg-card:hover { border-color: color-mix(in oklab, oklch(0.52 0.12 68) 60%, oklch(0.8 0.005 80)); box-shadow: 0 4px 14px -10px rgba(20,16,8,0.30); transform: translateY(-2px); } } .ds-fg-title { margin: 0 0 0.5rem; font-family: 'Alegreya Sans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.012em; font-size: clamp(1.125rem, 0.9rem + 2.5cqi, 1.5rem); min-width: 0; hyphens: auto; color: oklch(0.22 0.015 80); } .ds-fg-body { margin: 0; font-family: 'Literata Variable', 'Literata Fallback', Georgia, serif; font-size: 1.0625rem; line-height: 1.75; color: oklch(0.33 0.012 80); } @media (prefers-reduced-motion: reduce) { .ds-fg-card { transition: none; } .ds-fg-card:hover { transform: none; } }"
     },
     {
       "name": "Code Block",
@@ -389,7 +394,7 @@
       "refersTo": "code-block",
       "description": "Editorial code surface: a caption-folio filename above a cool, hairline-bordered, letterpressed panel — no IDE tab, no terminal dots.",
       "html": "<figure class=\"ds-codeblock\"><figcaption class=\"ds-cb-caption\">astro.config.mjs</figcaption><pre class=\"ds-cb-pre\"><code>import { defineConfig } from 'astro/config';</code></pre></figure>",
-      "css": ".ds-codeblock { margin: 0; } .ds-cb-caption { padding: 0 0 0.5rem 0.9rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.01em; color: oklch(0.45 0.01 80); } .ds-cb-pre { margin: 0; background: oklch(0.95 0.012 235); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent); padding: 0.9rem; overflow-x: auto; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; line-height: 1.6; color: oklch(0.33 0.012 80); }"
+      "css": ".ds-codeblock { margin: 0; } .ds-cb-caption { padding: 0 0 0.5rem 0.9rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.01em; color: oklch(0.45 0.01 80); } .ds-cb-pre { margin: 0; background: oklch(0.95 0.012 235); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(0.985 0 0) 90%, transparent); padding: 0.9rem; overflow-x: auto; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.9em; line-height: 1.6; color: oklch(0.33 0.012 80); }"
     },
     {
       "name": "File Tree",
@@ -397,7 +402,7 @@
       "refersTo": "file-tree",
       "description": "An open hairline figure on the page surface, letterpressed at rest (which sets it apart from a flat card); petrol-teal marks structure, neutral icons mark files.",
       "html": "<div class=\"ds-filetree\"><div class=\"ds-ft-row ds-ft-dir\">▾ src</div><div class=\"ds-ft-row ds-ft-indent ds-ft-file\">index.mdx</div></div>",
-      "css": ".ds-filetree { background: oklch(1 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(1 0 0) 90%, transparent); padding: 1rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; } .ds-ft-row { padding: 0.125rem 0; } .ds-ft-dir { color: oklch(0.44 0.09 205); font-weight: 500; } .ds-ft-indent { padding-inline-start: 1.5rem; margin-inline-start: 0.5rem; border-inline-start: 1px solid color-mix(in oklab, oklch(0.44 0.09 205) 22%, oklch(0.8 0.005 80)); } .ds-ft-file { color: oklch(0.33 0.012 80); }"
+      "css": ".ds-filetree { background: oklch(0.985 0 0); border: 1px solid oklch(0.8 0.005 80); border-radius: 0.5rem; box-shadow: inset 0 1px 0 color-mix(in oklab, oklch(0.22 0.015 80) 22%, transparent), inset 0 4px 6px -4px color-mix(in oklab, oklch(0.22 0.015 80) 26%, transparent), inset 0 -1px 0 color-mix(in oklab, oklch(0.985 0 0) 90%, transparent); padding: 1rem; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 0.8125rem; } .ds-ft-row { padding: 0.125rem 0; } .ds-ft-dir { color: oklch(0.44 0.09 205); font-weight: 500; } .ds-ft-indent { padding-inline-start: 1.5rem; margin-inline-start: 0.5rem; border-inline-start: 1px solid color-mix(in oklab, oklch(0.44 0.09 205) 22%, oklch(0.8 0.005 80)); } .ds-ft-file { color: oklch(0.33 0.012 80); }"
     },
     {
       "name": "End Mark",
@@ -410,84 +415,104 @@
   ],
   "narrative": {
     "northStar": "The Considered Reading Room",
-    "overview": "Exquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else exists to usher the reader into the text and then disappear — the one guest allowed to keep its presence is the technical register (code, terminals, file trees), the way the New York Times lets an interactive break the body's rules without dethroning the article. The reading surface is flat and hairline-separated; the technical register is letterpressed into that sheet — pressed in, the way a fine press deboss-prints type into paper, a tactile mark of care. Color is spent deliberately — honey-amber for emphasis, petrol-teal for information — and warmth lives in the ink and the accent, never in a tinted background. Depth is never a decorative cast shadow; it is depth-from-light in two directions: a transient lift in response to state, and a resting press that marks the technical register on a third axis alongside petrol-teal (color) and monospace (type). It rejects both the hacker/terminal aesthetic and the generic SaaS-docs default. The voice is a senior colleague who explains something well: measured and self-assured, acknowledging the reader without performing for them. Restraint and generosity are not opposed here; they are spent on different things. Restraint governs everything that surrounds the reading — color, depth, motion, chrome — held in tight discipline. Generosity governs the reading itself — type size, the comfort of the measure, the space it sits in — which is why the body is set larger than convention and, on large displays, grows further rather than shrinking to fill the space. A bigger reading experience is never a lapse in restraint; a louder chrome always is.",
+    "overview": "Creative North Star: \"The Considered Reading Room\"\n\nExquisitus treats a documentation page the way a great publication treats a feature: the reading column is the protagonist, and everything else — navigation, chrome, color — exists to usher the reader into the text and then disappear. The one guest allowed to keep its presence is the technical register — code, terminals, file trees — the way the New York Times lets an interactive or a data sidebar break the body's rules without dethroning the article. It draws its conviction from four pinnacles: the typographic authority of the New York Times online, the single-minded legibility of the Readability Guidelines wiki, the care-as-craft navigability of MDN, and the brave, accessible, larger-than-usual type of Eleventy Excellent. The thesis is that legibility and beauty are the same discipline at different scales, proved by example, page after page.\n\nThe system is built from three recurring moves. First, the reading surface is flat and hairline-separated — prose, sidebar, TOC, and chrome read as one calm sheet, not a set of boxes; the sidebar shares the body surface, divided by a single hairline or, more often, by nothing but de-emphasised type. Second, the technical register is letterpressed into that sheet — code blocks, terminals, and file trees are pressed in, the way a fine press deboss-prints type into paper: a tactile mark of care that signposts reference material without floating it up off the page. Third, color is spent deliberately: a warm honey-amber for emphasis and active state, a cool petrol-teal for the information and code register, and near-nothing everywhere else. Warmth lives in the ink and the accent, never in a tinted background. Depth is never a decorative cast shadow; it is depth-from-light, and it moves in exactly two directions — a transient lift in response to state (hover, focus, scroll) and a resting press that marks the technical register. Taken together, that register is marked on three axes at once — petrol-teal (color), monospace (type), and the letterpress (depth) — so a reader knows reference material by its material, not only its content.\n\nThis system explicitly rejects two things. It is not the hacker / terminal aesthetic — no monospace-everything, no green-on-black costume, no cyberpunk affectation. And it is not generic SaaS documentation — none of the Mintlify / Docusaurus default of clean-white-with-a-blue-primary and a forgettable sidebar. The voice is a senior colleague who explains something well: confident, masterful, useful — measured and self-assured, restraining itself with intent and acknowledging the reader without performing for them.\n\nRestraint and generosity are not opposed here; they are spent on different things. Restraint governs everything that surrounds the reading — color, depth, motion, chrome — which is why each is held in tight discipline. Generosity governs the reading itself — type size, the comfort of the measure, the space it sits in — which is why the body is set larger than documentation convention (the Generous Body Rule) and, on large displays, grows further rather than shrinking to fill the space. A bigger reading experience is never a lapse in restraint; a louder chrome always is.",
     "keyCharacteristics": [
       "Content is sovereign: the reading column is the design; the rest is service.",
       "Generous, accessible type by conviction: ~18px body, 1.75 line-height, a ~74ch measure.",
       "A full palette held in tight discipline: honey-amber for emphasis, petrol-teal for information.",
       "A flat, hairline-separated reading surface, with the technical register letterpressed into it. Depth is depth-from-light in two directions — a transient lift, a resting press — never a decorative cast.",
       "The information register marked on three axes at once: petrol-teal (color), monospace (type), and the letterpress (depth).",
-      "Accessible by conviction: WCAG 2.2 AA floor, light and dark both, every motion gated behind prefers-reduced-motion."
+      "Accessible by conviction: WCAG 2.2 AA is the floor, light and dark modes both, every motion gated behind prefers-reduced-motion."
     ],
     "rules": [
       {
         "name": "The Sovereign Column Rule",
-        "body": "Color never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface. Full stop.",
+        "body": "Color never enters the body reading column except as a link or an inline <mark>. Prose is ink on surface. Full stop. All brand color lives in the chrome, the accents, and the semantic markers around the text.",
         "section": "colors"
       },
       {
         "name": "The Quiet Permalink Rule",
-        "body": "Heading permalink anchors are chrome, not emphasis. Render the icon in muted ink at rest, no underline, warming to the accent only on direct hover/focus of the anchor itself — the one instant the color carries intent. Where hover-revealed it settles in from the heading (a short translateX, gated on hover:hover and prefers-reduced-motion). Keep the chain-link glyph; a permalink trades recognisability for cleverness the moment it becomes a §.",
+        "body": "Heading permalink anchors are chrome, not emphasis. Starlight renders them as content links, so left untouched they inherit the accent and an underline and paint the honey on every heading hover — spending the accent where it means nothing. Render the icon in muted ink (--sl-color-gray-3) at rest, no underline, and warm it to the accent only on direct :hover/:focus of the anchor itself — the one instant the color carries intent. Where the icon is hover-revealed it settles in from the heading rather than snapping (a short translateX, gated on hover: hover and prefers-reduced-motion). Keep the chain-link glyph; a permalink trades recognisability for cleverness the moment it becomes a §.",
         "section": "colors"
       },
       {
         "name": "The End Mark Rule",
-        "body": "Every content page closes with a single editorial end mark — one small centred jewel, a signed ending that differs in kind from the hr (a line is a pause; a jewel is an ending). It earns its place by doing a job (marking the end of the text): a mark that only decorates violates the Sovereign Column Rule; a mark that signs an ending is editorial heritage. It appears once, at the very bottom, in muted ink; it never lands on the splash (whose colophon already closes it); and it is drawn as a single SVG-mask diamond, not a glyph, because none of the three faces carries a fleuron. Never give it rules, never give it more than one jewel. Gated by the endMark plugin option; ships on.",
+        "body": "Every content page closes with a single editorial end mark (end-mark.css) — a single small centred jewel, in the tradition of a printed article's terminal sign. It earns its place by doing a job (marking the end of the text), which is the test any recurring mark must pass here: a mark that only decorates violates the Sovereign Column Rule, a mark that signs an ending is editorial heritage. It appears once, at the very bottom, in muted ink; it never lands on the splash (whose colophon already closes it); and it is drawn as an SVG mask, not a glyph, because none of the three self-hosted faces carries a fleuron. Consumers can omit it with the endMark: false plugin option; it ships on.",
         "section": "colors"
       },
       {
         "name": "The Two-Job Rule",
-        "body": "Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job.",
+        "body": "Honey-amber is warmth and emphasis; petrol-teal is information and code. Neither crosses into the other's job. A full palette earns its richness through discipline, not abundance.",
         "section": "colors"
       },
       {
         "name": "The No-Cream Rule",
-        "body": "Light surface is a chroma-0 off-white (oklch(0.985 0 0)), dark is near-black. Warmth is carried by ink, amber, and type — never by tinting the paper. The No-Cream Rule tests chroma, not lightness: the paper may sit below pure white, but its chroma must be exactly 0; any chroma in the paper is the cream move and is forbidden.",
+        "body": "The rule forbids warmth in the paper, not off-white. The light-mode surface is a chroma-0 off-white (oklch(0.985 0 0)); the dark surface is near-black (oklch(0.17 0.006 80)). Warmth is carried by the ink, the amber, and the typography — never by tinting the paper. The test is chroma, not lightness: a light surface may sit below L 1.0, but its chroma must be exactly 0. Any chroma in the paper — however small, however it is named — is the cream move and is forbidden. (Pure white was the original reading of this rule, and it overcorrected: it banned the thing that most helps a long read to avoid a thing chroma 0 already makes impossible.) Forbidden token names: --cream, --sand, --paper, --parchment.",
         "section": "colors"
       },
       {
         "name": "The Deepened-Accent Rule",
-        "body": "Accent text is bronze in light mode and brightened honey in dark mode; raw honey only ever appears as a fill with an ink label.",
+        "body": "Accent text is bronze in light mode and brightened honey in dark mode; the raw honey only ever appears as a fill with an ink label. Never \"fix\" the bronze link color back to honey — the contrast floor forces it.",
         "section": "colors"
       },
       {
         "name": "The Splash Tint Exception",
-        "body": "FeatureGrid icon chips on a splash page may each carry a soft low-chroma tint from the semantic ramp — a small rare splash that never loosens the Two-Job Rule elsewhere.",
+        "body": "One sanctioned place lets color appear without a semantic job: the icon chips inside a FeatureGrid on a splash page may each carry a soft, low-chroma tint from the wider semantic ramp (the muted L ≈ 0.95 orange / purple / green / red set, never the bright RGBY default). It is a small, rare splash that gives a card grid life; it does not loosen the Two-Job Rule anywhere prose, chrome, or semantics live.",
         "section": "colors"
       },
       {
         "name": "The Generous Body Rule",
-        "body": "Body type is set larger and looser than convention (~18px / 1.75). When in doubt, bigger.",
+        "body": "Body type is set larger and looser than documentation convention (~18px / 1.75). When in doubt, bigger. The reader's comfort outranks fitting more above the fold.",
         "section": "typography"
       },
       {
-        "name": "The 65-75ch Rule",
+        "name": "The 65–75ch Rule",
         "body": "The reading measure is capped at ~74 characters regardless of viewport. A wide screen gets wider margins, never a wider line.",
         "section": "typography"
       },
       {
         "name": "The Register-Marks-Structure Rule",
-        "body": "The register sans (Alegreya Sans) marks every structural or wayfinding element; the reading serif (Literata) carries running body and blockquotes. The sans never carries running body; the serif never carries a heading.",
+        "body": "The register sans (Alegreya Sans) marks every structural, navigational, or wayfinding element — headings, titles, table headers, summary, and the whole chrome (sidebar, TOC, header). The reading serif (Literata) carries everything the reader reads at length: running body, blockquotes (its italic), and the specimen surfaces that show the reading face off (glyph board, motto, taste line, colophon). The sans never carries running body; the serif never carries a heading. A section change reads as the serif giving way to the sans.",
         "section": "typography"
       },
       {
         "name": "The Metric-Matched Fallback Rule",
-        "body": "Each stack's first fallback is a local() wrapper (fonts.css) pinned to the web font's metrics with size-adjust and the *-override descriptors, listing the platform face and its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. font-display: swap stays - the brand faces must appear on first visit; optional is forbidden. Values derive from @capsizecss/metrics; never hand-tune them by eye.",
+        "body": "Each stack's first fallback is a local() wrapper (fonts.css) pinned to the web font's metrics with size-adjust and the -override descriptors, listing the platform face and its metric-compatible Linux substitutes (Arial / Liberation Sans / Arimo; Georgia / Gelasio; Courier New / Liberation Mono / Cousine). Cold-cache text paints instantly and the swap moves almost nothing. font-display: swap stays — the brand faces must appear on first visit; optional is forbidden. Values derive from @capsizecss/metrics; never hand-tune them by eye.",
         "section": "typography"
       },
       {
+        "name": "The One-Ramp Rule",
+        "body": "Every padding, margin, and gap in the theme's chrome and components resolves to a --sl-exquisitus-space- step — no raw rem spacing, no improvised in-between value. Three kinds of length are deliberately not spacing and stay literal: layout widths (the 37rem reading measure, the hero's 24rem image column, the wide-screen shell tokens), container-query thresholds (34 / 47 / 63rem — they describe the room a component has, not its rhythm), and computed component offsets (the Expressive Code copy-button seat, pinned to EC's own metrics). Sizing a divider or an icon is not spacing either. When a value doesn't fit a step, snap it to the nearest one rather than mint a bespoke number; the discipline is the rhythm.",
+        "section": "layout"
+      },
+      {
+        "name": "The Contained Shell Rule",
+        "body": "Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as (100% − content − sidebar)/2 with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed --sl-exquisitus-toc-width (15rem — TOC entries are short; freed width returns to the margins); the column sits --sl-exquisitus-shell-gutter from each neighbour. The band is the docs template's width; sidebar-less pages (splash, 404) take a narrower centred canvas — the band minus the sidebar column's room (sidebar + gutter, ≈54.75rem, replacing Starlight's 67.5rem) — because an off-centre column with nothing visible to justify the asymmetry reads as a bug: sidebar-less pages balance their whitespace instead of banking it on one side. The header runs a single positioning system over every template — masthead on the band's left edge, search centred over the reading column's position, actions on the band's right edge, never moving between pages. Only the sidebar/TOC column arrangement is gated on [data-has-sidebar].",
+        "section": "layout"
+      },
+      {
+        "name": "The High-Resolution Scaling Rule",
+        "body": "On displays ≥1600, ≥2000, and ≥2160 CSS px the root font-size steps up (106.25% → 112.5% → 125% → 137.5%). Because the whole system is rem-based, type, spacing, the reading measure, and the shell band all enlarge together: a big monitor gets physically larger reading, never a longer line. This is the Generous Body Rule extended to the hardware axis — the same conviction that sets ~18px body type, now applied to the display. Restraint in this system is spent on the chrome, never on the reading, so scaling the reading up on large hardware is on-doctrine rather than a concession.",
+        "section": "layout"
+      },
+      {
+        "name": "The Splash Measure Rule",
+        "body": "Starlight widens --sl-content-width on splash templates (the theme re-caps it to the sidebar-less canvas — see the Contained Shell Rule); the 65–75ch Rule still governs the running text. The splash speaks two grammars. Text — prose, headings, lists, quotes — holds the --sl-exquisitus-measure (37rem) column hung on the canvas's left spine, the theme-owned token the docs measure derives from, immune to Starlight's splash override. Figures — the plate, the doorways, a FeatureGrid, the colophon, and any code block, the install strip above all — compose on the canvas instead: spanning it or centred within it, never hung on the text spine. A code block on a splash is an object the reader looks at, not text read line-to-line, so it keeps the measure only as a width cap and centres.",
+        "section": "layout"
+      },
+      {
         "name": "The Tonal-First Rule",
-        "body": "Reach for a tonal step before a shadow. Surfaces are distinguished by lightness, not by floating. This cuts differently per mode: on white a hairline is dark enough to separate a card, so raised surfaces keep the page color; on near-black that hairline is ~1.9:1 and a page-colored card reads as a ghost box — dark raised surfaces take a real tonal step to gray-6 (--sl-exquisitus-surface-raised) and read by their fill, not their outline. Dark muted chrome type follows the same conviction, lifted to ~7:1 (AAA).",
+        "body": "For the reading surface, reach for a tonal step before any shadow. Surfaces are distinguished by lightness, not by floating. This cuts differently per mode, because the page grounds differ. On the white page a hairline (gray-5) is dark enough to separate a card on its own, so a raised surface keeps the page color. On the near-black page that same hairline is only ~1.9:1 and a card at page color reads as a ghost box — so dark raised surfaces (cards, link cards) take a real tonal step up to gray-6 (--sl-exquisitus-surface-raised) and read by their fill, not their outline. Muted chrome type follows the same conviction: dark gray-3 is set to clear ~7:1 (AAA) so small navigational text — the TOC, sidebar labels — is comfortable, not merely above the AA floor the theme sells.",
         "section": "elevation"
       },
       {
         "name": "The Considered-Lift Rule",
-        "body": "No reading or chrome surface carries a shadow at rest. A lift is always a reply to hover, focus, or scroll — never decoration.",
+        "body": "No reading or chrome surface carries a shadow at rest. A lift is always a reply to hover, focus, or scroll — never decoration. If it looks like a 2014 app, the shadow is too dark and too tight.",
         "section": "elevation"
       },
       {
         "name": "The Letterpress Rule",
-        "body": "The technical register — code blocks, terminals, file trees, and future reference surfaces — carries a debossed inset (--sl-exquisitus-code-edge) at rest. Not an exception to flatness but the register's signature, the depth axis twinned with petrol-teal (color) and monospace (type). It presses in, never floats out, and is reserved for the information register; prose, cards, asides, and chrome never carry it.",
+        "body": "The technical register — code blocks, terminals, file trees, the specimen plate, and future reference surfaces — carries a debossed inset (--sl-exquisitus-code-edge) at rest. This is not an exception to flatness; it is the register's signature, the depth axis twinned with petrol-teal (color) and monospace (type). It only ever presses in, never floats out; it stays quiet enough to keep the reading column sovereign; and it is reserved for the information register — prose, cards, asides, and chrome never carry it.",
         "section": "elevation"
       },
       {
@@ -496,28 +521,13 @@
         "section": "elevation"
       },
       {
-        "name": "The Splash Measure Rule",
-        "body": "Starlight widens --sl-content-width on splash templates (the theme re-caps it to the sidebar-less canvas — see the Contained Shell Rule); the 65–75ch Rule still governs the running text. The splash speaks two grammars. Text — prose, headings, lists, quotes — holds the --sl-exquisitus-measure (37rem) column hung on the canvas's left spine, the theme-owned token the docs measure derives from, immune to Starlight's splash override. Figures — the plate, the doorways, a FeatureGrid, the colophon, and any code block, the install strip above all — compose on the canvas instead: spanning it or centred within it, never hung on the text spine. A code block on a splash is an object the reader looks AT, not text read line-to-line, so it keeps the measure only as a width cap and centres.",
+        "name": "The Card-Relative Title Rule",
+        "body": "A card in this grid is a sizing container, and its title is set from the cell it landed in — clamp(h5, 0.9rem + 2.5cqi, h4) — never from the viewport. A full-width lead card reaches the h4 title; a 2-of-5 cell in a sidebar'd column resolves near h5 and stays inside its border. The rule is uniform: no per-cell exceptions, no breakpoint juggling, and it holds for whatever container a consumer drops the grid into, which the theme cannot know in advance. Card padding is trimmed to 1.5rem (Starlight's own tops out at 2.5rem, which a narrow cell cannot spare). The 3:2 asymmetry is never softened to win space — that asymmetry is the component.",
         "section": "components"
-      },
-      {
-        "name": "The Contained Shell Rule",
-        "body": "Past Starlight's 72rem two-column breakpoint the sidebar + content + TOC band is capped (--sl-exquisitus-shell-band) and centred, so surplus width becomes EQUAL outer margins rather than an unbounded internal gutter (Starlight's default splits the leftover as (100% − content − sidebar)/2 with effectively no ceiling, drifting the column ~300px off the sidebar at 1920px). The right rail takes a fixed --sl-exquisitus-toc-width (15rem — TOC entries are short; freed width returns to the margins); the column sits --sl-exquisitus-shell-gutter from each neighbour. The band is the docs template's width; sidebar-less pages (splash, 404) take a narrower centred canvas — the band minus the sidebar column's room (sidebar + gutter, ≈54.75rem, replacing Starlight's 67.5rem) — because an off-centre column with nothing visible to justify the asymmetry reads as a bug: sidebar-less pages balance their whitespace instead of banking it on one side. The header runs a single positioning system over every template — masthead on the band's left edge, search centred over the reading column's position, actions on the band's right edge, never moving between pages. Only the sidebar/TOC column arrangement is gated on [data-has-sidebar].",
-        "section": "components"
-      },
-      {
-        "name": "The High-Resolution Scaling Rule",
-        "body": "On displays ≥1600, ≥2000, and ≥2160 CSS px the root font-size steps up (106.25% → 112.5% → 125% → 137.5%). Because the whole system is rem-based, type, spacing, the reading measure, and the shell band all enlarge together: a big monitor gets physically larger reading, never a longer line. This is the Generous Body Rule extended to the hardware axis — the same conviction that sets ~18px body type, now applied to the display. Restraint in this system is spent on the chrome, never on the reading, so scaling the reading up on large hardware is on-doctrine rather than a concession.",
-        "section": "typography"
       },
       {
         "name": "The Plate Ink Exception",
         "body": "The specimen plate is the one surface where both brand inks appear together at rest, as labeled swatches — the depth-register sibling of the Splash Tint Exception. It teaches the Two-Job Rule instead of loosening it: each swatch is captioned with its job.",
-        "section": "components"
-      },
-      {
-        "name": "The Card-Relative Title Rule",
-        "body": "A card in the FeatureGrid is a sizing container, and its title is set from the cell it landed in — clamp(h5, 0.9rem + 2.5cqi, h4) — never from the viewport. A full-width lead card reaches the h4 title; a 2-of-5 cell in a sidebar'd column resolves near h5 and stays inside its border. The rule is uniform: no per-cell exceptions, no breakpoint juggling, and it holds for whatever container a consumer drops the grid into, which the theme cannot know in advance. The 3:2 asymmetry is never softened to win space — that asymmetry is the component.",
         "section": "components"
       }
     ],
@@ -531,21 +541,24 @@
       "Do treat light and dark as equally first-class, both hitting WCAG 2.2 AA.",
       "Do author all theme CSS in the exquisitus cascade layer and honor prefers-reduced-motion on every transition.",
       "Do fill the splash hero's image column — with the specimen plate by default, or a consumer's own hero image — and end the splash with the colophon. A hero with a void beside the copy is an unfinished spread.",
-      "Do hang splash running text on the canvas's left spine at the 37rem measure, and let everything that is not running text — plate, install strip, doorways, colophon — compose on the canvas as a figure (the Splash Measure Rule)."
+      "Do hang splash running text on the canvas's left spine at the 37rem measure, and let everything that is not running text — plate, install strip, doorways, colophon — compose on the canvas as a figure (the Splash Measure Rule).",
+      "Do draw every padding, margin and gap from the --sl-exquisitus-space- ramp (the One-Ramp Rule); keep widths, container-query thresholds and computed offsets literal."
     ],
     "donts": [
       "Don't ship the hacker / terminal aesthetic — no monospace-everything, no green-on-black, no cyberpunk costume.",
       "Don't ship generic SaaS docs — the Mintlify / Docusaurus default of clean-white-plus-blue-primary with a forgettable sidebar.",
-      "Don't carry warmth in the body background — no cream / sand / parchment surface.",
-      "Don't use side-stripe accent borders (border-left / border-right > 1px) on asides, callouts, blockquotes, details, or cards.",
+      "Don't carry warmth in the body background — no cream / sand / parchment surface. Warmth lives in the amber and the type. The light paper may sit below pure white (it does: oklch(0.985 0 0)), but its chroma must be exactly 0; the No-Cream Rule tests chroma, not lightness.",
+      "Don't use side-stripe accent borders (border-left / border-right > 1px) on asides, callouts, blockquotes, details, or cards — full hairlines, tonal fills, or icons instead.",
       "Don't use gradient text, decorative glassmorphism, or backdrop-blur on sticky chrome.",
       "Don't use elegant-but-illegible light-grey body copy; muted text still clears 4.5:1.",
       "Don't let color enter the prose reading column beyond links and inline <mark>.",
       "Don't ship the identical card grid; use FeatureGrid's editorial layouts instead.",
+      "Don't use AI-scaffold patterns: an eyebrow label above every section, or hero-metric templates (a big number with a small caption, repeated).",
       "Don't shrink the body type to fit more on screen. The Generous Body Rule wins.",
       "Don't letterpress prose, cards, asides, or chrome — the resting press is reserved for the technical register; everywhere else stays flat at rest.",
       "Don't float the technical register on an outward / cast shadow — it presses in, never lifts out.",
       "Don't make the specimen plate interactive or give doorway tastes real affordances — the plate is a printed object; a taste is a specimen, not a control.",
+      "Don't improvise a raw rem for spacing or mint an in-between value; snap to the nearest --sl-exquisitus-space- step instead (the One-Ramp Rule).",
       "Don't reach for !important; the cascade layer order makes it unnecessary (the one sanctioned exception is the universal reduced-motion reset).",
       "Don't gate a component's layout on a viewport media query when its width actually comes from its container. The 37rem reading column hands a component the same 37rem at any screen size, so @media (min-width: 50rem) cheerfully applies the widest multi-track layout to a column with no room for it. Ask the container (@container), not the window — and remember an element is never styled by its own container query, so the query sits on a wrapper.",
       "Don't let a heading overflow its box. A long word in a flex row can't shrink below its own min-content width, and overflow-wrap: break-word does not lower that floor. Size the type to the container (cqi), and keep min-width: 0 on the text as the net."
