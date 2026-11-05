@@ -1,3 +1,8 @@
+# NPM publish workflow, with two triggers
+# - Auto trigger: runs when a GitHub release is published with a tag
+# - Manual trigger: takes an existing release tag to publish manually
+# Published versions are drived from the tag name, v stripped
+
 name: Publish to NPM registry
 permissions: {}
 on:
