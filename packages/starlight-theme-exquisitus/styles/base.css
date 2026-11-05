@@ -48,11 +48,19 @@
 	   search trigger) are ~34px by default — under the 44px tap target. Give
 	   them a full 44px hit area on coarse pointers; mouse users keep the
 	   compact resting size. `any-pointer: coarse` catches touch-laptops that
-	   report `pointer: fine` (trackpad) but still have a touchscreen. */
+	   report `pointer: fine` (trackpad) but still have a touchscreen.
+
+	   Use Starlight's own --sl-menu-button-size for the menu button to drive
+	   the button's `top` centring calc and the end padding the header reserves
+	   for it (MobileMenuToggle.astro, PageFrame.astro).
+
+	   Never set `display` on `starlight-menu-button button`.*/
 	@media (any-pointer: coarse) {
-		starlight-menu-button button,
+		:root {
+			--sl-menu-button-size: 44px;
+		}
+
 		site-search button[data-open-modal] {
-			display: inline-flex;
 			align-items: center;
 			justify-content: center;
 			min-inline-size: 44px;
