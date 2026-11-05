@@ -11,7 +11,9 @@ For the monorepo picture and the design system see the [root `AGENTS.md`](../AGE
 ```bash
 pnpm dev     # dev server at http://localhost:4321
 pnpm build   # production build → dist/
-pnpm lint    # rumdl fmt — formats Markdown/MDX (check-only: pnpm check:mdx)
+pnpm lint    # rumdl check — CHECK ONLY, never writes
+pnpm format  # rumdl fmt — rewrites Markdown/MDX
+pnpm check   # astro check — type-checks this workspace only, not the theme package
 ```
 
 ## Content layout
@@ -33,7 +35,14 @@ The sidebar is defined explicitly in `astro.config.ts` — a new page must be ad
 
 Configured in `.rumdl.toml`, flavor `mdx`:
 
-- **Sentence-per-line**: MD013 `reflow-mode = "sentence-per-line"` — `pnpm lint` will rewrap prose so each sentence sits on its own line.
+- **Sentence-per-line**: MD013 `reflow-mode = "sentence-per-line"` — `pnpm format` rewraps prose so each sentence sits on its own line, and `pnpm lint` fails if it isn't.
   Author that way to keep diffs clean.
 - **Inline HTML is allowlisted** (MD033 `allowed-elements`): if a page needs a new raw HTML element, extend that list in `.rumdl.toml` or lint fails.
-- MD013 line-length warnings in tables/code are house-tolerated; don't contort content to silence them.
+- **Prose length is not checked** (MD013 `paragraphs = false`): write the sentence the page needs, however long.
+  Headings **are** still length-checked at 100 characters, and tables and code blocks are excluded.
+  This is why MD013 stays enabled rather than being disabled outright — turning it off would also stop enforcing sentence-per-line, the convention the docs are authored in.
+- **Hard tabs are flagged** (MD010) outside code blocks, and `pnpm format` converts them to four spaces.
+  Inside an MDX JSX block that is inert, because MDX disables indented code blocks.
+  Code fences keep their tabs (`code-blocks = false`), so a reformatted `<Aside>` can sit at four spaces while the fence inside it stays tab-indented.
+  That is cosmetic.
+- `docs/CLAUDE.md` is excluded: it is a one-line `@AGENTS.md` pointer with no level-one heading, not content.

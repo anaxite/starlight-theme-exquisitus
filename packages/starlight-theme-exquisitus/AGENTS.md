@@ -9,10 +9,24 @@ This is `starlight-theme-exquisitus`, the npm-published Astro Starlight plugin. 
 ## Commands
 
 ```bash
-pnpm lint    # biome format --write  — formats & lints the globs in biome.json
+pnpm lint    # biome check --error-on-warnings  — CHECK ONLY, never writes
+pnpm format  # biome check --write, run TWICE (see below)
 ```
 
-There is **no unit-test suite**. Verify changes visually: run the docs showcase from the repo root (`pnpm dev` → http://localhost:4321) and screenshot key pages in light and dark. Biome only touches the file globs listed in `biome.json` (the CSS in `styles/`, the `.astro` overrides, `components/FeatureGrid.astro`, and `libs/`) — not every file in the package.
+Type checking lives at the repo root (`pnpm check` → `tsc --noEmit` against the root `tsconfig.json`), **not** here. `astro check` in `docs/` cannot reach this package: `docs/tsconfig.json` includes `**/*` relative to `docs/`, and the package is only reachable through the `docs/node_modules` symlink, which the checker skips. So a type error in `libs/` is caught by the root `tsc`, and by nothing else.
+
+There is **no unit-test suite**. Verify changes visually: run the docs showcase from the repo root (`pnpm dev` → http://localhost:4321) and screenshot key pages in light and dark. Biome only touches the file globs listed in `biome.json` (`index.ts`, the CSS in `styles/`, the `.astro` overrides, `components/*.astro`, and `libs/`) — not every file in the package.
+
+### Why `format` runs Biome twice
+
+Biome 2.6.5's Astro formatter is **not idempotent** on multiline conditional expressions: the first pass collapses the expression and misindents its child, the second converges, and a third changes nothing. `overrides/Hero.astro` is the file that needs it. The duplicate call is deliberate — do not "simplify" it to one pass, and remove it once upstream fixes the bug. CI runs the single read-only `lint`, which passes because the committed tree is already converged.
+
+### Biome rules worth knowing before you fight them
+
+- **`noDescendingSpecificity` is off.** All theme CSS is authored inside `@layer exquisitus`, so the layer decides the winner, not source-order specificity. The rule reads source order and cannot see layers, which made all 10 of its findings here false.
+- **`noImportantStyles` is on, with four targeted suppressions** on the declarations in the sanctioned `prefers-reduced-motion` reset in `base.css`. A file-level override would have been shorter and is wrong: it drops the guard exactly where a new `!important` is most likely to be added. If you add an `!important` anywhere else, the gate will stop you — that is the point.
+- **`noRedundantRoles` is suppressed once**, on `SpecimenPlate.astro`'s ink list. The `role="list"` is not redundant: `base.css` sets `list-style: none` on that list, which strips list semantics in Safari and VoiceOver, and the role restores them. **Do not remove it** — it is an accessibility fix, and the suppression comment is what keeps the gate from "fixing" it for you.
+- **Full Astro support is experimental and deliberately on** (`html.experimentalFullSupportEnabled`). It is what lets Biome read the template, which removed 14 `noUnusedImports`/`noUnusedVariables` false positives on frontmatter variables used only in markup. The `~2.6.5` pin keeps minor upgrades deliberate, because experimental formatter output can change between minors.
 
 ## Architecture
 
