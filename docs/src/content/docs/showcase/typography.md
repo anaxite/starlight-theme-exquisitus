@@ -11,7 +11,8 @@ If it is comfortable to read here, it will be comfortable to read anywhere on yo
 
 Exquisitus sets body type in Literata at roughly eighteen pixels, with a line height of 1.75 and a measure of seventy characters.
 Seventeen pixels is the minimum the Readability Guidelines call comfortable for extended reading.
-Seventy characters is the width where the eye can return cleanly to the start of the next line without searching. 1.75 is the breathing room that lets ascenders and descenders live without crowding.
+Seventy characters is the width where the eye can return cleanly to the start of the next line without searching.
+1.75 is the breathing room that lets ascenders and descenders live without crowding.
 I want documentation read at length to receive the same consideration as long-form prose.
 
 ## Headings keep their place
