@@ -2,17 +2,31 @@
 
 Guidance for agents working **inside the published theme package** of this monorepo.
 
-For the monorepo as a whole—the **brand and design system** (`PRODUCT.md`, `DESIGN.md`, the `impeccable` skill), workspace commands, and toolchain—see the [root `AGENTS.md`](../../AGENTS.md). **Read `PRODUCT.md` and `DESIGN.md` before changing anything visual.**
+For the monorepo as a whole—the **brand and design system** (`PRODUCT.md`, `DESIGN.md`, the `impeccable` skill), workspace commands, and toolchain—see the [root `AGENTS.md`](../../AGENTS.md).
 
 This is `starlight-theme-exquisitus`, the npm-published Astro Starlight plugin. Everything in this directory ships to consumers (see the `files` array in `package.json`); the repo's `docs/` site only dogfoods it.
 
 ## Commands
 
 ```bash
-pnpm lint    # biome format --write  — formats & lints the globs in biome.json
+pnpm lint    # biome check --error-on-warnings  — CHECK ONLY, never writes
+pnpm format  # biome check --write, run TWICE (see below)
 ```
 
-There is **no unit-test suite**. Verify changes visually: run the docs showcase from the repo root (`pnpm dev` → http://localhost:4321) and screenshot key pages in light and dark. Biome only touches the file globs listed in `biome.json` (the CSS in `styles/`, the `.astro` overrides, `components/FeatureGrid.astro`, and `libs/`) — not every file in the package.
+Type checking lives at the repo root (`pnpm check` → `tsc --noEmit` against the root `tsconfig.json`), **not** here. `astro check` in `docs/` cannot reach this package: `docs/tsconfig.json` includes `**/*` relative to `docs/`, and the package is only reachable through the `docs/node_modules` symlink, which the checker skips. So a type error in `libs/` is caught by the root `tsc`, and by nothing else.
+
+There is **no unit-test suite**. Verify changes visually: run the docs showcase from the repo root (`pnpm dev` → http://localhost:4321) and screenshot key pages in light and dark. Biome only touches the file globs listed in `biome.json` (`index.ts`, the CSS in `styles/`, the `.astro` overrides, `components/*.astro`, and `libs/`) — not every file in the package.
+
+### Why `format` runs Biome twice
+
+Biome 2.6.5's Astro formatter is **not idempotent** on multiline conditional expressions: the first pass collapses the expression and misindents its child, the second converges, and a third changes nothing. `overrides/Hero.astro` is the file that needs it. The duplicate call is deliberate — do not "simplify" it to one pass, and remove it once upstream fixes the bug. CI runs the single read-only `lint`, which passes because the committed tree is already converged.
+
+### Biome rules worth knowing before you fight them
+
+- **`noDescendingSpecificity` is off.** All theme CSS is authored inside `@layer exquisitus`, so the layer decides the winner, not source-order specificity. The rule reads source order and cannot see layers, which made all 10 of its findings here false.
+- **`noImportantStyles` is on, with four targeted suppressions** on the declarations in the sanctioned `prefers-reduced-motion` reset in `base.css`. A file-level override would have been shorter and is wrong: it drops the guard exactly where a new `!important` is most likely to be added. If you add an `!important` anywhere else, the gate will stop you — that is the point.
+- **`noRedundantRoles` is suppressed once**, on `SpecimenPlate.astro`'s ink list. The `role="list"` is not redundant: `base.css` sets `list-style: none` on that list, which strips list semantics in Safari and VoiceOver, and the role restores them. **Do not remove it** — it is an accessibility fix, and the suppression comment is what keeps the gate from "fixing" it for you.
+- **Full Astro support is experimental and deliberately on** (`html.experimentalFullSupportEnabled`). It is what lets Biome read the template, which removed 14 `noUnusedImports`/`noUnusedVariables` false positives on frontmatter variables used only in markup. The `~2.6.5` pin keeps minor upgrades deliberate, because experimental formatter output can change between minors.
 
 ## Architecture
 
@@ -49,7 +63,7 @@ These are the non-obvious constraints. The *why* behind the visual choices lives
 
 **The Starlight custom-property contract.** The theme does not invent its own color namespace. `tokens.css` maps the Exquisitus palette onto Starlight's `--sl-color-*` contract so Starlight's built-in components inherit the theme automatically. Only theme-specific tokens (serif stack, cool counter-hue, easing curve, CTA fill) use the `--sl-exquisitus-*` namespace.
 
-**Component-override CSS gotcha.** Overriding a Starlight component (e.g. `Hero.astro`) drops that component's **scoped** layout CSS. The hero structure had to be reproduced in `base.css` (`.hero`). Any new override needs the same treatment. Relatedly, `FeatureGrid.astro` keeps its layout CSS in `base.css` rather than a scoped `<style>` block **because slotted children carry no Astro scope hash** — child-targeting selectors (`> :first-child`, `> :nth-child()`) only match when authored globally. `overrideComponents()` warns if the user already overrides the same component; user config always wins.
+**Component-override CSS gotcha.** Overriding a Starlight component (e.g. `Hero.astro`) drops that component's **scoped** layout CSS. The hero structure had to be reproduced in `base.css` (`.hero`). Any new override needs the same treatment. Relatedly, `FeatureGrid.astro` keeps its layout CSS in `base.css` rather than a scoped `<style>` block **because slotted children carry no Astro scope hash** — child-targeting selectors (`> :first-child`, `> :nth-child()`) only match when authored globally.
 
 **FeatureGrid's wrapper is load-bearing.** `FeatureGrid.astro` emits a `.exquisitus-feature-grid-container` around the grid, and the layouts are gated on `@container (min-width: 34rem)` against *that* wrapper — a viewport media query is the wrong question, because the 37rem content column hands the grid the same room no matter how wide the window is (an embedded grid clears the 34rem base threshold and runs the two-track arrangements; the wider thirds/quarters thresholds only trip on the splash's unconstrained canvas, and anything under 34rem folds to a single column). The wrapper cannot be collapsed into the grid: **an element is never styled by its own container query**, so `grid-template-columns` on the grid would silently stop applying. Card titles are sized in `cqi` against each card (which is itself an inline-size container), so a title fits the cell it lands in rather than the window. Also note the cards must keep `margin-top: 0`: Starlight's markdown sibling spacing otherwise reaches them and offsets every card but the first inside its row.
 

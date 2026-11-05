@@ -1,12 +1,18 @@
 # Exquisitus
 
-Monorepo for Exquisitus, a [Starlight](https://starlight.astro.build/) documentation theme.
+[![CI](https://github.com/anaxite/starlight-theme-exquisitus/actions/workflows/ci.yml/badge.svg)](https://github.com/anaxite/starlight-theme-exquisitus/actions/workflows/ci.yml)
+
+This is the monorepo for Exquisitus, an [Astro Starlight](https://starlight.astro.build/) documentation theme.
 
 ## Quick start
+
+Install the theme:
 
 ```bash
 pnpm add starlight-theme-exquisitus
 ```
+
+Add the plugin to `astro.config.mjs`:
 
 ```js
 // astro.config.mjs
@@ -20,23 +26,29 @@ starlight({
 
 ## Repository layout
 
-```
-packages/starlight-theme-exquisitus/   # the published theme package
+```text
+packages/starlight-theme-exquisitus/   # published theme package
 docs/                                  # showcase site
 ```
 
 ## Development
 
-Toolchain is pinned in `mise.toml` (Node 24, pnpm 12).
+The recommended toolchain is pinned in `mise.toml` (Node 24, pnpm 12).
 
 ```bash
 pnpm dev        # docs preview at http://localhost:4321
 pnpm build      # production build of the docs site
 pnpm preview    # serve the built docs site
+pnpm lint       # read-only check of the theme package and docs (Biome, rumdl)
+pnpm format     # apply Biome and rumdl findings
+pnpm check      # type-check: astro check for the docs, tsc for the package
 ```
 
-The monorepo also contains the design intent, which lives in [`PRODUCT.md`](./PRODUCT.md) and [`DESIGN.md`](./DESIGN.md).
+## Design
+
+The monorepo also contains a design intent, which lives in [`PRODUCT.md`](./PRODUCT.md) and [`DESIGN.md`](./DESIGN.md).
 The files are generated using the _Impeccable_ agent skill.
+If you want to know more, see [impeccable.style](https://impeccable.style/) (it's pretty cool).
 
 ## License
 
