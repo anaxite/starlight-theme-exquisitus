@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.3.0
+
+This release targets Starlight 0.42, fixes the mobile menu button on touch devices, and cleans up some tooling.
+It also moves the monorepo to PNPM 12.
+
+### Changed
+
+- Raised the Starlight peer dependency floor to `>=0.42.0`.
+  Starlight 0.41 is no longer supported.
+- Updated the `Hero.astro` override to match Starlight 0.42's stock hero.
+- Updated the menu pane to override new Starlight 0.42 display rules.
+- Updated the declared package manager range to PNPM 12 (`>=12.0.0 <13.0.0`).
+- Changed the package to no longer imports types from `astro`.
+- Replaced the `lint` script with separate linting, formatting, and type-checking scripts.
+- Enabled Biome checks for `index.ts` and all `components/*.astro` files.
+- Added CI checks.
+
+### Fixed
+
+- Fixed a touch tap-target rule unhiding the mobile menu button on desktop widths
+- Fixed a stale references in the AGENTS and design comments.
+
 ## 1.2.0
 
 This release refines the theme's page layouts and reading geometry.
