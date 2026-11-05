@@ -1338,9 +1338,13 @@
 		*,
 		*::before,
 		*::after {
+			/* biome-ignore lint/complexity/noImportantStyles: the sanctioned exception described above — a universal selector has zero specificity and cannot otherwise override per-property transitions */
 			animation-duration: 0.01ms !important;
+			/* biome-ignore lint/complexity/noImportantStyles: the sanctioned exception described above — a universal selector has zero specificity and cannot otherwise override per-property transitions */
 			animation-iteration-count: 1 !important;
+			/* biome-ignore lint/complexity/noImportantStyles: the sanctioned exception described above — a universal selector has zero specificity and cannot otherwise override per-property transitions */
 			transition-duration: 0.01ms !important;
+			/* biome-ignore lint/complexity/noImportantStyles: the sanctioned exception described above — a universal selector has zero specificity and cannot otherwise override per-property transitions */
 			scroll-behavior: auto !important;
 		}
 	}

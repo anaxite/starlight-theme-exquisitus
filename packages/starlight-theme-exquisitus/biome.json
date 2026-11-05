@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.1/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -7,9 +7,10 @@
 	},
 	"files": {
 		"includes": [
+			"./index.ts",
 			"./styles/*.css",
 			"./overrides/*.astro",
-			"./components/FeatureGrid.astro",
+			"./components/*.astro",
 			"./libs/*"
 		]
 	},
@@ -20,12 +21,21 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"preset": "recommended"
+			"preset": "recommended",
+			"style": {
+				"noDescendingSpecificity": "off"
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double"
+		}
+	},
+	"html": {
+		"experimentalFullSupportEnabled": true,
+		"formatter": {
+			"enabled": true
 		}
 	},
 	"assist": {

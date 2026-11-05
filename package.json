@@ -10,10 +10,13 @@
     "build": "pnpm --filter starlight-theme-exquisitus-docs build",
     "preview": "pnpm --filter starlight-theme-exquisitus-docs preview",
     "deploy": "pnpm dlx wrangler deploy",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "check": "pnpm -r --if-present check && tsc --noEmit"
   },
   "devDependencies": {
-    "@biomejs/biome": "~2.5.15",
+    "@biomejs/biome": "~2.6.5",
+    "typescript": "^6.0.0",
     "wrangler": "^4.157.0"
   },
   "devEngines": {
