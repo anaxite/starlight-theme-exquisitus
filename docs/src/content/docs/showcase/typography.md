@@ -37,7 +37,7 @@ A document that requires more than four levels of heading should probably be spl
 
 ## Within the column
 
-Color is spent on exactly two things in the reading column: [links](#), which carry the warm bronze accent in light mode and honey in dark, and `inline code`, which carries the cool petrol-teal.
+Color is spent on exactly two things in the reading column: [links](/customization/#token-overrides), which carry the warm bronze accent in light mode and honey in dark, and `inline code`, which carries the cool petrol-teal.
 Everything else earns emphasis through weight and rhythm.
 
 **Strong text** lifts toward the ink end of the neutral ramp.

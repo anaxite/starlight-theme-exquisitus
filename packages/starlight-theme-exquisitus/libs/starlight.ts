@@ -1,8 +1,9 @@
 import type { HookParameters } from "@astrojs/starlight/types";
-import type { AstroIntegrationLogger } from "astro";
 
 type StarlightUserConfig = HookParameters<"config:setup">["config"];
 type ComponentOverride = keyof NonNullable<StarlightUserConfig["components"]>;
+// Derived from Starlight's own hook as the package declares no Astro dependency
+type Logger = HookParameters<"config:setup">["logger"];
 
 /**
  * Merge the theme's component overrides into the user's Starlight config without
@@ -12,7 +13,7 @@ type ComponentOverride = keyof NonNullable<StarlightUserConfig["components"]>;
 export function overrideComponents(
 	starlightConfig: StarlightUserConfig,
 	overrides: ComponentOverride[],
-	logger: AstroIntegrationLogger,
+	logger: Logger,
 ): StarlightUserConfig["components"] {
 	const components = { ...starlightConfig.components };
 

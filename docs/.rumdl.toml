@@ -38,6 +38,9 @@ exclude = [
     # Specific files or patterns
     "CHANGELOG.md",
     "LICENSE.md",
+
+    # This will only ever be an `@AGENTS.md` pointer
+    "CLAUDE.md",
 ]
 
 # Respect .gitignore files when scanning directories (default: true)
@@ -66,6 +69,7 @@ code-blocks = false
 line-length = 100  # Line length
 code-blocks = false  # Exclude code blocks from line length check
 tables = false  # Exclude tables from line length check
+paragraphs = false  # Exclude prose from line length check
 reflow = true
 reflow-mode = "sentence-per-line"
 # headings = true  # Include headings in line length check
