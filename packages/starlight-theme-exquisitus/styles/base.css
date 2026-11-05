@@ -446,9 +446,8 @@
 
 		/* A lone trailing card (odd total) takes the full width rather than
 		   leaving a ragged gap beside empty tracks. */
-		.exquisitus-feature-grid[data-layout="alternating"] > :last-child:nth-child(
-				odd
-			) {
+		.exquisitus-feature-grid[data-layout="alternating"]
+			> :last-child:nth-child(odd) {
 			grid-column: 1 / -1;
 		}
 	}
