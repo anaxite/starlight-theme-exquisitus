@@ -48,11 +48,26 @@
 	   search trigger) are ~34px by default — under the 44px tap target. Give
 	   them a full 44px hit area on coarse pointers; mouse users keep the
 	   compact resting size. `any-pointer: coarse` catches touch-laptops that
-	   report `pointer: fine` (trackpad) but still have a touchscreen. */
+	   report `pointer: fine` (trackpad) but still have a touchscreen.
+
+	   The menu button is grown through Starlight's own --sl-menu-button-size
+	   rather than a min-size on the button, because that token also drives the
+	   button's `top` centring calc and the end padding the header reserves for
+	   it (MobileMenuToggle.astro, PageFrame.astro). A min-size alone enlarges
+	   the box while those two keep computing from 2rem, which hangs the button
+	   6px below the masthead's optical centre.
+
+	   Never set `display` on `starlight-menu-button button` here. Starlight
+	   hides it above 50rem with the `md:sl-hidden` utility, which lives in
+	   `starlight.utils` — beneath `exquisitus`, so any `display` the theme
+	   declares wins and strands the round button over the header actions next
+	   to an already-expanded sidebar on tablets (issue #1). */
 	@media (any-pointer: coarse) {
-		starlight-menu-button button,
+		:root {
+			--sl-menu-button-size: 44px;
+		}
+
 		site-search button[data-open-modal] {
-			display: inline-flex;
 			align-items: center;
 			justify-content: center;
 			min-inline-size: 44px;
