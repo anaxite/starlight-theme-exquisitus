@@ -54,7 +54,10 @@
 	   the button's `top` centring calc and the end padding the header reserves
 	   for it (MobileMenuToggle.astro, PageFrame.astro).
 
-	   Never set `display` on `starlight-menu-button button`.*/
+	   Since Starlight 0.42 the toggle is a bare `.sl-menu-button` inside the
+	   sidebar `<nav>`, not a `<starlight-menu-button>` wrapper. Never set
+	   `display` on `.sl-menu-button`: it carries `md:sl-hidden`, which is how
+	   it disappears on desktop; the sidebar popover is opened from it.*/
 	@media (any-pointer: coarse) {
 		:root {
 			--sl-menu-button-size: 44px;
@@ -79,6 +82,14 @@
 
 	.sidebar-content {
 		padding-inline-end: var(--sl-exquisitus-space-lg);
+	}
+
+	/* Starlight 0.42 opens the mobile menu as a top-layer popover, so the pane
+	   paints over the header's outward lift shadow and bar and menu read as one
+	   surface. Recast that lift on the inside of the pane's top edge while it is
+	   open. Inert on Starlight 0.41, where nothing matches `:popover-open`. */
+	.sidebar-pane:popover-open {
+		box-shadow: var(--sl-exquisitus-header-shadow-inset);
 	}
 
 	/* Nav links carry the reading base size (Starlight ships them a step down at

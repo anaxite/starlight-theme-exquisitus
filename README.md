@@ -27,7 +27,7 @@ docs/                                  # showcase site
 
 ## Development
 
-Toolchain is pinned in `mise.toml` (Node 24, pnpm 11).
+Toolchain is pinned in `mise.toml` (Node 24, pnpm 12).
 
 ```bash
 pnpm dev        # docs preview at http://localhost:4321

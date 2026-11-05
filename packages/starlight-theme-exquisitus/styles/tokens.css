@@ -203,6 +203,12 @@
 			0 1px 0 color-mix(in oklab, var(--sl-color-white) 13%, transparent),
 			0 11px 26px -11px
 			color-mix(in oklab, var(--sl-color-white) 17%, transparent);
+		/* The same lift cast inside the mobile menu pane, which as a top-layer
+		   popover hides the outward shadow (see base.css). */
+		--sl-exquisitus-header-shadow-inset:
+			inset 0 1px 0 color-mix(in oklab, var(--sl-color-white) 13%, transparent),
+			inset 0 11px 26px -11px
+			color-mix(in oklab, var(--sl-color-white) 17%, transparent);
 
 		/* Semantic ramps — note(teal) · tip(violet) · caution · danger · success. */
 		--sl-color-blue-low: oklch(0.28 0.05 205);
@@ -309,6 +315,9 @@
 
 		/* On white, a conventional soft drop shadow carries the header lift. */
 		--sl-exquisitus-header-shadow: 0 8px 22px -11px rgba(20, 16, 8, 0.34);
+		/* The same lift cast inside the mobile menu pane (see base.css). */
+		--sl-exquisitus-header-shadow-inset: inset 0 8px 22px -11px
+			rgba(20, 16, 8, 0.34);
 
 		/* Semantic ramps. */
 		--sl-color-blue-low: oklch(0.95 0.03 205);

@@ -26,7 +26,7 @@ pnpm lint       # lint/format all workspaces: *rumdl* for demo docs, *biome* for
 pnpm deploy     # deploy a built demo site to Cloudflare Workers (wrangler.jsonc)
 ```
 
-There is **no unit-test suite** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Toolchain is pinned in `mise.toml`: Node 24, pnpm 11 (the published theme package declares a Node ≥22.12.0 floor).
+There is **no unit-test suite** — verify visually by running the docs site (e.g. screenshot key pages in light and dark). Toolchain is pinned in `mise.toml`: Node 24, pnpm 12 (the published theme package declares a Node ≥22.12.0 floor).
 
 ## Architecture
 
